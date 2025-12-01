@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  color-scheme: dark;
+  background-color: #0f172a;
+}
+
+body {
+  @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+}
+
+a {
+  @apply transition-colors;
+}
+
+main {
+  @apply mx-auto max-w-6xl px-4 py-6 md:py-10;
+}
+
+.prose strong {
+  @apply text-white;
+}
+
+.prose {
+  @apply space-y-4 text-slate-100;
+}
+
+.prose p {
+  @apply leading-relaxed;
+}
+
+.prose-invert {
+  color: #e2e8f0;
+}
+
+.glass-panel {
+  @apply rounded-3xl border border-white/10 bg-white/5 shadow-xl backdrop-blur;
+}

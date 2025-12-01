@@ -1,0 +1,23 @@
+@reference "../app/globals.css";
+
+.hero {
+  position: relative;
+}
+
+.hero-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 28px 28px;
+  opacity: 0.3;
+}
+
+.btn {
+  @apply rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300;
+}
+
+.btn-secondary {
+  @apply border border-white/30 bg-white/10 text-white hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+}
