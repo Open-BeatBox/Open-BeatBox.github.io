@@ -20,6 +20,12 @@
 4. Check SEO: hero images, metadata in `content/_site.md`, and page-level overrides as needed.
 5. Run `npm run dev` to visually verify sections render correctly.
 
+## Hardware/firmware references
+- Keep links to hardware BOMs, pin maps, and firmware repos up to date within site content and this wiki.
+- When documenting tasks or runtimes, include version/commit hashes and configuration files.
+- Use diagrams (Mermaid or images) in `docs/assets/` to capture wiring and data flow for future contributors.
+- When referencing Beatbox device setup, align with the build steps and firmware flashing flow described in the Build & Code page on the main site and summarized in this wiki.
+
 ## Quality gates
 - `npm run lint` and `npm run type-check` must pass.
 - `npm run build` before merging larger changes to catch integration issues.

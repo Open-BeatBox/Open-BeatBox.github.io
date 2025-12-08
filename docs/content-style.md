@@ -2,7 +2,7 @@
 
 ## Voice and tone
 - Clear, concise, and confident; favor active voice.
-- Assume readers are technically capable but new to the project.
+- Assume readers are technically capable but may be new to behavioral hardware.
 - Define domain terms on first use; avoid unexplained acronyms.
 
 ## Formatting
@@ -24,3 +24,4 @@
 - Keep hero titles punchy; subtitles should clarify value.
 - Section titles should summarize the takeaway (“Why Beatbox for home-cage tasks?”).
 - For FAQs, answer directly in the first sentence, then add detail if needed.
+- When describing hardware, call out safety and calibration steps explicitly.
