@@ -39,7 +39,7 @@ sections:
           Core components include the main chamber, interchangeable operant modules (nosepoke, rewards, sensors), a PCB with multiple sensor interfaces, and a central microcontroller.
 
           <!-- TODO: Insert exact microcontroller model, chamber dimensions, reward system details, and power supply specs. -->
-      - heading: "Software stack"
+      - heading: "Software stack TEST"
         body: |
           The Beatbox software stack includes real-time acquisition firmware, a Python middleware layer for streaming and buffering, Dockerized services for visualization and storage, and open APIs in JSON and WebSocket formats.
 
