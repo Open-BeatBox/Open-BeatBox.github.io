@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Developer and contributor guide for the Beatbox content-driven Next.js site.">
+        <meta name="description" content="Professional guide to use, build, and contribute to the open-source Beatbox behavioral cage system and its website.">
       
       
       
@@ -25,7 +25,7 @@
     
     
       
-        <title>Operations - Open BeatBox Wiki</title>
+        <title>Operations - Beatbox Behavioral Cage System</title>
       
     
     
@@ -82,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Open BeatBox Wiki" class="md-header__button md-logo" aria-label="Open BeatBox Wiki" data-md-component="logo">
+    <a href=".." title="Beatbox Behavioral Cage System" class="md-header__button md-logo" aria-label="Beatbox Behavioral Cage System" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +96,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Open BeatBox Wiki
+            Beatbox Behavioral Cage System
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -196,13 +196,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Open BeatBox Wiki" class="md-nav__button md-logo" aria-label="Open BeatBox Wiki" data-md-component="logo">
+    <a href=".." title="Beatbox Behavioral Cage System" class="md-nav__button md-logo" aria-label="Beatbox Behavioral Cage System" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Open BeatBox Wiki
+    Beatbox Behavioral Cage System
   </label>
   
     <div class="md-nav__source">
@@ -253,6 +253,87 @@
   
   
     <li class="md-nav__item">
+      <a href="../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../getting-started/" class="md-nav__link">
         
   
@@ -260,7 +341,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
+    Getting Started (Dev)
   
 
     
@@ -448,10 +529,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#local-checks" class="md-nav__link">
+  <a href="#local-checks-site-wiki" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Local checks
+        Local checks (site + wiki)
       
     </span>
   </a>
@@ -470,10 +551,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deployment-typical" class="md-nav__link">
+  <a href="#deployment-site" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment (typical)
+        Deployment (site)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-mkdocs-wiki" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment (MkDocs wiki)
       
     </span>
   </a>
@@ -496,6 +588,17 @@
     <span class="md-ellipsis">
       
         Maintaining the wiki
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#field-operations-reminders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field operations reminders
       
     </span>
   </a>
@@ -585,7 +688,7 @@
 
 
 <h1 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h1>
-<h2 id="local-checks">Local checks<a class="headerlink" href="#local-checks" title="Permanent link">&para;</a></h2>
+<h2 id="local-checks-site-wiki">Local checks (site + wiki)<a class="headerlink" href="#local-checks-site-wiki" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Lint: <code>npm run lint</code></li>
 <li>Types: <code>npm run type-check</code></li>
@@ -598,11 +701,16 @@
 - <code>MAILGUN_API_KEY</code>, <code>MAILGUN_DOMAIN</code>, <code>MAILGUN_API_URL</code>, <code>MAILGUN_FROM_EMAIL</code>, <code>MAILGUN_TO_EMAIL</code> — required for contact form delivery.
 - <code>NEXT_PUBLIC_SITE_URL</code> — canonical URLs, sitemap, and robots.
 - <code>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code> — optional reCAPTCHA support for contact forms.</p>
-<h2 id="deployment-typical">Deployment (typical)<a class="headerlink" href="#deployment-typical" title="Permanent link">&para;</a></h2>
+<h2 id="deployment-site">Deployment (site)<a class="headerlink" href="#deployment-site" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Vercel or similar: connect the repo, set environment variables, deploy on pushes to <code>main</code>.</li>
-<li>GitHub Actions/Pages (static export): run <code>npm run build</code> then serve <code>.next</code> output with the platform’s adapter (ensure the hosting platform supports Next.js features you use).</li>
+<li>GitHub Actions/Pages (static export): run <code>npm run build</code> then serve <code>.next</code> output with the platform’s adapter (ensure the hosting platform supports the Next.js features you use).</li>
 <li>Manual: <code>npm run build</code> then <code>npm run start</code> in the target environment.</li>
+</ul>
+<h2 id="deployment-mkdocs-wiki">Deployment (MkDocs wiki)<a class="headerlink" href="#deployment-mkdocs-wiki" title="Permanent link">&para;</a></h2>
+<ul>
+<li>CI workflow: <code>.github/workflows/mkdocs.yml</code> builds <code>docs/</code> with <code>mkdocs build --strict</code> and publishes <code>site/</code> to the <code>gh-pages</code> branch on pushes to <code>main</code> or manual dispatch.</li>
+<li>Enable GitHub Pages from the <code>gh-pages</code> branch (root).</li>
 </ul>
 <h2 id="runbook-common-issues">Runbook: common issues<a class="headerlink" href="#runbook-common-issues" title="Permanent link">&para;</a></h2>
 <ul>
@@ -617,6 +725,12 @@
 <li>Edit Markdown in <code>docs/</code> and update <code>mkdocs.yml</code> navigation.</li>
 <li>Preview locally with <code>mkdocs serve</code>.</li>
 <li>Keep screenshots and diagrams in <code>docs/assets/</code> with descriptive filenames.</li>
+</ul>
+<h2 id="field-operations-reminders">Field operations reminders<a class="headerlink" href="#field-operations-reminders" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Back up configurations before firmware/runtime updates.</li>
+<li>Keep a device inventory with firmware versions and configuration hashes.</li>
+<li>For multi-cage deployments, monitor clock sync and storage health; schedule periodic validation runs.</li>
 </ul>
 
 

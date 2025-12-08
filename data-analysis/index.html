@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../development/">
+        <link rel="prev" href="../hardware-build/">
       
       
-        <link rel="next" href="../content-style/">
+        <link rel="next" href="../getting-started/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Architecture - Beatbox Behavioral Cage System</title>
+        <title>Data & Analysis - Beatbox Behavioral Cage System</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#architecture" class="md-skip">
+        <a href="#data-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Architecture
+              Data & Analysis
             
           </span>
         </div>
@@ -304,10 +304,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../data-analysis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -323,6 +350,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-pipeline-conceptual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data pipeline (conceptual)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging guidelines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sync-and-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sync and retention
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qc-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QC and monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-starter-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis starter workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reproducibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reproducibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data access control
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -385,37 +509,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Architecture
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
         
   
   
@@ -431,103 +528,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#system-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#system-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        System layers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repo-structure-this-site" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repo structure (this site)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#content-pipeline-site" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Content pipeline (site)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rendering-and-styling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rendering and styling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-and-integrations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API and integrations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-and-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Build and output
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -687,53 +687,66 @@
   
 
 
-<h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h1>
-<h2 id="system-overview">System overview<a class="headerlink" href="#system-overview" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Beatbox is a modular home-cage behavioral platform combining hardware (sensors/actuators), firmware/runtime for task control, and data pipelines for acquisition and analysis.</li>
-<li>This repository hosts the public website and documentation; reference external firmware/runtime repos and hardware BOMs where applicable.</li>
-<li>Typical deployment: one controller per cage, networked to a collector or local storage, with a web presence for docs and community.</li>
-</ul>
-<h2 id="system-layers">System layers<a class="headerlink" href="#system-layers" title="Permanent link">&para;</a></h2>
+<h1 id="data-analysis">Data &amp; Analysis<a class="headerlink" href="#data-analysis" title="Permanent link">&para;</a></h1>
+<p>How to capture, store, and analyze data from Beatbox cages while keeping sessions reproducible and auditable.</p>
+<h2 id="data-pipeline-conceptual">Data pipeline (conceptual)<a class="headerlink" href="#data-pipeline-conceptual" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Hardware</strong>: cage, sensors (IR beam, nose-poke, capacitive touch, environmental), actuators (pellet/liquid dispenser, lights), power, and connectivity.</li>
-<li><strong>Firmware/runtime</strong> (external repo): pin maps, task logic, device health metrics, logging, and networking (e.g., HTTP/MQTT).</li>
-<li><strong>Data layer</strong> (external or shared): log transport, storage (raw + processed), QC pipelines, and dashboards.</li>
-<li><strong>Docs/site (this repo)</strong>: Next.js site rendering content from Markdown in <code>content/</code> and this MkDocs wiki under <code>docs/</code>.</li>
+<li><strong>Acquisition</strong>: firmware/runtime emits structured events (sensor triggers, actuator states, timestamps, task variables).</li>
+<li><strong>Transport</strong>: logs saved locally (filesystem) and/or streamed to a collector (HTTP, MQTT, or WebSocket) over USB or Wi‑Fi.</li>
+<li><strong>Storage</strong>: append-only raw logs; optional database or object storage for aggregation.</li>
+<li><strong>Processing</strong>: convert raw logs to analysis-ready tables, merge with metadata (subject, task version, cohort).</li>
+<li><strong>Visualization/analysis</strong>: notebooks or dashboards for QC, performance, and longitudinal trends.</li>
 </ol>
-<h2 id="repo-structure-this-site">Repo structure (this site)<a class="headerlink" href="#repo-structure-this-site" title="Permanent link">&para;</a></h2>
+<h2 id="logging-guidelines">Logging guidelines<a class="headerlink" href="#logging-guidelines" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>content/</code> — Markdown for pages and blog posts (<code>content/blog/</code>). <code>_site.md</code> stores global metadata (title, description, authors, default OG/Twitter assets).</li>
-<li><code>src/app/</code> — Next.js App Router routes, layout, sitemap/robots, loading and not-found states, API routes (including <code>api/send-email</code>).</li>
-<li><code>src/components/</code> — Reusable UI blocks for hero sections, content sections, navigation, and layout.</li>
-<li><code>src/lib/</code> — Content parsing (<code>content.ts</code>), icon registry, utilities (text truncation, formatting).</li>
-<li><code>public/</code> — Static assets (images, icons).</li>
-<li><code>styles/</code> — Tailwind layer config plus scoped component CSS.</li>
-<li><code>docs/</code> — MkDocs wiki pages; <code>mkdocs.yml</code> controls navigation.</li>
+<li>Use structured formats (JSON lines or CSV) with explicit field names and units.</li>
+<li>Include: timestamp (ISO 8601, with timezone or UTC), device ID, subject ID, task version, firmware/runtime version, and configuration hash.</li>
+<li>Record both sensor events and actuator commands; mark errors and retries.</li>
+<li>Keep a manifest per session linking raw logs to metadata (subject, cohort, task parameters).</li>
+<li>When available, export JSON-LD metadata to align with FAIR workflows.</li>
 </ul>
-<h2 id="content-pipeline-site">Content pipeline (site)<a class="headerlink" href="#content-pipeline-site" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Markdown is parsed with <code>gray-matter</code> for frontmatter and content body.</li>
-<li>Slugs default to the relative path (with <code>/home</code> mapped to <code>/</code>) unless explicitly set.</li>
-<li>Navigation is derived from pages with <code>showInNav</code> and ordered by <code>navOrder</code>; groups use <code>navGroup</code>.</li>
-<li>Blog posts respect <code>publishAt</code>; future-dated posts stay hidden.</li>
-<li>SEO metadata is built from page fields with fallbacks from <code>_site.md</code> (title, description, OG/Twitter defaults). Hero background images or the first Markdown image are used as OG images when available.</li>
-</ol>
-<h2 id="rendering-and-styling">Rendering and styling<a class="headerlink" href="#rendering-and-styling" title="Permanent link">&para;</a></h2>
+<h2 id="sync-and-retention">Sync and retention<a class="headerlink" href="#sync-and-retention" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Markdown renders through <code>react-markdown</code> with <code>remark-gfm</code> and sanitized raw HTML via <code>rehype-raw</code> + <code>rehype-sanitize</code>.</li>
-<li>Tailwind CSS v4 (via <code>@tailwindcss/postcss</code>) provides utility layers; component-specific CSS refines the aesthetic.</li>
-<li>Fonts are loaded through <code>src/app/fonts.css</code>; global styles in <code>src/app/globals.css</code>.</li>
+<li>Offload logs after each session or daily; avoid long-running local-only storage.</li>
+<li>Verify transfers (hashes/checksums) before deleting local copies.</li>
+<li>Define retention policies for raw vs. processed data; keep raw indefinitely when feasible.</li>
+<li>Python client and REST/WebSocket APIs can stream data to your collector; include device and session identifiers in streams.</li>
 </ul>
-<h2 id="api-and-integrations">API and integrations<a class="headerlink" href="#api-and-integrations" title="Permanent link">&para;</a></h2>
+<h2 id="qc-and-monitoring">QC and monitoring<a class="headerlink" href="#qc-and-monitoring" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Contact form posts to <code>/api/send-email</code>, sanitizes inputs, and forwards through Mailgun. Configure <code>MAILGUN_API_KEY</code>, <code>MAILGUN_DOMAIN</code>, <code>MAILGUN_API_URL</code>, <code>MAILGUN_FROM_EMAIL</code>, and <code>MAILGUN_TO_EMAIL</code>.</li>
-<li>Optional Google reCAPTCHA: set <code>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code> and wire the client component.</li>
+<li>Build a lightweight QC report per session: event counts, latency distributions, reward totals, and missing data flags.</li>
+<li>Track device health: uptime, dropped packets, storage utilization, temperature.</li>
+<li>Alert on clock drift, missing heartbeats, or failed log uploads.</li>
 </ul>
-<h2 id="build-and-output">Build and output<a class="headerlink" href="#build-and-output" title="Permanent link">&para;</a></h2>
+<h2 id="analysis-starter-workflow">Analysis starter workflow<a class="headerlink" href="#analysis-starter-workflow" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Example sketch using Python/pandas for JSONL logs</span>
+python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+<span class="s">import json, pandas as pd, pathlib, glob</span>
+
+<span class="s">paths = glob.glob(&quot;data/raw/*.jsonl&quot;)</span>
+<span class="s">df = pd.concat(pd.read_json(p, lines=True) for p in paths)</span>
+<span class="s">df[&quot;timestamp&quot;] = pd.to_datetime(df[&quot;timestamp&quot;], utc=True)</span>
+
+<span class="s"># Filter a session</span>
+<span class="s">session = df[df[&quot;session_id&quot;] == &quot;YOUR_SESSION_ID&quot;].copy()</span>
+
+<span class="s"># Basic QC</span>
+<span class="s">print(session[&quot;event_type&quot;].value_counts())</span>
+<span class="s">print(session.groupby(&quot;event_type&quot;)[&quot;latency_ms&quot;].describe())</span>
+<span class="s">PY</span>
+</code></pre></div>
+
+<h2 id="reproducibility">Reproducibility<a class="headerlink" href="#reproducibility" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>npm run build</code> produces the production bundle under <code>.next/</code>.</li>
-<li><code>mkdocs build</code> (for this wiki) outputs to <code>site/</code> when needed; CI workflow publishes to <code>gh-pages</code>.</li>
+<li>Version control task configs and firmware/runtime; include commit hashes in logs.</li>
+<li>Keep environment files for analysis (e.g., <code>requirements.txt</code> or <code>environment.yml</code>).</li>
+<li>Document preprocessing steps and notebook links per study.</li>
+</ul>
+<h2 id="data-access-control">Data access control<a class="headerlink" href="#data-access-control" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Anonymize subject IDs when sharing outside the core team.</li>
+<li>Avoid logging PII; limit metadata to study-relevant identifiers.</li>
+<li>For collaborative datasets, publish a data dictionary describing every field.</li>
 </ul>
 
 
