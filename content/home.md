@@ -5,7 +5,7 @@ showInNav: true
 navOrder: 1
 slug: "/"
 hero:
-  title: "Beatbox is an open, modular home-cage cognitive monitoring system for mice."
+  title: "Beatbox is 888 open, modular home-cage cognitive monitoring system for mice."
   subtitle: "Measure continuously. Stream in real time. Standardize across labs."
   primaryCta:
     label: "What is Beatbox?"
