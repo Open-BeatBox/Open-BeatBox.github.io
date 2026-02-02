@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Hero } from "@/types/content";
 import "./HeroSection.css";
 
@@ -26,9 +27,16 @@ const HeroSection: React.FC<Props> = ({ hero }) => {
             >
               <source src={hero.backgroundVideo} type="video/mp4" />
             </video>
-          ) : (
-            <img className="hero-image" src={hero.backgroundImage} alt="" />
-          )}
+          ) : hero.backgroundImage ? (
+            <Image
+              className="hero-image"
+              src={hero.backgroundImage}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+            />
+          ) : null}
         </div>
       )}
       <div className="hero-overlay" aria-hidden />

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllContentPages } from "@/lib/content";
 
 export const dynamic = "force-static";
+export const revalidate = 0;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = await getAllContentPages();

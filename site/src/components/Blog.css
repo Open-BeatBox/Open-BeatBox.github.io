@@ -5,7 +5,7 @@
   grid-template-columns: 1fr;
 }
 
-@screen lg {
+@media (min-width: 1024px) {
   .blog-layout {
     grid-template-columns: 320px 1fr;
   }

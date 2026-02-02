@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
@@ -45,7 +46,15 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                   <div className="media-grid">
                     {section.media.map((item) => (
                       <figure key={item.src} className="media-card group">
-                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        <div className="media-image">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="media-img"
+                          />
+                        </div>
                         {item.caption && (
                           <figcaption className="media-caption">
                             {item.caption}
@@ -79,7 +88,15 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                   <div className="media-strip">
                     {section.media.map((item) => (
                       <figure key={item.src} className="media-card group">
-                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        <div className="media-image">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="media-img"
+                          />
+                        </div>
                         {item.caption && (
                           <figcaption className="media-caption">
                             {item.caption}
@@ -101,7 +118,15 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                 <div className="media-grid tech-grid">
                   {section.items.map((item) => (
                     <figure key={item.image} className="media-card tech-card group">
-                      <img src={item.image} alt={item.title} loading="lazy" />
+                      <div className="media-image">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          className="media-img"
+                        />
+                      </div>
                       <figcaption className="media-caption">
                         <span className="font-semibold text-white">
                           {item.title}

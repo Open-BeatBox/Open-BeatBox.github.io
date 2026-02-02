@@ -106,8 +106,12 @@
   @apply overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg transition hover:border-cyan-300/40;
 }
 
-.media-card img {
-  @apply h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105;
+.media-image {
+  @apply relative h-40 w-full overflow-hidden;
+}
+
+.media-img {
+  @apply object-cover transition-transform duration-300 group-hover:scale-105;
 }
 
 .media-caption {
@@ -130,7 +134,7 @@
   @apply sm:grid-cols-2 lg:grid-cols-3;
 }
 
-.tech-card img {
+.tech-card .media-image {
   @apply h-44;
 }
 
