@@ -9,10 +9,31 @@ type Props = {
 
 const HeroSection: React.FC<Props> = ({ hero }) => {
   if (!hero) return null;
+  const hasVideo = Boolean(hero.backgroundVideo);
+  const hasImage = Boolean(hero.backgroundImage);
   return (
     <section className="hero relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white shadow-xl">
+      {(hasVideo || hasImage) && (
+        <div className="hero-media" aria-hidden>
+          {hasVideo ? (
+            <video
+              className="hero-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={hero.backgroundImage}
+            >
+              <source src={hero.backgroundVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <img className="hero-image" src={hero.backgroundImage} alt="" />
+          )}
+        </div>
+      )}
+      <div className="hero-overlay" aria-hidden />
       <div className="relative z-10 space-y-6 md:max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.2em] text-blue-200">Beatbox</p>
+        <p className="text-sm uppercase tracking-[0.2em] text-blue-200">BEATBox</p>
         <h1 className="text-3xl font-bold leading-tight md:text-5xl">
           {hero.title}
         </h1>

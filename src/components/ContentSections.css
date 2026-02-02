@@ -2,10 +2,19 @@
 
 .section {
   @apply rounded-2xl border border-white/10 bg-slate-900/40 p-6 shadow-lg backdrop-blur;
+  animation: section-fade 0.7s ease both;
 }
 
 .section-title {
   @apply mb-4 text-2xl font-semibold text-white;
+}
+
+.section-subtitle {
+  @apply -mt-2 mb-6 text-base text-slate-200;
+}
+
+.section-eyebrow {
+  @apply text-xs uppercase tracking-[0.3em] text-cyan-200;
 }
 
 .card-grid {
@@ -66,4 +75,81 @@
 
 .link {
   @apply text-blue-300 hover:text-blue-200 underline decoration-blue-400/60;
+}
+
+.section-split {
+  @apply overflow-hidden;
+}
+
+.split-grid {
+  @apply grid gap-6 lg:grid-cols-[1.1fr,1fr] lg:items-start;
+}
+
+.split-content {
+  @apply space-y-4 text-slate-200;
+}
+
+.bullet-list {
+  @apply space-y-2 pl-5 text-slate-200;
+  list-style: disc;
+}
+
+.media-grid {
+  @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.media-strip {
+  @apply mt-6 grid gap-4 md:grid-cols-2;
+}
+
+.media-card {
+  @apply overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg transition hover:border-cyan-300/40;
+}
+
+.media-card img {
+  @apply h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105;
+}
+
+.media-caption {
+  @apply p-3 text-sm text-slate-200;
+}
+
+.icon-grid {
+  @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.icon-card {
+  @apply relative rounded-2xl border border-white/10 bg-white/5 p-4 shadow-md backdrop-blur;
+}
+
+.icon-badge {
+  @apply mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/20 text-lg text-cyan-100;
+}
+
+.tech-grid {
+  @apply sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.tech-card img {
+  @apply h-44;
+}
+
+@keyframes section-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    animation: none;
+  }
+  .media-card img {
+    transition: none;
+  }
 }

@@ -22,6 +22,101 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
       {sections.map((section, index) => {
         const key = `${section.type}-${index}`;
         switch (section.type) {
+          case "mediaSplit":
+            return (
+              <section key={key} className="section section-split">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <div className="split-grid">
+                  <div className="split-content">
+                    {section.eyebrow && (
+                      <p className="section-eyebrow">{section.eyebrow}</p>
+                    )}
+                    {section.body && (
+                      <p className="text-slate-200">{section.body}</p>
+                    )}
+                    {section.bullets && section.bullets.length > 0 && (
+                      <ul className="bullet-list">
+                        {section.bullets.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="media-grid">
+                    {section.media.map((item) => (
+                      <figure key={item.src} className="media-card group">
+                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        {item.caption && (
+                          <figcaption className="media-caption">
+                            {item.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            );
+          case "iconGrid":
+            return (
+              <section key={key} className="section">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.subtitle && (
+                  <p className="section-subtitle">{section.subtitle}</p>
+                )}
+                <div className="icon-grid">
+                    {section.items.map((item) => (
+                      <div key={item.title} className="icon-card">
+                        <span className="icon-badge" aria-hidden>
+                          {item.icon}
+                        </span>
+                      <h3 className="card-title">{item.title}</h3>
+                      <p className="card-body">{item.body}</p>
+                    </div>
+                  ))}
+                </div>
+                {section.media && section.media.length > 0 && (
+                  <div className="media-strip">
+                    {section.media.map((item) => (
+                      <figure key={item.src} className="media-card group">
+                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        {item.caption && (
+                          <figcaption className="media-caption">
+                            {item.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ))}
+                  </div>
+                )}
+              </section>
+            );
+          case "mediaGrid":
+            return (
+              <section key={key} className="section">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.subtitle && (
+                  <p className="section-subtitle">{section.subtitle}</p>
+                )}
+                <div className="media-grid tech-grid">
+                  {section.items.map((item) => (
+                    <figure key={item.image} className="media-card tech-card group">
+                      <img src={item.image} alt={item.title} loading="lazy" />
+                      <figcaption className="media-caption">
+                        <span className="font-semibold text-white">
+                          {item.title}
+                        </span>
+                        {item.body && (
+                          <span className="block text-sm text-slate-300">
+                            {item.body}
+                          </span>
+                        )}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            );
           case "featureCards":
             return (
               <section key={key} className="section">

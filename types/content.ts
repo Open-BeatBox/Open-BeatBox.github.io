@@ -4,6 +4,7 @@ export type Hero = {
   title: string;
   subtitle?: string;
   backgroundImage?: string;
+  backgroundVideo?: string;
   primaryCta?: CTA;
   secondaryCta?: CTA;
 };
@@ -16,6 +17,24 @@ export type CTA = {
 export type FeatureCard = {
   title: string;
   body: string;
+};
+
+export type MediaItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type IconCard = {
+  icon: string;
+  title: string;
+  body: string;
+};
+
+export type MediaGridItem = {
+  image: string;
+  title: string;
+  body?: string;
 };
 
 export type FAQItem = {
@@ -43,6 +62,27 @@ export type Section =
   | { type: "updates"; title?: string; items: LinkItem[] }
   | { type: "list"; title?: string; items: string[] }
   | { type: "pipeline"; title?: string; steps: string[] }
+  | {
+      type: "mediaSplit";
+      title?: string;
+      eyebrow?: string;
+      body?: string;
+      bullets?: string[];
+      media: MediaItem[];
+    }
+  | {
+      type: "iconGrid";
+      title?: string;
+      subtitle?: string;
+      items: IconCard[];
+      media?: MediaItem[];
+    }
+  | {
+      type: "mediaGrid";
+      title?: string;
+      subtitle?: string;
+      items: MediaGridItem[];
+    }
   | {
       type: "columns";
       title?: string;

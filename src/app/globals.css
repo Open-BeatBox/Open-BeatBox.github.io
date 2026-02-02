@@ -3,11 +3,31 @@
 
 :root {
   color-scheme: dark;
-  background-color: #0f172a;
+  background-color: #0b1120;
+  --brand-cyan: #22d3ee;
+  --brand-teal: #14b8a6;
+  --brand-amber: #fbbf24;
+  --brand-ink: #0b1120;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(20, 184, 166, 0.22), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.18), transparent 45%),
+    radial-gradient(circle at 80% 90%, rgba(251, 191, 36, 0.14), transparent 45%);
 }
 
 a {
@@ -16,6 +36,8 @@ a {
 
 main {
   @apply mx-auto max-w-6xl px-4 py-6 md:py-10;
+  position: relative;
+  z-index: 1;
 }
 
 .prose strong {
