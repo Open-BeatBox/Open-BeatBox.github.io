@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://open-beatbox.github.io/sitemap.xml
