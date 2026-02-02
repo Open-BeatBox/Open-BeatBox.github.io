@@ -9,26 +9,26 @@ hero:
   subtitle: "24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
   backgroundVideo: "/images/D_View_Promotional_Video_Generated.mp4"
   backgroundImage: "/images/beatbox-og-default.png"
-  primaryCta:
-    label: "Explore the System"
-    href: "/beatbox"
   secondaryCta:
     label: "View Open-Source Resources"
     href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources"
 sections:
   - type: "text"
     title: "Context & Scientific Background"
-    body: "Behavioral neuroscience seeks to explain how neural circuits give rise to behavior in normal and pathological conditions. Rodent models provide access to neural recording and manipulation during task performance, but traditional setups often disrupt circadian rhythms, motivation, and long-term dynamics. BEATBox was developed so animals live inside the behavioral apparatus throughout an experiment, engaging autonomously with minimal experimenter interaction."
+    body: |
+      *BEATBox is an autonomous home-cage behavioral system that lets rodents live inside the experimental apparatus while continuously performing tasks.*
+
+      > By removing repeated handling, artificial session boundaries, and experimenter-driven timing, BEATBox preserves circadian rhythms, motivation, and long-term behavioral dynamics. The result is richer, more ecological data with higher reproducibility and lower animal stress.
   - type: "list"
     title: "BEATBox enables researchers to"
     items:
-      - "Reduce the number of animals required by increasing trials per subject and improving data quality"
       - "Respect natural rhythms through fully autonomous task engagement"
       - "Run long-duration experiments (days to weeks) without repeated handling"
       - "Capture richer behavioral dynamics across circadian and motivational states"
       - "Implement complex operant conditioning procedures in an ecological context"
       - "Improve reproducibility through standardized, automated workflows"
       - "Align with the 3Rs (Reduction, Refinement, Replacement)"
+      - "Reduce the number of animals required by increasing trials per subject and improving data quality"
   - type: "mediaSplit"
     title: "System Overview"
     eyebrow: "24/7 Home-Cage Operant Conditioning"
@@ -45,26 +45,26 @@ sections:
       - src: "/images/beatbox_V3_clear.png"
         alt: "Transparent BEATBox layout"
         caption: "Clear view of the internal modules and animal pathways."
-      - src: "/images/beatbox-og-default.png"
+      - src: "/images/ChatGPT Image Jan 31, 2026, 02_37_59 PM.png"
         alt: "BEATBox system overview"
-        caption: "Complete system overview for rapid orientation."
+        caption: "Use BEATBox in your lab environment (AI-generated illustration)."
   - type: "iconGrid"
     title: "Scientific Advantages"
     subtitle: "Ecological validity with longitudinal, high-power datasets"
     items:
-      - icon: "EV"
+      - icon: "ECO"
         title: "Ecological validity"
         body: "Natural behavior is preserved by allowing animals to engage on their own schedule."
-      - icon: "LD"
+      - icon: "LONG"
         title: "Longitudinal acquisition"
         body: "Track behavioral dynamics across days and weeks with stable conditions."
-      - icon: "HT"
+      - icon: "TRIAL"
         title: "High trial counts"
         body: "Autonomous engagement increases the number of trials per subject."
-      - icon: "RS"
+      - icon: "LOW"
         title: "Reduced stress"
         body: "Minimal handling limits stress-related bias in behavioral readouts."
-      - icon: "SP"
+      - icon: "POWER"
         title: "Higher statistical power"
         body: "Richer within-subject datasets improve sensitivity and reproducibility."
     media:
@@ -105,12 +105,18 @@ sections:
 
           - Modular, extensible hardware schematics and firmware
           - Transparent behavioral workflows and data formats
+          - Clear interfaces for sensors, actuators, and task modules
+          - Reproducible configurations with versioned components
+          - Community review and iteration on protocols and data pipelines
           - Community-driven improvements and reproducibility
-      - heading: "Build with the community"
+      - heading: "Build with the community (Coming soon)"
         body: |
           ![Open-source collaboration visualization](/images/Gemini_Generated_Image_kp8glxkp8glxkp8g.png)
 
           Join a growing community of behavioral neuroscientists, method developers, and engineers shaping next-generation home-cage experimentation.
+        links:
+          - label: "Join the (upcoming) BEATBox community forum"
+            href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions"
   - type: "links"
     title: "Open-Source Resources"
     links:
@@ -123,6 +129,9 @@ sections:
       - label: "Website README"
         href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/blob/main/site/README.md"
         note: "Site development"
+  - type: "text"
+    title: "NERB team"
+    body: "BEATBox is developed by the NERB team: Eric Burguiere, Lizbeth Mondragon. Learn more at [nerb.team](https://nerb.team/)."
 ---
 
 BEATBox lets you move beyond short, stressful sessions toward continuous, ecological monitoring inside the home cage.

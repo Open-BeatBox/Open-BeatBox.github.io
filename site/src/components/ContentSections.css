@@ -107,11 +107,17 @@
 }
 
 .media-image {
-  @apply relative h-40 w-full overflow-hidden;
+  @apply relative h-40 w-full overflow-hidden bg-slate-950/60;
 }
 
 .media-img {
-  @apply object-cover transition-transform duration-300 group-hover:scale-105;
+  @apply object-contain;
+}
+
+.media-zoom {
+  @apply absolute inset-0 cursor-zoom-in;
+  background: transparent;
+  border: none;
 }
 
 .media-caption {
@@ -136,6 +142,26 @@
 
 .tech-card .media-image {
   @apply h-44;
+}
+
+.lightbox {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+}
+
+.lightbox-backdrop {
+  @apply absolute inset-0 bg-slate-950/80;
+}
+
+.lightbox-content {
+  @apply relative z-10 h-[80vh] w-[90vw] max-w-5xl;
+}
+
+.lightbox-image {
+  @apply object-contain;
+}
+
+.lightbox-close {
+  @apply absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-slate-900/80 px-4 py-2 text-xs font-semibold text-white;
 }
 
 @keyframes section-fade {

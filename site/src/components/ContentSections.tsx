@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -16,10 +18,40 @@ const markdownPlugins = [remarkGfm];
 const rehypePlugins = [rehypeRaw, rehypeSanitize];
 
 const ContentSections: React.FC<Props> = ({ sections }) => {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
+    null
+  );
+
+  const openLightbox = useCallback((src: string, alt: string) => {
+    setLightbox({ src, alt });
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+  }, []);
+
   if (!sections?.length) return null;
 
   return (
     <div className="content-sections space-y-10">
+      {lightbox && (
+        <div className="lightbox" role="dialog" aria-modal="true">
+          <button className="lightbox-close" onClick={closeLightbox} type="button">
+            Close
+          </button>
+          <div className="lightbox-backdrop" onClick={closeLightbox} />
+          <div className="lightbox-content">
+            <Image
+              src={lightbox.src}
+              alt={lightbox.alt}
+              fill
+              sizes="100vw"
+              className="lightbox-image"
+              priority
+            />
+          </div>
+        </div>
+      )}
       {sections.map((section, index) => {
         const key = `${section.type}-${index}`;
         switch (section.type) {
@@ -53,6 +85,12 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="media-img"
+                          />
+                          <button
+                            className="media-zoom"
+                            type="button"
+                            onClick={() => openLightbox(item.src, item.alt)}
+                            aria-label={`Zoom ${item.alt}`}
                           />
                         </div>
                         {item.caption && (
@@ -96,6 +134,12 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="media-img"
                           />
+                          <button
+                            className="media-zoom"
+                            type="button"
+                            onClick={() => openLightbox(item.src, item.alt)}
+                            aria-label={`Zoom ${item.alt}`}
+                          />
                         </div>
                         {item.caption && (
                           <figcaption className="media-caption">
@@ -125,6 +169,12 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                           fill
                           sizes="(max-width: 1024px) 100vw, 33vw"
                           className="media-img"
+                        />
+                        <button
+                          className="media-zoom"
+                          type="button"
+                          onClick={() => openLightbox(item.image, item.title)}
+                          aria-label={`Zoom ${item.title}`}
                         />
                       </div>
                       <figcaption className="media-caption">
