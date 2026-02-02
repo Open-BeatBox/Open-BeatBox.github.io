@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/**"
-      - "mkdocs.yml"
+      - "resources/docs/**"
+      - "resources/mkdocs.yml"
       - ".github/workflows/mkdocs.yml"
   workflow_dispatch:
 
@@ -32,11 +32,11 @@ jobs:
           pip install mkdocs mkdocs-material
 
       - name: Build docs
-        run: mkdocs build --strict
+        run: mkdocs build --strict -f resources/mkdocs.yml -d resources/docs-site
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
+          publish_dir: ./resources/docs-site
+          publish_branch: gh-pages-docs

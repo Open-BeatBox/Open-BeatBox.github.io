@@ -1,0 +1,33 @@
+site_name: BEATBox Documentation
+site_description: Documentation to build, operate, and extend the open-source BEATBox behavioral platform.
+repo_url: https://github.com/Open-BeatBox/Open-BeatBox.github.io
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+nav:
+  - Overview: index.md
+  - User Guide: user-guide.md
+  - Hardware Build: hardware-build.md
+  - Data & Analysis: data-analysis.md
+  - Getting Started (Dev): getting-started.md
+  - Development: development.md
+  - Architecture: architecture.md
+  - Content Style: content-style.md
+  - Contributing: contributing.md
+  - Operations: operations.md
+  - FAQ: faq.md
+  - Changelog: changelog.md
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - codehilite
+  - tables
+  - footnotes
+  - def_list
