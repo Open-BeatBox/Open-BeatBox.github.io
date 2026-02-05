@@ -143,6 +143,18 @@
   @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
 }
 
+.media-grid-single {
+  @apply grid-cols-1 place-items-center;
+}
+
+.media-grid-single .media-card {
+  width: min(100%, 560px);
+}
+
+.media-grid-single .media-image {
+  @apply h-72;
+}
+
 .media-strip {
   @apply mt-6 grid gap-4 md:grid-cols-2;
 }

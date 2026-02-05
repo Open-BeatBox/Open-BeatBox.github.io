@@ -83,7 +83,11 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       </ul>
                     )}
                   </div>
-                  <div className="media-grid">
+                  <div
+                    className={`media-grid${
+                      section.media.length === 1 ? " media-grid-single" : ""
+                    }`}
+                  >
                     {section.media.map((item) => (
                       <figure key={item.src} className="media-card group">
                         <div className="media-image">
