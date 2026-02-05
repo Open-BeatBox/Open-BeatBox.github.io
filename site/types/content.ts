@@ -63,6 +63,30 @@ export type Section =
   | { type: "list"; title?: string; items: string[] }
   | { type: "pipeline"; title?: string; steps: string[] }
   | {
+      type: "viewer";
+      title?: string;
+      subtitle?: string;
+      embedUrl?: string;
+      sourcePath?: string;
+      downloadLabel?: string;
+      downloadHref?: string;
+      note?: string;
+    }
+  | {
+      type: "video";
+      title?: string;
+      subtitle?: string;
+      src: string;
+      poster?: string;
+      caption?: string;
+    }
+  | {
+      type: "gallery";
+      title?: string;
+      subtitle?: string;
+      items: MediaItem[];
+    }
+  | {
       type: "mediaSplit";
       title?: string;
       eyebrow?: string;

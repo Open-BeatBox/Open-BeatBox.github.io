@@ -17,7 +17,7 @@ openGraph:
 twitter:
   handle: "@beatbox_hcm"
   cardType: "summary_large_image"
-logo: "/images/beatbox-logo.svg"
+logo: "/images/beatbox-logo.png"
 brandColor: "#2563EB"
 secondaryColor: "#0F172A"
 ---

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -21,6 +21,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
     null
   );
+  const galleryRefs = useRef(new Map<string, HTMLDivElement | null>());
 
   const openLightbox = useCallback((src: string, alt: string) => {
     setLightbox({ src, alt });
@@ -28,6 +29,13 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
 
   const closeLightbox = useCallback(() => {
     setLightbox(null);
+  }, []);
+
+  const scrollGallery = useCallback((key: string, direction: "left" | "right") => {
+    const node = galleryRefs.current.get(key);
+    if (!node) return;
+    const delta = direction === "left" ? -node.clientWidth : node.clientWidth;
+    node.scrollBy({ left: delta, behavior: "smooth" });
   }, []);
 
   if (!sections?.length) return null;
@@ -266,6 +274,140 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       <p>{step}</p>
                     </div>
                   ))}
+                </div>
+              </section>
+            );
+          case "viewer": {
+            const resolvedEmbedUrl = (() => {
+              if (section.embedUrl) return section.embedUrl;
+              if (section.sourcePath && typeof window !== "undefined") {
+                const absoluteSrc = new URL(section.sourcePath, window.location.origin).toString();
+                return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
+                  absoluteSrc
+                )}`;
+              }
+              return "";
+            })();
+
+            return (
+              <section key={key} className="section">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.subtitle && (
+                  <p className="section-subtitle">{section.subtitle}</p>
+                )}
+                {(section.downloadHref || section.downloadLabel) && (
+                  <div className="viewer-toolbar">
+                    {section.downloadHref ? (
+                      <a
+                        href={section.downloadHref}
+                        className="link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {section.downloadLabel || "Download presentation"}
+                      </a>
+                    ) : (
+                      <span className="text-slate-300">
+                        {section.downloadLabel || "Download presentation"}
+                      </span>
+                    )}
+                  </div>
+                )}
+                {resolvedEmbedUrl ? (
+                  <div className="viewer-frame">
+                    <iframe
+                      src={resolvedEmbedUrl}
+                      title={section.title || "Embedded presentation"}
+                      className="viewer-iframe"
+                      loading="lazy"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <p className="text-sm text-slate-300">
+                    Embed unavailable. Provide `embedUrl` or `sourcePath`.
+                  </p>
+                )}
+                {section.note && (
+                  <p className="viewer-note">{section.note}</p>
+                )}
+              </section>
+            );
+          }
+          case "video":
+            return (
+              <section key={key} className="section">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.subtitle && (
+                  <p className="section-subtitle">{section.subtitle}</p>
+                )}
+                <div className="video-frame">
+                  <video
+                    src={section.src}
+                    poster={section.poster}
+                    controls
+                    preload="metadata"
+                    className="video-element"
+                  />
+                </div>
+                {section.caption && (
+                  <p className="mt-3 text-sm text-slate-300">{section.caption}</p>
+                )}
+              </section>
+            );
+          case "gallery":
+            return (
+              <section key={key} className="section">
+                {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.subtitle && (
+                  <p className="section-subtitle">{section.subtitle}</p>
+                )}
+                <div className="gallery-shell">
+                  <button
+                    className="gallery-control"
+                    type="button"
+                    onClick={() => scrollGallery(key, "left")}
+                    aria-label="Scroll gallery left"
+                  >
+                    &#8592;
+                  </button>
+                  <div
+                    className="gallery-track"
+                    ref={(node) => galleryRefs.current.set(key, node)}
+                  >
+                    {section.items.map((item) => (
+                      <figure key={item.src} className="gallery-card group">
+                        <div className="media-image">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            sizes="(max-width: 768px) 80vw, 320px"
+                            className="media-img"
+                          />
+                          <button
+                            className="media-zoom"
+                            type="button"
+                            onClick={() => openLightbox(item.src, item.alt)}
+                            aria-label={`Zoom ${item.alt}`}
+                          />
+                        </div>
+                        {item.caption && (
+                          <figcaption className="media-caption">
+                            {item.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ))}
+                  </div>
+                  <button
+                    className="gallery-control"
+                    type="button"
+                    onClick={() => scrollGallery(key, "right")}
+                    aria-label="Scroll gallery right"
+                  >
+                    &#8594;
+                  </button>
                 </div>
               </section>
             );
