@@ -373,7 +373,9 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                   </button>
                   <div
                     className="gallery-track"
-                    ref={(node) => galleryRefs.current.set(key, node)}
+                    ref={(node) => {
+                      galleryRefs.current.set(key, node);
+                    }}
                   >
                     {section.items.map((item) => (
                       <figure key={item.src} className="gallery-card group">
