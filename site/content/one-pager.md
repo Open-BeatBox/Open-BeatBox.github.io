@@ -149,5 +149,52 @@ By removing repeated handling, artificial session boundaries, and experimenter-d
   - type: "text"
     title: "NERB team"
     body: "BEATBox is developed by the NERB team: Eric Burguiere, Lizbeth Mondragon. Learn more at [nerb.team](https://nerb.team/)."
+  - type: "text"
+    title: "Credits"
+    body: |
+      **The Dream Team Behind It\***
+
+      **Project Lead and Vision**
+      - Eric Burguiere
+
+      **Software & Firmware**
+      - Zenneddine Ajili
+      - Guillaume Penderia
+      - Charlie Rousseau
+
+      **Documentation & Open Repository**
+      - [Damien Huzard](https://www.neuronautix.com)
+
+      **Scientific Conception and Contributions**
+      - Eric Burguiere
+      - Marine Euvrard
+      - Daniela Domingues
+      - Nabil Benzina
+
+      **Web Platform**
+      - Damien Huzard
+      - S. Lizbeth Mondragon-Gonzalez
+
+      **Electronics**
+      - Pierre Tissier
+      - Pierre Pavlov
+
+      **Validation & Beta Testing**
+      - Marine Euvrard
+      - Daniela Domingues
+      - Eliana Lousada
+      - Oriana Lavielle
+      - Anne Lorenz
+      - Youenn Travert
+      - Christianne Schreiweiss
+
+      **Mechanical Design**
+      - Pierre Tissier
+      - Lucile Lebegue
+
+      **Graphic Design**
+      - S. Lizbeth Mondragon-Gonzalez
+
+      \*All versions included
 ---
 This one-pager summarizes BEATBox and provides direct access to the open-source resources needed to build and extend the system.

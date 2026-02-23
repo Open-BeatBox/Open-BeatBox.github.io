@@ -4,6 +4,9 @@ const isExport = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
   output: isExport ? "export" : undefined,
+  env: {
+    NEXT_PUBLIC_GA_ID: "G-Y49P8ZVY0W",
+  },
   images: {
     unoptimized: true,
   },
