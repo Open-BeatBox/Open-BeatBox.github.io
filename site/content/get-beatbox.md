@@ -30,6 +30,9 @@ sections:
     body: |
       Beatbox follows an open model, with open hardware designs and open-source firmware/software.
 
-      <!-- TODO: state the final hardware license (e.g., CERN OHL-S/OHL-W) and software license (e.g., MIT/Apache-2.0/GPLv3). -->
+      Licensing by layer:
+      - Software: GNU AGPLv3
+      - Firmware: GNU GPLv3
+      - Hardware: CERN OHL-S v2 (Strongly Reciprocal)
 ---
 

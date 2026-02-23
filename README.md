@@ -23,5 +23,10 @@ Inside `resources/`, you will find (or can add):
 - `build-guides/` - assembly and calibration guides
 - `assets/` - renders, diagrams, and media for dissemination
 
+## Licensing
+- Software: GNU AGPLv3 (see `LICENSE` and `resources/software/LICENSE`)
+- Firmware: GNU GPLv3 (see `resources/firmware/LICENSE`)
+- Hardware: CERN OHL-S v2 (see `resources/hardware/LICENSE`)
+
 ## Contributing
 If you want to contribute to the website, see `site/README.md`. For hardware/software contributions, add to the appropriate folder in `resources/` and update the docs.
