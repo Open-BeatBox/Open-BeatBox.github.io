@@ -357,6 +357,18 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                 {section.caption && (
                   <p className="mt-3 text-sm text-slate-300">{section.caption}</p>
                 )}
+                {section.ctaHref && (
+                  <div className="section-cta">
+                    <a
+                      href={section.ctaHref}
+                      className="link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {section.ctaLabel || "Open related document"}
+                    </a>
+                  </div>
+                )}
               </section>
             );
           case "gallery":

@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BEATBox Assembly SOP — Interactive Checklist</title>
+  <style>
+    :root {
+      --bg: #eef2f7;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #dbe3ef;
+      --accent: #1f6feb;
+      --accent-2: #0f766e;
+      --critical: #b91c1c;
+      --critical-bg: #fef2f2;
+      --caution: #a16207;
+      --caution-bg: #fffbeb;
+      --todo: #6d28d9;
+      --todo-bg: #f5f3ff;
+      --optional: #475569;
+      --optional-bg: #f1f5f9;
+      --ok: #15803d;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(31,111,235,0.10), transparent 30rem), var(--bg);
+      color: var(--ink);
+      font: 15px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .layout {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 24px;
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    aside {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      height: calc(100vh - 40px);
+      overflow: auto;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(219,227,239,0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    main { min-width: 0; }
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #173b74 55%, #0f766e);
+      color: white;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      right: -120px;
+      top: -140px;
+      background: rgba(255,255,255,0.10);
+    }
+    .hero h1 { margin: 0 0 6px; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.055em; line-height: 1.0; }
+    .hero p { margin: 0; max-width: 900px; color: rgba(255,255,255,0.82); font-size: 1.05rem; }
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-top: 18px;
+    }
+    .panel h2, .panel h3 { margin-top: 0; }
+    .notice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .notice {
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .notice h3 { margin: 0 0 8px; font-size: 1rem; }
+    .notice ul { margin: 8px 0 0 18px; padding: 0; }
+
+    .brand { margin-bottom: 16px; }
+    .brand h2 { margin: 0; font-size: 1.18rem; letter-spacing: -0.02em; }
+    .brand small { color: var(--muted); display: block; margin-top: 3px; }
+    .progress-block { margin: 14px 0 18px; }
+    .progress-label { display: flex; justify-content: space-between; font-weight: 650; font-size: .9rem; margin-bottom: 7px; }
+    .bar {
+      height: 12px;
+      border-radius: 99px;
+      overflow: hidden;
+      background: #e2e8f0;
+      border: 1px solid #d6dde8;
+    }
+    .bar > span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .25s ease; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 14px 0; }
+    .stat {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 10px;
+    }
+    .stat strong { display: block; font-size: 1.1rem; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+    .controls { display: grid; gap: 9px; margin: 16px 0; }
+    button, .file-label {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 650;
+      cursor: pointer;
+      text-align: center;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    button:hover, .file-label:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(15,23,42,.08); border-color: #b8c7da; }
+    button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+    button.danger { color: var(--critical); }
+    input[type="file"] { display: none; }
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font: inherit;
+      background: white;
+    }
+    nav { display: grid; gap: 4px; margin-top: 12px; }
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    nav a:hover { background: #edf4ff; }
+    nav a .mini-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    .section-card {
+      margin-top: 18px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+    }
+    .section-title-line { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .section-card h2 { margin: 0; font-size: 1.22rem; letter-spacing: -0.02em; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: .74rem;
+      font-weight: 750;
+      color: #334155;
+      background: #e2e8f0;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .section-actions { display: flex; gap: 8px; align-items: center; }
+    .small-btn { font-size: .8rem; padding: 8px 10px; border-radius: 10px; }
+    .section-body { padding: 18px 20px 20px; }
+    .intro { color: var(--muted); margin: 0 0 14px; }
+    .subsection {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      margin: 13px 0;
+      background: var(--surface-2);
+    }
+    .subsection h3 { margin: 0 0 9px; font-size: 1rem; }
+    .checklist { display: grid; gap: 8px; }
+    .check-row {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 10px 12px;
+      transition: border-color .12s ease, background .12s ease, opacity .12s ease;
+    }
+    .check-row.done { background: #f8fafc; opacity: .72; }
+    .check-row.done .item-text { text-decoration: line-through; color: var(--muted); }
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent-2);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .item-text { font-weight: 520; }
+    .note { color: var(--muted); font-size: .86rem; display: block; margin-top: 3px; }
+    .level {
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      margin-top: 1px;
+    }
+    .level.critical { color: var(--critical); background: var(--critical-bg); }
+    .level.caution { color: var(--caution); background: var(--caution-bg); }
+    .level.todo { color: var(--todo); background: var(--todo-bg); }
+    .level.optional { color: var(--optional); background: var(--optional-bg); }
+    .level.standard { display: none; }
+    .section-note { margin-top: 14px; }
+    textarea, input[type="text"], input[type="date"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font: inherit;
+      background: white;
+    }
+    textarea { min-height: 86px; resize: vertical; }
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .field label { display: block; font-size: .8rem; color: var(--muted); font-weight: 750; margin-bottom: 5px; }
+    .cost-box {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .cost-card {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .cost-card strong { display: block; font-size: 1.12rem; }
+    .hide { display: none !important; }
+    .empty-state {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      font-weight: 650;
+    }
+    footer { color: var(--muted); padding: 26px 4px 10px; font-size: .88rem; }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; padding: 14px; }
+      aside { position: static; height: auto; }
+      .notice-grid { grid-template-columns: 1fr; }
+      .metadata-grid { grid-template-columns: 1fr; }
+      .cost-box { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .section-header { grid-template-columns: 1fr; }
+      .section-actions { flex-wrap: wrap; }
+      .check-row { grid-template-columns: 26px 1fr; }
+      .check-row .level { grid-column: 2; justify-self: start; }
+      .cost-box { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; }
+      .layout { display: block; padding: 0; }
+      aside, .section-actions, .controls, .search, .section-note, .hero::after { display: none !important; }
+      .hero { color: var(--ink); background: white; box-shadow: none; border-radius: 0; border-bottom: 2px solid var(--line); }
+      .section-card, .panel { box-shadow: none; break-inside: avoid; }
+      .section-body { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <h2>BEATBox SOP</h2>
+        <small>Interactive assembly checklist</small>
+      </div>
+      <div class="progress-block">
+        <div class="progress-label"><span>Overall progress</span><span id="progressText">0%</span></div>
+        <div class="bar"><span id="progressBar"></span></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong id="doneCount">0</strong><span>completed</span></div>
+        <div class="stat"><strong id="totalCount">0</strong><span>checkpoints</span></div>
+        <div class="stat"><strong id="criticalLeft">0</strong><span>critical left</span></div>
+        <div class="stat"><strong id="todoLeft">0</strong><span>to confirm left</span></div>
+      </div>
+      <input id="search" class="search" placeholder="Search step, module, screw, PCB…" />
+      <div class="controls">
+        <button class="primary" id="expandAll">Expand all</button>
+        <button id="collapseAll">Collapse all</button>
+        <button id="exportProgress">Export progress JSON</button>
+        <label class="file-label" for="importFile">Import progress JSON</label>
+        <input type="file" id="importFile" accept="application/json,.json" />
+        <button id="printPage">Print / save as PDF</button>
+        <button class="danger" id="resetAll">Reset all</button>
+      </div>
+      <nav id="nav"></nav>
+    </aside>
+    <main>
+      <header class="hero">
+        <h1 id="pageTitle"></h1>
+        <p id="pageSubtitle"></p>
+        <div class="meta-strip">
+          <span class="pill" id="versionPill"></span>
+          <span class="pill">Status: draft / operational</span>
+          <span class="pill">Storage: browser localStorage</span>
+        </div>
+      </header>
+      <section class="panel">
+        <div class="notice-grid">
+          <div class="notice"><h3>Purpose</h3><ul id="purposeList"></ul></div>
+          <div class="notice"><h3>Known limitations</h3><ul id="limitationsList"></ul></div>
+        </div>
+      </section>
+      <div id="sections"></div>
+      <div id="emptyState" class="empty-state hide">No checklist item matches the current search.</div>
+      <footer>
+        Generated as a standalone HTML checklist from the supplied SOP. Progress is stored only in this browser unless exported.
+      </footer>
+    </main>
+  </div>
+
+<script>
+const SOP = {"title": "BEATBox Assembly SOP", "version": "Draft v0.1", "subtitle": "Interactive build checklist for internal assembly and beta builds", "source": "Meeting notes + transcript from 10 Apr 2026 — Eric, Pierre and Damien", "purpose": ["Build one BEATBox from laser-cut plexiglass panels, 3D-printed parts, and pre-assembled electronics/PCBs.", "This is a working SOP, not yet a frozen production release. Several points remain explicitly to confirm or redesign."], "limitations": ["Some module names and exact PCB counts remain approximate.", "Final execution and software loading are not covered, because code was not yet available during the meeting.", "Some feeder and connector details still need confirmation with Pierre/Eric."], "sections": [{"id": "safety", "title": "Safety, handling, and quality rules", "tag": "Critical", "intro": "Apply these rules throughout the build. They are not optional unless explicitly superseded by a later validated release.", "items": [{"text": "Work on a clean, flat bench with enough space to lay modules flat.", "level": "standard"}, {"text": "Remove 3D-print supports cleanly without gouging the part. Use flat pliers if needed.", "level": "standard"}, {"text": "Do not overtighten screws in printed parts or plexiglass assemblies.", "level": "critical"}, {"text": "Do not clean laser-cut plexiglass with alcohol. Alcohol can infiltrate laser-cut microcracks and cause later cracking. Use water or gentle appropriate cleaning instead.", "level": "critical"}, {"text": "Keep the matte side of plexiglass facing outward and the glossy side inward unless a module-specific exception is documented.", "level": "critical"}, {"text": "Confirm there are no gaps between panels; mice will exploit gaps for chewing or escape attempts.", "level": "critical"}, {"text": "For any part touching food interaction zones, watch for chew damage and avoid introducing conductive/noisy materials without validation.", "level": "caution"}]}, {"id": "materials", "title": "Required materials and components", "tag": "Inventory", "subsections": [{"title": "Structural parts", "items": [{"text": "1 base plate in 10 mm plexiglass"}, {"text": "4 printed pillars with lower nut seats and upper fastening points"}, {"text": "Laser-cut plexiglass panel sets for the walls"}, {"text": "Door panel set"}, {"text": "Ceiling / top cover parts"}, {"text": "Printed module housings/covers as needed"}]}, {"title": "Electronics and functional modules", "items": [{"text": "Screen module PCB(s)"}, {"text": "Screen(s) with connector(s)"}, {"text": "Infrared barrier PCB(s) / LED barrier elements"}, {"text": "Feeder PCB and sensor components"}, {"text": "Motor for feeder", "level": "todo"}, {"text": "Rotor for feeder", "level": "todo"}, {"text": "Ceiling/light PCB with white + IR LEDs"}, {"text": "Tunnel module PCB(s), if applicable", "level": "optional"}, {"text": "Master PCB"}, {"text": "Interconnect cables, including Molex PicoBlade-style connectors where applicable"}]}, {"title": "Fasteners and inserts", "items": [{"text": "M5 × 50 mm screws for pillar-to-base fastening"}, {"text": "Matching M5 nuts for pillar/base system"}, {"text": "M3 inserts for printed parts"}, {"text": "M3 screws for panel sandwich assemblies"}, {"text": "M3 × 8 mm screws where specified"}, {"text": "M3 × 10 mm screws where specified"}, {"text": "Door hinge hardware"}, {"text": "Door button hardware"}, {"text": "Door latch / locking piece"}]}, {"title": "Optional / tips", "items": [{"text": "Rubber feet or pads under the base if needed", "level": "optional"}, {"text": "Small labeled containers for screws by length/type", "level": "optional"}, {"text": "Painter tape or removable labels for left/right module identification", "level": "optional"}]}]}, {"id": "tools", "title": "Required tools", "tag": "Inventory", "items": [{"text": "Flat pliers for support removal"}, {"text": "Hex key / Allen key appropriate for M5 hardware"}, {"text": "Screwdrivers / drivers for M3 hardware"}, {"text": "Small tweezers or fine pliers for inserts and connectors"}, {"text": "Flush cutter or deburring tool if required", "level": "optional"}]}, {"id": "prebuild", "title": "Pre-build checklist", "tag": "Before assembly", "items": [{"text": "All materials and components are present."}, {"text": "All PCBs are present for the planned configuration."}, {"text": "Screens are present and either already soldered or ready for the intended connection mode."}, {"text": "Cables are present and long enough."}, {"text": "LED barriers are identical left/right or side-specific", "level": "todo", "note": "To confirm."}]}, {"id": "procurement", "title": "Procurement / production checklist for Lyon builds in June", "tag": "Planning", "items": [{"text": "Validate purchasing of components."}, {"text": "Prepare plexiglass orders for direct delivery to Lyon."}, {"text": "Prepare 3D-printed parts."}, {"text": "Ensure all small hardware is ordered in advance; missing screws/inserts can block assembly.", "level": "caution"}]}, {"id": "part_prep", "title": "Part preparation", "tag": "Steps 1–2", "subsections": [{"title": "1. Remove supports from 3D-printed parts", "items": [{"text": "Inspect every printed part for support remnants."}, {"text": "Remove supports by hand when possible."}, {"text": "Use flat pliers when supports do not release cleanly.", "level": "caution"}]}, {"title": "2. Verify printed-part integrity", "items": [{"text": "Check for cracks, warping, or blocked holes."}, {"text": "Check that insert seats are usable."}, {"text": "Check that cable passages are open."}, {"text": "Check that mating edges are clean enough for flush assembly."}]}]}, {"id": "stage_a", "title": "Stage A — Build the enclosure frame", "tag": "Steps 3–5", "subsections": [{"title": "3. Prepare the base", "items": [{"text": "Place the 10 mm plexiglass base flat on the work surface."}, {"text": "Identify the pillar mounting holes."}, {"text": "If using feet/pads, decide whether they will be mounted now or after frame assembly.", "level": "optional"}]}, {"title": "4. Prepare the pillars", "items": [{"text": "In each pillar, place the required lower nuts."}, {"text": "Verify that the upper nut is available for later steps."}, {"text": "Check that the panel grooves are clear and unobstructed."}, {"text": "Check that the top fastening hole is clear for later ceiling attachment."}]}, {"title": "5. Attach the 4 pillars to the base", "items": [{"text": "Position each pillar at the appropriate base corner."}, {"text": "Insert the M5 × 50 mm fasteners."}, {"text": "Tighten by hand first to avoid cross-threading."}, {"text": "Finish tightening gently; do not overtighten.", "level": "critical"}]}]}, {"id": "stage_b", "title": "Stage B — Prepare the wall panels", "tag": "Steps 6–8", "subsections": [{"title": "6. Build each plexiglass sandwich panel", "intro": "Each wall panel is made from two laser-cut plexiglass plates assembled together to form the sliding geometry that fits into the pillar grooves.", "items": [{"text": "Identify the two plates belonging to the same panel."}, {"text": "Verify which surface is matte and which is glossy: matte side outward, glossy side inward.", "level": "critical"}, {"text": "Align the panel holes."}, {"text": "Assemble the pair using the panel screws."}, {"text": "Use 4 screws per panel assembly where applicable."}, {"text": "Use the correct M3 hardware for panel assembly."}, {"text": "Tighten enough to hold the sandwich firmly, without stressing the plexiglass.", "level": "critical"}]}, {"title": "7. Repeat for all required wall panels", "items": [{"text": "Screen-side panel(s) prepared."}, {"text": "Feeder-side panel(s) prepared."}, {"text": "Rear / blank panel prepared."}, {"text": "Door-side panel prepared."}]}, {"title": "8. Quality check the wall panels", "intro": "Do not use alcohol for cleaning.", "items": [{"text": "Confirm all matte sides face outward.", "level": "critical"}, {"text": "Confirm screw heads and nuts do not create mouse-accessible protrusions in critical interior areas.", "level": "critical"}, {"text": "Confirm edges are flush and clean."}]}]}, {"id": "stage_c", "title": "Stage C — Insert the panels into the frame", "tag": "Steps 9–10", "subsections": [{"title": "9. Install the fixed panels", "items": [{"text": "Slide the panels into the pillar grooves."}, {"text": "Install the screen-side panel in its intended location."}, {"text": "Install the feeder-side panel opposite the screen side."}, {"text": "Install the rear / blank panel."}, {"text": "Check that gaps between panels remain minimal.", "level": "critical"}]}, {"title": "10. Verify internal geometry", "items": [{"text": "Check that corners are tight enough to prevent chewing/escape opportunities.", "level": "critical"}, {"text": "Check that interior edges do not form easy climbing structures.", "level": "caution"}, {"text": "Confirm feeder and screen openings line up with their intended modules."}]}]}, {"id": "stage_d", "title": "Stage D — Install the door assembly", "tag": "Steps 11–15", "subsections": [{"title": "11. Prepare the door panel", "items": [{"text": "Use the same basic panel logic: matte side outward."}, {"text": "Confirm the small light-blocking offset / overlap is oriented correctly.", "level": "todo", "note": "Orientation still needs confirmation."}]}, {"title": "12. Install door hinges", "items": [{"text": "Retrieve the hinge references from the documented bill of materials / RS references.", "level": "todo"}, {"text": "Fit the hinges to the door assembly."}, {"text": "Pay close attention to hole alignment."}, {"text": "Use the correct M3 hardware lengths for each hinge side."}, {"text": "Use 2 × M3 × 8 mm where the thinner stack-up applies."}, {"text": "Use 2 × M3 × 10 mm where the thicker sandwich stack-up applies."}]}, {"title": "13. Install the door button and latch", "items": [{"text": "Install the door button using M3 × 8 mm hardware."}, {"text": "Install the latch / locking element if present."}]}, {"title": "15. Validate door function", "items": [{"text": "Confirm the door opens/closes smoothly."}, {"text": "Confirm chosen opening side is acceptable for handling."}]}]}, {"id": "screen_module", "title": "16. Screen module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the screen housing/front face, PCB, screen, and any side barrier components."}, {"text": "Confirm screen connector orientation before insertion.", "level": "critical"}]}, {"title": "Assembly", "items": [{"text": "Install required M3 inserts."}, {"text": "Mount the screen PCB."}, {"text": "Insert the screen in the intended orientation."}, {"text": "Connect the screen properly to the board."}, {"text": "Add the cover/front face."}, {"text": "Confirm the flexible printed-button mechanism actuates the screen buttons correctly.", "level": "todo"}, {"text": "Check that the module sits centered in its opening."}]}, {"title": "IR barrier on screen-side module", "items": [{"text": "Install the LED / IR barrier element(s) on each side as intended."}, {"text": "Confirm whether left and right barrier boards are identical or side-specific.", "level": "todo", "note": "To confirm with Pierre."}, {"text": "Route and connect barrier wiring to the intended PCB ports."}]}, {"title": "Design improvement pending", "items": [{"text": "Add / verify détrompeurs/keyed orientation features so the screen cannot be inserted backwards.", "level": "todo"}]}]}, {"id": "ceiling_module", "title": "17. Ceiling / light module (plafonnier)", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the ceiling housing, PCB, LED components, and diffuser."}, {"text": "Confirm that white and IR LEDs are correctly integrated on the custom PCB."}]}, {"title": "Assembly", "items": [{"text": "Install inserts as needed."}, {"text": "Mount the PCB in the ceiling housing."}, {"text": "Install the diffuser."}, {"text": "Close the module with the cap."}, {"text": "Verify access to the rear connector."}, {"text": "Mount the completed ceiling module to the top fastening points of the pillars / top structure."}]}, {"title": "Functional intent", "items": [{"text": "White LEDs configured for daylight-like illumination."}, {"text": "IR LEDs available for night-time monitoring with camera detection."}]}]}, {"id": "tunnel_module", "title": "18. Tunnel module(s)", "tag": "Module assembly", "items": [{"text": "Identify the tunnel module parts."}, {"text": "Install inserts."}, {"text": "Mount PCB as for the screen-side module principle."}, {"text": "Install IR barrier components."}, {"text": "Close the module housing."}, {"text": "Install tunnel module in the correct internal position."}]}, {"id": "feeder_module", "title": "19. Feeder module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather feeder housing."}, {"text": "Gather PCB."}, {"text": "Gather sensor board(s)."}, {"text": "Gather motor."}, {"text": "Gather rotor."}, {"text": "Gather cables."}, {"text": "Gather fasteners."}, {"text": "Confirm sensor hardware is present."}, {"text": "Confirm required pre-soldered IR elements are present."}, {"text": "Confirm cable length is sufficient."}]}, {"title": "Mechanical assembly", "items": [{"text": "Install M3 inserts in the feeder housing."}, {"text": "Mount the feeder PCB / sensor board(s)."}, {"text": "Route cable(s) through the intended hole(s)."}, {"text": "Connect Molex PicoBlade-type connector(s) until a clear click is felt.", "level": "critical"}, {"text": "Pull back gently to confirm connectors are fully seated.", "level": "critical"}]}, {"title": "Motor + rotor assembly", "items": [{"text": "Install the motor using the 4 mounting screws."}, {"text": "Place the rotor on the motor axis / mounting position."}, {"text": "Insert the nut where required in the rotor assembly."}, {"text": "Tighten through the intended access hole."}]}, {"title": "Critical feeder caution", "items": [{"text": "Avoid overtightening: if the motor/rotor is tightened too much, rotation becomes difficult.", "level": "critical"}, {"text": "Avoid undertightening: if tightened too loosely, play develops.", "level": "critical"}, {"text": "Prevent dust entry that could block the mechanism.", "level": "caution"}, {"text": "Prevent long-term play that can crush pellets.", "level": "caution"}, {"text": "Tighten motor/rotor hardware carefully.", "level": "critical"}, {"text": "Verify free rotation by hand or safe functional check.", "level": "critical"}, {"text": "Reject any setup with visible play or drag.", "level": "critical"}, {"text": "Record the torque/fit condition used if standardization is possible.", "level": "todo"}]}, {"title": "Feeder chew-risk", "items": [{"text": "Regularly inspect the feeder interaction face for chew vulnerability.", "level": "caution"}, {"text": "Avoid introducing metal in the mouse interaction zone without validating recording-noise consequences if electrophysiology is used.", "level": "caution"}]}]}, {"id": "stage_f", "title": "Stage F — Final enclosure/module integration", "tag": "Steps 20–23", "subsections": [{"title": "20. Mount completed modules into the enclosure", "items": [{"text": "Install completed screen module(s) in the designated panel opening(s)."}, {"text": "Install feeder module in the feeder-side opening."}, {"text": "Install ceiling/light module."}, {"text": "Install tunnel module(s)."}, {"text": "Check that all modules sit flush.", "level": "critical"}, {"text": "Check that no cable is pinched by the enclosure.", "level": "critical"}]}, {"title": "23. Final wiring to the master PCB", "items": [{"text": "Retrieve the master PCB."}, {"text": "Connect each module using the intended cable path."}, {"text": "Follow the described topology: start from the main/master board, route through the modules, and return appropriately to the main board as required by the current design."}, {"text": "Verify connector seating on all module ports.", "level": "critical"}, {"text": "Verify wiring is tidy and not accessible for chewing.", "level": "critical"}, {"text": "Verify no cable interferes with door movement or module seating.", "level": "critical"}]}]}, {"id": "costs", "title": "Estimated cost per box", "tag": "Reference", "intro": "Rough order-of-magnitude estimate: approximately EUR 600–700 per box.", "items": [{"text": "PCBs: ~EUR 300 total"}, {"text": "3D printing: ~EUR 200 total"}, {"text": "Plexiglass: ~EUR 150–200 depending on sourcing"}, {"text": "Fasteners / small hardware: ~EUR 50 total"}]}, {"id": "signoff", "title": "Build-completion signoff", "tag": "Final check", "items": [{"text": "Mechanical assembly complete"}, {"text": "Module assembly complete"}, {"text": "Final wiring complete"}, {"text": "Photo documentation complete"}, {"text": "Deviations recorded"}, {"text": "Ready for code flashing / software setup"}, {"text": "Ready for beta test use"}], "metadata": ["Date", "Location", "Builders", "Documentation by", "Box ID / serial", "Revision used"]}]};
+const STORE_KEY = 'beatbox_sop_v01_progress';
+const META_KEY = 'beatbox_sop_v01_metadata';
+const NOTE_KEY = 'beatbox_sop_v01_notes';
+let state = loadJSON(STORE_KEY, {});
+let metaState = loadJSON(META_KEY, {});
+let noteState = loadJSON(NOTE_KEY, {});
+let itemIndex = [];
+
+function loadJSON(key, fallback) {
+  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+}
+function save() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  localStorage.setItem(META_KEY, JSON.stringify(metaState));
+  localStorage.setItem(NOTE_KEY, JSON.stringify(noteState));
+}
+function slugify(str) {
+  return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+function escapeHTML(str) {
+  return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+}
+function itemId(sectionId, path, text) {
+  return sectionId + '__' + slugify(path + '__' + text).slice(0, 90);
+}
+function renderList(list, el) {
+  el.innerHTML = list.map(x => `<li>${escapeHTML(x)}</li>`).join('');
+}
+function renderItems(items, section, path='') {
+  if (!items || !items.length) return '';
+  return `<div class="checklist">${items.map(item => {
+    const id = itemId(section.id, path, item.text);
+    const level = item.level || 'standard';
+    itemIndex.push({ id, sectionId: section.id, text: item.text, level });
+    const checked = state[id] ? 'checked' : '';
+    return `<label class="check-row ${checked ? 'done' : ''}" data-text="${escapeHTML((item.text + ' ' + (item.note || '') + ' ' + path).toLowerCase())}" data-section="${section.id}" data-level="${level}">
+      <input type="checkbox" data-id="${id}" ${checked} />
+      <span class="item-text">${escapeHTML(item.text)}${item.note ? `<span class="note">${escapeHTML(item.note)}</span>` : ''}</span>
+      <span class="level ${level}">${labelFor(level)}</span>
+    </label>`;
+  }).join('')}</div>`;
+}
+function labelFor(level) {
+  return { critical: 'Critical', caution: 'Caution', todo: 'To confirm', optional: 'Optional', standard: '' }[level] || level;
+}
+function sectionProgress(sectionId) {
+  const items = itemIndex.filter(i => i.sectionId === sectionId);
+  const done = items.filter(i => state[i.id]).length;
+  return { total: items.length, done, pct: items.length ? Math.round(done / items.length * 100) : 0 };
+}
+function renderSections() {
+  itemIndex = [];
+  const container = document.getElementById('sections');
+  container.innerHTML = SOP.sections.map(section => {
+    let body = '';
+    if (section.intro) body += `<p class="intro">${escapeHTML(section.intro)}</p>`;
+    if (section.metadata) {
+      body += `<div class="metadata-grid">${section.metadata.map(label => {
+        const key = slugify(label);
+        const type = label === 'Date' ? 'date' : 'text';
+        return `<div class="field"><label>${escapeHTML(label)}</label><input type="${type}" data-meta="${key}" value="${escapeHTML(metaState[key] || '')}" /></div>`;
+      }).join('')}</div>`;
+    }
+    if (section.subsections) {
+      body += section.subsections.map(sub => `
+        <div class="subsection">
+          <h3>${escapeHTML(sub.title)}</h3>
+          ${sub.intro ? `<p class="intro">${escapeHTML(sub.intro)}</p>` : ''}
+          ${renderItems(sub.items || [], section, sub.title)}
+        </div>`).join('');
+    } else {
+      body += renderItems(section.items || [], section, section.title);
+    }
+    if (section.id === 'costs') {
+      body += `<div class="cost-box">
+        <div class="cost-card"><strong>~€300</strong><span>PCBs</span></div>
+        <div class="cost-card"><strong>~€200</strong><span>3D printing</span></div>
+        <div class="cost-card"><strong>~€150–200</strong><span>Plexiglass</span></div>
+        <div class="cost-card"><strong>~€50</strong><span>Small hardware</span></div>
+      </div>`;
+    }
+    body += `<div class="section-note"><textarea data-note="${section.id}" placeholder="Notes, deviations, photos taken, uncertainties…">${escapeHTML(noteState[section.id] || '')}</textarea></div>`;
+    return `<article class="section-card" id="${section.id}" data-section-card="${section.id}">
+      <div class="section-header">
+        <div>
+          <div class="section-title-line"><h2>${escapeHTML(section.title)}</h2><span class="tag">${escapeHTML(section.tag || '')}</span></div>
+          <div class="progress-block"><div class="progress-label"><span>Section progress</span><span data-section-progress="${section.id}">0%</span></div><div class="bar"><span data-section-bar="${section.id}"></span></div></div>
+        </div>
+        <div class="section-actions">
+          <button class="small-btn" data-check-section="${section.id}">Mark section done</button>
+          <button class="small-btn" data-toggle-section="${section.id}">Collapse</button>
+        </div>
+      </div>
+      <div class="section-body" data-section-body="${section.id}">${body}</div>
+    </article>`;
+  }).join('');
+}
+function renderNav() {
+  const nav = document.getElementById('nav');
+  nav.innerHTML = SOP.sections.map(s => {
+    const p = sectionProgress(s.id);
+    return `<a href="#${s.id}"><span>${escapeHTML(s.title)}</span><span class="mini-count">${p.done}/${p.total}</span></a>`;
+  }).join('');
+}
+function updateProgress() {
+  document.querySelectorAll('.check-row').forEach(row => {
+    const cb = row.querySelector('input[type=checkbox]');
+    row.classList.toggle('done', cb.checked);
+  });
+  const total = itemIndex.length;
+  const done = itemIndex.filter(i => state[i.id]).length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('progressText').textContent = pct + '%';
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('criticalLeft').textContent = itemIndex.filter(i => i.level === 'critical' && !state[i.id]).length;
+  document.getElementById('todoLeft').textContent = itemIndex.filter(i => i.level === 'todo' && !state[i.id]).length;
+  SOP.sections.forEach(s => {
+    const p = sectionProgress(s.id);
+    const text = document.querySelector(`[data-section-progress="${s.id}"]`);
+    const bar = document.querySelector(`[data-section-bar="${s.id}"]`);
+    if (text) text.textContent = `${p.pct}% (${p.done}/${p.total})`;
+    if (bar) bar.style.width = p.pct + '%';
+  });
+  renderNav();
+}
+function attachEvents() {
+  document.getElementById('sections').addEventListener('change', e => {
+    if (e.target.matches('input[type=checkbox][data-id]')) {
+      state[e.target.dataset.id] = e.target.checked;
+      save();
+      updateProgress();
+    }
+    if (e.target.matches('[data-meta]')) {
+      metaState[e.target.dataset.meta] = e.target.value;
+      save();
+    }
+  });
+  document.getElementById('sections').addEventListener('input', e => {
+    if (e.target.matches('[data-note]')) { noteState[e.target.dataset.note] = e.target.value; save(); }
+    if (e.target.matches('[data-meta]')) { metaState[e.target.dataset.meta] = e.target.value; save(); }
+  });
+  document.getElementById('sections').addEventListener('click', e => {
+    const toggle = e.target.closest('[data-toggle-section]');
+    if (toggle) {
+      const id = toggle.dataset.toggleSection;
+      const body = document.querySelector(`[data-section-body="${id}"]`);
+      body.classList.toggle('hide');
+      toggle.textContent = body.classList.contains('hide') ? 'Expand' : 'Collapse';
+    }
+    const check = e.target.closest('[data-check-section]');
+    if (check) {
+      const id = check.dataset.checkSection;
+      itemIndex.filter(i => i.sectionId === id).forEach(i => state[i.id] = true);
+      save();
+      renderSections();
+      attachDynamicOnly();
+      updateProgress();
+    }
+  });
+  document.getElementById('search').addEventListener('input', filterItems);
+  document.getElementById('expandAll').addEventListener('click', () => toggleAll(false));
+  document.getElementById('collapseAll').addEventListener('click', () => toggleAll(true));
+  document.getElementById('resetAll').addEventListener('click', () => {
+    if (!confirm('Reset all checklist progress, metadata, and notes for this SOP in this browser?')) return;
+    state = {}; metaState = {}; noteState = {};
+    localStorage.removeItem(STORE_KEY); localStorage.removeItem(META_KEY); localStorage.removeItem(NOTE_KEY);
+    renderSections(); attachDynamicOnly(); updateProgress();
+  });
+  document.getElementById('printPage').addEventListener('click', () => window.print());
+  document.getElementById('exportProgress').addEventListener('click', exportProgress);
+  document.getElementById('importFile').addEventListener('change', importProgress);
+}
+function attachDynamicOnly() {
+  document.getElementById('search').dispatchEvent(new Event('input'));
+}
+function toggleAll(collapse) {
+  document.querySelectorAll('[data-section-body]').forEach(body => body.classList.toggle('hide', collapse));
+  document.querySelectorAll('[data-toggle-section]').forEach(btn => btn.textContent = collapse ? 'Expand' : 'Collapse');
+}
+function filterItems() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  let visibleRows = 0;
+  document.querySelectorAll('.check-row').forEach(row => {
+    const show = !q || row.dataset.text.includes(q);
+    row.classList.toggle('hide', !show);
+    if (show) visibleRows++;
+  });
+  document.querySelectorAll('.subsection').forEach(sub => {
+    const visible = [...sub.querySelectorAll('.check-row')].some(r => !r.classList.contains('hide'));
+    sub.classList.toggle('hide', q && !visible);
+  });
+  document.querySelectorAll('[data-section-card]').forEach(card => {
+    const visible = [...card.querySelectorAll('.check-row')].some(r => !r.classList.contains('hide')) || card.innerText.toLowerCase().includes(q);
+    card.classList.toggle('hide', q && !visible);
+  });
+  document.getElementById('emptyState').classList.toggle('hide', visibleRows > 0 || !q);
+}
+function exportProgress() {
+  const payload = {
+    sop: SOP.title,
+    version: SOP.version,
+    exportedAt: new Date().toISOString(),
+    progress: state,
+    metadata: metaState,
+    notes: noteState
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'beatbox-sop-progress.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+function importProgress(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const payload = JSON.parse(reader.result);
+      state = payload.progress || {};
+      metaState = payload.metadata || {};
+      noteState = payload.notes || {};
+      save();
+      renderSections(); attachDynamicOnly(); updateProgress();
+    } catch (err) {
+      alert('Could not import JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+function init() {
+  document.getElementById('pageTitle').textContent = SOP.title;
+  document.getElementById('pageSubtitle').textContent = SOP.subtitle + ' — ' + SOP.source;
+  document.getElementById('versionPill').textContent = SOP.version;
+  renderList(SOP.purpose, document.getElementById('purposeList'));
+  renderList(SOP.limitations, document.getElementById('limitationsList'));
+  renderSections();
+  attachEvents();
+  updateProgress();
+}
+init();
+</script>
+</body>
+</html>

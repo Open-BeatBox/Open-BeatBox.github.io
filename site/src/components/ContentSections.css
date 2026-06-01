@@ -76,6 +76,10 @@
   @apply h-full w-full object-cover;
 }
 
+.section-cta {
+  @apply mt-4 flex flex-wrap items-center gap-3 text-sm;
+}
+
 .gallery-shell {
   @apply flex items-center gap-3;
 }

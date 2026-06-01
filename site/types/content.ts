@@ -79,6 +79,8 @@ export type Section =
       src: string;
       poster?: string;
       caption?: string;
+      ctaLabel?: string;
+      ctaHref?: string;
     }
   | {
       type: "gallery";
