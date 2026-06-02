@@ -1,7 +1,10 @@
 @reference "../app/globals.css";
 
 .section {
-  @apply rounded-2xl border border-white/10 bg-slate-900/45 p-6 shadow-lg backdrop-blur;
+  @apply rounded-2xl p-6 shadow-lg backdrop-blur;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-bg);
+  color: var(--text-main);
   animation: section-fade 0.7s ease both;
 }
 
@@ -10,11 +13,13 @@
 }
 
 .section-title {
-  @apply mb-4 text-2xl font-semibold leading-tight text-white md:text-3xl;
+  @apply mb-4 text-2xl font-semibold leading-tight md:text-3xl;
+  color: var(--text-strong);
 }
 
 .section-subtitle {
-  @apply -mt-2 mb-6 max-w-3xl text-base leading-relaxed text-slate-200;
+  @apply -mt-2 mb-6 max-w-3xl text-base leading-relaxed;
+  color: var(--text-muted);
 }
 
 .section-eyebrow {
@@ -34,19 +39,25 @@
 }
 
 .glass-card {
-  @apply rounded-xl border border-white/10 bg-white/5 p-4 shadow-md backdrop-blur;
+  @apply rounded-xl p-4 shadow-md backdrop-blur;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
 }
 
 .glass-row {
-  @apply flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur;
+  @apply flex items-center justify-between rounded-xl p-4 backdrop-blur;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
 }
 
 .card-title {
-  @apply text-lg font-semibold leading-snug text-white;
+  @apply text-lg font-semibold leading-snug;
+  color: var(--text-strong);
 }
 
 .card-body {
-  @apply mt-2 text-sm leading-relaxed text-slate-200;
+  @apply mt-2 text-sm leading-relaxed;
+  color: var(--text-muted);
 }
 
 .card-heading-row {
@@ -67,11 +78,11 @@
 }
 
 .impact-card-audience {
-  @apply border-cyan-200/15 bg-cyan-50/[0.04];
+  background: color-mix(in srgb, var(--card-bg) 78%, rgba(103, 232, 249, 0.18));
 }
 
 .impact-card-resources {
-  @apply border-white/10 bg-slate-950/45;
+  background: var(--card-bg-strong);
 }
 
 .card-link-list {
@@ -87,7 +98,9 @@
 }
 
 .stat-card {
-  @apply rounded-xl border border-white/10 bg-slate-950/40 p-4;
+  @apply rounded-xl p-4;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
 }
 
 .stat-value {
@@ -95,11 +108,13 @@
 }
 
 .stat-label {
-  @apply mt-2 text-sm font-semibold text-white;
+  @apply mt-2 text-sm font-semibold;
+  color: var(--text-strong);
 }
 
 .stat-body {
-  @apply mt-1 text-xs leading-relaxed text-slate-300;
+  @apply mt-1 text-xs leading-relaxed;
+  color: var(--text-muted);
 }
 
 .pipeline {
@@ -107,7 +122,9 @@
 }
 
 .pipeline-step {
-  @apply flex gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur;
+  @apply flex gap-3 rounded-xl p-4 backdrop-blur;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
 }
 
 .pipeline-index {
@@ -115,11 +132,14 @@
 }
 
 .viewer-toolbar {
-  @apply mb-3 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-200;
+  @apply mb-3 flex flex-wrap items-center justify-between gap-3 text-sm;
+  color: var(--text-muted);
 }
 
 .viewer-frame {
-  @apply relative w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg;
+  @apply relative w-full overflow-hidden rounded-2xl shadow-lg;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
   aspect-ratio: 16 / 9;
 }
 
@@ -129,11 +149,14 @@
 }
 
 .viewer-note {
-  @apply mt-3 text-sm text-slate-300;
+  @apply mt-3 text-sm;
+  color: var(--text-muted);
 }
 
 .video-frame {
-  @apply relative w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg;
+  @apply relative w-full overflow-hidden rounded-2xl shadow-lg;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
   aspect-ratio: 16 / 9;
 }
 
@@ -150,7 +173,13 @@
 }
 
 .section-button {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:-translate-y-0.5 hover:bg-cyan-200 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg shadow-cyan-950/30 transition hover:-translate-y-0.5 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+  background: var(--accent-cta);
+  color: var(--accent-cta-text);
+}
+
+.section-button:hover {
+  background: var(--accent-cta-hover);
 }
 
 .gallery-shell {
@@ -158,7 +187,10 @@
 }
 
 .gallery-control {
-  @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:border-cyan-300/40 hover:bg-white/20;
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-full transition hover:border-cyan-300/40;
+  border: 1px solid var(--border-soft);
+  background: var(--control-bg);
+  color: var(--text-strong);
 }
 
 .gallery-track {
@@ -167,7 +199,9 @@
 }
 
 .gallery-card {
-  @apply w-[260px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg;
+  @apply w-[260px] shrink-0 overflow-hidden rounded-2xl shadow-lg;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
   scroll-snap-align: start;
 }
 
@@ -192,7 +226,9 @@
 }
 
 .ordered-steps .badge {
-  @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-sm font-semibold text-slate-950;
+  @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold;
+  background: var(--accent-cta);
+  color: var(--accent-cta-text);
 }
 
 .workflow-steps {
@@ -204,11 +240,13 @@
 }
 
 .workflow-step-copy {
-  @apply min-w-0 text-sm leading-relaxed text-slate-200;
+  @apply min-w-0 text-sm leading-relaxed;
+  color: var(--text-muted);
 }
 
 .workflow-step-title {
-  @apply mb-1 flex items-center gap-2 text-base font-semibold text-white;
+  @apply mb-1 flex items-center gap-2 text-base font-semibold;
+  color: var(--text-strong);
 }
 
 .resource-grid {
@@ -216,15 +254,20 @@
 }
 
 .resource-card {
-  @apply relative flex min-h-28 flex-col rounded-xl border border-white/10 bg-slate-950/45 p-4 pr-10 text-slate-200 shadow-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+  @apply relative flex min-h-28 flex-col rounded-xl p-4 pr-10 shadow-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:no-underline;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
+  color: var(--text-main);
 }
 
 .resource-card-label {
-  @apply text-base font-semibold text-white;
+  @apply text-base font-semibold;
+  color: var(--text-strong);
 }
 
 .resource-card-note {
-  @apply mt-2 text-sm leading-relaxed text-slate-300;
+  @apply mt-2 text-sm leading-relaxed;
+  color: var(--text-muted);
 }
 
 .resource-card-arrow {
@@ -232,7 +275,12 @@
 }
 
 .link {
-  @apply text-blue-300 hover:text-blue-200 underline decoration-blue-400/60;
+  @apply underline decoration-blue-400/60;
+  color: var(--link-color);
+}
+
+.link:hover {
+  color: var(--link-hover);
 }
 
 .section-split {
@@ -244,11 +292,13 @@
 }
 
 .split-content {
-  @apply space-y-4 text-slate-200;
+  @apply space-y-4;
+  color: var(--text-muted);
 }
 
 .bullet-list {
-  @apply space-y-2 pl-5 text-slate-200;
+  @apply space-y-2 pl-5;
+  color: var(--text-muted);
   list-style: disc;
 }
 
@@ -273,11 +323,14 @@
 }
 
 .media-card {
-  @apply overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-lg transition hover:border-cyan-300/40;
+  @apply overflow-hidden rounded-2xl shadow-lg transition hover:border-cyan-300/40;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
 }
 
 .media-image {
-  @apply relative h-40 w-full overflow-hidden bg-slate-950/60;
+  @apply relative h-40 w-full overflow-hidden;
+  background: var(--card-bg-strong);
 }
 
 .media-img {
@@ -291,7 +344,8 @@
 }
 
 .media-caption {
-  @apply p-3 text-sm text-slate-200;
+  @apply p-3 text-sm;
+  color: var(--text-muted);
 }
 
 .icon-grid {
@@ -299,7 +353,9 @@
 }
 
 .icon-card {
-  @apply relative rounded-2xl border border-white/10 bg-white/5 p-4 shadow-md backdrop-blur;
+  @apply relative rounded-2xl p-4 shadow-md backdrop-blur;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg);
 }
 
 .icon-badge {
@@ -331,7 +387,29 @@
 }
 
 .lightbox-close {
-  @apply absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-slate-900/80 px-4 py-2 text-xs font-semibold text-white;
+  @apply absolute right-4 top-4 z-20 rounded-full px-4 py-2 text-xs font-semibold;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-bg-strong);
+  color: var(--text-strong);
+}
+
+:root[data-theme="light"] .content-sections .text-white,
+:root[data-theme="light"] .content-sections .text-slate-100,
+:root[data-theme="light"] .content-sections .text-slate-200 {
+  color: var(--text-main);
+}
+
+:root[data-theme="light"] .content-sections .text-slate-300 {
+  color: var(--text-muted);
+}
+
+:root[data-theme="light"] .content-sections .prose,
+:root[data-theme="light"] .content-sections .prose-invert {
+  color: var(--text-main);
+}
+
+:root[data-theme="light"] .content-sections .prose strong {
+  color: var(--text-strong);
 }
 
 @keyframes section-fade {

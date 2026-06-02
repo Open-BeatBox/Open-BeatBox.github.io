@@ -14,7 +14,7 @@ const Navigation: React.FC<Props> = ({ items, onNavigate }) => {
         <Link
           key={item.href}
           href={item.href}
-          className="text-sm font-medium text-white/80 transition hover:text-white"
+          className="nav-link text-sm font-medium transition"
           onClick={onNavigate}
         >
           {item.title}

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navigation from "./Navigation";
+import ThemeToggle from "./ThemeToggle";
 import { MenuIcon, CloseIcon } from "@/lib/icons";
 import { NavigationItem } from "@/types/content";
 import "./Header.css";
@@ -20,7 +21,7 @@ const Header: React.FC<Props> = ({ items, logo, title }) => {
   return (
     <header className="site-header">
       <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-2 text-white">
+        <Link href="/" className="brand-link">
           {logo ? (
             <Image src={logo} alt="Beatbox logo" width={36} height={36} priority />
           ) : (
@@ -29,17 +30,18 @@ const Header: React.FC<Props> = ({ items, logo, title }) => {
           <span className="text-lg font-semibold">{title || "Beatbox"}</span>
         </Link>
       </div>
-      <div className="md:hidden">
+      <div className="header-actions">
+        <div className="hidden md:block">
+          <Navigation items={items} />
+        </div>
+        <ThemeToggle />
         <button
           aria-label="Toggle menu"
-          className="menu-btn"
+          className="menu-btn md:hidden"
           onClick={() => setOpen((prev) => !prev)}
         >
           {open ? <CloseIcon /> : <MenuIcon />}
         </button>
-      </div>
-      <div className="hidden md:block">
-        <Navigation items={items} />
       </div>
       {open && (
         <div className="mobile-nav">
