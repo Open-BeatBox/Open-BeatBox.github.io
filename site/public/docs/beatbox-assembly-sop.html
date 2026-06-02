@@ -448,6 +448,10 @@ function applySopEnhancements() {
     if (!items || items.some(existing => existing.text === item.text)) return;
     items.splice(index, 0, item);
   };
+  const addSubsectionUnique = (section, subsection, index = section?.subsections?.length) => {
+    if (!section?.subsections || section.subsections.some(existing => existing.title === subsection.title)) return;
+    section.subsections.splice(index, 0, subsection);
+  };
   const replaceItemText = (items, from, to) => {
     if (!items) return;
     items.forEach(item => {
@@ -570,23 +574,74 @@ function applySopEnhancements() {
 
   const wallBuild = findSubsection('stage_b', '6. Build each plexiglass sandwich panel');
   if (wallBuild) {
+    wallBuild.title = '6. Build and install the first wall panel';
     wallBuild.media = {
       src: '/videos/buidling_gifs/BEATBox_wall1.gif',
       alt: 'Building the first BEATBox wall panel',
       caption: 'First wall assembly reference.'
     };
-    wallBuild.afterMedia = {
+    delete wallBuild.afterMedia;
+  }
+  const stageB = findSection('stage_b');
+  if (stageB) stageB.title = 'Stage B — Build and install the wall panels';
+  addUnique(wallBuild?.items, {
+    text: 'After this wall panel is assembled, slide it directly into the pillar grooves before moving to the next wall.',
+    level: 'critical'
+  });
+  addUnique(wallBuild?.items, {
+    text: 'Resolve wall color for tracking before production: compare white, black, and gray for tracking contrast, reflections, lighting stability, and compatibility with the camera/IR setup.',
+    level: 'todo',
+    note: 'Decision still open.'
+  });
+  const repeatWalls = findSubsection('stage_b', '7. Repeat for all required wall panels');
+  if (repeatWalls) {
+    repeatWalls.title = '7. Repeat for all required fixed wall panels';
+    repeatWalls.afterMedia = {
       src: '/videos/buidling_gifs/BEATBox_walls1-2-3.gif',
       alt: 'Secondary BEATBox wall assembly reference',
       caption: 'Secondary wall assembly reference for the remaining walls.',
       linkLabel: 'Open full GIF'
     };
   }
-  addUnique(wallBuild?.items, {
-    text: 'Resolve wall color for tracking before production: compare white, black, and gray for tracking contrast, reflections, lighting stability, and compatibility with the camera/IR setup.',
-    level: 'todo',
-    note: 'Decision still open.'
-  });
+  addUnique(repeatWalls?.items, {
+    text: 'For each fixed wall, build the wall panel and place it directly into the frame before starting the next wall.',
+    level: 'critical'
+  }, 0);
+
+  const stageD = findSection('stage_d');
+  const doorPrepIndex = stageD?.subsections?.findIndex(subsection => subsection.title === '11. Prepare the door panel');
+  const doorPrep = doorPrepIndex >= 0 ? stageD.subsections.splice(doorPrepIndex, 1)[0] : null;
+  if (doorPrep) {
+    doorPrep.title = '8. Build and install the door wall panel';
+    doorPrep.items = doorPrep.items || [];
+    replaceItemText(doorPrep.items, 'Use the same basic panel logic: matte side inward.', 'Build the door wall panel using the same wall-panel logic: matte side inward.');
+    addUnique(doorPrep.items, {
+      text: 'Place the completed door wall panel directly in the frame before moving on to hinge, button, and latch hardware.',
+      level: 'critical'
+    });
+    addSubsectionUnique(stageB, doorPrep, 2);
+  }
+  const wallQuality = findSubsection('stage_b', '8. Quality check the wall panels');
+  if (wallQuality) wallQuality.title = '9. Quality check the installed wall panels';
+
+  const stageC = findSection('stage_c');
+  if (stageC?.subsections) {
+    stageC.title = 'Stage C — Verify installed wall and frame geometry';
+    stageC.tag = 'Geometry check';
+    stageC.subsections = stageC.subsections.filter(subsection => subsection.title !== '9. Install the fixed panels');
+    const geometry = stageC.subsections.find(subsection => subsection.title === '10. Verify internal geometry');
+    if (geometry) {
+      geometry.title = '10. Verify installed wall and internal geometry';
+      addUnique(geometry.items, {
+        text: 'Confirm each wall was installed immediately after assembly and is seated fully in the pillar grooves.',
+        level: 'critical'
+      }, 0);
+    }
+  }
+  if (stageD) {
+    stageD.title = 'Stage D — Install door hardware';
+    stageD.tag = 'Hinges / latch';
+  }
 
   const screenPreparation = findSubsection('screen_module', 'Preparation');
   addUnique(screenPreparation?.items, {

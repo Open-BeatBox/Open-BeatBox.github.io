@@ -342,6 +342,18 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
             return (
               <section key={key} className="section">
                 {section.title && <h2 className="section-title">{section.title}</h2>}
+                {section.ctaHref && (
+                  <div className="section-cta section-cta-prominent">
+                    <a
+                      href={section.ctaHref}
+                      className="section-button"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {section.ctaLabel || "Open related document"}
+                    </a>
+                  </div>
+                )}
                 {section.subtitle && (
                   <p className="section-subtitle">{section.subtitle}</p>
                 )}
@@ -356,18 +368,6 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                 </div>
                 {section.caption && (
                   <p className="mt-3 text-sm text-slate-300">{section.caption}</p>
-                )}
-                {section.ctaHref && (
-                  <div className="section-cta">
-                    <a
-                      href={section.ctaHref}
-                      className="link"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {section.ctaLabel || "Open related document"}
-                    </a>
-                  </div>
                 )}
               </section>
             );
