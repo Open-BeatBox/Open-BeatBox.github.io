@@ -5,11 +5,19 @@
   border: 1px solid var(--border-soft);
   background: var(--header-bg);
   color: var(--text-strong);
+  gap: 0.75rem;
 }
 
 .brand-link {
   @apply flex items-center gap-2;
   color: var(--text-strong);
+  min-width: 0;
+}
+
+.brand-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .header-actions {
@@ -24,7 +32,28 @@
 }
 
 .mobile-nav {
-  @apply absolute left-0 top-16 w-full rounded-2xl p-4 backdrop-blur md:hidden;
+  @apply absolute left-0 right-0 top-[calc(100%+0.5rem)] w-full rounded-2xl p-4 backdrop-blur md:hidden;
   border: 1px solid var(--border-soft);
   background: var(--panel-bg-strong);
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    border-radius: 1rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .brand-link img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .brand-title {
+    max-width: min(52vw, 15rem);
+    font-size: 0.95rem;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
 }

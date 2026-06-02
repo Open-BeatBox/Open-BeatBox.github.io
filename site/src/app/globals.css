@@ -58,6 +58,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -65,6 +66,7 @@ body {
   position: relative;
   background: var(--page-bg);
   color: var(--text-main);
+  overflow-x: hidden;
 }
 
 body::before {
@@ -90,9 +92,11 @@ a {
 }
 
 main {
-  @apply mx-auto max-w-6xl px-4 py-6 md:py-10;
+  @apply mx-auto max-w-6xl py-6 md:py-10;
   position: relative;
   z-index: 1;
+  width: 100%;
+  min-width: 0;
 }
 
 .prose strong {
@@ -124,4 +128,16 @@ main {
 
 .nav-link:hover {
   color: var(--text-strong);
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    gap: 1rem;
+    padding: 0.75rem 0.75rem 2rem;
+  }
+
+  main {
+    padding-top: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
 }

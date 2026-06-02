@@ -17,3 +17,11 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+@media (max-width: 640px) {
+  .theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+}

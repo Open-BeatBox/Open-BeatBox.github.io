@@ -27,7 +27,7 @@ const Header: React.FC<Props> = ({ items, logo, title }) => {
           ) : (
             <div className="h-9 w-9 rounded-full bg-blue-500" />
           )}
-          <span className="text-lg font-semibold">{title || "Beatbox"}</span>
+          <span className="brand-title text-lg font-semibold">{title || "Beatbox"}</span>
         </Link>
       </div>
       <div className="header-actions">

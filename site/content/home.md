@@ -330,53 +330,55 @@ sections:
 
       Centre de Recherche en Neurosciences de Lyon (CRNL), Located in: Centre Hospitalier Le Vinatier
       Address: CRNL - CH Le Vinatier - Bâtiment 462 - Neurocampus, 95 Bd Pinel, 69500 Bron
-  - type: "text"
+  - type: "columns"
     title: "Credits"
-    body: |
-      **The Dream Team Behind It\***
+    columns:
+      - heading: "Leadership & science"
+        body: |
+          **Project Lead and Vision**
+          - Eric Burguiere
 
-      **Project Lead and Vision**
-      - Eric Burguiere
+          **Scientific Conception and Contributions**
+          - Eric Burguiere
+          - Marine Euvrard
+          - Daniela Domingues
+          - Nabil Benzina
+      - heading: "Engineering & platform"
+        body: |
+          **Software & Firmware**
+          - Zenneddine Ajili
+          - Guillaume Penderia
+          - Charlie Rousseau
 
-      **Software & Firmware**
-      - Zenneddine Ajili
-      - Guillaume Penderia
-      - Charlie Rousseau
+          **Electronics**
+          - Pierre Tissier
+          - Pierre Pavlov
 
-      **Documentation & Open Repository**
-      - [Damien Huzard](https://www.neuronautix.com)
+          **Mechanical Design**
+          - Pierre Tissier
+          - Lucile Lebegue
+      - heading: "Documentation, web & validation"
+        body: |
+          **Documentation & Open Repository**
+          - [Damien Huzard](https://www.neuronautix.com)
 
-      **Scientific Conception and Contributions**
-      - Eric Burguiere
-      - Marine Euvrard
-      - Daniela Domingues
-      - Nabil Benzina
+          **Web Platform**
+          - Damien Huzard
+          - S. Lizbeth Mondragon-Gonzalez
 
-      **Web Platform**
-      - Damien Huzard
-      - S. Lizbeth Mondragon-Gonzalez
+          **Graphic Design**
+          - S. Lizbeth Mondragon-Gonzalez
 
-      **Electronics**
-      - Pierre Tissier
-      - Pierre Pavlov
+          **Validation & Beta Testing**
+          - Marine Euvrard
+          - Daniela Domingues
+          - Eliana Lousada
+          - Oriana Lavielle
+          - Anne Lorenz
+          - Youenn Travert
+          - Christianne Schreiweiss
 
-      **Validation & Beta Testing**
-      - Marine Euvrard
-      - Daniela Domingues
-      - Eliana Lousada
-      - Oriana Lavielle
-      - Anne Lorenz
-      - Youenn Travert
-      - Christianne Schreiweiss
-
-      **Mechanical Design**
-      - Pierre Tissier
-      - Lucile Lebegue
-
-      **Graphic Design**
-      - S. Lizbeth Mondragon-Gonzalez
-
-      \*All versions included
+          \*All versions included
 ---
 
 BEATBox lets you move beyond short, stressful sessions toward continuous, ecological monitoring inside the home cage.

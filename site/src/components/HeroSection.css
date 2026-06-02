@@ -102,15 +102,34 @@
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 500px;
+    min-height: auto;
     padding: 1.25rem;
+    border-radius: 1.25rem;
   }
 
   .hero-actions {
     @apply flex-col;
+    margin-top: 1.25rem;
   }
 
   .btn {
     @apply w-full;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  .hero-subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 0.875rem;
+    max-width: 100%;
+    white-space: normal;
   }
 }

@@ -512,7 +512,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
             return (
               <section key={key} className="section">
                 <SectionIntro title={section.title} />
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className={`grid gap-6 md:grid-cols-2 ${section.columns.length >= 3 ? "lg:grid-cols-3" : ""}`}>
                   {section.columns.map((col) => (
                     <div key={col.heading} className="glass-card">
                       <h3 className="card-title">{col.heading}</h3>

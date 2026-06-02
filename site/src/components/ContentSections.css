@@ -467,3 +467,97 @@
     transition: none;
   }
 }
+
+@media (max-width: 640px) {
+  .content-sections {
+    row-gap: 1rem;
+  }
+
+  .section {
+    border-radius: 1.125rem;
+    padding: 1rem;
+  }
+
+  .section-tight {
+    padding: 1rem;
+  }
+
+  .section-title {
+    margin-bottom: 0.875rem;
+    font-size: 1.45rem;
+    line-height: 1.16;
+  }
+
+  .section-subtitle {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .glass-card,
+  .stat-card,
+  .pipeline-step,
+  .resource-card,
+  .icon-card {
+    border-radius: 0.875rem;
+    padding: 0.875rem;
+  }
+
+  .resource-card {
+    min-height: auto;
+    padding-right: 2.5rem;
+  }
+
+  .card-grid,
+  .stats-strip,
+  .pipeline,
+  .media-grid,
+  .icon-grid,
+  .resource-grid,
+  .workflow-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .split-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .viewer-frame,
+  .video-frame {
+    border-radius: 1rem;
+  }
+
+  .media-image {
+    height: 13rem;
+  }
+
+  .tech-card .media-image,
+  .media-grid-single .media-image {
+    height: 13rem;
+  }
+
+  .gallery-shell {
+    display: block;
+  }
+
+  .gallery-control {
+    display: none;
+  }
+
+  .gallery-track {
+    margin-inline: -0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .gallery-card {
+    width: min(82vw, 20rem);
+  }
+
+  .section-button {
+    width: 100%;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}

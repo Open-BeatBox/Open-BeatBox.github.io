@@ -19,3 +19,9 @@
 .footer-links a:hover {
   color: var(--text-strong);
 }
+
+@media (max-width: 640px) {
+  .site-footer {
+    border-radius: 1rem;
+  }
+}

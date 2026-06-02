@@ -71,7 +71,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-6 px-4 pb-10 pt-6">
+        <div className="site-shell mx-auto flex min-h-screen max-w-6xl flex-col gap-6 px-4 pb-10 pt-6">
           <Header items={navItems} logo={site.logo} title={site.title} />
           <main className="flex-1">{children}</main>
           <Footer title={site.title} description={site.description} />
