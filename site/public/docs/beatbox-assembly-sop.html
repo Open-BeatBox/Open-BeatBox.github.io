@@ -600,6 +600,11 @@ function applySopEnhancements() {
 
   const screenAssembly = findSubsection('screen_module', 'Assembly');
   if (screenAssembly?.items) {
+    screenAssembly.media = {
+      src: '/videos/buidling_gifs/BEATBox_Screen.gif',
+      alt: 'Building the BEATBox screen module',
+      caption: 'Screen module assembly reference.'
+    };
     replaceItemText(screenAssembly.items, 'Install required M3 inserts.', 'Install required M3 inserts using tissue forceps to start the entry and the 2.5 mm T-handle ball-end hex key to drive them in straight.');
     replaceItemText(screenAssembly.items, 'Mount the screen PCB.', 'Screw the screen alone into the first housing part.');
     replaceItemText(screenAssembly.items, 'Insert the screen in the intended orientation.', 'Place and route the cables before joining the two housing/electronic parts.');
@@ -618,9 +623,24 @@ function applySopEnhancements() {
   });
 
   const ceilingAssembly = findSubsection('ceiling_module', 'Assembly');
+  if (ceilingAssembly) {
+    ceilingAssembly.media = {
+      src: '/videos/buidling_gifs/BEATBox_Light%20.gif',
+      alt: 'Building the BEATBox ceiling light module',
+      caption: 'Ceiling / light module assembly reference.'
+    };
+  }
   replaceItemText(ceilingAssembly?.items, 'Install inserts as needed.', 'Install inserts as needed, using tissue forceps to clean the entry and the 2.5 mm T-handle ball-end hex key to drive inserts in straight over a flat, solid surface.');
 
-  const tunnelItems = findSection('tunnel_module')?.items;
+  const tunnelModule = findSection('tunnel_module');
+  if (tunnelModule) {
+    tunnelModule.media = {
+      src: '/videos/buidling_gifs/BEATBox_Tunnel.gif',
+      alt: 'Building the BEATBox tunnel module',
+      caption: 'Tunnel module assembly reference.'
+    };
+  }
+  const tunnelItems = tunnelModule?.items;
   replaceItemText(tunnelItems, 'Install inserts.', 'Install inserts, using tissue forceps to clean the entry and the 2.5 mm T-handle ball-end hex key to drive inserts in straight over a flat, solid surface.');
 
   const feederPrep = findSubsection('feeder_module', 'Preparation');
@@ -634,6 +654,13 @@ function applySopEnhancements() {
   });
 
   const feederMechanical = findSubsection('feeder_module', 'Mechanical assembly');
+  if (feederMechanical) {
+    feederMechanical.media = {
+      src: '/videos/buidling_gifs/BEATBox_feeder.gif',
+      alt: 'Building the BEATBox feeder module',
+      caption: 'Feeder module assembly reference.'
+    };
+  }
   replaceItemText(feederMechanical?.items, 'Install M3 inserts in the feeder housing.', 'Install M3 inserts in the feeder housing, using tissue forceps to clean/start the entry and the 2.5 mm T-handle ball-end hex key to drive inserts in straight over a flat, solid surface.');
   addUnique(feederMechanical?.items, {
     text: 'For feeder IR sensors, physically remove the small black locating pin with scissors or tissue forceps when it prevents flat contact with the wall surface.',
@@ -691,6 +718,7 @@ function renderSections() {
           ${renderMedia(sub.afterMedia, 'secondary')}
         </div>`).join('');
     } else {
+      body += renderMedia(section.media);
       body += renderItems(section.items || [], section, section.title);
     }
     if (section.id === 'costs') {
