@@ -256,8 +256,44 @@
 .resource-card {
   @apply relative flex min-h-28 flex-col rounded-xl p-4 pr-10 shadow-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:no-underline;
   border: 1px solid var(--border-soft);
-  background: var(--card-bg-strong);
+  background: var(--resource-bg, var(--card-bg-strong));
   color: var(--text-main);
+}
+
+.resource-card:nth-child(1) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 82%, rgba(103, 232, 249, 0.22));
+}
+
+.resource-card:nth-child(2) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(45, 212, 191, 0.20));
+}
+
+.resource-card:nth-child(3) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(167, 139, 250, 0.20));
+}
+
+.resource-card:nth-child(4) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(251, 191, 36, 0.20));
+}
+
+.resource-card:nth-child(5) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(96, 165, 250, 0.20));
+}
+
+.resource-card:nth-child(6) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(244, 114, 182, 0.18));
+}
+
+.resource-card:nth-child(7) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(74, 222, 128, 0.18));
+}
+
+.resource-card:nth-child(8) {
+  --resource-bg: color-mix(in srgb, var(--card-bg-strong) 84%, rgba(148, 163, 184, 0.24));
+}
+
+.resource-card:hover {
+  background: color-mix(in srgb, var(--resource-bg, var(--card-bg-strong)) 86%, var(--accent-cta) 14%);
 }
 
 .resource-card-label {
