@@ -333,6 +333,59 @@
     }
     footer { color: var(--muted); padding: 26px 4px 10px; font-size: .88rem; }
 
+    /* Build photo galleries */
+    .sop-gallery { margin: 12px 0 14px; }
+    .sop-gallery-label {
+      font-size: .76rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .05em;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .sop-gallery-strip {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding-bottom: 6px; scrollbar-width: thin;
+    }
+    .sop-gallery-strip::-webkit-scrollbar { height: 4px; }
+    .sop-gallery-strip::-webkit-scrollbar-track { background: var(--surface-2); border-radius: 2px; }
+    .sop-gallery-strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+    .sop-gallery-thumb {
+      flex-shrink: 0; width: 120px; height: 90px;
+      border-radius: 10px; overflow: hidden; border: 1px solid var(--line);
+      cursor: zoom-in; background: var(--surface-2);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .sop-gallery-thumb:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15,23,42,.12); }
+    .sop-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Lightbox */
+    .sop-lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(15,23,42,.93); z-index: 9999;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px; padding: 20px;
+    }
+    .sop-lightbox.open { display: flex; }
+    .sop-lightbox-img {
+      max-width: 100%; max-height: 80vh; object-fit: contain;
+      border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .sop-lightbox-caption { color: rgba(255,255,255,.8); font-size: .9rem; text-align: center; max-width: 600px; }
+    .sop-lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,.15) !important; border: 1px solid rgba(255,255,255,.25) !important;
+      color: white !important; width: 36px; height: 36px; border-radius: 50%;
+      font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transform: none !important;
+    }
+    .sop-lightbox-close:hover { background: rgba(255,255,255,.28) !important; }
+    .sop-lightbox-nav { display: flex; gap: 12px; align-items: center; }
+    .sop-lightbox-nav button {
+      background: rgba(255,255,255,.15) !important; border: 1px solid rgba(255,255,255,.25) !important;
+      color: white !important; padding: 8px 16px; border-radius: 10px; cursor: pointer;
+      transform: none !important;
+    }
+    .sop-lightbox-nav button:disabled { opacity: .35; cursor: default; }
+    .sop-lightbox-nav button:not(:disabled):hover { background: rgba(255,255,255,.28) !important; }
+    .sop-lightbox-counter { color: rgba(255,255,255,.55); font-size: .8rem; min-width: 48px; text-align: center; }
+
     @media (max-width: 980px) {
       .layout { grid-template-columns: 1fr; padding: 14px; }
       aside { position: static; height: auto; }
@@ -409,6 +462,17 @@
       </footer>
     </main>
   </div>
+
+<div class="sop-lightbox" id="sopLightbox">
+  <button class="sop-lightbox-close" id="sopLightboxClose" title="Close (Esc)">✕</button>
+  <img class="sop-lightbox-img" id="sopLightboxImg" src="" alt="" />
+  <div class="sop-lightbox-caption" id="sopLightboxCaption"></div>
+  <div class="sop-lightbox-nav">
+    <button id="sopLightboxPrev">← Prev</button>
+    <span class="sop-lightbox-counter" id="sopLightboxCounter"></span>
+    <button id="sopLightboxNext">Next →</button>
+  </div>
+</div>
 
 <script>
 const SOP = {"title": "BEATBox Assembly SOP", "version": "Draft v0.1", "subtitle": "Interactive build checklist for internal assembly and beta builds", "source": "Meeting notes + transcript from 10 Apr 2026 — Eric, Pierre and Damien", "purpose": ["Build one BEATBox from laser-cut plexiglass panels, 3D-printed parts, and pre-assembled electronics/PCBs.", "This is a working SOP, not yet a frozen production release. Several points remain explicitly to confirm or redesign."], "limitations": ["Some module names and exact PCB counts remain approximate.", "Final execution and software loading are not covered, because code was not yet available during the meeting.", "Some feeder and connector details still need confirmation with Pierre/Eric."], "sections": [{"id": "safety", "title": "Safety, handling, and quality rules", "tag": "Critical", "intro": "Apply these rules throughout the build. They are not optional unless explicitly superseded by a later validated release.", "items": [{"text": "Work on a clean, flat bench with enough space to lay modules flat.", "level": "standard"}, {"text": "Remove 3D-print supports cleanly without gouging the part. Use flat pliers if needed.", "level": "standard"}, {"text": "Do not overtighten screws in printed parts or plexiglass assemblies.", "level": "critical"}, {"text": "Do not clean laser-cut plexiglass with alcohol. Alcohol can infiltrate laser-cut microcracks and cause later cracking. Use water or gentle appropriate cleaning instead.", "level": "critical"}, {"text": "Keep the matte side of plexiglass facing outward and the glossy side inward unless a module-specific exception is documented.", "level": "critical"}, {"text": "Confirm there are no gaps between panels; mice will exploit gaps for chewing or escape attempts.", "level": "critical"}, {"text": "For any part touching food interaction zones, watch for chew damage and avoid introducing conductive/noisy materials without validation.", "level": "caution"}]}, {"id": "materials", "title": "Required materials and components", "tag": "Inventory", "subsections": [{"title": "Structural parts", "items": [{"text": "1 base plate in 10 mm plexiglass"}, {"text": "4 printed pillars with lower nut seats and upper fastening points"}, {"text": "Laser-cut plexiglass panel sets for the walls"}, {"text": "Door panel set"}, {"text": "Ceiling / top cover parts"}, {"text": "Printed module housings/covers as needed"}]}, {"title": "Electronics and functional modules", "items": [{"text": "Screen module PCB(s)"}, {"text": "Screen(s) with connector(s)"}, {"text": "Infrared barrier PCB(s) / LED barrier elements"}, {"text": "Feeder PCB and sensor components"}, {"text": "Motor for feeder", "level": "todo"}, {"text": "Rotor for feeder", "level": "todo"}, {"text": "Ceiling/light PCB with white + IR LEDs"}, {"text": "Tunnel module PCB(s), if applicable", "level": "optional"}, {"text": "Master PCB"}, {"text": "Interconnect cables, including Molex PicoBlade-style connectors where applicable"}]}, {"title": "Fasteners and inserts", "items": [{"text": "M5 × 50 mm screws for pillar-to-base fastening"}, {"text": "Matching M5 nuts for pillar/base system"}, {"text": "M3 inserts for printed parts"}, {"text": "M3 screws for panel sandwich assemblies"}, {"text": "M3 × 8 mm screws where specified"}, {"text": "M3 × 10 mm screws where specified"}, {"text": "Door hinge hardware"}, {"text": "Door button hardware"}, {"text": "Door latch / locking piece"}]}, {"title": "Optional / tips", "items": [{"text": "Rubber feet or pads under the base if needed", "level": "optional"}, {"text": "Small labeled containers for screws by length/type", "level": "optional"}, {"text": "Painter tape or removable labels for left/right module identification", "level": "optional"}]}]}, {"id": "tools", "title": "Required tools", "tag": "Inventory", "items": [{"text": "Flat pliers for support removal"}, {"text": "Hex key / Allen key appropriate for M5 hardware"}, {"text": "Screwdrivers / drivers for M3 hardware"}, {"text": "Small tweezers or fine pliers for inserts and connectors"}, {"text": "Flush cutter or deburring tool if required", "level": "optional"}]}, {"id": "prebuild", "title": "Pre-build checklist", "tag": "Before assembly", "items": [{"text": "All materials and components are present."}, {"text": "All PCBs are present for the planned configuration."}, {"text": "Screens are present and either already soldered or ready for the intended connection mode."}, {"text": "Cables are present and long enough."}, {"text": "LED barriers are identical left/right or side-specific", "level": "todo", "note": "To confirm."}]}, {"id": "procurement", "title": "Procurement / production checklist for Lyon builds in June", "tag": "Planning", "items": [{"text": "Validate purchasing of components."}, {"text": "Prepare plexiglass orders for direct delivery to Lyon."}, {"text": "Prepare 3D-printed parts."}, {"text": "Ensure all small hardware is ordered in advance; missing screws/inserts can block assembly.", "level": "caution"}]}, {"id": "part_prep", "title": "Part preparation", "tag": "Steps 1–2", "subsections": [{"title": "1. Remove supports from 3D-printed parts", "items": [{"text": "Inspect every printed part for support remnants."}, {"text": "Remove supports by hand when possible."}, {"text": "Use flat pliers when supports do not release cleanly.", "level": "caution"}]}, {"title": "2. Verify printed-part integrity", "items": [{"text": "Check for cracks, warping, or blocked holes."}, {"text": "Check that insert seats are usable."}, {"text": "Check that cable passages are open."}, {"text": "Check that mating edges are clean enough for flush assembly."}]}]}, {"id": "stage_a", "title": "Stage A — Build the enclosure frame", "tag": "Steps 3–5", "subsections": [{"title": "3. Prepare the base", "items": [{"text": "Place the 10 mm plexiglass base flat on the work surface."}, {"text": "Identify the pillar mounting holes."}, {"text": "If using feet/pads, decide whether they will be mounted now or after frame assembly.", "level": "optional"}]}, {"title": "4. Prepare the pillars", "items": [{"text": "In each pillar, place the required lower nuts."}, {"text": "Verify that the upper nut is available for later steps."}, {"text": "Check that the panel grooves are clear and unobstructed."}, {"text": "Check that the top fastening hole is clear for later ceiling attachment."}]}, {"title": "5. Attach the 4 pillars to the base", "items": [{"text": "Position each pillar at the appropriate base corner."}, {"text": "Insert the M5 × 50 mm fasteners."}, {"text": "Tighten by hand first to avoid cross-threading."}, {"text": "Finish tightening gently; do not overtighten.", "level": "critical"}]}]}, {"id": "stage_b", "title": "Stage B — Prepare the wall panels", "tag": "Steps 6–8", "subsections": [{"title": "6. Build each plexiglass sandwich panel", "intro": "Each wall panel is made from two laser-cut plexiglass plates assembled together to form the sliding geometry that fits into the pillar grooves.", "items": [{"text": "Identify the two plates belonging to the same panel."}, {"text": "Verify which surface is matte and which is glossy: matte side outward, glossy side inward.", "level": "critical"}, {"text": "Align the panel holes."}, {"text": "Assemble the pair using the panel screws."}, {"text": "Use 4 screws per panel assembly where applicable."}, {"text": "Use the correct M3 hardware for panel assembly."}, {"text": "Tighten enough to hold the sandwich firmly, without stressing the plexiglass.", "level": "critical"}]}, {"title": "7. Repeat for all required wall panels", "items": [{"text": "Screen-side panel(s) prepared."}, {"text": "Feeder-side panel(s) prepared."}, {"text": "Rear / blank panel prepared."}, {"text": "Door-side panel prepared."}]}, {"title": "8. Quality check the wall panels", "intro": "Do not use alcohol for cleaning.", "items": [{"text": "Confirm all matte sides face outward.", "level": "critical"}, {"text": "Confirm screw heads and nuts do not create mouse-accessible protrusions in critical interior areas.", "level": "critical"}, {"text": "Confirm edges are flush and clean."}]}]}, {"id": "stage_c", "title": "Stage C — Insert the panels into the frame", "tag": "Steps 9–10", "subsections": [{"title": "9. Install the fixed panels", "items": [{"text": "Slide the panels into the pillar grooves."}, {"text": "Install the screen-side panel in its intended location."}, {"text": "Install the feeder-side panel opposite the screen side."}, {"text": "Install the rear / blank panel."}, {"text": "Check that gaps between panels remain minimal.", "level": "critical"}]}, {"title": "10. Verify internal geometry", "items": [{"text": "Check that corners are tight enough to prevent chewing/escape opportunities.", "level": "critical"}, {"text": "Check that interior edges do not form easy climbing structures.", "level": "caution"}, {"text": "Confirm feeder and screen openings line up with their intended modules."}]}]}, {"id": "stage_d", "title": "Stage D — Install the door assembly", "tag": "Steps 11–15", "subsections": [{"title": "11. Prepare the door panel", "items": [{"text": "Use the same basic panel logic: matte side outward."}, {"text": "Confirm the small light-blocking offset / overlap is oriented correctly.", "level": "todo", "note": "Orientation still needs confirmation."}]}, {"title": "12. Install door hinges", "items": [{"text": "Retrieve the hinge references from the documented bill of materials / RS references.", "level": "todo"}, {"text": "Fit the hinges to the door assembly."}, {"text": "Pay close attention to hole alignment."}, {"text": "Use the correct M3 hardware lengths for each hinge side."}, {"text": "Use 2 × M3 × 8 mm where the thinner stack-up applies."}, {"text": "Use 2 × M3 × 10 mm where the thicker sandwich stack-up applies."}]}, {"title": "13. Install the door button and latch", "items": [{"text": "Install the door button using M3 × 8 mm hardware."}, {"text": "Install the latch / locking element if present."}]}, {"title": "15. Validate door function", "items": [{"text": "Confirm the door opens/closes smoothly."}, {"text": "Confirm chosen opening side is acceptable for handling."}]}]}, {"id": "screen_module", "title": "16. Screen module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the screen housing/front face, PCB, screen, and any side barrier components."}, {"text": "Confirm screen connector orientation before insertion.", "level": "critical"}]}, {"title": "Assembly", "items": [{"text": "Install required M3 inserts."}, {"text": "Mount the screen PCB."}, {"text": "Insert the screen in the intended orientation."}, {"text": "Connect the screen properly to the board."}, {"text": "Add the cover/front face."}, {"text": "Confirm the flexible printed-button mechanism actuates the screen buttons correctly.", "level": "todo"}, {"text": "Check that the module sits centered in its opening."}]}, {"title": "IR barrier on screen-side module", "items": [{"text": "Install the LED / IR barrier element(s) on each side as intended."}, {"text": "Confirm whether left and right barrier boards are identical or side-specific.", "level": "todo", "note": "To confirm with Pierre."}, {"text": "Route and connect barrier wiring to the intended PCB ports."}]}, {"title": "Design improvement pending", "items": [{"text": "Add / verify détrompeurs/keyed orientation features so the screen cannot be inserted backwards.", "level": "todo"}]}]}, {"id": "ceiling_module", "title": "17. Ceiling / light module (plafonnier)", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the ceiling housing, PCB, LED components, and diffuser."}, {"text": "Confirm that white and IR LEDs are correctly integrated on the custom PCB."}]}, {"title": "Assembly", "items": [{"text": "Install inserts as needed."}, {"text": "Mount the PCB in the ceiling housing."}, {"text": "Install the diffuser."}, {"text": "Close the module with the cap."}, {"text": "Verify access to the rear connector."}, {"text": "Mount the completed ceiling module to the top fastening points of the pillars / top structure."}]}, {"title": "Functional intent", "items": [{"text": "White LEDs configured for daylight-like illumination."}, {"text": "IR LEDs available for night-time monitoring with camera detection."}]}]}, {"id": "tunnel_module", "title": "18. Tunnel module(s)", "tag": "Module assembly", "items": [{"text": "Identify the tunnel module parts."}, {"text": "Install inserts."}, {"text": "Mount PCB as for the screen-side module principle."}, {"text": "Install IR barrier components."}, {"text": "Close the module housing."}, {"text": "Install tunnel module in the correct internal position."}]}, {"id": "feeder_module", "title": "19. Feeder module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather feeder housing."}, {"text": "Gather PCB."}, {"text": "Gather sensor board(s)."}, {"text": "Gather motor."}, {"text": "Gather rotor."}, {"text": "Gather cables."}, {"text": "Gather fasteners."}, {"text": "Confirm sensor hardware is present."}, {"text": "Confirm required pre-soldered IR elements are present."}, {"text": "Confirm cable length is sufficient."}]}, {"title": "Mechanical assembly", "items": [{"text": "Install M3 inserts in the feeder housing."}, {"text": "Mount the feeder PCB / sensor board(s)."}, {"text": "Route cable(s) through the intended hole(s)."}, {"text": "Connect Molex PicoBlade-type connector(s) until a clear click is felt.", "level": "critical"}, {"text": "Pull back gently to confirm connectors are fully seated.", "level": "critical"}]}, {"title": "Motor + rotor assembly", "items": [{"text": "Install the motor using the 4 mounting screws."}, {"text": "Place the rotor on the motor axis / mounting position."}, {"text": "Insert the nut where required in the rotor assembly."}, {"text": "Tighten through the intended access hole."}]}, {"title": "Critical feeder caution", "items": [{"text": "Avoid overtightening: if the motor/rotor is tightened too much, rotation becomes difficult.", "level": "critical"}, {"text": "Avoid undertightening: if tightened too loosely, play develops.", "level": "critical"}, {"text": "Prevent dust entry that could block the mechanism.", "level": "caution"}, {"text": "Prevent long-term play that can crush pellets.", "level": "caution"}, {"text": "Tighten motor/rotor hardware carefully.", "level": "critical"}, {"text": "Verify free rotation by hand or safe functional check.", "level": "critical"}, {"text": "Reject any setup with visible play or drag.", "level": "critical"}, {"text": "Record the torque/fit condition used if standardization is possible.", "level": "todo"}]}, {"title": "Feeder chew-risk", "items": [{"text": "Regularly inspect the feeder interaction face for chew vulnerability.", "level": "caution"}, {"text": "Avoid introducing metal in the mouse interaction zone without validating recording-noise consequences if electrophysiology is used.", "level": "caution"}]}]}, {"id": "stage_f", "title": "Stage F — Final enclosure/module integration", "tag": "Steps 20–23", "subsections": [{"title": "20. Mount completed modules into the enclosure", "items": [{"text": "Install completed screen module(s) in the designated panel opening(s)."}, {"text": "Install feeder module in the feeder-side opening."}, {"text": "Install ceiling/light module."}, {"text": "Install tunnel module(s)."}, {"text": "Check that all modules sit flush.", "level": "critical"}, {"text": "Check that no cable is pinched by the enclosure.", "level": "critical"}]}, {"title": "23. Final wiring to the master PCB", "items": [{"text": "Retrieve the master PCB."}, {"text": "Connect each module using the intended cable path."}, {"text": "Follow the described topology: start from the main/master board, route through the modules, and return appropriately to the main board as required by the current design."}, {"text": "Verify connector seating on all module ports.", "level": "critical"}, {"text": "Verify wiring is tidy and not accessible for chewing.", "level": "critical"}, {"text": "Verify no cable interferes with door movement or module seating.", "level": "critical"}]}]}, {"id": "costs", "title": "Estimated cost per box", "tag": "Reference", "intro": "Rough order-of-magnitude estimate: approximately EUR 600–700 per box.", "items": [{"text": "PCBs: ~EUR 300 total"}, {"text": "3D printing: ~EUR 200 total"}, {"text": "Plexiglass: ~EUR 150–200 depending on sourcing"}, {"text": "Fasteners / small hardware: ~EUR 50 total"}]}, {"id": "signoff", "title": "Build-completion signoff", "tag": "Final check", "items": [{"text": "Mechanical assembly complete"}, {"text": "Module assembly complete"}, {"text": "Final wiring complete"}, {"text": "Photo documentation complete"}, {"text": "Deviations recorded"}, {"text": "Ready for code flashing / software setup"}, {"text": "Ready for beta test use"}], "metadata": ["Date", "Location", "Builders", "Documentation by", "Box ID / serial", "Revision used"]}]};
@@ -721,12 +785,107 @@ function applySopEnhancements() {
     text: 'For feeder IR sensors, physically remove the small black locating pin with scissors or tissue forceps when it prevents flat contact with the wall surface.',
     level: 'critical'
   }, 2);
+
+  // Photo galleries — real build photos attached per section for visual reference during assembly
+  const setGallery = (obj, items) => { if (obj && !obj.gallery) obj.gallery = items; };
+
+  setGallery(findSection('materials'), [
+    { src: '/images/BB_V3_Material.jpg', alt: 'V3 materials overview', caption: 'V3 materials' },
+    { src: '/images/BB_water-holder.jpg', alt: 'Water holder', caption: 'Water holder' },
+  ]);
+
+  setGallery(findSubsection('part_prep', '2. Verify printed-part integrity'), [
+    { src: '/images/BB-TIPS_Using-forceps-to-help-inserts.jpg', alt: 'Using tissue forceps for M3 inserts', caption: 'Tip: forceps for inserts' },
+  ]);
+
+  setGallery(findSubsection('stage_a', '3. Prepare the base'), [
+    { src: '/images/BB_Full-1.jpg', alt: 'BEATBox full system — front', caption: 'Full system (front)' },
+    { src: '/images/BB_Full-2.jpg', alt: 'BEATBox full system — side', caption: 'Full system (side)' },
+    { src: '/images/BB_V2_1-system.jpg', alt: 'BEATBox V2 single system', caption: 'V2 single' },
+    { src: '/images/BB_V2_4-systems.jpg', alt: 'BEATBox V2 four systems', caption: 'V2 four systems' },
+  ]);
+
+  setGallery(findSubsection('stage_a', '5. Attach the 4 pillars to the base'), [
+    { src: '/images/real-build-setup.jpg', alt: 'Real build — frame and pillars setup', caption: 'Frame setup reference' },
+  ]);
+
+  setGallery(findSubsection('stage_b', '6. Build and install the first wall panel'), [
+    { src: '/images/real-build-setup.jpg', alt: 'Real build — wall panels in frame', caption: 'Wall panels in frame' },
+  ]);
+
+  setGallery(findSubsection('screen_module', 'Assembly'), [
+    { src: '/images/Screens/BB_Screen-1.jpg', alt: 'Screen module — step 1', caption: 'Screen (1)' },
+    { src: '/images/Screens/BB_Screen-2.jpg', alt: 'Screen module — step 2', caption: 'Screen (2)' },
+    { src: '/images/Screens/BB_Screen-3.jpg', alt: 'Screen module — step 3', caption: 'Screen (3)' },
+    { src: '/images/Screens/BB_Screen-4.jpg', alt: 'Screen module — step 4', caption: 'Screen (4)' },
+    { src: '/images/Screens/BB_Screen-5.jpg', alt: 'Screen module — step 5', caption: 'Screen (5)' },
+    { src: '/images/Screens/BB_Screen-6.jpg', alt: 'Screen module — step 6', caption: 'Screen (6)' },
+    { src: '/images/Screens/BB_Screen_inside.jpg', alt: 'Screen module — interior', caption: 'Interior' },
+    { src: '/images/Screens/BB_Screen_long-cables.jpg', alt: 'Screen module — long cables', caption: 'Long cables' },
+    { src: '/images/Screens/BB_Screens-inside-view.jpg', alt: 'Screen module — inside view', caption: 'Inside view (1)' },
+    { src: '/images/Screens/BB_Screens_Inside-view-2.jpg', alt: 'Screen module — inside view 2', caption: 'Inside view (2)' },
+    { src: '/images/electronics/photo-circuit-ecrans1.jpg', alt: 'Screen PCB circuit — 1', caption: 'Screen circuit (1)' },
+    { src: '/images/electronics/photo-circuit-ecrans2.jpg', alt: 'Screen PCB circuit — 2', caption: 'Screen circuit (2)' },
+  ]);
+
+  setGallery(findSubsection('ceiling_module', 'Assembly'), [
+    { src: '/images/Light_top.jpg', alt: 'Ceiling/light module — top face', caption: 'Lighting (top)' },
+    { src: '/images/Light_bottom.jpg', alt: 'Ceiling/light module — bottom face', caption: 'Lighting (bottom)' },
+  ]);
+
+  setGallery(findSection('tunnel_module'), [
+    { src: '/images/Tunnel.jpg', alt: 'Tunnel module assembled', caption: 'Tunnel module' },
+  ]);
+
+  setGallery(findSubsection('feeder_module', 'Preparation'), [
+    { src: '/images/Feeder.jpg', alt: 'Feeder module — assembled view', caption: 'Feeder assembled' },
+    { src: '/images/Feeder_side.jpg', alt: 'Feeder module — side view', caption: 'Feeder (side)' },
+    { src: '/images/Feeder/BB_Feeder-1.jpg', alt: 'Feeder build — step 1', caption: 'Feeder build (1)' },
+    { src: '/images/Feeder/BB_Feeder-2.jpg', alt: 'Feeder build — step 2', caption: 'Feeder build (2)' },
+  ]);
+
+  setGallery(findSubsection('feeder_module', 'Mechanical assembly'), [
+    { src: '/images/Feeder/BB_Feeder_cable.jpg', alt: 'Feeder cable connection', caption: 'Cable connection' },
+    { src: '/images/Feeder/BB_Feeder_IR-1.jpg', alt: 'Feeder IR sensor — 1', caption: 'IR sensor (1)' },
+    { src: '/images/Feeder/BB_Feeder_IR-2.jpg', alt: 'Feeder IR sensor — 2', caption: 'IR sensor (2)' },
+    { src: '/images/Feeder/BB_Feeder_IR-3.jpg', alt: 'Feeder IR sensor — 3', caption: 'IR sensor (3)' },
+    { src: '/images/Feeder/BB_Feeder_IR-4.jpg', alt: 'Feeder IR sensor — 4', caption: 'IR sensor (4)' },
+    { src: '/images/Feeder/BB_Feeder_IR-5.jpg', alt: 'Feeder IR sensor — 5', caption: 'IR sensor (5)' },
+  ]);
+
+  setGallery(findSubsection('stage_f', '20. Mount completed modules into the enclosure'), [
+    { src: '/images/BB_Full-1.jpg', alt: 'Completed BEATBox — front view', caption: 'Completed (front)' },
+    { src: '/images/BB_Full-2.jpg', alt: 'Completed BEATBox — side view', caption: 'Completed (side)' },
+    { src: '/images/real-build-setup.jpg', alt: 'Real build — full setup', caption: 'Real build setup' },
+  ]);
+
+  setGallery(findSubsection('stage_f', '23. Final wiring to the master PCB'), [
+    { src: '/images/real-build-electronics.jpg', alt: 'Electronics build — overview', caption: 'Electronics overview' },
+    { src: '/images/real-build-electronics-detail.jpg', alt: 'Electronics build — detail', caption: 'Electronics detail' },
+    { src: '/images/electronics/photo-circuit-all.jpg', alt: 'Full circuit — all boards', caption: 'Full circuit' },
+    { src: '/images/electronics/20260202_102651.jpg', alt: 'Electronics assembly — 1', caption: 'Assembly (1)' },
+    { src: '/images/electronics/20260202_102731_1.jpg', alt: 'Electronics assembly — 2', caption: 'Assembly (2)' },
+    { src: '/images/electronics/20260202_102829_1.jpg', alt: 'Electronics assembly — 3', caption: 'Assembly (3)' },
+    { src: '/images/electronics/20260202_103036_1.jpg', alt: 'Electronics assembly — 4', caption: 'Assembly (4)' },
+    { src: '/images/electronics/20260202_103042_1.jpg', alt: 'Electronics assembly — 5', caption: 'Assembly (5)' },
+    { src: '/images/electronics/20260202_103049_1.jpg', alt: 'Electronics assembly — 6', caption: 'Assembly (6)' },
+    { src: '/images/electronics/20260202_103053_1.jpg', alt: 'Electronics assembly — 7', caption: 'Assembly (7)' },
+    { src: '/images/electronics/20260202_103204_1.jpg', alt: 'Electronics assembly — 8', caption: 'Assembly (8)' },
+  ]);
 }
 function renderMedia(media, variant = '') {
   if (!media?.src) return '';
   const link = media.linkLabel ? ` <a href="${escapeHTML(media.src)}" target="_blank" rel="noopener">${escapeHTML(media.linkLabel)}</a>` : '';
   const caption = media.caption || media.linkLabel ? `<figcaption>${escapeHTML(media.caption || '')}${link}</figcaption>` : '';
   return `<figure class="instruction-media ${escapeHTML(variant)}"><img src="${escapeHTML(media.src)}" alt="${escapeHTML(media.alt || '')}" loading="lazy" />${caption}</figure>`;
+}
+function renderGallery(items) {
+  if (!items || !items.length) return '';
+  const thumbs = items.map(item =>
+    `<div class="sop-gallery-thumb" data-src="${escapeHTML(item.src)}" data-alt="${escapeHTML(item.alt || '')}" data-caption="${escapeHTML(item.caption || '')}">` +
+    `<img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.alt || '')}" loading="lazy" /></div>`
+  ).join('');
+  return `<div class="sop-gallery"><div class="sop-gallery-label">📷 Build reference photos — click to zoom</div><div class="sop-gallery-strip">${thumbs}</div></div>`;
 }
 function renderItems(items, section, path='') {
   if (!items || !items.length) return '';
@@ -770,11 +929,13 @@ function renderSections() {
           ${sub.intro ? `<p class="intro">${escapeHTML(sub.intro)}</p>` : ''}
           ${renderMedia(sub.media)}
           ${renderItems(sub.items || [], section, sub.title)}
+          ${renderGallery(sub.gallery)}
           ${renderMedia(sub.afterMedia, 'secondary')}
         </div>`).join('');
     } else {
       body += renderMedia(section.media);
       body += renderItems(section.items || [], section, section.title);
+      body += renderGallery(section.gallery);
     }
     if (section.id === 'costs') {
       body += `<div class="cost-box">
@@ -950,6 +1111,51 @@ function init() {
   updateProgress();
 }
 init();
+
+// Lightbox
+(function () {
+  let lbItems = [], lbIdx = 0;
+  const lb = document.getElementById('sopLightbox');
+  const lbImg = document.getElementById('sopLightboxImg');
+  const lbCap = document.getElementById('sopLightboxCaption');
+  const lbCtr = document.getElementById('sopLightboxCounter');
+  const lbPrev = document.getElementById('sopLightboxPrev');
+  const lbNext = document.getElementById('sopLightboxNext');
+
+  function lbShow() {
+    const item = lbItems[lbIdx];
+    lbImg.src = item.src;
+    lbImg.alt = item.alt || '';
+    lbCap.textContent = item.caption || '';
+    lbCtr.textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+    lbPrev.disabled = lbIdx === 0;
+    lbNext.disabled = lbIdx === lbItems.length - 1;
+  }
+
+  document.addEventListener('click', function (e) {
+    const thumb = e.target.closest('.sop-gallery-thumb');
+    if (thumb) {
+      const strip = thumb.closest('.sop-gallery-strip');
+      const all = [...strip.querySelectorAll('.sop-gallery-thumb')];
+      lbItems = all.map(function (t) { return { src: t.dataset.src, alt: t.dataset.alt, caption: t.dataset.caption }; });
+      lbIdx = all.indexOf(thumb);
+      lbShow();
+      lb.classList.add('open');
+      return;
+    }
+    if (e.target === lb) lb.classList.remove('open');
+  });
+
+  document.getElementById('sopLightboxClose').addEventListener('click', function () { lb.classList.remove('open'); });
+  lbPrev.addEventListener('click', function () { if (lbIdx > 0) { lbIdx--; lbShow(); } });
+  lbNext.addEventListener('click', function () { if (lbIdx < lbItems.length - 1) { lbIdx++; lbShow(); } });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lb.classList.remove('open');
+    if (e.key === 'ArrowLeft' && lbIdx > 0) { lbIdx--; lbShow(); }
+    if (e.key === 'ArrowRight' && lbIdx < lbItems.length - 1) { lbIdx++; lbShow(); }
+  });
+}());
 </script>
 </body>
 </html>
