@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:docs": "powershell -ExecutionPolicy Bypass -File ../scripts/build-docs.ps1",
+    "build:all": "npm run build:docs && npm run build",
     "export": "next build",
     "start": "next start",
     "lint": "next lint",

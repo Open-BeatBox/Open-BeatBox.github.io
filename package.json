@@ -1,0 +1,12 @@
+{
+  "name": "open-beatbox-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix site run dev",
+    "build": "npm --prefix site run build",
+    "build:docs": "powershell -ExecutionPolicy Bypass -File scripts/build-docs.ps1",
+    "build:all": "npm run build:docs && npm --prefix site run build",
+    "type-check": "npm --prefix site run type-check",
+    "test": "npm --prefix site run test"
+  }
+}

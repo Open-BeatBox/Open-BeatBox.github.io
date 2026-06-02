@@ -3,6 +3,7 @@ node_modules/
 site/.next/
 site/out/
 resources/docs-site/
+docs/_build/
 dist/
 *.log
 .env.local
