@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm run *)",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\damie\\\\Documents\\\\GitHub\\\\BEATBOX\\\\Open-BeatBox.github.io\" -Force)",
-      "Bash(Select-Object Name, PSIsContainer)"
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\damie\\\\Documents\\\\GitHub\\\\BEATBOX\\\\Open-BeatBox.github.io\\\\site\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(dir /s /b \"c:\\\\Users\\\\damie\\\\Documents\\\\GitHub\\\\BEATBOX\\\\Open-BeatBox.github.io\\\\site\\\\src\")",
+      "PowerShell(Get-ChildItem -Recurse \"c:\\\\Users\\\\damie\\\\Documents\\\\GitHub\\\\BEATBOX\\\\Open-BeatBox.github.io\\\\site\\\\public\\\\images\" | Where-Object { -not $_.PSIsContainer } | Select-Object -ExpandProperty FullName | Sort-Object)"
     ]
   }
 }

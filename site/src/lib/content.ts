@@ -180,21 +180,22 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const getNavigation = async (): Promise<NavigationItem[]> => {
-  const pages = await getAllContentPages();
-  return pages
+  const [pages, site] = await Promise.all([getAllContentPages(), getSiteConfig()]);
+  const fromContent = pages
     .filter((page) => page.showInNav)
     .map((page) => ({
       title: page.title,
       href: page.path,
       navGroup: page.navGroup,
       navOrder: page.navOrder,
-    }))
-    .sort((a, b) => {
-      const orderA = a.navOrder ?? Number.MAX_SAFE_INTEGER;
-      const orderB = b.navOrder ?? Number.MAX_SAFE_INTEGER;
-      if (orderA !== orderB) return orderA - orderB;
-      return a.title.localeCompare(b.title);
-    });
+    }));
+  const fromConfig = (site.extraNavItems ?? []) as NavigationItem[];
+  return [...fromContent, ...fromConfig].sort((a, b) => {
+    const orderA = a.navOrder ?? Number.MAX_SAFE_INTEGER;
+    const orderB = b.navOrder ?? Number.MAX_SAFE_INTEGER;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.title.localeCompare(b.title);
+  });
 };
 
 const deriveOgImage = (page?: ContentPage | null, site?: SiteMetadata) => {

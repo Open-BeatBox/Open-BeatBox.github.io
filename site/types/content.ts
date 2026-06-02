@@ -208,6 +208,7 @@ export type SiteMetadata = {
   logo?: string;
   brandColor?: string;
   secondaryColor?: string;
+  extraNavItems?: NavigationItem[];
 };
 
 export type PageMetadata = {

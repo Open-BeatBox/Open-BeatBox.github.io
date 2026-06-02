@@ -20,4 +20,14 @@ twitter:
 logo: "/images/beatbox-logo.png"
 brandColor: "#2563EB"
 secondaryColor: "#0F172A"
+extraNavItems:
+  - title: "Interactive SOP"
+    href: "/docs/beatbox-assembly-sop.html"
+    navOrder: 1
+  - title: "Documentation"
+    href: "/docs/manual/"
+    navOrder: 2
+  - title: "Gallery"
+    href: "/gallery"
+    navOrder: 3
 ---
