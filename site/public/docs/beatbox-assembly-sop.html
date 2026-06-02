@@ -239,6 +239,20 @@
       font-size: .86rem;
       border-top: 1px solid var(--line);
     }
+    .instruction-media.secondary {
+      max-width: 520px;
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+    .instruction-media.secondary img {
+      max-height: 260px;
+    }
+    .instruction-media figcaption a {
+      color: var(--accent);
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .instruction-media figcaption a:hover { text-decoration: underline; }
     .checklist { display: grid; gap: 8px; }
     .check-row {
       display: grid;
@@ -536,6 +550,12 @@ function applySopEnhancements() {
       alt: 'Installing the BEATBox base foot assembly',
       caption: 'Base and foot assembly reference.'
     };
+    basePrep.afterMedia = {
+      src: '/videos/buidling_gifs/BEATBox_foot1-2-3.gif',
+      alt: 'Secondary BEATBox foot assembly reference',
+      caption: 'Secondary foot assembly reference for the following feet.',
+      linkLabel: 'Open full GIF'
+    };
   }
 
   const pillars = findSubsection('stage_a', '4. Prepare the pillars');
@@ -549,6 +569,19 @@ function applySopEnhancements() {
   });
 
   const wallBuild = findSubsection('stage_b', '6. Build each plexiglass sandwich panel');
+  if (wallBuild) {
+    wallBuild.media = {
+      src: '/videos/buidling_gifs/BEATBox_wall1.gif',
+      alt: 'Building the first BEATBox wall panel',
+      caption: 'First wall assembly reference.'
+    };
+    wallBuild.afterMedia = {
+      src: '/videos/buidling_gifs/BEATBox_walls1-2-3.gif',
+      alt: 'Secondary BEATBox wall assembly reference',
+      caption: 'Secondary wall assembly reference for the remaining walls.',
+      linkLabel: 'Open full GIF'
+    };
+  }
   addUnique(wallBuild?.items, {
     text: 'Resolve wall color for tracking before production: compare white, black, and gray for tracking contrast, reflections, lighting stability, and compatibility with the camera/IR setup.',
     level: 'todo',
@@ -607,10 +640,11 @@ function applySopEnhancements() {
     level: 'critical'
   }, 2);
 }
-function renderMedia(media) {
+function renderMedia(media, variant = '') {
   if (!media?.src) return '';
-  const caption = media.caption ? `<figcaption>${escapeHTML(media.caption)}</figcaption>` : '';
-  return `<figure class="instruction-media"><img src="${escapeHTML(media.src)}" alt="${escapeHTML(media.alt || '')}" loading="lazy" />${caption}</figure>`;
+  const link = media.linkLabel ? ` <a href="${escapeHTML(media.src)}" target="_blank" rel="noopener">${escapeHTML(media.linkLabel)}</a>` : '';
+  const caption = media.caption || media.linkLabel ? `<figcaption>${escapeHTML(media.caption || '')}${link}</figcaption>` : '';
+  return `<figure class="instruction-media ${escapeHTML(variant)}"><img src="${escapeHTML(media.src)}" alt="${escapeHTML(media.alt || '')}" loading="lazy" />${caption}</figure>`;
 }
 function renderItems(items, section, path='') {
   if (!items || !items.length) return '';
@@ -654,6 +688,7 @@ function renderSections() {
           ${sub.intro ? `<p class="intro">${escapeHTML(sub.intro)}</p>` : ''}
           ${renderMedia(sub.media)}
           ${renderItems(sub.items || [], section, sub.title)}
+          ${renderMedia(sub.afterMedia, 'secondary')}
         </div>`).join('');
     } else {
       body += renderItems(section.items || [], section, section.title);
