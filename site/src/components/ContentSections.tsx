@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
-import { Section } from "@/types/content";
+import { FeatureCard, LinkItem, Section, Step } from "@/types/content";
 import "./ContentSections.css";
 import ContactForm from "./ContactForm";
 
@@ -16,6 +16,84 @@ type Props = {
 
 const markdownPlugins = [remarkGfm];
 const rehypePlugins = [rehypeRaw, rehypeSanitize];
+
+const SectionIntro = ({
+  title,
+  subtitle,
+}: {
+  title?: string;
+  subtitle?: string;
+}) => (
+  <>
+    {title && <h2 className="section-title">{title}</h2>}
+    {subtitle && <p className="section-subtitle">{subtitle}</p>}
+  </>
+);
+
+const isRichStep = (step: Step): step is Exclude<Step, string> =>
+  typeof step === "object";
+
+const ResourceLink = ({ link }: { link: LinkItem }) => (
+  <a href={link.href} className="resource-card" target="_blank" rel="noreferrer">
+    <span className="resource-card-label">{link.label}</span>
+    {link.note && <span className="resource-card-note">{link.note}</span>}
+    <span className="resource-card-arrow" aria-hidden>
+      &#8599;
+    </span>
+  </a>
+);
+
+const FeatureCardView = ({
+  card,
+  variant = "default",
+}: {
+  card: FeatureCard;
+  variant?: "default" | "audience" | "resources";
+}) => {
+  const content = (
+    <>
+      <div className="card-heading-row">
+        {card.icon && (
+          <span className="card-icon" aria-hidden>
+            {card.icon}
+          </span>
+        )}
+        <div>
+          {card.eyebrow && <p className="card-eyebrow">{card.eyebrow}</p>}
+          <h3 className="card-title">{card.title}</h3>
+        </div>
+      </div>
+      <p className="card-body">{card.body}</p>
+      {card.links && card.links.length > 0 && (
+        <div className="card-link-list">
+          {card.links.map((link) => (
+            <a key={link.label} href={link.href} className="link" target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+      {card.href && (
+        <span className="card-cta">
+          {card.ctaLabel || "Open"}
+          <span aria-hidden>&#8594;</span>
+        </span>
+      )}
+    </>
+  );
+
+  const className = `glass-card impact-card impact-card-${variant}`;
+
+  if (card.href) {
+    return (
+      <a href={card.href} className={className} target="_blank" rel="noreferrer">
+        {content}
+      </a>
+    );
+  }
+
+  return <div className={className}>{content}</div>;
+};
 
 const ContentSections: React.FC<Props> = ({ sections }) => {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(
@@ -66,7 +144,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "mediaSplit":
             return (
               <section key={key} className="section section-split">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="split-grid">
                   <div className="split-content">
                     {section.eyebrow && (
@@ -119,10 +197,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "iconGrid":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                {section.subtitle && (
-                  <p className="section-subtitle">{section.subtitle}</p>
-                )}
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
                 <div className="icon-grid">
                     {section.items.map((item) => (
                       <div key={item.title} className="icon-card">
@@ -167,10 +242,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "mediaGrid":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                {section.subtitle && (
-                  <p className="section-subtitle">{section.subtitle}</p>
-                )}
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
                 <div className="media-grid tech-grid">
                   {section.items.map((item) => (
                     <figure key={item.image} className="media-card tech-card group">
@@ -207,12 +279,24 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "featureCards":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
                 <div className="card-grid">
                   {section.cards.map((card) => (
-                    <div key={card.title} className="glass-card">
-                      <h3 className="card-title">{card.title}</h3>
-                      <p className="card-body">{card.body}</p>
+                    <FeatureCardView key={card.title} card={card} />
+                  ))}
+                </div>
+              </section>
+            );
+          case "stats":
+            return (
+              <section key={key} className="section section-tight">
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
+                <div className="stats-strip">
+                  {section.items.map((item) => (
+                    <div key={`${item.value}-${item.label}`} className="stat-card">
+                      <p className="stat-value">{item.value}</p>
+                      <p className="stat-label">{item.label}</p>
+                      {item.body && <p className="stat-body">{item.body}</p>}
                     </div>
                   ))}
                 </div>
@@ -221,7 +305,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "updates":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <ul className="space-y-3">
                   {section.items.map((item) => (
                     <li key={item.label} className="glass-row">
@@ -240,7 +324,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "text":
             return (
               <section key={key} className="section prose prose-invert max-w-none">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 {section.body && (
                   <ReactMarkdown
                     remarkPlugins={markdownPlugins}
@@ -259,7 +343,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "list":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <ul className="list-disc space-y-2 pl-5 text-slate-200">
                   {section.items.map((item) => (
                     <li key={item}>{item}</li>
@@ -270,7 +354,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "pipeline":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="pipeline">
                   {section.steps.map((step, idx) => (
                     <div key={`${step}-${idx}`} className="pipeline-step">
@@ -295,10 +379,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
 
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                {section.subtitle && (
-                  <p className="section-subtitle">{section.subtitle}</p>
-                )}
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
                 {(section.downloadHref || section.downloadLabel) && (
                   <div className="viewer-toolbar">
                     {section.downloadHref ? (
@@ -341,7 +422,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "video":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 {section.ctaHref && (
                   <div className="section-cta section-cta-prominent">
                     <a
@@ -351,6 +432,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       rel="noreferrer"
                     >
                       {section.ctaLabel || "Open related document"}
+                      <span aria-hidden>&#8594;</span>
                     </a>
                   </div>
                 )}
@@ -374,10 +456,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "gallery":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                {section.subtitle && (
-                  <p className="section-subtitle">{section.subtitle}</p>
-                )}
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
                 <div className="gallery-shell">
                   <button
                     className="gallery-control"
@@ -432,7 +511,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "columns":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="grid gap-6 md:grid-cols-2">
                   {section.columns.map((col) => (
                     <div key={col.heading} className="glass-card">
@@ -452,7 +531,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "roadmap":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="timeline">
                   {section.items.map((item) => (
                     <div key={item.label} className="timeline-item">
@@ -471,13 +550,14 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "cards":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                <div className="card-grid">
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
+                <div className={`card-grid card-grid-${section.variant || "default"}`}>
                   {section.cards.map((card) => (
-                    <div key={card.title} className="glass-card">
-                      <h3 className="card-title">{card.title}</h3>
-                      <p className="card-body">{card.body}</p>
-                    </div>
+                    <FeatureCardView
+                      key={card.title}
+                      card={card}
+                      variant={section.variant || "default"}
+                    />
                   ))}
                 </div>
                 {section.note && (
@@ -488,7 +568,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "warning":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="warning-box">
                   <ReactMarkdown
                     remarkPlugins={markdownPlugins}
@@ -502,13 +582,28 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
             );
           case "steps":
             return (
-              <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                <ol className="ordered-steps">
+              <section key={key} className="section section-tight">
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
+                <ol className="ordered-steps workflow-steps">
                   {section.steps.map((step, idx) => (
-                    <li key={`${step}-${idx}`} className="glass-card">
+                    <li
+                      key={`${isRichStep(step) ? step.title : step}-${idx}`}
+                      className="glass-card workflow-step"
+                    >
                       <span className="badge">{idx + 1}</span>
-                      <span>{step}</span>
+                      <div className="workflow-step-copy">
+                        {isRichStep(step) ? (
+                          <>
+                            <h3 className="workflow-step-title">
+                              {step.icon && <span aria-hidden>{step.icon}</span>}
+                              {step.title}
+                            </h3>
+                            {step.body && <p>{step.body}</p>}
+                          </>
+                        ) : (
+                          <span>{step}</span>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ol>
@@ -517,17 +612,10 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "links":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
-                <div className="glass-card space-y-2">
+                <SectionIntro title={section.title} subtitle={section.subtitle} />
+                <div className="resource-grid">
                   {section.links.map((link) => (
-                    <div key={link.label} className="flex items-start justify-between gap-3">
-                      <a href={link.href} className="link" target="_blank" rel="noreferrer">
-                        {link.label}
-                      </a>
-                      {link.note && (
-                        <span className="text-xs text-slate-300">{link.note}</span>
-                      )}
-                    </div>
+                    <ResourceLink key={link.label} link={link} />
                   ))}
                 </div>
               </section>
@@ -535,7 +623,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "faq":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="space-y-3">
                   {section.items.map((item) => (
                     <details key={item.question} className="glass-card">
@@ -551,7 +639,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "contactForm":
             return (
               <section key={key} className="section">
-                {section.title && <h2 className="section-title">{section.title}</h2>}
+                <SectionIntro title={section.title} />
                 <div className="glass-card">
                   <p className="mb-4 text-sm text-slate-200">
                     Send a message and we will follow up shortly.

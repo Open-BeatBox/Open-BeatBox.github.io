@@ -3,20 +3,29 @@ import { Metadata } from "next";
 export type Hero = {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   backgroundImage?: string;
   backgroundVideo?: string;
   primaryCta?: CTA;
   secondaryCta?: CTA;
+  tertiaryCta?: CTA;
+  ctas?: CTA[];
 };
 
 export type CTA = {
   label: string;
   href: string;
+  variant?: "primary" | "secondary" | "ghost";
 };
 
 export type FeatureCard = {
   title: string;
   body: string;
+  eyebrow?: string;
+  icon?: string;
+  href?: string;
+  ctaLabel?: string;
+  links?: LinkItem[];
 };
 
 export type MediaItem = {
@@ -48,7 +57,19 @@ export type LinkItem = {
   note?: string;
 };
 
-export type Step = string;
+export type Step =
+  | string
+  | {
+      title: string;
+      body?: string;
+      icon?: string;
+    };
+
+export type StatItem = {
+  value: string;
+  label: string;
+  body?: string;
+};
 
 export type TimelineItem = {
   label: string;
@@ -58,7 +79,8 @@ export type TimelineItem = {
 
 export type Section =
   | { type: "text"; title?: string; body?: string }
-  | { type: "featureCards"; title?: string; cards: FeatureCard[] }
+  | { type: "featureCards"; title?: string; subtitle?: string; cards: FeatureCard[] }
+  | { type: "stats"; title?: string; subtitle?: string; items: StatItem[] }
   | { type: "updates"; title?: string; items: LinkItem[] }
   | { type: "list"; title?: string; items: string[] }
   | { type: "pipeline"; title?: string; steps: string[] }
@@ -115,10 +137,17 @@ export type Section =
       columns: { heading: string; body: string }[];
     }
   | { type: "roadmap"; title?: string; items: TimelineItem[] }
-  | { type: "cards"; title?: string; cards: FeatureCard[]; note?: string }
+  | {
+      type: "cards";
+      title?: string;
+      subtitle?: string;
+      cards: FeatureCard[];
+      note?: string;
+      variant?: "default" | "audience" | "resources";
+    }
   | { type: "warning"; title?: string; body: string }
-  | { type: "steps"; title?: string; steps: Step[] }
-  | { type: "links"; title?: string; links: LinkItem[] }
+  | { type: "steps"; title?: string; subtitle?: string; steps: Step[] }
+  | { type: "links"; title?: string; subtitle?: string; links: LinkItem[] }
   | { type: "faq"; title?: string; items: FAQItem[] }
   | {
       type: "contactForm";

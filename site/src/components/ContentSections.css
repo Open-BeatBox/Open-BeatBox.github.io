@@ -1,16 +1,20 @@
 @reference "../app/globals.css";
 
 .section {
-  @apply rounded-2xl border border-white/10 bg-slate-900/40 p-6 shadow-lg backdrop-blur;
+  @apply rounded-2xl border border-white/10 bg-slate-900/45 p-6 shadow-lg backdrop-blur;
   animation: section-fade 0.7s ease both;
 }
 
+.section-tight {
+  @apply p-5;
+}
+
 .section-title {
-  @apply mb-4 text-2xl font-semibold text-white;
+  @apply mb-4 text-2xl font-semibold leading-tight text-white md:text-3xl;
 }
 
 .section-subtitle {
-  @apply -mt-2 mb-6 text-base text-slate-200;
+  @apply -mt-2 mb-6 max-w-3xl text-base leading-relaxed text-slate-200;
 }
 
 .section-eyebrow {
@@ -19,6 +23,14 @@
 
 .card-grid {
   @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.card-grid-audience {
+  @apply lg:grid-cols-3;
+}
+
+.card-grid-resources {
+  @apply sm:grid-cols-2 xl:grid-cols-4;
 }
 
 .glass-card {
@@ -30,11 +42,64 @@
 }
 
 .card-title {
-  @apply text-lg font-semibold text-white;
+  @apply text-lg font-semibold leading-snug text-white;
 }
 
 .card-body {
-  @apply mt-1 text-slate-200;
+  @apply mt-2 text-sm leading-relaxed text-slate-200;
+}
+
+.card-heading-row {
+  @apply flex items-start gap-3;
+}
+
+.card-icon {
+  @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-200/20 bg-cyan-300/10 text-lg text-cyan-100;
+}
+
+.card-eyebrow {
+  @apply mb-1 text-xs font-semibold uppercase text-cyan-200;
+  letter-spacing: 0;
+}
+
+.impact-card {
+  @apply block h-full transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+}
+
+.impact-card-audience {
+  @apply border-cyan-200/15 bg-cyan-50/[0.04];
+}
+
+.impact-card-resources {
+  @apply border-white/10 bg-slate-950/45;
+}
+
+.card-link-list {
+  @apply mt-4 flex flex-wrap gap-3 text-sm;
+}
+
+.card-cta {
+  @apply mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200;
+}
+
+.stats-strip {
+  @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-5;
+}
+
+.stat-card {
+  @apply rounded-xl border border-white/10 bg-slate-950/40 p-4;
+}
+
+.stat-value {
+  @apply text-2xl font-bold leading-none text-cyan-200 md:text-3xl;
+}
+
+.stat-label {
+  @apply mt-2 text-sm font-semibold text-white;
+}
+
+.stat-body {
+  @apply mt-1 text-xs leading-relaxed text-slate-300;
 }
 
 .pipeline {
@@ -85,7 +150,7 @@
 }
 
 .section-button {
-  @apply inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:bg-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200;
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:-translate-y-0.5 hover:bg-cyan-200 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200;
 }
 
 .gallery-shell {
@@ -127,7 +192,43 @@
 }
 
 .ordered-steps .badge {
-  @apply mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-sm font-semibold text-white;
+  @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-sm font-semibold text-slate-950;
+}
+
+.workflow-steps {
+  @apply grid gap-3 md:grid-cols-2 xl:grid-cols-4;
+}
+
+.workflow-step {
+  @apply flex gap-3;
+}
+
+.workflow-step-copy {
+  @apply min-w-0 text-sm leading-relaxed text-slate-200;
+}
+
+.workflow-step-title {
+  @apply mb-1 flex items-center gap-2 text-base font-semibold text-white;
+}
+
+.resource-grid {
+  @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.resource-card {
+  @apply relative flex min-h-28 flex-col rounded-xl border border-white/10 bg-slate-950/45 p-4 pr-10 text-slate-200 shadow-md transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+}
+
+.resource-card-label {
+  @apply text-base font-semibold text-white;
+}
+
+.resource-card-note {
+  @apply mt-2 text-sm leading-relaxed text-slate-300;
+}
+
+.resource-card-arrow {
+  @apply absolute right-4 top-4 text-cyan-200;
 }
 
 .link {

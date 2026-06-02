@@ -12,8 +12,13 @@ const HeroSection: React.FC<Props> = ({ hero }) => {
   if (!hero) return null;
   const hasVideo = Boolean(hero.backgroundVideo);
   const hasImage = Boolean(hero.backgroundImage);
+  const ctas =
+    hero.ctas && hero.ctas.length > 0
+      ? hero.ctas
+      : [hero.primaryCta, hero.secondaryCta, hero.tertiaryCta].filter(Boolean);
+
   return (
-    <section className="hero relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-white shadow-xl">
+    <section className="hero relative overflow-hidden rounded-3xl bg-slate-950 p-8 text-white shadow-xl">
       {(hasVideo || hasImage) && (
         <div className="hero-media" aria-hidden>
           {hasVideo ? (
@@ -40,30 +45,30 @@ const HeroSection: React.FC<Props> = ({ hero }) => {
         </div>
       )}
       <div className="hero-overlay" aria-hidden />
-      <div className="relative z-10 space-y-6 md:max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.2em] text-blue-200">BEATBox</p>
-        <h1 className="text-3xl font-bold leading-tight md:text-5xl">
+      <div className="hero-content relative z-10">
+        <p className="hero-eyebrow">{hero.eyebrow || "BEATBox"}</p>
+        <h1 className="hero-title">
           {hero.title}
         </h1>
         {hero.subtitle && (
-          <p className="max-w-2xl text-lg text-slate-200 md:text-xl">
+          <p className="hero-subtitle">
             {hero.subtitle}
           </p>
         )}
-        <div className="flex flex-wrap gap-3">
-          {hero.primaryCta && (
-            <Link className="btn btn-primary" href={hero.primaryCta.href}>
-              {hero.primaryCta.label}
-            </Link>
-          )}
-          {hero.secondaryCta && (
-            <Link className="btn btn-secondary" href={hero.secondaryCta.href}>
-              {hero.secondaryCta.label}
-            </Link>
-          )}
-        </div>
+        {ctas.length > 0 && (
+          <div className="hero-actions">
+            {ctas.map((cta, index) => (
+              <Link
+                key={`${cta?.label}-${cta?.href}`}
+                className={`btn btn-${cta?.variant || (index === 0 ? "primary" : "secondary")}`}
+                href={cta?.href || "#"}
+              >
+                {cta?.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="hero-glow absolute -right-10 -top-10 h-64 w-64 rounded-full bg-blue-500/30 blur-3xl" />
       <div className="hero-grid absolute inset-0" aria-hidden />
     </section>
   );
