@@ -97,8 +97,8 @@ const parseMarkdownFile = (
       : `/${path
           .relative(contentDir, filePath)
           .replace(/\\/g, "/")
-          .replace(/index\\.md$/, "")
-          .replace(/\\.md$/, "")}`;
+          .replace(/index\.md$/, "")
+          .replace(/\.md$/, "")}`;
 
   return {
     ...fm,
@@ -271,7 +271,7 @@ export const getContentPaths = async (): Promise<string[]> => {
 };
 
 const parseSlugFromPath = (filePath: string) => {
-  const relative = path.relative(contentDir, filePath).replace(/\\\\/g, "/");
-  const clean = relative.replace(/index\\.md$/, "").replace(/\\.md$/, "");
+  const relative = path.relative(contentDir, filePath).replace(/\\/g, "/");
+  const clean = relative.replace(/index\.md$/, "").replace(/\.md$/, "");
   return ensureLeadingSlash(clean === "home" ? "/" : clean);
 };
