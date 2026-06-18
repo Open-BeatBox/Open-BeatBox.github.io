@@ -7,7 +7,7 @@ slug: "/"
 sections:
   - type: "brandShowcase"
     title: "BEATBox"
-    subtitle: "Behavioral and Ecological Automated operant Box"
+    subtitle: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
     logo: "/images/beatbox-logo.png"
     video: "/assets/gifs/BEATBOX.5.compressed.gif"
     poster: "/images/beatbox_V3.png"
