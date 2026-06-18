@@ -64,6 +64,14 @@ export type QuickLinkItem = {
   alt: string;
 };
 
+export type BrandShowcase = {
+  title: string;
+  subtitle?: string;
+  logo?: string;
+  video: string;
+  poster?: string;
+};
+
 export type Step =
   | string
   | {
@@ -86,6 +94,7 @@ export type TimelineItem = {
 
 export type Section =
   | { type: "text"; title?: string; body?: string }
+  | { type: "brandShowcase"; title: string; subtitle?: string; logo?: string; video: string; poster?: string }
   | { type: "quickLinks"; items: QuickLinkItem[] }
   | { type: "featureCards"; title?: string; subtitle?: string; cards: FeatureCard[] }
   | { type: "stats"; title?: string; subtitle?: string; items: StatItem[] }

@@ -12,6 +12,43 @@
   @apply p-5;
 }
 
+.brand-showcase {
+  @apply grid items-center gap-5 rounded-2xl p-5 shadow-lg backdrop-blur lg:grid-cols-[0.95fr,1.05fr];
+  border: 1px solid var(--border-soft);
+  background: var(--panel-bg);
+  color: var(--text-main);
+}
+
+.brand-showcase-copy {
+  @apply flex items-center gap-4;
+}
+
+.brand-showcase-logo {
+  @apply shrink-0 rounded-2xl;
+}
+
+.brand-showcase-title {
+  @apply text-3xl font-bold leading-tight md:text-5xl;
+  color: var(--text-strong);
+}
+
+.brand-showcase-subtitle {
+  @apply mt-2 max-w-2xl text-base leading-relaxed md:text-lg;
+  color: var(--text-muted);
+}
+
+.brand-showcase-video-frame {
+  @apply relative overflow-hidden rounded-2xl shadow-lg;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
+  aspect-ratio: 16 / 9;
+  max-height: 280px;
+}
+
+.brand-showcase-video {
+  @apply h-full w-full object-cover;
+}
+
 .quick-links-section {
   @apply pt-2;
 }
@@ -518,6 +555,22 @@
 
   .section-tight {
     padding: 1rem;
+  }
+
+  .brand-showcase {
+    @apply p-4;
+  }
+
+  .brand-showcase-copy {
+    @apply items-start;
+  }
+
+  .brand-showcase-title {
+    @apply text-3xl;
+  }
+
+  .brand-showcase-video-frame {
+    max-height: 210px;
   }
 
   .section-title {

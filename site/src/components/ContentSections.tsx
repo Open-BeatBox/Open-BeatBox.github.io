@@ -141,6 +141,41 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
       {sections.map((section, index) => {
         const key = `${section.type}-${index}`;
         switch (section.type) {
+          case "brandShowcase":
+            return (
+              <section key={key} className="brand-showcase">
+                <div className="brand-showcase-copy">
+                  {section.logo && (
+                    <Image
+                      src={section.logo}
+                      alt="BEATBox logo"
+                      width={82}
+                      height={82}
+                      className="brand-showcase-logo"
+                      priority={index === 0}
+                    />
+                  )}
+                  <div>
+                    <h1 className="brand-showcase-title">{section.title}</h1>
+                    {section.subtitle && (
+                      <p className="brand-showcase-subtitle">{section.subtitle}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="brand-showcase-video-frame">
+                  <video
+                    src={section.video}
+                    poster={section.poster}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="brand-showcase-video"
+                  />
+                </div>
+              </section>
+            );
           case "quickLinks":
             return (
               <section key={key} className="quick-links-section" aria-label="Primary links">
