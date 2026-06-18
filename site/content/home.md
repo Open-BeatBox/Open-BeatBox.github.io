@@ -6,7 +6,7 @@ navOrder: 1
 slug: "/"
 sections:
   - type: "brandShowcase"
-    title: "BEATBox Behavioral and Ecological"
+    title: "BEATBox"
     subtitle: "Behavioral and Ecological Automated operant Box"
     kicker: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
     logo: "/images/beatbox-logo.png"
@@ -31,7 +31,6 @@ sections:
         image: "/images/nav-github-logo.svg"
         alt: "GitHub logo"
   - type: "stats"
-    title: "BEATBox = Open-source 24/7 home-cage operant conditioning"
     items:
       - value: "24/7"
         label: "Autonomous access"
@@ -48,13 +47,6 @@ sections:
       - value: "Low-cost"
         label: "Design target"
         body: "Accessible fabrication for reproducible deployments."
-  - type: "pipeline"
-    title: "How BEATBox works"
-    steps:
-      - "Home-cage access: the animal remains in the BEATBox environment and can approach task areas on its own schedule."
-      - "Autonomous task engagement: operant events are triggered and logged without repeated handling or daily manual sessions."
-      - "Integrated modules: feeder, screens, nosepokes, IR barriers, lighting, tunnels, and wall panels create configurable behavioral workflows."
-      - "Continuous monitoring: the Raspberry Pi shield, GUI, and data pipeline record task state, sensor events, and performance across long experiments."
   - type: "cards"
     title: "Why it matters"
     cards:
@@ -87,7 +79,7 @@ sections:
     title: "Gallery"
     subtitle: "Selected BEATBox renders, build photos, modules, electronics, and GUI screens."
     ctaLabel: "Open full gallery"
-    ctaHref: "/gallery"
+    ctaHref: "https://open-beatbox.github.io/gallery"
     items:
       - src: "/images/BB_Full-1.jpg"
         alt: "Completed BEATBox front view"
@@ -135,7 +127,7 @@ sections:
         alt: "Electronics overview"
         caption: "Electronics overview."
   - type: "mediaSplit"
-    title: "Live Demo"
+    title: "Video examples"
     eyebrow: "In-lab recording"
     body: "Short real-life demo clip showing BEATBox in use."
     media:

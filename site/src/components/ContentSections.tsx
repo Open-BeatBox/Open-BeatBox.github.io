@@ -534,19 +534,6 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
             return (
               <section key={key} className="section">
                 <SectionIntro title={section.title} subtitle={section.subtitle} />
-                {section.ctaHref && (
-                  <div className="section-cta section-cta-prominent">
-                    <a
-                      href={section.ctaHref}
-                      className="section-button"
-                      target={section.ctaHref.startsWith("http") ? "_blank" : undefined}
-                      rel={section.ctaHref.startsWith("http") ? "noreferrer" : undefined}
-                    >
-                      {section.ctaLabel || "Open gallery"}
-                      <span aria-hidden>&#8594;</span>
-                    </a>
-                  </div>
-                )}
                 <div className="gallery-shell">
                   <button
                     className="gallery-control"
@@ -596,6 +583,19 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     &#8594;
                   </button>
                 </div>
+                {section.ctaHref && (
+                  <div className="section-cta">
+                    <a
+                      href={section.ctaHref}
+                      className="section-button"
+                      target={section.ctaHref.startsWith("http") ? "_blank" : undefined}
+                      rel={section.ctaHref.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      {section.ctaLabel || "Open gallery"}
+                      <span aria-hidden>&#8594;</span>
+                    </a>
+                  </div>
+                )}
               </section>
             );
           case "columns":
