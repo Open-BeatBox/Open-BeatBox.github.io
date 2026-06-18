@@ -141,7 +141,10 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
       {sections.map((section, index) => {
         const key = `${section.type}-${index}`;
         switch (section.type) {
-          case "brandShowcase":
+          case "brandShowcase": {
+            const isImageShowcase = /\.(gif|png|jpe?g|webp|avif|svg)$/i.test(
+              section.video
+            );
             return (
               <section key={key} className="brand-showcase">
                 <div className="brand-showcase-copy">
@@ -163,19 +166,28 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                   </div>
                 </div>
                 <div className="brand-showcase-video-frame">
-                  <video
-                    src={section.video}
-                    poster={section.poster}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="brand-showcase-video"
-                  />
+                  {isImageShowcase ? (
+                    <img
+                      src={section.video}
+                      alt=""
+                      className="brand-showcase-video"
+                    />
+                  ) : (
+                    <video
+                      src={section.video}
+                      poster={section.poster}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="brand-showcase-video"
+                    />
+                  )}
                 </div>
               </section>
             );
+          }
           case "quickLinks":
             return (
               <section key={key} className="quick-links-section" aria-label="Primary links">
@@ -519,6 +531,19 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
             return (
               <section key={key} className="section">
                 <SectionIntro title={section.title} subtitle={section.subtitle} />
+                {section.ctaHref && (
+                  <div className="section-cta section-cta-prominent">
+                    <a
+                      href={section.ctaHref}
+                      className="section-button"
+                      target={section.ctaHref.startsWith("http") ? "_blank" : undefined}
+                      rel={section.ctaHref.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      {section.ctaLabel || "Open gallery"}
+                      <span aria-hidden>&#8594;</span>
+                    </a>
+                  </div>
+                )}
                 <div className="gallery-shell">
                   <button
                     className="gallery-control"

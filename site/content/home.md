@@ -9,7 +9,7 @@ sections:
     title: "BEATBox"
     subtitle: "Behavioral and Ecological Automated operant Box"
     logo: "/images/beatbox-logo.png"
-    video: "/videos/AssemblageCage_Transparent.mp4"
+    video: "/assets/gifs/BEATBOX.5.compressed.gif"
     poster: "/images/beatbox_V3.png"
   - type: "quickLinks"
     items:
@@ -29,6 +29,46 @@ sections:
         href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io"
         image: "/images/nav-github-logo.svg"
         alt: "GitHub logo"
+  - type: "stats"
+    title: "Built for experiments that do not fit into short sessions"
+    items:
+      - value: "24/7"
+        label: "Autonomous access"
+        body: "Animals can engage across day-night cycles."
+      - value: "Home"
+        label: "Cage context"
+        body: "Designed to reduce repeated handling and preserve natural rhythms."
+      - value: "Open"
+        label: "Source build"
+        body: "Hardware, software, CAD, firmware, and docs are inspectable."
+      - value: "Modular"
+        label: "Task panels"
+        body: "Feeder, screen, tunnel, lighting, wall, and sensor modules."
+      - value: "Low-cost"
+        label: "Design target"
+        body: "Accessible fabrication for reproducible deployments."
+  - type: "pipeline"
+    title: "How BEATBox works"
+    steps:
+      - "Home-cage access: the animal remains in the BEATBox environment and can approach task areas on its own schedule."
+      - "Autonomous task engagement: operant events are triggered and logged without repeated handling or daily manual sessions."
+      - "Integrated modules: feeder, screens, nosepokes, IR barriers, lighting, tunnels, and wall panels create configurable behavioral workflows."
+      - "Continuous monitoring: the Raspberry Pi shield, GUI, and data pipeline record task state, sensor events, and performance across long experiments."
+  - type: "cards"
+    title: "Why it matters"
+    cards:
+      - title: "Less handling, less stress"
+        body: "Autonomous engagement reduces the need to move animals into separate testing rooms and limits stress-related behavioral bias."
+      - title: "More behavioral data per subject"
+        body: "Continuous access can increase trial density and reveal circadian, motivational, and learning dynamics that short sessions may miss."
+      - title: "Better reproducibility"
+        body: "Standardized hardware, task timing, and data logs reduce experimenter variability and make protocols easier to share."
+      - title: "3Rs alignment"
+        body: "Richer within-subject datasets can improve statistical power and may reduce animal numbers when study designs support it."
+      - title: "Autonomous"
+        body: "Autonomous task engagement: operant events are triggered and logged without repeated handling or daily manual sessions."
+      - title: "Integrated modules"
+        body: "Feeder, screens, nosepokes, IR barriers, lighting, tunnels, and wall panels create configurable behavioral workflows."
   - type: "mediaGrid"
     title: "System Overview"
     subtitle: "Open-source 24/7 home-cage operant conditioning."
@@ -39,16 +79,11 @@ sections:
       - image: "/images/beatbox_V3_clear.png"
         title: "Optimized for design and communication"
         body: "A transparent architecture that makes the hardware and workflow easy to explain."
-  - type: "cards"
-    title: "Core Capabilities"
-    cards:
-      - title: "Autonomous"
-        body: "Autonomous task engagement: operant events are triggered and logged without repeated handling or daily manual sessions."
-      - title: "Integrated modules"
-        body: "Feeder, screens, nosepokes, IR barriers, lighting, tunnels, and wall panels create configurable behavioral workflows."
   - type: "gallery"
     title: "Gallery"
     subtitle: "Selected BEATBox renders, build photos, modules, electronics, and GUI screens."
+    ctaLabel: "Open full gallery"
+    ctaHref: "/gallery"
     items:
       - src: "/images/BB_Full-1.jpg"
         alt: "Completed BEATBox front view"
@@ -95,12 +130,6 @@ sections:
       - src: "/images/electronics/photo-circuit-all.jpg"
         alt: "Electronics overview"
         caption: "Electronics overview."
-  - type: "links"
-    title: "Open the Full Gallery"
-    links:
-      - label: "Open gallery page"
-        href: "/gallery"
-        note: "More BEATBox images and build references"
   - type: "mediaSplit"
     title: "Live Demo"
     eyebrow: "In-lab recording"
@@ -172,6 +201,12 @@ sections:
           - Christianne Schreiweiss
 
           \*All versions included
+  - type: "text"
+    title: "How to cite"
+    body: |
+      Citation instructions will be added when a preprint, paper, or DOI is available.
+
+      Until publication metadata is finalized, please reference the BEATBox open-source repository and contact the team before public reuse in manuscripts, talks, or derivative documentation.
 ---
 
 BEATBox is an open-source platform for ecological home-cage behavioral experiments.

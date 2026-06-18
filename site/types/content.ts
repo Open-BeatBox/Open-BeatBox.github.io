@@ -126,6 +126,8 @@ export type Section =
       title?: string;
       subtitle?: string;
       items: MediaItem[];
+      ctaLabel?: string;
+      ctaHref?: string;
     }
   | {
       type: "mediaSplit";

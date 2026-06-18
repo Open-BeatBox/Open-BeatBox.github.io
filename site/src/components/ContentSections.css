@@ -13,14 +13,14 @@
 }
 
 .brand-showcase {
-  @apply grid items-center gap-5 rounded-2xl p-5 shadow-lg backdrop-blur lg:grid-cols-[0.95fr,1.05fr];
+  @apply grid items-center gap-5 rounded-2xl p-5 text-center shadow-lg backdrop-blur;
   border: 1px solid var(--border-soft);
   background: var(--panel-bg);
   color: var(--text-main);
 }
 
 .brand-showcase-copy {
-  @apply flex items-center gap-4;
+  @apply mx-auto flex max-w-3xl items-center justify-center gap-4;
 }
 
 .brand-showcase-logo {
@@ -38,11 +38,11 @@
 }
 
 .brand-showcase-video-frame {
-  @apply relative overflow-hidden rounded-2xl shadow-lg;
+  @apply relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl shadow-lg;
   border: 1px solid var(--border-soft);
   background: var(--card-bg-strong);
   aspect-ratio: 16 / 9;
-  max-height: 280px;
+  max-height: 360px;
 }
 
 .brand-showcase-video {
@@ -562,7 +562,7 @@
   }
 
   .brand-showcase-copy {
-    @apply items-start;
+    @apply flex-col items-center;
   }
 
   .brand-showcase-title {
