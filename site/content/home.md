@@ -101,28 +101,6 @@ sections:
       - label: "Open gallery page"
         href: "/gallery"
         note: "More BEATBox images and build references"
-  - type: "links"
-    title: "Build and production resources"
-    subtitle: "Temporary resource index while the documentation is consolidated."
-    links:
-      - label: "Interactive assembly SOP"
-        href: "/docs/beatbox-assembly-sop.html"
-        note: "Temporary build checklist"
-      - label: "Build guides"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/build-guides"
-        note: "Temporary"
-      - label: "CAD and 3D print files"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware/CAD_files"
-        note: "Temporary"
-      - label: "Hardware and PCB resources"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware"
-        note: "Temporary"
-      - label: "Firmware"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/firmware"
-        note: "Temporary"
-      - label: "Software GUI"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software"
-        note: "Temporary Python GUI resources"
   - type: "mediaSplit"
     title: "Live Demo"
     eyebrow: "In-lab recording"
@@ -141,7 +119,7 @@ sections:
   - type: "text"
     title: "Contact"
     body: |
-      For the team: [nerbmouse@gmail.com](mailto:nerbmouse@gmail.com)
+      For the team: [eric.burguiere@cnrs.fr](mailto:eric.burguiere@cnrs.fr)
 
       Centre de Recherche en Neurosciences de Lyon (CRNL), Located in: Centre Hospitalier Le Vinatier
       Address: CRNL - CH Le Vinatier - Bâtiment 462 - Neurocampus, 95 Bd Pinel, 69500 Bron
