@@ -320,6 +320,59 @@
       color: #94a3b8;
       cursor: not-allowed;
     }
+    .step-image-tools {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 8px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,.72);
+    }
+    .step-image-tools.disabled {
+      display: none;
+    }
+    .step-image-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .step-image-hint {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    .step-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+    }
+    .step-image-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+    .step-image-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #f8fafc;
+    }
+    .step-image-meta {
+      display: grid;
+      gap: 6px;
+      padding: 7px;
+      font-size: .76rem;
+      color: var(--muted);
+    }
+    .step-image-meta button {
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: .76rem;
+      color: var(--critical);
+    }
     .section-note { margin-top: 14px; }
     textarea, input[type="text"], input[type="date"] {
       width: 100%;
@@ -931,6 +984,17 @@ function renderGallery(items) {
   ).join('');
   return `<div class="sop-gallery"><div class="sop-gallery-label">📷 Build reference photos — click to zoom</div><div class="sop-gallery-strip">${thumbs}</div></div>`;
 }
+function renderStepImages(id, images = []) {
+  if (!images.length) return '';
+  return `<div class="step-image-grid">${images.map((image, index) => `
+    <div class="step-image-card">
+      <img src="${escapeHTML(image.dataUrl)}" alt="${escapeHTML(image.name || 'Imported step image')}" loading="lazy" />
+      <div class="step-image-meta">
+        <span>${escapeHTML(image.name || `Image ${index + 1}`)}</span>
+        <button type="button" data-remove-image="${id}" data-image-index="${index}">Remove</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
 function renderItems(items, section, path='') {
   if (!items || !items.length) return '';
   return `<div class="checklist">${items.map(item => {
@@ -939,6 +1003,7 @@ function renderItems(items, section, path='') {
     const review = reviewState[id] || {};
     const action = review.action || 'keep';
     const modificationNote = review.note || '';
+    const images = review.images || [];
     itemIndex.push({ id, sectionId: section.id, sectionTitle: section.title, path, text: item.text, note: item.note || '', level });
     const checked = state[id] ? 'checked' : '';
     return `<div class="check-row ${checked ? 'done' : ''} ${action !== 'keep' ? action : ''}" data-text="${escapeHTML((item.text + ' ' + (item.note || '') + ' ' + path + ' ' + modificationNote).toLowerCase())}" data-section="${section.id}" data-level="${level}">
@@ -952,6 +1017,14 @@ function renderItems(items, section, path='') {
           <option value="modify" ${action === 'modify' ? 'selected' : ''}>Modify step</option>
         </select>
         <textarea class="review-note" data-review-note="${id}" placeholder="If modifying or removing, capture what should change and why." ${action === 'keep' ? 'disabled' : ''}>${escapeHTML(modificationNote)}</textarea>
+        <div class="step-image-tools ${action === 'modify' ? '' : 'disabled'}" data-image-tools="${id}">
+          <div class="step-image-actions">
+            <label class="file-label" for="img-${id}">Import pictures</label>
+            <input type="file" id="img-${id}" data-image-import="${id}" accept="image/*" multiple />
+            <span class="step-image-hint">Images attach to this step and export with the revised SOP.</span>
+          </div>
+          ${renderStepImages(id, images)}
+        </div>
       </span>
     </div>`;
   }).join('')}</div>`;
@@ -1028,9 +1101,11 @@ function updateProgress() {
     const cb = row.querySelector('input[type=checkbox]');
     const select = row.querySelector('[data-review-action]');
     const action = select?.value || 'keep';
+    const imageTools = row.querySelector('[data-image-tools]');
     row.classList.toggle('done', cb.checked);
     row.classList.toggle('remove', action === 'remove');
     row.classList.toggle('modify', action === 'modify');
+    if (imageTools) imageTools.classList.toggle('disabled', action !== 'modify');
   });
   const total = itemIndex.length;
   const done = itemIndex.filter(i => state[i.id]).length;
@@ -1070,6 +1145,9 @@ function attachEvents() {
       save();
       updateProgress();
     }
+    if (e.target.matches('[data-image-import]')) {
+      handleImageImport(e.target);
+    }
     if (e.target.matches('[data-meta]')) {
       metaState[e.target.dataset.meta] = e.target.value;
       save();
@@ -1108,6 +1186,19 @@ function attachEvents() {
       attachDynamicOnly();
       updateProgress();
     }
+    const removeImage = e.target.closest('[data-remove-image]');
+    if (removeImage) {
+      const id = removeImage.dataset.removeImage;
+      const index = Number(removeImage.dataset.imageIndex);
+      if (reviewState[id]?.images) {
+        reviewState[id].images.splice(index, 1);
+        if (!reviewState[id].images.length) delete reviewState[id].images;
+        save();
+        renderSections();
+        attachDynamicOnly();
+        updateProgress();
+      }
+    }
   });
   document.getElementById('search').addEventListener('input', filterItems);
   document.getElementById('expandAll').addEventListener('click', () => toggleAll(false));
@@ -1128,6 +1219,39 @@ function attachDynamicOnly() {
 function toggleAll(collapse) {
   document.querySelectorAll('[data-section-body]').forEach(body => body.classList.toggle('hide', collapse));
   document.querySelectorAll('[data-toggle-section]').forEach(btn => btn.textContent = collapse ? 'Expand' : 'Collapse');
+}
+function readImageFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve({
+      name: file.name,
+      type: file.type,
+      size: file.size,
+      dataUrl: reader.result,
+      addedAt: new Date().toISOString()
+    });
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+async function handleImageImport(input) {
+  const id = input.dataset.imageImport;
+  const files = [...input.files].filter(file => file.type.startsWith('image/'));
+  if (!id || !files.length) return;
+  try {
+    const images = await Promise.all(files.map(readImageFile));
+    reviewState[id] = reviewState[id] || {};
+    reviewState[id].action = 'modify';
+    reviewState[id].images = [...(reviewState[id].images || []), ...images];
+    save();
+    renderSections();
+    attachDynamicOnly();
+    updateProgress();
+  } catch (err) {
+    alert('Could not import image: ' + err.message);
+  } finally {
+    input.value = '';
+  }
 }
 function filterItems() {
   const q = document.getElementById('search').value.trim().toLowerCase();
@@ -1151,7 +1275,8 @@ function itemReview(id) {
   const review = reviewState[id] || {};
   return {
     action: review.action || 'keep',
-    note: review.note || ''
+    note: review.note || '',
+    images: review.images || []
   };
 }
 function cloneProcedureForExport() {
@@ -1187,7 +1312,7 @@ function exportItems(items, section, path) {
   return items.map(item => {
     const id = itemId(section.id, path, item.text);
     const review = itemReview(id);
-    return {
+    const exported = {
       id,
       sectionId: section.id,
       sectionTitle: section.title,
@@ -1199,6 +1324,8 @@ function exportItems(items, section, path) {
       reviewAction: review.action,
       reviewNote: review.note
     };
+    if (review.images.length) exported.illustrations = review.images;
+    return exported;
   });
 }
 function buildRevisedProcedure() {
@@ -1207,13 +1334,20 @@ function buildRevisedProcedure() {
     const review = itemReview(id);
     if (review.action === 'remove') return null;
     const output = {
+      id,
       text: item.text,
-      level: item.level || 'standard'
+      level: item.level || 'standard',
+      stage: {
+        sectionId: item.sectionId,
+        sectionTitle: item.sectionTitle,
+        path: item.path
+      }
     };
     if (item.note) output.note = item.note;
     if (review.action === 'modify') {
       output.reviewStatus = 'modify';
       output.requestedChange = review.note;
+      if (review.images.length) output.illustrations = review.images;
     }
     return output;
   };
@@ -1250,7 +1384,8 @@ function exportProgress() {
     summary: {
       totalSteps: itemIndex.length,
       completedSteps: itemIndex.filter(i => state[i.id]).length,
-      reviewActions: reviewSummary()
+      reviewActions: reviewSummary(),
+      importedPictures: Object.values(reviewState).reduce((total, review) => total + (review.images?.length || 0), 0)
     },
     progress: state,
     metadata: metaState,
