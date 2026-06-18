@@ -163,6 +163,9 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     {section.subtitle && (
                       <p className="brand-showcase-subtitle">{section.subtitle}</p>
                     )}
+                    {section.kicker && (
+                      <p className="brand-showcase-kicker">{section.kicker}</p>
+                    )}
                   </div>
                 </div>
                 <div className="brand-showcase-video-frame">

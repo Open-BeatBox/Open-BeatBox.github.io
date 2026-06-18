@@ -28,12 +28,17 @@
 }
 
 .brand-showcase-title {
-  @apply text-3xl font-bold leading-tight md:text-5xl;
+  @apply text-3xl font-bold leading-tight md:text-6xl;
   color: var(--text-strong);
 }
 
 .brand-showcase-subtitle {
-  @apply mt-2 max-w-2xl text-base leading-relaxed md:text-lg;
+  @apply mt-2 max-w-3xl text-xl font-semibold leading-snug md:text-3xl;
+  color: var(--text-strong);
+}
+
+.brand-showcase-kicker {
+  @apply mt-3 max-w-3xl text-sm leading-relaxed md:text-base;
   color: var(--text-muted);
 }
 
@@ -567,6 +572,10 @@
 
   .brand-showcase-title {
     @apply text-3xl;
+  }
+
+  .brand-showcase-subtitle {
+    @apply text-xl;
   }
 
   .brand-showcase-video-frame {
