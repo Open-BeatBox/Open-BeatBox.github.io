@@ -5,7 +5,7 @@ showInNav: false
 navOrder: 2
 slug: "/one-pager"
 hero:
-  title: "The BEhavioural and AuTonomous Box (BEATBox): an open-source automated, customizable, and low-cost system for high-throughput data acquisition"
+  title: "Behavioral and Ecological Automated operant Box (BEATBox): an open-source automated, customizable, and low-cost system for high-throughput data acquisition"
   subtitle: "24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
   backgroundVideo: "/images/D_View_Promotional_Video_Generated.mp4"
   backgroundImage: "/images/beatbox-og-default.png"

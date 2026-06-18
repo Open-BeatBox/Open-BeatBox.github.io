@@ -57,6 +57,13 @@ export type LinkItem = {
   note?: string;
 };
 
+export type QuickLinkItem = {
+  label: string;
+  href: string;
+  image: string;
+  alt: string;
+};
+
 export type Step =
   | string
   | {
@@ -79,6 +86,7 @@ export type TimelineItem = {
 
 export type Section =
   | { type: "text"; title?: string; body?: string }
+  | { type: "quickLinks"; items: QuickLinkItem[] }
   | { type: "featureCards"; title?: string; subtitle?: string; cards: FeatureCard[] }
   | { type: "stats"; title?: string; subtitle?: string; items: StatItem[] }
   | { type: "updates"; title?: string; items: LinkItem[] }

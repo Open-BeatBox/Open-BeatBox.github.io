@@ -1,6 +1,6 @@
 ---
-title: "BEATBox - The BEhavioural and AuTonomous Box"
-description: "BEATBox is an open-source, automated, customizable, and low-cost system for high-throughput behavioral data acquisition in home-cage environments."
+title: "BEATBox - Behavioral and Ecological Automated operant Box"
+description: "BEATBox is an open-source, automated, customizable, and low-cost system for ecological behavioral data acquisition in home-cage environments."
 keywords:
   - Beatbox
   - home-cage monitoring

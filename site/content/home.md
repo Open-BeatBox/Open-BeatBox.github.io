@@ -1,21 +1,28 @@
 ---
-title: "The BEhavioural and AuTonomous Box (BEATBox)"
+title: "Behavioral and Ecological Automated operant Box (BEATBox)"
 layout: "page"
 showInNav: false
 navOrder: 1
 slug: "/"
-hero:
-  title: "Open-source 24/7 home-cage behavioral testing"
-  subtitle: "BEATBox is a modular, low-cost platform for autonomous operant conditioning, longitudinal monitoring, and reproducible behavioral neuroscience."
-  backgroundVideo: "/images/D_View_Promotional_Video_Generated.mp4"
-  backgroundImage: "/images/beatbox_V3.png"
-  primaryCta:
-    label: "Build your own"
-    href: "/docs/beatbox-assembly-sop.html"
-  secondaryCta:
-    label: "View Open-Source Resources"
-    href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources"
 sections:
+  - type: "quickLinks"
+    items:
+      - label: "DOC"
+        href: "/docs/manual/"
+        image: "/images/nav-doc-book.svg"
+        alt: "Documentation book icon"
+      - label: "SOP"
+        href: "/docs/beatbox-assembly-sop.html"
+        image: "/images/nav-sop-checklist.svg"
+        alt: "SOP checklist icon"
+      - label: "GUI"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software"
+        image: "/images/software/GUI.png"
+        alt: "BEATBox GUI screenshot"
+      - label: "Github"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io"
+        image: "/images/nav-github-logo.svg"
+        alt: "GitHub logo"
   - type: "stats"
     title: "Built for experiments that do not fit into short sessions"
     items:

@@ -12,6 +12,44 @@
   @apply p-5;
 }
 
+.quick-links-section {
+  @apply pt-2;
+}
+
+.quick-link-grid {
+  @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
+}
+
+.quick-link-button {
+  @apply flex min-h-48 flex-col overflow-hidden rounded-2xl shadow-lg transition hover:-translate-y-1 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-strong);
+  color: var(--text-strong);
+}
+
+.quick-link-button:hover {
+  border-color: color-mix(in srgb, var(--accent-cta) 55%, white 20%);
+  background: color-mix(in srgb, var(--card-bg-strong) 82%, var(--accent-cta) 18%);
+}
+
+.quick-link-image-wrap {
+  @apply relative block h-32 w-full;
+  background: rgba(255,255,255,0.06);
+}
+
+.quick-link-image {
+  @apply object-contain p-5;
+}
+
+.quick-link-button:nth-child(3) .quick-link-image {
+  @apply object-cover p-0;
+}
+
+.quick-link-label {
+  @apply flex flex-1 items-center justify-center px-4 py-5 text-center text-2xl font-bold uppercase md:text-3xl;
+  letter-spacing: 0;
+}
+
 .section-title {
   @apply mb-4 text-2xl font-semibold leading-tight md:text-3xl;
   color: var(--text-strong);

@@ -141,6 +141,33 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
       {sections.map((section, index) => {
         const key = `${section.type}-${index}`;
         switch (section.type) {
+          case "quickLinks":
+            return (
+              <section key={key} className="quick-links-section" aria-label="Primary links">
+                <div className="quick-link-grid">
+                  {section.items.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="quick-link-button"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      <span className="quick-link-image-wrap">
+                        <Image
+                          src={item.image}
+                          alt={item.alt}
+                          fill
+                          sizes="(max-width: 640px) 45vw, 220px"
+                          className="quick-link-image"
+                        />
+                      </span>
+                      <span className="quick-link-label">{item.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            );
           case "mediaSplit":
             return (
               <section key={key} className="section section-split">
