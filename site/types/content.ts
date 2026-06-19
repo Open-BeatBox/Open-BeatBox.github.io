@@ -166,7 +166,7 @@ export type Section =
       subtitle?: string;
       cards: FeatureCard[];
       note?: string;
-      variant?: "default" | "audience" | "resources";
+      variant?: "default" | "audience" | "resources" | "accent";
     }
   | { type: "warning"; title?: string; body: string }
   | { type: "steps"; title?: string; subtitle?: string; steps: Step[] }

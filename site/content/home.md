@@ -73,20 +73,18 @@ sections:
         body: "Accessible fabrication for reproducible deployments, approximately 600€ for one system."
   - type: "cards"
     title: "Why it matters"
+    variant: "accent"
     cards:
       - title: "Less handling, less stress"
         body: "Autonomous engagement reduces the need to move animals into separate testing rooms and limits stress-related behavioral bias."
-        color: "#f3b2f7"
       - title: "More behavioral data per subject"
         body: "Continuous access can increase trial density and reveal circadian, motivational, and learning dynamics that short sessions may miss."
       - title: "Better reproducibility"
         body: "Standardized hardware, task timing, and data logs reduce experimenter variability and make protocols easier to share."
-        color: "#f3b2f7"
       - title: "3Rs alignment"
         body: "Richer within-subject datasets can improve statistical power and may reduce animal numbers when study designs support it."
       - title: "Autonomous"
         body: "Experiments can run themselves with less human supervision: operant events are triggered and logged automatically, saving time for data analysis and science."
-        color: "#f3b2f7"
       - title: "Integrated modules"
         body: "Feeder, screens, nosepokes, IR barriers, lighting, tunnels, and wall panels create configurable behavioral workflows."
   - type: "mediaGrid"
@@ -171,10 +169,11 @@ sections:
   - type: "text"
     title: "Contact"
     body: |
-      For the team: [eric.burguiere@cnrs.fr](mailto:eric.burguiere@cnrs.fr)
+      [eric.burguiere@cnrs.fr](mailto:eric.burguiere@cnrs.fr)
 
-      Centre de Recherche en Neurosciences de Lyon (CRNL), Located in: Centre Hospitalier Le Vinatier
-      Address: CRNL - CH Le Vinatier - Bâtiment 462 - Neurocampus, 95 Bd Pinel, 69500 Bron
+      Centre de Recherche en Neurosciences de Lyon (CRNL)
+	Located in: Centre Hospitalier Le Vinatier
+      Address: CRNL - CH Le Vinatier - [Bâtiment 462 - Neurocampus, 95 Bd Pinel, 69500 Bron](https://share.google/MSlKKKMuVHyNgxXI9)
   - type: "columns"
     title: "Credits"
     columns:
@@ -207,12 +206,12 @@ sections:
           **Documentation & Open Repository**
           - [Damien Huzard](https://www.neuronautix.com)
 
-          **Web Platform**
-          - Damien Huzard
-          - S. Lizbeth Mondragon-Gonzalez
+          **Website and Github**
+          - [Damien Huzard](https://github.com/dhuzard/)
+          - [Lizbeth Mondragon-Gonzalez](https://github.com/LizbethMG)
 
           **Graphic Design**
-          - S. Lizbeth Mondragon-Gonzalez
+          - [Lizbeth Mondragon-Gonzalez](https://lizbeth-mg.me/)
 
           **Validation & Beta Testing**
           - Marine Euvrard

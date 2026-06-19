@@ -48,7 +48,7 @@ const FeatureCardView = ({
   variant = "default",
 }: {
   card: FeatureCard;
-  variant?: "default" | "audience" | "resources";
+  variant?: "default" | "audience" | "resources" | "accent";
 }) => {
   const content = (
     <>

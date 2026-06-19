@@ -195,13 +195,18 @@
 }
 
 .impact-card {
-  @apply block h-full transition hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+  @apply block h-full transition hover:no-underline;
 }
 
-/* Keep the lift-on-hover affordance only for clickable (linked) cards;
-   static info cards (e.g. "Why it matters") stay put. */
+/* Hover affordances (lift + highlight) apply only to clickable (linked) cards;
+   static info cards (e.g. "Why it matters") stay inert. */
 a.impact-card:hover {
-  @apply -translate-y-0.5;
+  @apply -translate-y-0.5 border-cyan-300/40 bg-white/[0.07];
+}
+
+/* "accent" variant: a brand-cyan left stripe instead of a colored fill. */
+.impact-card-accent {
+  border-left: 4px solid var(--brand-cyan);
 }
 
 .impact-card-audience {
