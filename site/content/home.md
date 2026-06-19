@@ -7,31 +7,12 @@ slug: "/"
 sections:
   - type: "brandShowcase"
     title: "BEATBox"
-    subtitle: "Behavioural and Autonomous operant Box"
+    subtitle: "BEhavioural and AuTonomous operant Box"
     kicker: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
     logo: "/images/beatbox-logo.png"
     video: "/assets/gifs/BEATBOX.5.compressed.gif"
     poster: "/images/beatbox_V3.png"
   - type: "quickLinks"
-    items:
-      - label: "Documentation"
-        href: "/docs/manual/"
-        image: "/images/nav-doc-book.svg"
-        alt: "Documentation book icon"
-      - label: "Build your Own"
-        href: "/docs/beatbox-assembly-sop.html"
-        image: "/images/nav-sop-checklist.svg"
-        alt: "Build checklist icon"
-      - label: "GUI"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software"
-        image: "/images/software/window-monitoring_multiple.png"
-        alt: "BEATBox GUI monitoring screenshot"
-      - label: "Github"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io"
-        image: "/images/nav-github-logo.svg"
-        alt: "GitHub logo"
-  - type: "quickLinks"
-    title: "Link style test: icons only"
     variant: "emoji"
     items:
       - label: "Documentation"
@@ -55,7 +36,6 @@ sections:
         alt: "Github"
         icon: "<>"
   - type: "quickLinks"
-    title: "Link style test: printscreens"
     variant: "screenshots"
     items:
       - label: "Documentation"
@@ -265,5 +245,4 @@ sections:
       - question: "Which other open-source systems can be incorporated into the BEATBox environment?"
         answer: "BEATBox is designed to interoperate with open-source behavioral and neuroscience tools when protocols need them, including camera-based home-cage monitoring, Bonsai workflows, Open Ephys acquisition, pyControl-style task logic, and custom Arduino/Raspberry Pi sensor or actuator modules."
 ---
-
 BEATBox is an open-source platform for ecological home-cage behavioral experiments.
