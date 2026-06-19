@@ -14,6 +14,12 @@ on:
 permissions:
   contents: write
 
+# Only one deploy at a time; a newer push supersedes an in-progress run.
+# Prevents concurrent runs from racing to push gh-pages (non-fast-forward rejection).
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -62,3 +68,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: site/out
           publish_branch: gh-pages
+          # Publish a single fresh commit and force-push, so a divergent
+          # remote gh-pages can never cause a non-fast-forward rejection.
+          force_orphan: true
