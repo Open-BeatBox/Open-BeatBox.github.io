@@ -206,7 +206,15 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                     >
                       {section.variant === "emoji" ? (
-                        <span className="quick-link-emoji" aria-hidden>{item.icon}</span>
+                        <span className="quick-link-emoji" aria-hidden>
+                          <Image
+                            src={item.image}
+                            alt=""
+                            width={64}
+                            height={64}
+                            className="quick-link-emoji-img"
+                          />
+                        </span>
                       ) : (
                         <span className="quick-link-image-wrap">
                           <Image
