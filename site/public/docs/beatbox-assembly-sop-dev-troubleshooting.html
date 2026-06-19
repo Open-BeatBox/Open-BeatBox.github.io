@@ -765,17 +765,24 @@ function applySopEnhancements() {
   const stageA = findSection('stage_a');
   const basePrep = stageA?.subsections?.find(subsection => subsection.title === '3. Prepare the base');
   if (basePrep) {
-    basePrep.media = {
+    delete basePrep.media;
+    delete basePrep.afterMedia;
+    delete basePrep.gallery;
+  }
+  const attachPillars = stageA?.subsections?.find(subsection => subsection.title === '5. Attach the 4 pillars to the base');
+  if (attachPillars) {
+    attachPillars.media = {
       src: '/videos/buidling_gifs/BEATBox_foot1.gif',
-      alt: 'Installing the BEATBox base foot assembly',
-      caption: 'Base and foot assembly reference.'
+      alt: 'Attaching the first pillar to the BEATBox base',
+      caption: 'First pillar-to-base attachment reference.'
     };
-    basePrep.afterMedia = {
+    attachPillars.afterMedia = {
       src: '/videos/buidling_gifs/BEATBox_foot1-2-3.gif',
-      alt: 'Secondary BEATBox foot assembly reference',
-      caption: 'Secondary foot assembly reference for the following feet.',
+      alt: 'Attaching the remaining pillars to the BEATBox base',
+      caption: 'Remaining pillar-to-base attachment reference.',
       linkLabel: 'Open full GIF'
     };
+    delete attachPillars.gallery;
   }
 
   const pillars = findSubsection('stage_a', '4. Prepare the pillars');
@@ -948,17 +955,6 @@ function applySopEnhancements() {
 
   setGallery(findSubsection('part_prep', '2. Verify printed-part integrity'), [
     { src: '/images/BB-TIPS_Using-forceps-to-help-inserts.jpg', alt: 'Using tissue forceps for M3 inserts', caption: 'Tip: forceps for inserts' },
-  ]);
-
-  setGallery(findSubsection('stage_a', '3. Prepare the base'), [
-    { src: '/images/BB_Full-1.jpg', alt: 'BEATBox full system — front', caption: 'Full system (front)' },
-    { src: '/images/BB_Full-2.jpg', alt: 'BEATBox full system — side', caption: 'Full system (side)' },
-    { src: '/images/BB_V2_1-system.jpg', alt: 'BEATBox V2 single system', caption: 'V2 single' },
-    { src: '/images/BB_V2_4-systems.jpg', alt: 'BEATBox V2 four systems', caption: 'V2 four systems' },
-  ]);
-
-  setGallery(findSubsection('stage_a', '5. Attach the 4 pillars to the base'), [
-    { src: '/images/real-build-setup.jpg', alt: 'Real build — frame and pillars setup', caption: 'Frame setup reference' },
   ]);
 
   setGallery(findSubsection('stage_b', '6. Build and install the first wall panel'), [
