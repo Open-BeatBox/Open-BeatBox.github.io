@@ -26,6 +26,8 @@ export type FeatureCard = {
   href?: string;
   ctaLabel?: string;
   links?: LinkItem[];
+  /** Optional CSS color for the card background (e.g. "pink", "#1e3a8a", "rgba(0,0,0,0.4)"). */
+  color?: string;
 };
 
 export type MediaItem = {

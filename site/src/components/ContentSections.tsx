@@ -83,16 +83,17 @@ const FeatureCardView = ({
   );
 
   const className = `glass-card impact-card impact-card-${variant}`;
+  const style = card.color ? { background: card.color } : undefined;
 
   if (card.href) {
     return (
-      <a href={card.href} className={className} target="_blank" rel="noreferrer">
+      <a href={card.href} className={className} style={style} target="_blank" rel="noreferrer">
         {content}
       </a>
     );
   }
 
-  return <div className={className}>{content}</div>;
+  return <div className={className} style={style}>{content}</div>;
 };
 
 const ContentSections: React.FC<Props> = ({ sections }) => {
@@ -152,8 +153,8 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     <Image
                       src={section.logo}
                       alt="BEATBox logo"
-                      width={82}
-                      height={82}
+                      width={128}
+                      height={128}
                       className="brand-showcase-logo"
                       priority={index === 0}
                     />

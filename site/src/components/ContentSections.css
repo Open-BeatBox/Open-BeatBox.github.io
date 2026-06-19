@@ -83,7 +83,12 @@
 }
 
 .quick-link-button-emoji {
-  @apply min-h-28 items-center justify-center gap-2 p-4;
+  @apply min-h-28 items-center justify-center gap-2 p-4 bg-cyan-200 text-slate-900;
+}
+
+.quick-link-button-emoji:hover {
+  background: color-mix(in srgb, theme("colors.cyan.200") 85%, black 15%);
+  border-color: color-mix(in srgb, theme("colors.cyan.200") 60%, white 20%);
 }
 
 .quick-link-button-screenshots {
@@ -190,7 +195,13 @@
 }
 
 .impact-card {
-  @apply block h-full transition hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+  @apply block h-full transition hover:border-cyan-300/40 hover:bg-white/[0.07] hover:no-underline;
+}
+
+/* Keep the lift-on-hover affordance only for clickable (linked) cards;
+   static info cards (e.g. "Why it matters") stay put. */
+a.impact-card:hover {
+  @apply -translate-y-0.5;
 }
 
 .impact-card-audience {
