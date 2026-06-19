@@ -5,7 +5,7 @@ showInNav: false
 navOrder: 2
 slug: "/one-pager"
 hero:
-  title: "BEATBox Behavioral and Ecological"
+  title: "BEATBox Behavioural and Autonomous operant Box"
   subtitle: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
   backgroundVideo: "/images/D_View_Promotional_Video_Generated.mp4"
   backgroundImage: "/images/beatbox-og-default.png"

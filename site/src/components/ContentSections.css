@@ -38,7 +38,7 @@
 }
 
 .brand-showcase-kicker {
-  @apply mt-3 max-w-3xl text-sm leading-relaxed md:text-base;
+  @apply mt-3 max-w-3xl text-lg font-medium leading-relaxed md:text-2xl;
   color: var(--text-muted);
 }
 

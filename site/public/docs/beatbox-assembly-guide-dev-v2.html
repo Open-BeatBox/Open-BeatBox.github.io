@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Build Your Own BEATBox Assembly Guide - Dev Review and Troubleshooting</title>
+  <title>Build Your Own BEATBox Assembly Guide V2 - Dev Review</title>
   <style>
     :root {
       --bg: #eef2f7;
@@ -504,7 +504,7 @@
   <div class="layout">
     <aside>
       <div class="brand">
-        <h2>BEATBox Assembly Guide Dev Review</h2>
+        <h2>BEATBox Assembly Guide V2</h2>
         <small>Troubleshooting and procedure improvement</small>
       </div>
       <div class="progress-block">
@@ -566,8 +566,8 @@
 
 <script>
 const SOP = {"title": "BEATBox Assembly SOP", "version": "Draft v0.1", "subtitle": "Interactive build checklist for internal assembly and beta builds", "source": "Meeting notes + transcript from 10 Apr 2026 — Eric, Pierre and Damien", "purpose": ["Build one BEATBox from laser-cut plexiglass panels, 3D-printed parts, and pre-assembled electronics/PCBs.", "This is a working SOP, not yet a frozen production release. Several points remain explicitly to confirm or redesign."], "limitations": ["Some module names and exact PCB counts remain approximate.", "Final execution and software loading are not covered, because code was not yet available during the meeting.", "Some feeder and connector details still need confirmation with Pierre/Eric."], "sections": [{"id": "safety", "title": "Safety, handling, and quality rules", "tag": "Critical", "intro": "Apply these rules throughout the build. They are not optional unless explicitly superseded by a later validated release.", "items": [{"text": "Work on a clean, flat bench with enough space to lay modules flat.", "level": "standard"}, {"text": "Remove 3D-print supports cleanly without gouging the part. Use flat pliers if needed.", "level": "standard"}, {"text": "Do not overtighten screws in printed parts or plexiglass assemblies.", "level": "critical"}, {"text": "Do not clean laser-cut plexiglass with alcohol. Alcohol can infiltrate laser-cut microcracks and cause later cracking. Use water or gentle appropriate cleaning instead.", "level": "critical"}, {"text": "Keep the matte side of plexiglass facing outward and the glossy side inward unless a module-specific exception is documented.", "level": "critical"}, {"text": "Confirm there are no gaps between panels; mice will exploit gaps for chewing or escape attempts.", "level": "critical"}, {"text": "For any part touching food interaction zones, watch for chew damage and avoid introducing conductive/noisy materials without validation.", "level": "caution"}]}, {"id": "materials", "title": "Required materials and components", "tag": "Inventory", "subsections": [{"title": "Structural parts", "items": [{"text": "1 base plate in 10 mm plexiglass"}, {"text": "4 printed pillars with lower nut seats and upper fastening points"}, {"text": "Laser-cut plexiglass panel sets for the walls"}, {"text": "Door panel set"}, {"text": "Ceiling / top cover parts"}, {"text": "Printed module housings/covers as needed"}]}, {"title": "Electronics and functional modules", "items": [{"text": "Screen module PCB(s)"}, {"text": "Screen(s) with connector(s)"}, {"text": "Infrared barrier PCB(s) / LED barrier elements"}, {"text": "Feeder PCB and sensor components"}, {"text": "Motor for feeder", "level": "todo"}, {"text": "Rotor for feeder", "level": "todo"}, {"text": "Ceiling/light PCB with white + IR LEDs"}, {"text": "Tunnel module PCB(s), if applicable", "level": "optional"}, {"text": "Master PCB"}, {"text": "Interconnect cables, including Molex PicoBlade-style connectors where applicable"}]}, {"title": "Fasteners and inserts", "items": [{"text": "M5 × 50 mm screws for pillar-to-base fastening"}, {"text": "Matching M5 nuts for pillar/base system"}, {"text": "M3 inserts for printed parts"}, {"text": "M3 screws for panel sandwich assemblies"}, {"text": "M3 × 8 mm screws where specified"}, {"text": "M3 × 10 mm screws where specified"}, {"text": "Door hinge hardware"}, {"text": "Door button hardware"}, {"text": "Door latch / locking piece"}]}, {"title": "Optional / tips", "items": [{"text": "Rubber feet or pads under the base if needed", "level": "optional"}, {"text": "Small labeled containers for screws by length/type", "level": "optional"}, {"text": "Painter tape or removable labels for left/right module identification", "level": "optional"}]}]}, {"id": "tools", "title": "Required tools", "tag": "Inventory", "items": [{"text": "Flat pliers for support removal"}, {"text": "Hex key / Allen key appropriate for M5 hardware"}, {"text": "Screwdrivers / drivers for M3 hardware"}, {"text": "Small tweezers or fine pliers for inserts and connectors"}, {"text": "Flush cutter or deburring tool if required", "level": "optional"}]}, {"id": "prebuild", "title": "Pre-build checklist", "tag": "Before assembly", "items": [{"text": "All materials and components are present."}, {"text": "All PCBs are present for the planned configuration."}, {"text": "Screens are present and either already soldered or ready for the intended connection mode."}, {"text": "Cables are present and long enough."}, {"text": "LED barriers are identical left/right or side-specific", "level": "todo", "note": "To confirm."}]}, {"id": "procurement", "title": "Procurement / production checklist for Lyon builds in June", "tag": "Planning", "items": [{"text": "Validate purchasing of components."}, {"text": "Prepare plexiglass orders for direct delivery to Lyon."}, {"text": "Prepare 3D-printed parts."}, {"text": "Ensure all small hardware is ordered in advance; missing screws/inserts can block assembly.", "level": "caution"}]}, {"id": "part_prep", "title": "Part preparation", "tag": "Steps 1–2", "subsections": [{"title": "1. Remove supports from 3D-printed parts", "items": [{"text": "Inspect every printed part for support remnants."}, {"text": "Remove supports by hand when possible."}, {"text": "Use flat pliers when supports do not release cleanly.", "level": "caution"}]}, {"title": "2. Verify printed-part integrity", "items": [{"text": "Check for cracks, warping, or blocked holes."}, {"text": "Check that insert seats are usable."}, {"text": "Check that cable passages are open."}, {"text": "Check that mating edges are clean enough for flush assembly."}]}]}, {"id": "stage_a", "title": "Stage A — Build the enclosure frame", "tag": "Steps 3–5", "subsections": [{"title": "3. Prepare the base", "items": [{"text": "Place the 10 mm plexiglass base flat on the work surface."}, {"text": "Identify the pillar mounting holes."}, {"text": "If using feet/pads, decide whether they will be mounted now or after frame assembly.", "level": "optional"}]}, {"title": "4. Prepare the pillars", "items": [{"text": "In each pillar, place the required lower nuts."}, {"text": "Verify that the upper nut is available for later steps."}, {"text": "Check that the panel grooves are clear and unobstructed."}, {"text": "Check that the top fastening hole is clear for later ceiling attachment."}]}, {"title": "5. Attach the 4 pillars to the base", "items": [{"text": "Position each pillar at the appropriate base corner."}, {"text": "Insert the M5 × 50 mm fasteners."}, {"text": "Tighten by hand first to avoid cross-threading."}, {"text": "Finish tightening gently; do not overtighten.", "level": "critical"}]}]}, {"id": "stage_b", "title": "Stage B — Prepare the wall panels", "tag": "Steps 6–8", "subsections": [{"title": "6. Build each plexiglass sandwich panel", "intro": "Each wall panel is made from two laser-cut plexiglass plates assembled together to form the sliding geometry that fits into the pillar grooves.", "items": [{"text": "Identify the two plates belonging to the same panel."}, {"text": "Verify which surface is matte and which is glossy: matte side outward, glossy side inward.", "level": "critical"}, {"text": "Align the panel holes."}, {"text": "Assemble the pair using the panel screws."}, {"text": "Use 4 screws per panel assembly where applicable."}, {"text": "Use the correct M3 hardware for panel assembly."}, {"text": "Tighten enough to hold the sandwich firmly, without stressing the plexiglass.", "level": "critical"}]}, {"title": "7. Repeat for all required wall panels", "items": [{"text": "Screen-side panel(s) prepared."}, {"text": "Feeder-side panel(s) prepared."}, {"text": "Rear / blank panel prepared."}, {"text": "Door-side panel prepared."}]}, {"title": "8. Quality check the wall panels", "intro": "Do not use alcohol for cleaning.", "items": [{"text": "Confirm all matte sides face outward.", "level": "critical"}, {"text": "Confirm screw heads and nuts do not create mouse-accessible protrusions in critical interior areas.", "level": "critical"}, {"text": "Confirm edges are flush and clean."}]}]}, {"id": "stage_c", "title": "Stage C — Insert the panels into the frame", "tag": "Steps 9–10", "subsections": [{"title": "9. Install the fixed panels", "items": [{"text": "Slide the panels into the pillar grooves."}, {"text": "Install the screen-side panel in its intended location."}, {"text": "Install the feeder-side panel opposite the screen side."}, {"text": "Install the rear / blank panel."}, {"text": "Check that gaps between panels remain minimal.", "level": "critical"}]}, {"title": "10. Verify internal geometry", "items": [{"text": "Check that corners are tight enough to prevent chewing/escape opportunities.", "level": "critical"}, {"text": "Check that interior edges do not form easy climbing structures.", "level": "caution"}, {"text": "Confirm feeder and screen openings line up with their intended modules."}]}]}, {"id": "stage_d", "title": "Stage D — Install the door assembly", "tag": "Steps 11–15", "subsections": [{"title": "11. Prepare the door panel", "items": [{"text": "Use the same basic panel logic: matte side outward."}, {"text": "Confirm the small light-blocking offset / overlap is oriented correctly.", "level": "todo", "note": "Orientation still needs confirmation."}]}, {"title": "12. Install door hinges", "items": [{"text": "Retrieve the hinge references from the documented bill of materials / RS references.", "level": "todo"}, {"text": "Fit the hinges to the door assembly."}, {"text": "Pay close attention to hole alignment."}, {"text": "Use the correct M3 hardware lengths for each hinge side."}, {"text": "Use 2 × M3 × 8 mm where the thinner stack-up applies."}, {"text": "Use 2 × M3 × 10 mm where the thicker sandwich stack-up applies."}]}, {"title": "13. Install the door button and latch", "items": [{"text": "Install the door button using M3 × 8 mm hardware."}, {"text": "Install the latch / locking element if present."}]}, {"title": "15. Validate door function", "items": [{"text": "Confirm the door opens/closes smoothly."}, {"text": "Confirm chosen opening side is acceptable for handling."}]}]}, {"id": "screen_module", "title": "16. Screen module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the screen housing/front face, PCB, screen, and any side barrier components."}, {"text": "Confirm screen connector orientation before insertion.", "level": "critical"}]}, {"title": "Assembly", "items": [{"text": "Install required M3 inserts."}, {"text": "Mount the screen PCB."}, {"text": "Insert the screen in the intended orientation."}, {"text": "Connect the screen properly to the board."}, {"text": "Add the cover/front face."}, {"text": "Confirm the flexible printed-button mechanism actuates the screen buttons correctly.", "level": "todo"}, {"text": "Check that the module sits centered in its opening."}]}, {"title": "IR barrier on screen-side module", "items": [{"text": "Install the LED / IR barrier element(s) on each side as intended."}, {"text": "Confirm whether left and right barrier boards are identical or side-specific.", "level": "todo", "note": "To confirm with Pierre."}, {"text": "Route and connect barrier wiring to the intended PCB ports."}]}, {"title": "Design improvement pending", "items": [{"text": "Add / verify détrompeurs/keyed orientation features so the screen cannot be inserted backwards.", "level": "todo"}]}]}, {"id": "ceiling_module", "title": "17. Ceiling / light module (plafonnier)", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the ceiling housing, PCB, LED components, and diffuser."}, {"text": "Confirm that white and IR LEDs are correctly integrated on the custom PCB."}]}, {"title": "Assembly", "items": [{"text": "Install inserts as needed."}, {"text": "Mount the PCB in the ceiling housing."}, {"text": "Install the diffuser."}, {"text": "Close the module with the cap."}, {"text": "Verify access to the rear connector."}, {"text": "Mount the completed ceiling module to the top fastening points of the pillars / top structure."}]}, {"title": "Functional intent", "items": [{"text": "White LEDs configured for daylight-like illumination."}, {"text": "IR LEDs available for night-time monitoring with camera detection."}]}]}, {"id": "tunnel_module", "title": "18. Tunnel module(s)", "tag": "Module assembly", "items": [{"text": "Identify the tunnel module parts."}, {"text": "Install inserts."}, {"text": "Mount PCB as for the screen-side module principle."}, {"text": "Install IR barrier components."}, {"text": "Close the module housing."}, {"text": "Install tunnel module in the correct internal position."}]}, {"id": "feeder_module", "title": "19. Feeder module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather feeder housing."}, {"text": "Gather PCB."}, {"text": "Gather sensor board(s)."}, {"text": "Gather motor."}, {"text": "Gather rotor."}, {"text": "Gather cables."}, {"text": "Gather fasteners."}, {"text": "Confirm sensor hardware is present."}, {"text": "Confirm required pre-soldered IR elements are present."}, {"text": "Confirm cable length is sufficient."}]}, {"title": "Mechanical assembly", "items": [{"text": "Install M3 inserts in the feeder housing."}, {"text": "Mount the feeder PCB / sensor board(s)."}, {"text": "Route cable(s) through the intended hole(s)."}, {"text": "Connect Molex PicoBlade-type connector(s) until a clear click is felt.", "level": "critical"}, {"text": "Pull back gently to confirm connectors are fully seated.", "level": "critical"}]}, {"title": "Motor + rotor assembly", "items": [{"text": "Install the motor using the 4 mounting screws."}, {"text": "Place the rotor on the motor axis / mounting position."}, {"text": "Insert the nut where required in the rotor assembly."}, {"text": "Tighten through the intended access hole."}]}, {"title": "Critical feeder caution", "items": [{"text": "Avoid overtightening: if the motor/rotor is tightened too much, rotation becomes difficult.", "level": "critical"}, {"text": "Avoid undertightening: if tightened too loosely, play develops.", "level": "critical"}, {"text": "Prevent dust entry that could block the mechanism.", "level": "caution"}, {"text": "Prevent long-term play that can crush pellets.", "level": "caution"}, {"text": "Tighten motor/rotor hardware carefully.", "level": "critical"}, {"text": "Verify free rotation by hand or safe functional check.", "level": "critical"}, {"text": "Reject any setup with visible play or drag.", "level": "critical"}, {"text": "Record the torque/fit condition used if standardization is possible.", "level": "todo"}]}, {"title": "Feeder chew-risk", "items": [{"text": "Regularly inspect the feeder interaction face for chew vulnerability.", "level": "caution"}, {"text": "Avoid introducing metal in the mouse interaction zone without validating recording-noise consequences if electrophysiology is used.", "level": "caution"}]}]}, {"id": "stage_f", "title": "Stage F — Final enclosure/module integration", "tag": "Steps 20–23", "subsections": [{"title": "20. Mount completed modules into the enclosure", "items": [{"text": "Install completed screen module(s) in the designated panel opening(s)."}, {"text": "Install feeder module in the feeder-side opening."}, {"text": "Install ceiling/light module."}, {"text": "Install tunnel module(s)."}, {"text": "Check that all modules sit flush.", "level": "critical"}, {"text": "Check that no cable is pinched by the enclosure.", "level": "critical"}]}, {"title": "23. Final wiring to the master PCB", "items": [{"text": "Retrieve the master PCB."}, {"text": "Connect each module using the intended cable path."}, {"text": "Follow the described topology: start from the main/master board, route through the modules, and return appropriately to the main board as required by the current design."}, {"text": "Verify connector seating on all module ports.", "level": "critical"}, {"text": "Verify wiring is tidy and not accessible for chewing.", "level": "critical"}, {"text": "Verify no cable interferes with door movement or module seating.", "level": "critical"}]}]}, {"id": "costs", "title": "Estimated cost per box", "tag": "Reference", "intro": "Rough order-of-magnitude estimate: approximately EUR 600–700 per box.", "items": [{"text": "PCBs: ~EUR 300 total"}, {"text": "3D printing: ~EUR 200 total"}, {"text": "Plexiglass: ~EUR 150–200 depending on sourcing"}, {"text": "Fasteners / small hardware: ~EUR 50 total"}]}, {"id": "signoff", "title": "Build-completion signoff", "tag": "Final check", "items": [{"text": "Mechanical assembly complete"}, {"text": "Module assembly complete"}, {"text": "Final wiring complete"}, {"text": "Photo documentation complete"}, {"text": "Deviations recorded"}, {"text": "Ready for code flashing / software setup"}, {"text": "Ready for beta test use"}], "metadata": ["Date", "Location", "Builders", "Documentation by", "Box ID / serial", "Revision used"]}]};
-SOP.title = 'Build Your Own BEATBox Assembly Guide';
-SOP.subtitle = 'Internal troubleshooting checklist for reviewing, removing, modifying, and exporting assembly-guide improvements';
+SOP.title = 'Build Your Own BEATBox Assembly Guide V2';
+SOP.subtitle = 'Review-applied internal assembly guide draft generated from exported dev-page feedback';
 SOP.purpose = [
   'Review each assembly step during internal builds and flag whether it should be kept, removed, or modified before the user-facing release.',
   'Export a complete procedure review package that includes completion progress, section notes, review decisions, and a revised procedure draft.'
@@ -577,16 +577,348 @@ SOP.limitations = [
   'Review data is stored in this browser only until exported or imported.',
   'Modified steps are exported with review notes; the tool does not rewrite the step text automatically.'
 ];
-const STORE_KEY = 'beatbox_sop_dev_v01_progress';
-const META_KEY = 'beatbox_sop_dev_v01_metadata';
-const NOTE_KEY = 'beatbox_sop_dev_v01_notes';
-const REVIEW_KEY = 'beatbox_sop_dev_v01_review';
+const STORE_KEY = 'beatbox_assembly_guide_dev_v2_progress';
+const META_KEY = 'beatbox_assembly_guide_dev_v2_metadata';
+const NOTE_KEY = 'beatbox_assembly_guide_dev_v2_notes';
+const REVIEW_KEY = 'beatbox_assembly_guide_dev_v2_review';
 let state = loadJSON(STORE_KEY, {});
 let metaState = loadJSON(META_KEY, {});
 let noteState = loadJSON(NOTE_KEY, {});
 let reviewState = loadJSON(REVIEW_KEY, {});
 let itemIndex = [];
 applySopEnhancements();
+
+const V2_REVIEW_ACTIONS = {
+  "prebuild__pre-build-checklist-all-materials-and-components-are-present": {
+    "action": "remove"
+  },
+  "prebuild__pre-build-checklist-all-pcbs-are-present-for-the-planned-configuration": {
+    "action": "remove"
+  },
+  "tools__required-tools-small-tweezers-or-fine-pliers-for-inserts-and-connectors": {
+    "action": "remove"
+  },
+  "tools__required-tools-tissue-forceps-for-clearing-3d-printed-insert-seats-and-placing-inserts": {
+    "action": "modify",
+    "note": "Tissue forceps (or flat pliers) for clearing 3D-printed insert seats and placing inserts"
+  },
+  "tools__required-tools-flat-pliers-for-support-removal": {
+    "action": "remove"
+  },
+  "tools__required-tools-flush-cutter-or-deburring-tool-if-required": {
+    "action": "modify",
+    "note": "Flush cutter (optional)"
+  },
+  "prebuild__pre-build-checklist-confirm-the-exact-pcb-revisions-before-assembly-bb-feeder-main-v1-v1-1": {
+    "action": "remove"
+  },
+  "prebuild__pre-build-checklist-cables-are-present-and-long-enough": {
+    "action": "remove"
+  },
+  "prebuild__pre-build-checklist-led-barriers-are-identical-left-right-or-side-specific": {
+    "action": "remove"
+  },
+  "procurement__procurement-production-checklist-for-lyon-builds-in-june-validate-purchasing-of-components": {
+    "action": "remove"
+  },
+  "procurement__procurement-production-checklist-for-lyon-builds-in-june-prepare-plexiglass-orders-for-dir": {
+    "action": "remove"
+  },
+  "procurement__procurement-production-checklist-for-lyon-builds-in-june-prepare-3d-printed-parts": {
+    "action": "remove"
+  },
+  "procurement__procurement-production-checklist-for-lyon-builds-in-june-ensure-all-small-hardware-is-orde": {
+    "action": "remove"
+  },
+  "part_prep__1-remove-supports-from-3d-printed-parts-inspect-every-printed-part-for-support-remnants": {
+    "action": "modify",
+    "note": "Inspect every printed part for support remnants, Remove supports by hand when possible or Use flat pliers when supports do not release cleanly."
+  },
+  "part_prep__1-remove-supports-from-3d-printed-parts-remove-supports-by-hand-when-possible": {
+    "action": "remove"
+  },
+  "part_prep__1-remove-supports-from-3d-printed-parts-use-flat-pliers-when-supports-do-not-release-clean": {
+    "action": "remove"
+  },
+  "part_prep__2-verify-printed-part-integrity-check-that-insert-seats-are-usable": {
+    "action": "remove"
+  },
+  "part_prep__2-verify-printed-part-integrity-check-that-cable-passages-are-open": {
+    "action": "remove"
+  },
+  "part_prep__2-verify-printed-part-integrity-check-that-mating-edges-are-clean-enough-for-flush-assembl": {
+    "action": "remove"
+  },
+  "part_prep__2-verify-printed-part-integrity-use-tissue-forceps-to-clean-small-3d-printing-imperfection": {
+    "action": "modify",
+    "note": "Use tissue forceps (or flat pliers) to clean small 3D-printing imperfections and to open insert entries before placing inserts (see picture below)\n"
+  },
+  "part_prep__2-verify-printed-part-integrity-start-each-insert-by-pushing-gently-with-a-thumb-only-to-i": {
+    "action": "modify",
+    "note": "Start each insert by pushing gently with a thumb only to initiate entry, then use the 2.5 mm T-handle ball-end hex key to drive it in straight (Do that on a FLAT Surface!)"
+  },
+  "stage_a__3-prepare-the-base-identify-the-pillar-mounting-holes": {
+    "action": "remove"
+  },
+  "stage_a__4-prepare-the-pillars-verify-that-the-upper-nut-is-available-for-later-steps": {
+    "action": "remove"
+  },
+  "stage_a__4-prepare-the-pillars-check-that-the-panel-grooves-are-clear-and-unobstructed": {
+    "action": "remove"
+  },
+  "stage_a__4-prepare-the-pillars-use-tissue-forceps-to-clear-insert-nut-seats-and-start-inserts-clean": {
+    "action": "remove"
+  },
+  "stage_a__4-prepare-the-pillars-place-the-pillar-on-a-flat-solid-surface-before-applying-force-to-in": {
+    "action": "remove"
+  },
+  "stage_a__5-attach-the-4-pillars-to-the-base-position-each-pillar-at-the-appropriate-base-corner": {
+    "action": "modify",
+    "note": "Position a pillar at the corner, Insert the M5 × 50 mm fastener\n"
+  },
+  "stage_a__5-attach-the-4-pillars-to-the-base-insert-the-m5-50-mm-fasteners": {
+    "action": "remove"
+  },
+  "stage_a__5-attach-the-4-pillars-to-the-base-finish-tightening-gently-do-not-overtighten": {
+    "action": "modify",
+    "note": "Finish tightening gently (with 4mm Hex key); do not overtighten."
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-assemble-the-pair-using-the-panel-screws": {
+    "action": "remove"
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-align-the-panel-holes": {
+    "action": "modify",
+    "note": "Align the panel holes and Assemble the pair using the M3 screws and nuts."
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-use-4-screws-per-panel-assembly-where-applicable": {
+    "action": "remove"
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-use-the-correct-m3-hardware-for-panel-assembly": {
+    "action": "remove"
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-after-this-wall-panel-is-assembled-slide-it-direc": {
+    "action": "modify",
+    "note": "After this wall panel is assembled, you can directly slide it into the pillar grooves"
+  },
+  "stage_b__6-build-and-install-the-first-wall-panel-resolve-wall-color-for-tracking-before-production": {
+    "action": "remove"
+  },
+  "stage_b__7-repeat-for-all-required-fixed-wall-panels-for-each-fixed-wall-build-the-wall-panel-and-p": {
+    "action": "remove"
+  },
+  "stage_b__8-build-and-install-the-door-wall-panel-build-the-door-wall-panel-using-the-same-wall-pane": {
+    "action": "remove"
+  },
+  "stage_b__8-build-and-install-the-door-wall-panel-confirm-the-small-light-blocking-offset-overlap-is": {
+    "action": "modify",
+    "note": "The overlap that allows door to close has to be oriented outwards."
+  },
+  "stage_b__8-build-and-install-the-door-wall-panel-place-the-completed-door-wall-panel-directly-in-th": {
+    "action": "modify",
+    "note": "Place the completed door wall panel directly in the frame before moving to the next step \"Install door hardware\""
+  },
+  "stage_c__10-verify-installed-wall-and-internal-geometry-confirm-each-wall-was-installed-immediately": {
+    "action": "remove"
+  },
+  "stage_c__10-verify-installed-wall-and-internal-geometry-check-that-corners-are-tight-enough-to-prev": {
+    "action": "remove"
+  },
+  "stage_c__10-verify-installed-wall-and-internal-geometry-check-that-interior-edges-do-not-form-easy-": {
+    "action": "remove"
+  },
+  "stage_c__10-verify-installed-wall-and-internal-geometry-confirm-feeder-and-screen-openings-line-up-": {
+    "action": "remove"
+  },
+  "screen_module__assembly-install-required-m3-inserts-using-tissue-forceps-to-start-the-entry-and-the-2-5-m": {
+    "action": "modify",
+    "note": "\"Install M3 inserts\""
+  },
+  "screen_module__assembly-connect-the-two-parts-checking-connector-orientation-and-cable-strain-before-tigh": {
+    "action": "remove"
+  },
+  "screen_module__assembly-check-that-the-module-sits-centered-in-its-opening": {
+    "action": "remove"
+  },
+  "screen_module__assembly-verify-cable-length-after-closure-not-too-short-to-pull-connectors-not-too-long-t": {
+    "action": "remove"
+  },
+  "screen_module__ir-barrier-on-screen-side-module-confirm-whether-left-and-right-barrier-boards-are-identic": {
+    "action": "remove"
+  },
+  "screen_module__ir-barrier-on-screen-side-module-route-and-connect-barrier-wiring-to-the-intended-pcb-port": {
+    "action": "modify",
+    "note": "Route and connect barrier wiring to the intended PCB ports (with Mollex, PicoBlade cables, 3 pins)"
+  },
+  "screen_module__ir-barrier-on-screen-side-module-confirm-soldering-requirements-for-ir-nosepoke-ir-barrier": {
+    "action": "remove"
+  },
+  "screen_module__design-improvement-pending-add-verify-detrompeurs-keyed-orientation-features-so-the-screen": {
+    "action": "remove"
+  },
+  "ceiling_module__preparation-confirm-that-white-and-ir-leds-are-correctly-integrated-on-the-custom-pcb": {
+    "action": "remove"
+  },
+  "ceiling_module__assembly-install-inserts-as-needed-using-tissue-forceps-to-clean-the-entry-and-the-2-5-mm-": {
+    "action": "modify",
+    "note": "Place inserts"
+  },
+  "ceiling_module__assembly-verify-access-to-the-rear-connector": {
+    "action": "remove"
+  },
+  "ceiling_module__assembly-mount-the-completed-ceiling-module-to-the-top-fastening-points-of-the-pillars-top": {
+    "action": "modify",
+    "note": "Screw the completed ceiling module to the cage lid (Add Image)"
+  },
+  "ceiling_module__functional-intent-white-leds-configured-for-daylight-like-illumination": {
+    "action": "remove"
+  },
+  "ceiling_module__functional-intent-ir-leds-available-for-night-time-monitoring-with-camera-detection": {
+    "action": "remove"
+  },
+  "tunnel_module__18-tunnel-module-s-identify-the-tunnel-module-parts": {
+    "action": "modify",
+    "note": "Identify the tunnel module parts: 3D-printed Tunnel,  3 PCBs (1 big, 2 IRs), PicoBlade Cables (Details to add)"
+  },
+  "tunnel_module__18-tunnel-module-s-install-inserts-using-tissue-forceps-to-clean-the-entry-and-the-2-5-mm-": {
+    "action": "modify",
+    "note": "Install M3 inserts"
+  },
+  "tunnel_module__18-tunnel-module-s-mount-pcb-as-for-the-screen-side-module-principle": {
+    "action": "modify",
+    "note": "Plug 6-pin picoblade cables and Mount PCB on the Tunnel"
+  },
+  "tunnel_module__18-tunnel-module-s-install-ir-barrier-components": {
+    "action": "modify",
+    "note": "Plug 6-pin picoblade cables then install IR barrier components."
+  },
+  "feeder_module__preparation-gather-pcb": {
+    "action": "modify",
+    "note": "Gather 2 PCBs (1 small nose poke PCB to be soldered, 1 control PCG)."
+  },
+  "feeder_module__preparation-gather-sensor-board-s": {
+    "action": "remove"
+  },
+  "feeder_module__preparation-gather-motor": {
+    "action": "modify",
+    "note": "Gather motor, rotor and Picoblade cables"
+  },
+  "feeder_module__preparation-gather-rotor": {
+    "action": "remove"
+  },
+  "feeder_module__preparation-gather-cables": {
+    "action": "remove"
+  },
+  "feeder_module__preparation-gather-fasteners": {
+    "action": "remove"
+  },
+  "feeder_module__preparation-confirm-sensor-hardware-is-present": {
+    "action": "remove"
+  },
+  "feeder_module__mechanical-assembly-install-m3-inserts-in-the-feeder-housing-using-tissue-forceps-to-clean": {
+    "action": "modify",
+    "note": "Install M3 inserts"
+  },
+  "feeder_module__mechanical-assembly-mount-the-feeder-pcb-sensor-board-s": {
+    "action": "modify",
+    "note": "Plug PicoBlade cable, then Mount the feeder PCB / sensor board(s)."
+  },
+  "feeder_module__mechanical-assembly-for-feeder-ir-sensors-physically-remove-the-small-black-locating-pin-w": {
+    "action": "modify",
+    "note": "For feeder IR sensors, physically remove the small black locating pin with scissors or tissue forceps when it prevents flat contact with the wall surface (See Picture, with Blue circle below)"
+  },
+  "feeder_module__mechanical-assembly-route-cable-s-through-the-intended-hole-s": {
+    "action": "modify",
+    "note": "Route cable(s) through the intended hole(s) (using forceps may be used to help)."
+  },
+  "feeder_module__mechanical-assembly-pull-back-gently-to-confirm-connectors-are-fully-seated": {
+    "action": "remove"
+  },
+  "feeder_module__motor-rotor-assembly-install-the-motor-using-the-4-mounting-screws": {
+    "action": "modify",
+    "note": "Install the motor (in the inside/lower side) using the 4 mounting screws."
+  },
+  "feeder_module__critical-feeder-caution-prevent-dust-entry-that-could-block-the-mechanism": {
+    "action": "remove"
+  },
+  "feeder_module__critical-feeder-caution-prevent-long-term-play-that-can-crush-pellets": {
+    "action": "remove"
+  },
+  "feeder_module__critical-feeder-caution-tighten-motor-rotor-hardware-carefully": {
+    "action": "remove"
+  },
+  "feeder_module__critical-feeder-caution-verify-free-rotation-by-hand-or-safe-functional-check": {
+    "action": "remove"
+  },
+  "feeder_module__critical-feeder-caution-reject-any-setup-with-visible-play-or-drag": {
+    "action": "remove"
+  },
+  "feeder_module__critical-feeder-caution-record-the-torque-fit-condition-used-if-standardization-is-possibl": {
+    "action": "remove"
+  },
+  "stage_f__23-final-wiring-to-the-master-pcb-connect-each-module-using-the-intended-cable-path": {
+    "action": "modify",
+    "note": "Connect each module using the intended cable path. (+ Cabling illustration to be added)"
+  },
+  "stage_f__23-final-wiring-to-the-master-pcb-follow-the-described-topology-start-from-the-main-master": {
+    "action": "modify",
+    "note": "Follow serial connectivity: start from the master board, route through the modules, and return to the master"
+  },
+  "stage_f__23-final-wiring-to-the-master-pcb-verify-connector-seating-on-all-module-ports": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-mechanical-assembly-complete": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-module-assembly-complete": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-final-wiring-complete": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-photo-documentation-complete": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-deviations-recorded": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-ready-for-code-flashing-software-setup": {
+    "action": "remove"
+  },
+  "signoff__build-completion-signoff-ready-for-beta-test-use": {
+    "action": "remove"
+  }
+};
+function applyV2ReviewEnhancements() {
+  const actionFor = (section, path, item) => V2_REVIEW_ACTIONS[itemId(section.id, path, item.text)];
+  const applyToItems = (items, section, path) => {
+    if (!items) return [];
+    return items.map(item => {
+      const review = actionFor(section, path, item);
+      if (!review) return item;
+      if (review.action === 'remove') return null;
+      if (review.action === 'modify' && review.note) {
+        return { ...item, text: review.note.trim().replace(/^"|"$/g, '') };
+      }
+      return item;
+    }).filter(Boolean);
+  };
+  SOP.sections = SOP.sections.map(section => {
+    const next = { ...section };
+    if (next.items) next.items = applyToItems(next.items, next, next.title);
+    if (next.subsections) {
+      next.subsections = next.subsections.map(subsection => ({
+        ...subsection,
+        items: applyToItems(subsection.items || [], next, subsection.title)
+      })).filter(subsection => subsection.items.length || subsection.intro || subsection.media || subsection.gallery || subsection.afterMedia);
+    }
+    return next;
+  }).filter(section => section.items?.length || section.subsections?.length || section.intro || section.metadata);
+  SOP.purpose = [
+    'Use this V2 draft as the cleaned internal assembly guide after applying reviewed remove/modify feedback from the dev page.',
+    'Remaining TODO notes mark content that still needs final IDs, photos, diagrams, or release confirmation.'
+  ];
+}
+applyV2ReviewEnhancements();
 
 function loadJSON(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
@@ -1469,7 +1801,7 @@ function exportProgress() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'beatbox-assembly-guide-dev-review.json';
+  a.download = 'beatbox-assembly-guide-dev-v2-review.json';
   document.body.appendChild(a);
   a.click();
   a.remove();

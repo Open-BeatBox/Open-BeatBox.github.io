@@ -1,5 +1,5 @@
 ---
-title: "Behavioral and Ecological Automated operant Box (BEATBox)"
+title: "Behavioural and Autonomous operant Box (BEATBox)"
 layout: "page"
 showInNav: false
 navOrder: 1
@@ -7,7 +7,7 @@ slug: "/"
 sections:
   - type: "brandShowcase"
     title: "BEATBox"
-    subtitle: "Behavioral and Ecological Automated operant Box"
+    subtitle: "Behavioural and Autonomous operant Box"
     kicker: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while increasing data density and reproducibility."
     logo: "/images/beatbox-logo.png"
     video: "/assets/gifs/BEATBOX.5.compressed.gif"
@@ -252,14 +252,18 @@ sections:
     items:
       - question: "What is BEATBox designed for?"
         answer: "BEATBox is designed for 24/7 home-cage operant conditioning, longitudinal behavioral monitoring, and modular task development."
-      - question: "Can a lab build BEATBox themselves?"
-        answer: "Yes. The project is open-source and provides documentation, assembly SOPs, hardware files, and software resources to support local builds."
+      - question: "Can I build BEATBox myself?"
+        answer: "Yes. The project is open-source and provides documentation, assembly SOPs, hardware files, and software resources to support local builds. One system is estimated at 600€ (details to be added soon) and takes only 2 hours to assemble from scratch. Detailed assembly protocol: [https://open-beatbox.github.io/docs/beatbox-assembly-sop.html](https://open-beatbox.github.io/docs/beatbox-assembly-sop.html)."
       - question: "Does BEATBox reduce daily experimenter intervention?"
-        answer: "Yes. Animals can engage with tasks autonomously, while events, rewards, sensors, and performance data are logged automatically."
+        answer: "Yes. Animals can live in the BEATBox for weeks and engage voluntarily with tasks, while events, rewards, sensors, and performance data are logged automatically. You can track everything from your home/desk computer without interfering with experiments."
       - question: "What can be customized?"
-        answer: "The system is modular: feeders, screens, nosepokes, IR barriers, lighting, tunnels, and sensor workflows can be adapted to different behavioral protocols."
+        answer: "The system is modular: feeders, screens, nosepokes, IR barriers, lighting, tunnels, and sensor workflows can be adapted to different behavioral protocols. All new customizations and protocols are invited to be shared with the BEATBox community here: [https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions](https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions)."
       - question: "Where can I find the GUI and software resources?"
-        answer: "The software resources, including the GUI demo and future control code, are available from the BEATBox GitHub software folder."
+        answer: "The software resources, including the GUI demo and future control code, are available from the BEATBox GitHub software folder here: [https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources)."
+      - question: "Why is a longitudinal approach more respectful of naturalistic behaviors?"
+        answer: "Longitudinal home-cage testing lets animals engage with tasks voluntarily across their own day-night rhythms, instead of being repeatedly handled and moved into short experimenter-controlled sessions. This preserves more natural motivation, activity timing, and adaptation while reducing avoidable disturbance."
+      - question: "Which other open-source systems can be incorporated into the BEATBox environment?"
+        answer: "BEATBox is designed to interoperate with open-source behavioral and neuroscience tools when protocols need them, including camera-based home-cage monitoring, Bonsai workflows, Open Ephys acquisition, pyControl-style task logic, and custom Arduino/Raspberry Pi sensor or actuator modules."
 ---
 
 BEATBox is an open-source platform for ecological home-cage behavioral experiments.

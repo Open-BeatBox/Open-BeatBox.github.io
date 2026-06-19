@@ -1,6 +1,6 @@
 # BEATBox
 
-**BEATBox** — **BE**havioural and **A**u**T**onomous Box — is an open-source, modular, low-cost platform for autonomous home-cage operant conditioning and long-duration behavioral data acquisition in rodents.
+**BEATBox** — **BE**havioural and **A**u**T**onomous operant Box — is an open-source, modular, low-cost platform for autonomous home-cage operant conditioning and long-duration behavioral data acquisition in rodents.
 
 The goal of this repository is to make the project reproducible from a single entry point: website, one-pager, technical manual, assembly SOP, hardware resources, firmware, software, and public communication assets.
 
