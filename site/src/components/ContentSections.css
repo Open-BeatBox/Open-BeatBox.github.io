@@ -83,12 +83,7 @@
 }
 
 .quick-link-button-emoji {
-  @apply min-h-28 items-center justify-center gap-2 p-4 bg-cyan-200 text-slate-900;
-}
-
-.quick-link-button-emoji:hover {
-  background: color-mix(in srgb, theme("colors.cyan.200") 85%, black 15%);
-  border-color: color-mix(in srgb, theme("colors.cyan.200") 60%, white 20%);
+  @apply min-h-28 items-center justify-center gap-2 p-4;
 }
 
 .quick-link-button-screenshots {
@@ -122,6 +117,12 @@
 
 .quick-link-emoji-img {
   @apply h-14 w-14 object-contain;
+  /* Icons are solid-black PNGs; invert for the dark theme so they read on the dark card. */
+  filter: invert(1);
+}
+
+:root[data-theme="light"] .quick-link-emoji-img {
+  filter: none;
 }
 
 .quick-link-label {
@@ -628,6 +629,10 @@ a.impact-card:hover {
 
   .brand-showcase-copy {
     @apply flex-col items-center;
+  }
+
+  .brand-showcase-logo-trailing {
+    @apply hidden;
   }
 
   .brand-showcase-title {

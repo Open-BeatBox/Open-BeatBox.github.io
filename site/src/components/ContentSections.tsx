@@ -168,6 +168,16 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       <p className="brand-showcase-kicker">{section.kicker}</p>
                     )}
                   </div>
+                  {section.logo && (
+                    <Image
+                      src={section.logo}
+                      alt=""
+                      aria-hidden
+                      width={128}
+                      height={128}
+                      className="brand-showcase-logo brand-showcase-logo-trailing"
+                    />
+                  )}
                 </div>
                 <div className="brand-showcase-video-frame">
                   {isImageShowcase ? (
