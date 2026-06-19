@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BEATBox Assembly SOP — Dev Review and Troubleshooting</title>
+  <title>Build Your Own BEATBox Assembly Guide - Dev Review and Troubleshooting</title>
   <style>
     :root {
       --bg: #eef2f7;
@@ -218,7 +218,14 @@
       margin: 13px 0;
       background: var(--surface-2);
     }
-    .subsection h3 { margin: 0 0 9px; font-size: 1rem; }
+    .subsection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+    .subsection h3 { margin: 0; font-size: 1rem; }
     .instruction-media {
       margin: 12px 0 14px;
       overflow: hidden;
@@ -497,7 +504,7 @@
   <div class="layout">
     <aside>
       <div class="brand">
-        <h2>BEATBox SOP Dev Review</h2>
+        <h2>BEATBox Assembly Guide Dev Review</h2>
         <small>Troubleshooting and procedure improvement</small>
       </div>
       <div class="progress-block">
@@ -541,7 +548,7 @@
       <div id="sections"></div>
       <div id="emptyState" class="empty-state hide">No checklist item matches the current search.</div>
       <footer>
-        Internal development copy for troubleshooting and SOP improvement. Review decisions are stored only in this browser unless exported.
+        Internal development copy for troubleshooting and assembly-guide improvement. Review decisions are stored only in this browser unless exported.
       </footer>
     </main>
   </div>
@@ -559,14 +566,14 @@
 
 <script>
 const SOP = {"title": "BEATBox Assembly SOP", "version": "Draft v0.1", "subtitle": "Interactive build checklist for internal assembly and beta builds", "source": "Meeting notes + transcript from 10 Apr 2026 — Eric, Pierre and Damien", "purpose": ["Build one BEATBox from laser-cut plexiglass panels, 3D-printed parts, and pre-assembled electronics/PCBs.", "This is a working SOP, not yet a frozen production release. Several points remain explicitly to confirm or redesign."], "limitations": ["Some module names and exact PCB counts remain approximate.", "Final execution and software loading are not covered, because code was not yet available during the meeting.", "Some feeder and connector details still need confirmation with Pierre/Eric."], "sections": [{"id": "safety", "title": "Safety, handling, and quality rules", "tag": "Critical", "intro": "Apply these rules throughout the build. They are not optional unless explicitly superseded by a later validated release.", "items": [{"text": "Work on a clean, flat bench with enough space to lay modules flat.", "level": "standard"}, {"text": "Remove 3D-print supports cleanly without gouging the part. Use flat pliers if needed.", "level": "standard"}, {"text": "Do not overtighten screws in printed parts or plexiglass assemblies.", "level": "critical"}, {"text": "Do not clean laser-cut plexiglass with alcohol. Alcohol can infiltrate laser-cut microcracks and cause later cracking. Use water or gentle appropriate cleaning instead.", "level": "critical"}, {"text": "Keep the matte side of plexiglass facing outward and the glossy side inward unless a module-specific exception is documented.", "level": "critical"}, {"text": "Confirm there are no gaps between panels; mice will exploit gaps for chewing or escape attempts.", "level": "critical"}, {"text": "For any part touching food interaction zones, watch for chew damage and avoid introducing conductive/noisy materials without validation.", "level": "caution"}]}, {"id": "materials", "title": "Required materials and components", "tag": "Inventory", "subsections": [{"title": "Structural parts", "items": [{"text": "1 base plate in 10 mm plexiglass"}, {"text": "4 printed pillars with lower nut seats and upper fastening points"}, {"text": "Laser-cut plexiglass panel sets for the walls"}, {"text": "Door panel set"}, {"text": "Ceiling / top cover parts"}, {"text": "Printed module housings/covers as needed"}]}, {"title": "Electronics and functional modules", "items": [{"text": "Screen module PCB(s)"}, {"text": "Screen(s) with connector(s)"}, {"text": "Infrared barrier PCB(s) / LED barrier elements"}, {"text": "Feeder PCB and sensor components"}, {"text": "Motor for feeder", "level": "todo"}, {"text": "Rotor for feeder", "level": "todo"}, {"text": "Ceiling/light PCB with white + IR LEDs"}, {"text": "Tunnel module PCB(s), if applicable", "level": "optional"}, {"text": "Master PCB"}, {"text": "Interconnect cables, including Molex PicoBlade-style connectors where applicable"}]}, {"title": "Fasteners and inserts", "items": [{"text": "M5 × 50 mm screws for pillar-to-base fastening"}, {"text": "Matching M5 nuts for pillar/base system"}, {"text": "M3 inserts for printed parts"}, {"text": "M3 screws for panel sandwich assemblies"}, {"text": "M3 × 8 mm screws where specified"}, {"text": "M3 × 10 mm screws where specified"}, {"text": "Door hinge hardware"}, {"text": "Door button hardware"}, {"text": "Door latch / locking piece"}]}, {"title": "Optional / tips", "items": [{"text": "Rubber feet or pads under the base if needed", "level": "optional"}, {"text": "Small labeled containers for screws by length/type", "level": "optional"}, {"text": "Painter tape or removable labels for left/right module identification", "level": "optional"}]}]}, {"id": "tools", "title": "Required tools", "tag": "Inventory", "items": [{"text": "Flat pliers for support removal"}, {"text": "Hex key / Allen key appropriate for M5 hardware"}, {"text": "Screwdrivers / drivers for M3 hardware"}, {"text": "Small tweezers or fine pliers for inserts and connectors"}, {"text": "Flush cutter or deburring tool if required", "level": "optional"}]}, {"id": "prebuild", "title": "Pre-build checklist", "tag": "Before assembly", "items": [{"text": "All materials and components are present."}, {"text": "All PCBs are present for the planned configuration."}, {"text": "Screens are present and either already soldered or ready for the intended connection mode."}, {"text": "Cables are present and long enough."}, {"text": "LED barriers are identical left/right or side-specific", "level": "todo", "note": "To confirm."}]}, {"id": "procurement", "title": "Procurement / production checklist for Lyon builds in June", "tag": "Planning", "items": [{"text": "Validate purchasing of components."}, {"text": "Prepare plexiglass orders for direct delivery to Lyon."}, {"text": "Prepare 3D-printed parts."}, {"text": "Ensure all small hardware is ordered in advance; missing screws/inserts can block assembly.", "level": "caution"}]}, {"id": "part_prep", "title": "Part preparation", "tag": "Steps 1–2", "subsections": [{"title": "1. Remove supports from 3D-printed parts", "items": [{"text": "Inspect every printed part for support remnants."}, {"text": "Remove supports by hand when possible."}, {"text": "Use flat pliers when supports do not release cleanly.", "level": "caution"}]}, {"title": "2. Verify printed-part integrity", "items": [{"text": "Check for cracks, warping, or blocked holes."}, {"text": "Check that insert seats are usable."}, {"text": "Check that cable passages are open."}, {"text": "Check that mating edges are clean enough for flush assembly."}]}]}, {"id": "stage_a", "title": "Stage A — Build the enclosure frame", "tag": "Steps 3–5", "subsections": [{"title": "3. Prepare the base", "items": [{"text": "Place the 10 mm plexiglass base flat on the work surface."}, {"text": "Identify the pillar mounting holes."}, {"text": "If using feet/pads, decide whether they will be mounted now or after frame assembly.", "level": "optional"}]}, {"title": "4. Prepare the pillars", "items": [{"text": "In each pillar, place the required lower nuts."}, {"text": "Verify that the upper nut is available for later steps."}, {"text": "Check that the panel grooves are clear and unobstructed."}, {"text": "Check that the top fastening hole is clear for later ceiling attachment."}]}, {"title": "5. Attach the 4 pillars to the base", "items": [{"text": "Position each pillar at the appropriate base corner."}, {"text": "Insert the M5 × 50 mm fasteners."}, {"text": "Tighten by hand first to avoid cross-threading."}, {"text": "Finish tightening gently; do not overtighten.", "level": "critical"}]}]}, {"id": "stage_b", "title": "Stage B — Prepare the wall panels", "tag": "Steps 6–8", "subsections": [{"title": "6. Build each plexiglass sandwich panel", "intro": "Each wall panel is made from two laser-cut plexiglass plates assembled together to form the sliding geometry that fits into the pillar grooves.", "items": [{"text": "Identify the two plates belonging to the same panel."}, {"text": "Verify which surface is matte and which is glossy: matte side outward, glossy side inward.", "level": "critical"}, {"text": "Align the panel holes."}, {"text": "Assemble the pair using the panel screws."}, {"text": "Use 4 screws per panel assembly where applicable."}, {"text": "Use the correct M3 hardware for panel assembly."}, {"text": "Tighten enough to hold the sandwich firmly, without stressing the plexiglass.", "level": "critical"}]}, {"title": "7. Repeat for all required wall panels", "items": [{"text": "Screen-side panel(s) prepared."}, {"text": "Feeder-side panel(s) prepared."}, {"text": "Rear / blank panel prepared."}, {"text": "Door-side panel prepared."}]}, {"title": "8. Quality check the wall panels", "intro": "Do not use alcohol for cleaning.", "items": [{"text": "Confirm all matte sides face outward.", "level": "critical"}, {"text": "Confirm screw heads and nuts do not create mouse-accessible protrusions in critical interior areas.", "level": "critical"}, {"text": "Confirm edges are flush and clean."}]}]}, {"id": "stage_c", "title": "Stage C — Insert the panels into the frame", "tag": "Steps 9–10", "subsections": [{"title": "9. Install the fixed panels", "items": [{"text": "Slide the panels into the pillar grooves."}, {"text": "Install the screen-side panel in its intended location."}, {"text": "Install the feeder-side panel opposite the screen side."}, {"text": "Install the rear / blank panel."}, {"text": "Check that gaps between panels remain minimal.", "level": "critical"}]}, {"title": "10. Verify internal geometry", "items": [{"text": "Check that corners are tight enough to prevent chewing/escape opportunities.", "level": "critical"}, {"text": "Check that interior edges do not form easy climbing structures.", "level": "caution"}, {"text": "Confirm feeder and screen openings line up with their intended modules."}]}]}, {"id": "stage_d", "title": "Stage D — Install the door assembly", "tag": "Steps 11–15", "subsections": [{"title": "11. Prepare the door panel", "items": [{"text": "Use the same basic panel logic: matte side outward."}, {"text": "Confirm the small light-blocking offset / overlap is oriented correctly.", "level": "todo", "note": "Orientation still needs confirmation."}]}, {"title": "12. Install door hinges", "items": [{"text": "Retrieve the hinge references from the documented bill of materials / RS references.", "level": "todo"}, {"text": "Fit the hinges to the door assembly."}, {"text": "Pay close attention to hole alignment."}, {"text": "Use the correct M3 hardware lengths for each hinge side."}, {"text": "Use 2 × M3 × 8 mm where the thinner stack-up applies."}, {"text": "Use 2 × M3 × 10 mm where the thicker sandwich stack-up applies."}]}, {"title": "13. Install the door button and latch", "items": [{"text": "Install the door button using M3 × 8 mm hardware."}, {"text": "Install the latch / locking element if present."}]}, {"title": "15. Validate door function", "items": [{"text": "Confirm the door opens/closes smoothly."}, {"text": "Confirm chosen opening side is acceptable for handling."}]}]}, {"id": "screen_module", "title": "16. Screen module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the screen housing/front face, PCB, screen, and any side barrier components."}, {"text": "Confirm screen connector orientation before insertion.", "level": "critical"}]}, {"title": "Assembly", "items": [{"text": "Install required M3 inserts."}, {"text": "Mount the screen PCB."}, {"text": "Insert the screen in the intended orientation."}, {"text": "Connect the screen properly to the board."}, {"text": "Add the cover/front face."}, {"text": "Confirm the flexible printed-button mechanism actuates the screen buttons correctly.", "level": "todo"}, {"text": "Check that the module sits centered in its opening."}]}, {"title": "IR barrier on screen-side module", "items": [{"text": "Install the LED / IR barrier element(s) on each side as intended."}, {"text": "Confirm whether left and right barrier boards are identical or side-specific.", "level": "todo", "note": "To confirm with Pierre."}, {"text": "Route and connect barrier wiring to the intended PCB ports."}]}, {"title": "Design improvement pending", "items": [{"text": "Add / verify détrompeurs/keyed orientation features so the screen cannot be inserted backwards.", "level": "todo"}]}]}, {"id": "ceiling_module", "title": "17. Ceiling / light module (plafonnier)", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather the ceiling housing, PCB, LED components, and diffuser."}, {"text": "Confirm that white and IR LEDs are correctly integrated on the custom PCB."}]}, {"title": "Assembly", "items": [{"text": "Install inserts as needed."}, {"text": "Mount the PCB in the ceiling housing."}, {"text": "Install the diffuser."}, {"text": "Close the module with the cap."}, {"text": "Verify access to the rear connector."}, {"text": "Mount the completed ceiling module to the top fastening points of the pillars / top structure."}]}, {"title": "Functional intent", "items": [{"text": "White LEDs configured for daylight-like illumination."}, {"text": "IR LEDs available for night-time monitoring with camera detection."}]}]}, {"id": "tunnel_module", "title": "18. Tunnel module(s)", "tag": "Module assembly", "items": [{"text": "Identify the tunnel module parts."}, {"text": "Install inserts."}, {"text": "Mount PCB as for the screen-side module principle."}, {"text": "Install IR barrier components."}, {"text": "Close the module housing."}, {"text": "Install tunnel module in the correct internal position."}]}, {"id": "feeder_module", "title": "19. Feeder module", "tag": "Module assembly", "subsections": [{"title": "Preparation", "items": [{"text": "Gather feeder housing."}, {"text": "Gather PCB."}, {"text": "Gather sensor board(s)."}, {"text": "Gather motor."}, {"text": "Gather rotor."}, {"text": "Gather cables."}, {"text": "Gather fasteners."}, {"text": "Confirm sensor hardware is present."}, {"text": "Confirm required pre-soldered IR elements are present."}, {"text": "Confirm cable length is sufficient."}]}, {"title": "Mechanical assembly", "items": [{"text": "Install M3 inserts in the feeder housing."}, {"text": "Mount the feeder PCB / sensor board(s)."}, {"text": "Route cable(s) through the intended hole(s)."}, {"text": "Connect Molex PicoBlade-type connector(s) until a clear click is felt.", "level": "critical"}, {"text": "Pull back gently to confirm connectors are fully seated.", "level": "critical"}]}, {"title": "Motor + rotor assembly", "items": [{"text": "Install the motor using the 4 mounting screws."}, {"text": "Place the rotor on the motor axis / mounting position."}, {"text": "Insert the nut where required in the rotor assembly."}, {"text": "Tighten through the intended access hole."}]}, {"title": "Critical feeder caution", "items": [{"text": "Avoid overtightening: if the motor/rotor is tightened too much, rotation becomes difficult.", "level": "critical"}, {"text": "Avoid undertightening: if tightened too loosely, play develops.", "level": "critical"}, {"text": "Prevent dust entry that could block the mechanism.", "level": "caution"}, {"text": "Prevent long-term play that can crush pellets.", "level": "caution"}, {"text": "Tighten motor/rotor hardware carefully.", "level": "critical"}, {"text": "Verify free rotation by hand or safe functional check.", "level": "critical"}, {"text": "Reject any setup with visible play or drag.", "level": "critical"}, {"text": "Record the torque/fit condition used if standardization is possible.", "level": "todo"}]}, {"title": "Feeder chew-risk", "items": [{"text": "Regularly inspect the feeder interaction face for chew vulnerability.", "level": "caution"}, {"text": "Avoid introducing metal in the mouse interaction zone without validating recording-noise consequences if electrophysiology is used.", "level": "caution"}]}]}, {"id": "stage_f", "title": "Stage F — Final enclosure/module integration", "tag": "Steps 20–23", "subsections": [{"title": "20. Mount completed modules into the enclosure", "items": [{"text": "Install completed screen module(s) in the designated panel opening(s)."}, {"text": "Install feeder module in the feeder-side opening."}, {"text": "Install ceiling/light module."}, {"text": "Install tunnel module(s)."}, {"text": "Check that all modules sit flush.", "level": "critical"}, {"text": "Check that no cable is pinched by the enclosure.", "level": "critical"}]}, {"title": "23. Final wiring to the master PCB", "items": [{"text": "Retrieve the master PCB."}, {"text": "Connect each module using the intended cable path."}, {"text": "Follow the described topology: start from the main/master board, route through the modules, and return appropriately to the main board as required by the current design."}, {"text": "Verify connector seating on all module ports.", "level": "critical"}, {"text": "Verify wiring is tidy and not accessible for chewing.", "level": "critical"}, {"text": "Verify no cable interferes with door movement or module seating.", "level": "critical"}]}]}, {"id": "costs", "title": "Estimated cost per box", "tag": "Reference", "intro": "Rough order-of-magnitude estimate: approximately EUR 600–700 per box.", "items": [{"text": "PCBs: ~EUR 300 total"}, {"text": "3D printing: ~EUR 200 total"}, {"text": "Plexiglass: ~EUR 150–200 depending on sourcing"}, {"text": "Fasteners / small hardware: ~EUR 50 total"}]}, {"id": "signoff", "title": "Build-completion signoff", "tag": "Final check", "items": [{"text": "Mechanical assembly complete"}, {"text": "Module assembly complete"}, {"text": "Final wiring complete"}, {"text": "Photo documentation complete"}, {"text": "Deviations recorded"}, {"text": "Ready for code flashing / software setup"}, {"text": "Ready for beta test use"}], "metadata": ["Date", "Location", "Builders", "Documentation by", "Box ID / serial", "Revision used"]}]};
-SOP.title = 'BEATBox Assembly SOP Dev Review';
-SOP.subtitle = 'Internal troubleshooting checklist for reviewing, removing, modifying, and exporting SOP improvements';
+SOP.title = 'Build Your Own BEATBox Assembly Guide';
+SOP.subtitle = 'Internal troubleshooting checklist for reviewing, removing, modifying, and exporting assembly-guide improvements';
 SOP.purpose = [
-  'Review each SOP step during internal builds and flag whether it should be kept, removed, or modified before the user-facing release.',
+  'Review each assembly step during internal builds and flag whether it should be kept, removed, or modified before the user-facing release.',
   'Export a complete procedure review package that includes completion progress, section notes, review decisions, and a revised procedure draft.'
 ];
 SOP.limitations = [
-  'This page is an internal development and troubleshooting tool, not the real user-facing SOP.',
+  'This page is an internal development and troubleshooting tool, not the user-facing assembly guide.',
   'Review data is stored in this browser only until exported or imported.',
   'Modified steps are exported with review notes; the tool does not rewrite the step text automatically.'
 ];
@@ -664,17 +671,65 @@ function applySopEnhancements() {
   }
 
   const materials = findSection('materials');
-  if (materials?.subsections && !materials.subsections.some(subsection => subsection.title === 'PCB identifiers')) {
-    materials.subsections.splice(2, 0, {
-      title: 'PCB identifiers',
-      items: [
-        { text: 'Feeder main PCB: BB_Feeder_main_V1 or BB_Feeder_main_V1.1' },
-        { text: 'IR light curtain PCB: BB_IR_light_curtain' },
-        { text: 'Feeder IR barrier PCB: BB_Feeder_IRBarrier_V1.1', level: 'todo', note: 'Revision/name to confirm.' },
-        { text: 'Raspberry Pi shield PCB: BB_RPi_shield_V1.1' },
-        { text: 'Lighting PCB: BP_Lighting_V1.1' }
-      ]
-    });
+  if (materials?.subsections) {
+    materials.subsections = [
+      {
+        title: 'A. Structural parts - 3D printed',
+        intro: 'Use BB_3DP_* identifiers for printed parts. Replace suggested IDs with final CAD/revision IDs when the release package is frozen.',
+        items: [
+          { text: '4 printed pillars with lower nut seats and upper fastening points. Suggested ID: BB_3DP_Pillar_V1.1', level: 'todo', note: 'Confirm final printed-part ID.' },
+          { text: 'Screen housing / front face. Suggested ID: BB_3DP_ScreenHousing_V1.1', level: 'todo', note: 'Confirm final printed-part ID.' },
+          { text: 'Feeder housing and cover parts. Suggested ID: BB_3DP_FeederHousing_V1.1', level: 'todo', note: 'Confirm final printed-part ID.' },
+          { text: 'Tunnel module housing, if applicable. Suggested ID: BB_3DP_TunnelHousing_V1.1', level: 'optional', note: 'Confirm if included in the planned configuration.' },
+          { text: 'Ceiling / light module housing. Suggested ID: BB_3DP_LightHousing_V1.1', level: 'todo', note: 'Confirm final printed-part ID.' },
+          { text: 'Door latch / locking piece. Suggested ID: BB_3DP_DoorLatch_V1.1', level: 'todo', note: 'Structural door part; confirm final ID.' },
+          { text: 'Door button hardware / printed button component. Suggested ID: BB_3DP_DoorButton_V1.1', level: 'todo', note: 'Structural door part; confirm final ID.' }
+        ]
+      },
+      {
+        title: 'A. Structural parts - laser cut',
+        intro: 'Use BB_LC_* identifiers for laser-cut parts. These placeholders should match the CAD/export file names used for fabrication.',
+        items: [
+          { text: '1 base plate in 10 mm plexiglass. Suggested ID: BB_LC_BasePlate_10mm_V1.1', level: 'todo', note: 'Confirm final laser-cut ID.' },
+          { text: 'Wall panel set. Suggested ID: BB_LC_WallPanelSet_V1.1', level: 'todo', note: 'Confirm final laser-cut ID.' },
+          { text: 'Door panel set. Suggested ID: BB_LC_DoorPanelSet_V1.1', level: 'todo', note: 'Confirm final laser-cut ID.' },
+          { text: 'Ceiling / top cover parts. Suggested ID: BB_LC_TopCoverSet_V1.1', level: 'todo', note: 'Confirm final laser-cut ID.' },
+          { text: 'Door hinge hardware. Suggested ID: BB_HW_DoorHinge_V1.1', level: 'todo', note: 'Structural door hardware; confirm supplier/reference ID.' }
+        ]
+      },
+      {
+        title: 'B. Electronics - PCBs',
+        intro: 'Use BB_* PCB identifiers and confirm the revision on every board before assembly.',
+        items: [
+          { text: 'Feeder main PCB: BB_Feeder_main_V1 or BB_Feeder_main_V1.1', level: 'todo', note: 'Confirm active release revision.' },
+          { text: 'IR light curtain PCB: BB_IR_light_curtain', level: 'todo', note: 'Confirm final revision suffix.' },
+          { text: 'Feeder IR barrier PCB: BB_Feeder_IRBarrier_V1.1', level: 'todo', note: 'Revision/name to confirm.' },
+          { text: 'Raspberry Pi shield PCB: BB_RPi_shield_V1.1' },
+          { text: 'Lighting PCB: BP_Lighting_V1.1', level: 'todo', note: 'Confirm whether prefix should be BB_ or BP_.' },
+          { text: 'Screen PCB(s), including display connector board if separate. Suggested ID: BB_Screen_PCB_V1.1', level: 'todo', note: 'Confirm exact board ID.' },
+          { text: 'Tunnel module PCB(s), if applicable. Suggested ID: BB_Tunnel_PCB_V1.1', level: 'optional', note: 'Confirm exact board ID.' }
+        ]
+      },
+      {
+        title: 'Fasteners and inserts',
+        items: [
+          { text: 'M5 x 50 mm screws for pillar-to-base fastening' },
+          { text: 'Matching M5 nuts for pillar/base system' },
+          { text: 'M3 inserts for printed parts' },
+          { text: 'M3 screws for panel sandwich assemblies' },
+          { text: 'M3 x 8 mm screws where specified' },
+          { text: 'M3 x 10 mm screws where specified' }
+        ]
+      },
+      {
+        title: 'Optional / tips',
+        items: [
+          { text: 'Rubber feet or pads under the base if needed', level: 'optional' },
+          { text: 'Small labeled containers for screws by length/type', level: 'optional' },
+          { text: 'Painter tape or removable labels for left/right module identification', level: 'optional' }
+        ]
+      }
+    ];
   }
 
   const safety = findSection('safety');
@@ -1021,13 +1076,16 @@ function renderItems(items, section, path='') {
           <div class="step-image-actions">
             <label class="file-label" for="img-${id}">Import pictures</label>
             <input type="file" id="img-${id}" data-image-import="${id}" accept="image/*" multiple />
-            <span class="step-image-hint">Images attach to this step and export with the revised SOP.</span>
+            <span class="step-image-hint">Images attach to this step and export with the revised assembly guide.</span>
           </div>
           ${renderStepImages(id, images)}
         </div>
       </span>
     </div>`;
   }).join('')}</div>`;
+}
+function subsectionId(sectionId, title) {
+  return sectionId + '__sub__' + slugify(title).slice(0, 70);
 }
 function labelFor(level) {
   return { critical: 'Critical', caution: 'Caution', todo: 'To confirm', optional: 'Optional', standard: '' }[level] || level;
@@ -1051,15 +1109,21 @@ function renderSections() {
       }).join('')}</div>`;
     }
     if (section.subsections) {
-      body += section.subsections.map(sub => `
-        <div class="subsection">
-          <h3>${escapeHTML(sub.title)}</h3>
+      body += section.subsections.map(sub => {
+        const subId = subsectionId(section.id, sub.title);
+        return `
+        <div class="subsection" data-subsection="${subId}">
+          <div class="subsection-header">
+            <h3>${escapeHTML(sub.title)}</h3>
+            <button class="small-btn" type="button" data-check-subsection="${subId}">Check all</button>
+          </div>
           ${sub.intro ? `<p class="intro">${escapeHTML(sub.intro)}</p>` : ''}
           ${renderMedia(sub.media)}
           ${renderItems(sub.items || [], section, sub.title)}
           ${renderGallery(sub.gallery)}
           ${renderMedia(sub.afterMedia, 'secondary')}
-        </div>`).join('');
+        </div>`;
+      }).join('');
     } else {
       body += renderMedia(section.media);
       body += renderItems(section.items || [], section, section.title);
@@ -1186,6 +1250,17 @@ function attachEvents() {
       attachDynamicOnly();
       updateProgress();
     }
+    const checkSubsection = e.target.closest('[data-check-subsection]');
+    if (checkSubsection) {
+      const subsection = document.querySelector(`[data-subsection="${checkSubsection.dataset.checkSubsection}"]`);
+      subsection?.querySelectorAll('input[type=checkbox][data-id]').forEach(input => {
+        state[input.dataset.id] = true;
+      });
+      save();
+      renderSections();
+      attachDynamicOnly();
+      updateProgress();
+    }
     const removeImage = e.target.closest('[data-remove-image]');
     if (removeImage) {
       const id = removeImage.dataset.removeImage;
@@ -1204,7 +1279,7 @@ function attachEvents() {
   document.getElementById('expandAll').addEventListener('click', () => toggleAll(false));
   document.getElementById('collapseAll').addEventListener('click', () => toggleAll(true));
   document.getElementById('resetAll').addEventListener('click', () => {
-    if (!confirm('Reset all checklist progress, metadata, notes, and review decisions for this dev SOP in this browser?')) return;
+    if (!confirm('Reset all checklist progress, metadata, notes, and review decisions for this dev assembly guide in this browser?')) return;
     state = {}; metaState = {}; noteState = {}; reviewState = {};
     localStorage.removeItem(STORE_KEY); localStorage.removeItem(META_KEY); localStorage.removeItem(NOTE_KEY); localStorage.removeItem(REVIEW_KEY);
     renderSections(); attachDynamicOnly(); updateProgress();
@@ -1354,7 +1429,7 @@ function buildRevisedProcedure() {
   const full = cloneProcedureForExport();
   return {
     ...full,
-    title: 'BEATBox Assembly SOP - revised draft from dev review',
+    title: 'Build Your Own BEATBox Assembly Guide - revised draft from dev review',
     sections: full.sections.map(section => {
       const next = { ...section };
       if (next.items) next.items = next.items.map(stripItem).filter(Boolean);
@@ -1377,7 +1452,7 @@ function reviewSummary() {
 }
 function exportProgress() {
   const payload = {
-    sop: SOP.title,
+    assemblyGuide: SOP.title,
     version: SOP.version,
     pageType: 'dev-troubleshooting-review',
     exportedAt: new Date().toISOString(),
@@ -1398,7 +1473,7 @@ function exportProgress() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'beatbox-sop-dev-review.json';
+  a.download = 'beatbox-assembly-guide-dev-review.json';
   document.body.appendChild(a);
   a.click();
   a.remove();
