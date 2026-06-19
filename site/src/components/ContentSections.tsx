@@ -194,24 +194,29 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           case "quickLinks":
             return (
               <section key={key} className="quick-links-section" aria-label="Primary links">
-                <div className="quick-link-grid">
+                <SectionIntro title={section.title} />
+                <div className={`quick-link-grid quick-link-grid-${section.variant || "default"}`}>
                   {section.items.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
-                      className="quick-link-button"
+                      className={`quick-link-button quick-link-button-${section.variant || "default"}`}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                     >
-                      <span className="quick-link-image-wrap">
-                        <Image
-                          src={item.image}
-                          alt={item.alt}
-                          fill
-                          sizes="(max-width: 640px) 45vw, 220px"
-                          className="quick-link-image"
-                        />
-                      </span>
+                      {section.variant === "emoji" ? (
+                        <span className="quick-link-emoji" aria-hidden>{item.icon}</span>
+                      ) : (
+                        <span className="quick-link-image-wrap">
+                          <Image
+                            src={item.image}
+                            alt={item.alt}
+                            fill
+                            sizes="(max-width: 640px) 45vw, 220px"
+                            className="quick-link-image"
+                          />
+                        </span>
+                      )}
                       <span className="quick-link-label">{item.label}</span>
                     </a>
                   ))}
@@ -373,7 +378,20 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     <div key={`${item.value}-${item.label}`} className="stat-card">
                       <p className="stat-value">{item.value}</p>
                       <p className="stat-label">{item.label}</p>
-                      {item.body && <p className="stat-body">{item.body}</p>}
+                      {item.body && (
+                        <ReactMarkdown
+                          remarkPlugins={markdownPlugins}
+                          rehypePlugins={rehypePlugins}
+                          components={{
+                            a: (props) => (
+                              <a {...props} className="link" target="_blank" rel="noreferrer" />
+                            ),
+                          }}
+                          className="stat-body"
+                        >
+                          {item.body}
+                        </ReactMarkdown>
+                      )}
                     </div>
                   ))}
                 </div>

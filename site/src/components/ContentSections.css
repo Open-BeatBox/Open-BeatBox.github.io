@@ -62,6 +62,14 @@
   @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
 }
 
+.quick-link-grid-emoji {
+  @apply gap-3;
+}
+
+.quick-link-grid-screenshots {
+  @apply gap-4;
+}
+
 .quick-link-button {
   @apply flex min-h-48 flex-col overflow-hidden rounded-2xl shadow-lg transition hover:-translate-y-1 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
   border: 1px solid var(--border-soft);
@@ -74,22 +82,50 @@
   background: color-mix(in srgb, var(--card-bg-strong) 82%, var(--accent-cta) 18%);
 }
 
+.quick-link-button-emoji {
+  @apply min-h-28 items-center justify-center gap-2 p-4;
+}
+
+.quick-link-button-screenshots {
+  @apply min-h-56;
+}
+
 .quick-link-image-wrap {
   @apply relative block h-32 w-full;
   background: rgba(255,255,255,0.06);
+}
+
+.quick-link-button-screenshots .quick-link-image-wrap {
+  @apply h-44;
 }
 
 .quick-link-image {
   @apply object-contain p-5;
 }
 
+.quick-link-button-screenshots .quick-link-image {
+  @apply object-cover p-0;
+}
+
 .quick-link-button:nth-child(3) .quick-link-image {
   @apply object-cover p-0;
+}
+
+.quick-link-emoji {
+  @apply text-5xl leading-none;
 }
 
 .quick-link-label {
   @apply flex flex-1 items-center justify-center px-4 py-5 text-center text-2xl font-bold uppercase md:text-3xl;
   letter-spacing: 0;
+}
+
+.quick-link-button-emoji .quick-link-label {
+  @apply flex-none py-0 text-lg md:text-xl;
+}
+
+.quick-link-button-screenshots .quick-link-label {
+  @apply py-4 text-xl md:text-2xl;
 }
 
 .section-title {
@@ -195,6 +231,10 @@
 .stat-body {
   @apply mt-1 text-xs leading-relaxed;
   color: var(--text-muted);
+}
+
+.stat-body p {
+  margin: 0;
 }
 
 .pipeline {

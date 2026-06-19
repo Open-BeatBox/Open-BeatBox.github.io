@@ -62,6 +62,7 @@ export type QuickLinkItem = {
   href: string;
   image: string;
   alt: string;
+  icon?: string;
 };
 
 export type BrandShowcase = {
@@ -96,7 +97,7 @@ export type TimelineItem = {
 export type Section =
   | { type: "text"; title?: string; body?: string }
   | { type: "brandShowcase"; title: string; subtitle?: string; kicker?: string; logo?: string; video: string; poster?: string }
-  | { type: "quickLinks"; items: QuickLinkItem[] }
+  | { type: "quickLinks"; title?: string; variant?: "default" | "emoji" | "screenshots"; items: QuickLinkItem[] }
   | { type: "featureCards"; title?: string; subtitle?: string; cards: FeatureCard[] }
   | { type: "stats"; title?: string; subtitle?: string; items: StatItem[] }
   | { type: "updates"; title?: string; items: LinkItem[] }
