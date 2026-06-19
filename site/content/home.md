@@ -172,7 +172,7 @@ sections:
       [eric.burguiere@cnrs.fr](mailto:eric.burguiere@cnrs.fr)
 
       Centre de Recherche en Neurosciences de Lyon (CRNL)
-	Located in: Centre Hospitalier Le Vinatier
+      Located in: Centre Hospitalier Le Vinatier
       Address: CRNL - CH Le Vinatier - [Bâtiment 462 - Neurocampus, 95 Bd Pinel, 69500 Bron](https://share.google/MSlKKKMuVHyNgxXI9)
   - type: "columns"
     title: "Credits"
