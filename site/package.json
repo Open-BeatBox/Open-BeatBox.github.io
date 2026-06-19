@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "test": "ts-node --transpile-only tests/utils.test.ts"
+    "test": "ts-node --transpile-only --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\",\\\"moduleResolution\\\":\\\"node\\\"}\" tests/utils.test.ts"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.0-alpha.18",

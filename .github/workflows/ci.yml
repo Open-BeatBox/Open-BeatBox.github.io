@@ -1,0 +1,69 @@
+name: Website and documentation CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "scripts/**"
+      - "site/**"
+      - "package.json"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  website-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+          cache: pip
+
+      - name: Install website dependencies
+        run: npm ci
+        working-directory: site
+
+      - name: Install documentation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r docs/requirements.txt
+
+      - name: Build Sphinx manual with warnings as errors
+        run: python -m sphinx -W --keep-going -b html -d docs/_build/ci-doctrees docs/source site/public/docs/manual
+
+      - name: Type-check website
+        run: npm run type-check
+        working-directory: site
+
+      - name: Run website tests
+        run: npm test
+        working-directory: site
+
+      - name: Build static website
+        env:
+          NEXT_PUBLIC_SITE_URL: https://open-beatbox.github.io
+        run: npm run build
+        working-directory: site
+
+      - name: Check rendered output
+        run: |
+          test -f site/out/index.html
+          test -f site/out/docs/manual/index.html
+          test -f site/out/docs/beatbox-assembly-sop.html
+          grep -q "BEATBox" site/out/index.html
+          grep -q "BEATBox" site/out/docs/manual/index.html
