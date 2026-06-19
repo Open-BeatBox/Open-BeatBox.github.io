@@ -9,13 +9,11 @@ The goal of this repository is to make the project reproducible from a single en
 | Need | Link |
 | --- | --- |
 | Project website | <https://open-beatbox.github.io/> |
-| One-pager | <https://open-beatbox.github.io/one-pager/> |
 | Technical documentation | <https://open-beatbox.github.io/docs/manual/> |
-| Interactive assembly SOP | <https://open-beatbox.github.io/docs/beatbox-assembly-sop.html> |
+| Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-sop.html> |
 | GitHub resources directory | [`resources/`](./resources) |
 | Website source | [`site/`](./site) |
 | Sphinx documentation source | [`docs/source/`](./docs/source) |
-| Current documentation TODO tracker | [`site/BEATBOX_IMPACT_REDESIGN_TODO.md`](./site/BEATBOX_IMPACT_REDESIGN_TODO.md) |
 
 ## What BEATBox is for
 
