@@ -738,7 +738,18 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                       <summary className="cursor-pointer text-lg font-semibold text-white">
                         {item.question}
                       </summary>
-                      <p className="mt-2 text-slate-200">{item.answer}</p>
+                      <ReactMarkdown
+                        remarkPlugins={markdownPlugins}
+                        rehypePlugins={rehypePlugins}
+                        components={{
+                          a: (props) => (
+                            <a {...props} className="link" target="_blank" rel="noreferrer" />
+                          ),
+                        }}
+                        className="mt-2 text-slate-200"
+                      >
+                        {item.answer}
+                      </ReactMarkdown>
                     </details>
                   ))}
                 </div>
