@@ -164,7 +164,7 @@ This tracker lists completed repository/documentation cleanup work and the remai
 
 ## Phase 10 - Lizbeth assembly-documentation handoff and public release
 
-Source handoff: the `assembly-tutorials` repository contains the Master BOM in CSV/XLSX, one enclosure guide, five sub-module guides, and six announced 720p MP4 tutorial videos. Four videos are currently available in a temporary Google Drive handoff; final playback and archival locations remain YouTube and Zenodo respectively.
+Source handoff: the `assembly-tutorials` repository contains the Master BOM in CSV/XLSX, one enclosure guide, five sub-module guides, and six 720p MP4 tutorial videos. All six are available in a temporary Google Drive handoff; final playback and archival locations remain YouTube and Zenodo respectively.
 
 ### Website and repository integration - Damien / Eric
 
@@ -176,9 +176,9 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 - [x] Document that `assembly-tutorials` owns the editable BOM and module guides, avoiding duplicate sources.
 - [x] Pin `assembly-tutorials` as a Git submodule and render all six source guides directly inside Sphinx.
 - [x] Keep the interactive SOP and modular Sphinx rendering as two explicit alternatives for comparison.
-- [x] Embed the four delivered Drive videos on their matching Sphinx module pages without committing MP4 files.
+- [x] Embed all six delivered Drive videos on their matching Sphinx module pages without committing MP4 files.
 - [ ] Eric: approve the final information architecture and public video-hosting choice.
-- [ ] Damien: add the remaining two videos, then replace all temporary Drive IDs with YouTube URLs and add thumbnails.
+- [ ] Damien: replace all temporary Drive URLs with YouTube URLs and add thumbnails.
 
 ### Master BOM release gate - Pierre
 
@@ -204,7 +204,7 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 
 ### Video publication - Damien / Eric
 
-- [ ] Collect all six source MP4 files in project-controlled staging storage; feeder, light ring, photobeam gate, and screen are currently visible in the temporary Drive folder.
+- [x] Collect all six source MP4 files in the temporary project staging folder and map each one to its module guide.
 - [ ] Do not commit the approximately 1 GB video set to the website Git history.
 - [x] Select project YouTube for public streaming and Zenodo for the versioned archival deposit/DOI.
 - [ ] Confirm every temporary Drive file is viewable without authentication while it is linked from the public site.

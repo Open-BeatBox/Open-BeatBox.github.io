@@ -9,6 +9,16 @@ from sphinx.application import Sphinx
 
 
 VIDEOS = {
+    "build/assembly-tutorials/modules/mod-frm-assembly": {
+        "title": "Frame and enclosure assembly",
+        "embed_url": "https://drive.google.com/file/d/13iQ4pZJJIW37ojucvI6OUpseFJEl0oHU/preview",
+        "watch_url": "https://drive.google.com/file/d/13iQ4pZJJIW37ojucvI6OUpseFJEl0oHU/view?usp=drivesdk",
+    },
+    "build/assembly-tutorials/modules/mod-bmt-assembly": {
+        "title": "Water bottle mount assembly",
+        "embed_url": "https://drive.google.com/file/d/12cbWKacPB6CGM2SMgHU8EKzlYtNXjdLv/preview",
+        "watch_url": "https://drive.google.com/file/d/12cbWKacPB6CGM2SMgHU8EKzlYtNXjdLv/view?usp=drivesdk",
+    },
     "build/assembly-tutorials/modules/mod-fdr-aseembly": {
         "title": "Feeder module assembly",
         "embed_url": "https://drive.google.com/file/d/1U7WHxCBrBH_LmIhVE-iPwYedeMLx_lZj/preview",
