@@ -10,7 +10,8 @@ The goal of this repository is to make the project reproducible from a single en
 | --- | --- |
 | Project website | <https://open-beatbox.github.io/> |
 | Technical documentation | <https://open-beatbox.github.io/docs/manual/> |
-| Modular assembly tutorials | <https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md> |
+| Modular assembly tutorials | <https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html> |
+| Assembly tutorial sources | <https://github.com/Open-BeatBox/assembly-tutorials> |
 | Master BOM (CSV / XLSX) | <https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials> |
 | Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-sop.html> |
 | GitHub resources directory | [`resources/`](./resources) |
@@ -59,7 +60,7 @@ Open-BeatBox.github.io/
 
 ## Documentation policy
 
-The **Sphinx manual** in [`docs/source/`](./docs/source) is the public technical entry point. Module-level assembly instructions and the Master BOM are maintained in the separate [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) repository and are linked from the manual. Keeping one editable copy avoids the website and tutorial sources drifting apart.
+The **Sphinx manual** in [`docs/source/`](./docs/source) is the public technical entry point. Module-level assembly instructions and the Master BOM are maintained in the separate [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) repository, pinned as a Git submodule, and rendered directly inside the manual. Keeping one editable upstream copy avoids the website and tutorial sources drifting apart.
 
 Public manual URL:
 
@@ -107,6 +108,21 @@ Install website dependencies:
 cd site
 npm install
 ```
+
+If the repository was cloned without submodules, initialize the assembly tutorials before building the documentation:
+
+```bash
+git submodule update --init --recursive
+```
+
+To review a newer tutorial revision before publishing it in the manual:
+
+```bash
+git submodule update --remote docs/source/build/assembly-tutorials
+git diff --submodule
+```
+
+Commit the updated submodule pointer only after the tutorials and BOM have been reviewed.
 
 Run the website locally:
 

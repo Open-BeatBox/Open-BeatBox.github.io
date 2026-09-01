@@ -9,7 +9,7 @@ hero:
   subtitle: "Start with the Master BOM, follow the versioned tutorials, then validate the complete system."
   primaryCta:
     label: "Open assembly tutorials"
-    href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+    href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
   secondaryCta:
     label: "Download the Master BOM"
     href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
@@ -27,7 +27,7 @@ sections:
         ctaLabel: "Open hardware files"
       - title: "Assemble each module"
         body: "Follow the frame, bottle mount, feeder, light ring, photobeam gate, and screen tutorials. Each guide uses the item IDs from the Master BOM."
-        href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+        href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
         ctaLabel: "Open tutorials"
       - title: "Validate the complete build"
         body: "Use the interactive SOP as a bench checklist and record any discrepancy with its module ID, item ID, and hardware revision."
@@ -37,8 +37,11 @@ sections:
     title: "Assembly documentation"
     links:
       - label: "Modular tutorial index"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+        href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
         note: "Six written guides: enclosure plus five sub-modules"
+      - label: "Assembly tutorial source repository"
+        href: "https://github.com/Open-BeatBox/assembly-tutorials"
+        note: "Canonical Markdown and BOM source"
       - label: "Master BOM — XLSX"
         href: "https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.xlsx"
         note: "Editable working file"

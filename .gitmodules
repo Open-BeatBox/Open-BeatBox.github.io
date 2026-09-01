@@ -1,0 +1,4 @@
+[submodule "docs/source/build/assembly-tutorials"]
+	path = docs/source/build/assembly-tutorials
+	url = https://github.com/Open-BeatBox/assembly-tutorials.git
+	branch = main

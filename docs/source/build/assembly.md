@@ -11,17 +11,17 @@ The current module documents are marked `0.1-draft` and have not yet been assign
 
 | Module | Scope | Guide |
 | --- | --- | --- |
-| Frame and enclosure (`MOD-FRM`) | Base, pillars, walls, door, top panel, and module installation | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-frm-assembly.md) |
+| Frame and enclosure (`MOD-FRM`) | Base, pillars, walls, door, top panel, and module installation | {doc}`Open guide <assembly-tutorials/modules/mod-frm-assembly>` |
 
 ## Sub-modules
 
 | Module | Scope | Guide |
 | --- | --- | --- |
-| Water bottle mount (`MOD-BMT`) | Bracket preparation and enclosure mounting | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-bmt-assembly.md) |
-| Feeder (`MOD-FDR`) | Housing, motor, rotor, PCBs, and cabling | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-fdr-aseembly.md) |
-| Light ring (`MOD-LGT`) | Housing, PCB, cap, and diffuser | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-lgt.md) |
-| Photobeam gate (`MOD-PBG`) | Passage, IR boards, controller, cabling, and covers | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-pbg-assembly.md) |
-| Screen (`MOD-SCR`) | Touchscreen, controller PCB, IR boards, cabling, and housing | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-scr-assembly.md) |
+| Water bottle mount (`MOD-BMT`) | Bracket preparation and enclosure mounting | {doc}`Open guide <assembly-tutorials/modules/mod-bmt-assembly>` |
+| Feeder (`MOD-FDR`) | Housing, motor, rotor, PCBs, and cabling | {doc}`Open guide <assembly-tutorials/modules/mod-fdr-aseembly>` |
+| Light ring (`MOD-LGT`) | Housing, PCB, cap, and diffuser | {doc}`Open guide <assembly-tutorials/modules/mod-lgt>` |
+| Photobeam gate (`MOD-PBG`) | Passage, IR boards, controller, cabling, and covers | {doc}`Open guide <assembly-tutorials/modules/mod-pbg-assembly>` |
+| Screen (`MOD-SCR`) | Touchscreen, controller PCB, IR boards, cabling, and housing | {doc}`Open guide <assembly-tutorials/modules/mod-scr-assembly>` |
 
 ## Recommended workflow
 
@@ -36,3 +36,17 @@ The current module documents are marked `0.1-draft` and have not yet been assign
 ## Reporting corrections
 
 Report a tutorial or BOM discrepancy in the [assembly-tutorials issue tracker](https://github.com/Open-BeatBox/assembly-tutorials/issues). Include the item ID, module ID, hardware revision, tutorial section, and a photograph where useful.
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+
+assembly-tutorials/tutorials_index
+assembly-tutorials/conventions
+assembly-tutorials/modules/mod-frm-assembly
+assembly-tutorials/modules/mod-bmt-assembly
+assembly-tutorials/modules/mod-fdr-aseembly
+assembly-tutorials/modules/mod-lgt
+assembly-tutorials/modules/mod-pbg-assembly
+assembly-tutorials/modules/mod-scr-assembly
+```

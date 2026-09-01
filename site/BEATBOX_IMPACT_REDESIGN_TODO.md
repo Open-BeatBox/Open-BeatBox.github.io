@@ -174,6 +174,7 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 - [x] Update the website build path and resources page to expose the tutorial repository and Master BOM.
 - [x] Make the homepage `Build your Own` entry point open the consolidated build manual.
 - [x] Document that `assembly-tutorials` owns the editable BOM and module guides, avoiding duplicate sources.
+- [x] Pin `assembly-tutorials` as a Git submodule and render all six source guides directly inside Sphinx.
 - [ ] Eric: approve the final information architecture and public video-hosting choice.
 - [ ] Damien: add the six public video URLs and thumbnails after they are delivered.
 

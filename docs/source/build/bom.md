@@ -4,8 +4,8 @@ The latest Master BOM is maintained alongside the modular assembly tutorials. It
 
 ## Download
 
-- [BOM.xlsx — editable working file](https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.xlsx)
-- [BOM.csv — portable version](https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.csv)
+- {download}`BOM.xlsx — editable working file <assembly-tutorials/BOM.xlsx>`
+- {download}`BOM.csv — portable version <assembly-tutorials/BOM.csv>`
 - [Preview the CSV on GitHub](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/BOM.csv)
 - [Identifier conventions](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/conventions.md)
 
@@ -25,4 +25,4 @@ The current BOM still contains fields marked with questions, placeholder paths o
 - Required and optional items are clearly separated.
 - The CSV and XLSX contain equivalent data.
 
-Corrections belong in the [assembly-tutorials repository](https://github.com/Open-BeatBox/assembly-tutorials) so the public website never becomes a competing copy of the BOM.
+Corrections belong in the [assembly-tutorials repository](https://github.com/Open-BeatBox/assembly-tutorials). The manual displays the pinned submodule revision and therefore remains traceable to the exact tutorial and BOM source used for the build.

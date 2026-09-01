@@ -43,7 +43,7 @@ contributing
 
 ## Quick links
 
-- [Modular assembly tutorials](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md)
+- {doc}`Modular assembly tutorials <build/assembly-tutorials/tutorials_index>`
 - [Master BOM (CSV and XLSX)](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
 - <a href="../beatbox-assembly-sop.html">Interactive assembly SOP</a>
 - [Open-source resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources)

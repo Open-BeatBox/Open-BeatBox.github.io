@@ -8,12 +8,12 @@ The source videos are currently in the team's OneDrive handoff folder. Public UR
 
 | Tutorial | Written guide | Public video |
 | --- | --- | --- |
-| Frame and enclosure | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-frm-assembly.md) | Pending |
-| Water bottle mount | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-bmt-assembly.md) | Pending |
-| Feeder module | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-fdr-aseembly.md) | Pending |
-| Light ring | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-lgt.md) | Pending |
-| Photobeam gate | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-pbg-assembly.md) | Pending |
-| Screen module | [Open guide](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/modules/mod-scr-assembly.md) | Pending |
+| Frame and enclosure | {doc}`Open guide <assembly-tutorials/modules/mod-frm-assembly>` | Pending |
+| Water bottle mount | {doc}`Open guide <assembly-tutorials/modules/mod-bmt-assembly>` | Pending |
+| Feeder module | {doc}`Open guide <assembly-tutorials/modules/mod-fdr-aseembly>` | Pending |
+| Light ring | {doc}`Open guide <assembly-tutorials/modules/mod-lgt>` | Pending |
+| Photobeam gate | {doc}`Open guide <assembly-tutorials/modules/mod-pbg-assembly>` | Pending |
+| Screen module | {doc}`Open guide <assembly-tutorials/modules/mod-scr-assembly>` | Pending |
 
 ## Publication requirements
 

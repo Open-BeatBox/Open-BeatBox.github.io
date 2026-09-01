@@ -29,8 +29,9 @@ Use the standalone checklist during hands-on assembly:
 
 ## Versioned sources
 
-- [Tutorial index](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md)
-- [Master BOM downloads](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
-- [Part-ID and media conventions](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/conventions.md)
+- {doc}`Tutorial index <assembly-tutorials/tutorials_index>`
+- {download}`Master BOM (XLSX) <assembly-tutorials/BOM.xlsx>`
+- {download}`Master BOM (CSV) <assembly-tutorials/BOM.csv>`
+- {doc}`Part-ID and media conventions <assembly-tutorials/conventions>`
 
-The `assembly-tutorials` repository owns the editable module guides and BOM. This manual provides the stable public route to them; it does not maintain a second copy.
+The `assembly-tutorials` repository owns the editable module guides and BOM. It is included here as a pinned Git submodule, so the manual renders the reviewed source revision directly instead of maintaining a second editable copy.

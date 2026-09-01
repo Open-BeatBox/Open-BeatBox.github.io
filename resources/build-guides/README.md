@@ -2,7 +2,8 @@
 
 The editable assembly guides and Master BOM are maintained in the dedicated [Open-BeatBox assembly-tutorials repository](https://github.com/Open-BeatBox/assembly-tutorials).
 
-- [Tutorial index](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md)
+- [Rendered tutorial index](https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html)
+- [Tutorial source repository](https://github.com/Open-BeatBox/assembly-tutorials)
 - [Master BOM](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
 - [Public build manual](https://open-beatbox.github.io/docs/manual/build/)
 - [Interactive assembly checklist](https://open-beatbox.github.io/docs/beatbox-assembly-sop.html)
