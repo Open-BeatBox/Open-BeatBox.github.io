@@ -10,6 +10,8 @@ The goal of this repository is to make the project reproducible from a single en
 | --- | --- |
 | Project website | <https://open-beatbox.github.io/> |
 | Technical documentation | <https://open-beatbox.github.io/docs/manual/> |
+| Modular assembly tutorials | <https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md> |
+| Master BOM (CSV / XLSX) | <https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials> |
 | Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-sop.html> |
 | GitHub resources directory | [`resources/`](./resources) |
 | Website source | [`site/`](./site) |
@@ -57,7 +59,7 @@ Open-BeatBox.github.io/
 
 ## Documentation policy
 
-The canonical technical documentation is the **Sphinx manual** in [`docs/source/`](./docs/source).
+The **Sphinx manual** in [`docs/source/`](./docs/source) is the public technical entry point. Module-level assembly instructions and the Master BOM are maintained in the separate [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) repository and are linked from the manual. Keeping one editable copy avoids the website and tutorial sources drifting apart.
 
 Public manual URL:
 

@@ -726,6 +726,16 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                               {step.title}
                             </h3>
                             {step.body && <p>{step.body}</p>}
+                            {step.href && (
+                              <a
+                                href={step.href}
+                                className="link"
+                                target={step.href.startsWith("http") ? "_blank" : undefined}
+                                rel={step.href.startsWith("http") ? "noreferrer" : undefined}
+                              >
+                                {step.ctaLabel || "Open"}
+                              </a>
+                            )}
                           </>
                         ) : (
                           <span>{step}</span>

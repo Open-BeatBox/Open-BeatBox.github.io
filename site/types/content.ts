@@ -82,6 +82,8 @@ export type Step =
       title: string;
       body?: string;
       icon?: string;
+      href?: string;
+      ctaLabel?: string;
     };
 
 export type StatItem = {

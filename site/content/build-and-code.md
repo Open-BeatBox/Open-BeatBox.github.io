@@ -5,16 +5,49 @@ showInNav: false
 navOrder: 4
 slug: "/build-and-code"
 hero:
-  title: "Build Beatbox, flash the firmware, start streaming data."
-  subtitle: "Open hardware, open firmware, and open APIs."
+  title: "Build BEATBox module by module."
+  subtitle: "Start with the Master BOM, follow the versioned tutorials, then validate the complete system."
+  primaryCta:
+    label: "Open assembly tutorials"
+    href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+  secondaryCta:
+    label: "Download the Master BOM"
+    href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
 sections:
   - type: "steps"
-    title: "Hardware"
+    title: "Hardware build path"
     steps:
-      - "Download CAD, STL, PCB, and wiring diagrams from the Beatbox repository."
-      - "Order components using the Bill of Materials."
-      - "Assemble the chamber and modules following the build guide."
-      - "<!-- TODO: link exact GitHub repo and hardware docs. -->"
+      - title: "Check the Master BOM"
+        body: "Download the CSV or XLSX, confirm the hardware revision, and resolve every row still marked for validation before ordering."
+        href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
+        ctaLabel: "Open BOM"
+      - title: "Prepare fabricated parts"
+        body: "Download the available CAD and production files, then inspect every printed and laser-cut part before assembly."
+        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware"
+        ctaLabel: "Open hardware files"
+      - title: "Assemble each module"
+        body: "Follow the frame, bottle mount, feeder, light ring, photobeam gate, and screen tutorials. Each guide uses the item IDs from the Master BOM."
+        href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+        ctaLabel: "Open tutorials"
+      - title: "Validate the complete build"
+        body: "Use the interactive SOP as a bench checklist and record any discrepancy with its module ID, item ID, and hardware revision."
+        href: "/docs/beatbox-assembly-sop.html"
+        ctaLabel: "Open checklist"
+  - type: "links"
+    title: "Assembly documentation"
+    links:
+      - label: "Modular tutorial index"
+        href: "https://github.com/Open-BeatBox/assembly-tutorials/blob/main/tutorials_index.md"
+        note: "Six written guides: enclosure plus five sub-modules"
+      - label: "Master BOM — XLSX"
+        href: "https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.xlsx"
+        note: "Editable working file"
+      - label: "Master BOM — CSV"
+        href: "https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.csv"
+        note: "Portable export"
+      - label: "Technical build manual"
+        href: "/docs/manual/build/"
+        note: "Build order, safety, fabrication, BOM and video status"
   - type: "steps"
     title: "Firmware"
     steps:
@@ -33,8 +66,6 @@ sections:
   - type: "text"
     title: "Contributing"
     body: |
-      Contributions are welcome. Please follow the coding style and pull request process described in the repository.
-
-      <!-- TODO: link CONTRIBUTING.md and issue tracker. -->
+      Report assembly or BOM corrections in the [assembly-tutorials issue tracker](https://github.com/Open-BeatBox/assembly-tutorials/issues). For website, software, or general project work, use the [main issue tracker](https://github.com/Open-BeatBox/Open-BeatBox.github.io/issues) and read the [contribution guide](https://open-beatbox.github.io/docs/manual/contributing.html).
 ---
 

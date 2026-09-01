@@ -124,10 +124,10 @@ This tracker lists completed repository/documentation cleanup work and the remai
   - [ ] Insert reward-system details.
   - [ ] Insert power-supply specifications.
 - [ ] `site/content/build-and-code.md`
-  - [ ] Replace `TODO: link exact GitHub repo and hardware docs` with exact resource links.
+  - [x] Replace `TODO: link exact GitHub repo and hardware docs` with exact resource links.
   - [ ] Add exact firmware commands.
   - [ ] Add exact microcontroller or controller type.
-  - [ ] Link contribution guide and issue tracker.
+  - [x] Link contribution guide and issue tracker.
 - [ ] `site/content/get-beatbox.md`
   - [ ] Clarify whether pre-assembled units are currently available.
   - [ ] Add vendors, pricing ranges, and ordering process if applicable.
@@ -155,8 +155,74 @@ This tracker lists completed repository/documentation cleanup work and the remai
 - [x] Run `npm run build` during the previous redesign pass.
 - [x] Confirm `/docs/beatbox-assembly-sop.html` still works during the previous redesign pass.
 - [x] Confirm no new broken asset paths during the previous redesign pass.
-- [ ] Run `python -m sphinx -b html -d docs/_build/doctrees docs/source site/public/docs/manual` after the Sphinx workflow change.
-- [ ] Run `npm run build` after rebuilding the manual.
+- [x] Run `python -m sphinx -b html -d docs/_build/doctrees docs/source site/public/docs/manual` after the Sphinx workflow change.
+- [x] Run `npm run build` after rebuilding the manual.
 - [ ] Check the homepage locally.
-- [ ] Check `/docs/manual/` locally after the Sphinx build.
-- [ ] Check `/docs/beatbox-assembly-sop.html` locally after the deployment workflow change.
+- [x] Check `/docs/manual/` in the static export after the Sphinx build.
+- [x] Check `/docs/beatbox-assembly-sop.html` in the static export after the deployment workflow change.
+- [ ] Triage the dependency audit before the final production release (`npm ci` reported 1 low, 4 moderate, 12 high, and 1 critical finding on 2026-09-01); review upgrades individually rather than applying a blind force fix.
+
+## Phase 10 - Lizbeth assembly-documentation handoff and public release
+
+Source handoff: the `assembly-tutorials` repository contains the Master BOM in CSV/XLSX, one enclosure guide, five sub-module guides, and six 720p MP4 tutorial videos supplied separately through the team's OneDrive folder.
+
+### Website and repository integration - Damien / Eric
+
+- [x] Link the modular tutorial index from the public build manual.
+- [x] Link direct CSV and XLSX downloads from the public build manual.
+- [x] Replace the placeholder build-guide directory with a pointer to the maintained tutorial repository.
+- [x] Update the website build path and resources page to expose the tutorial repository and Master BOM.
+- [x] Make the homepage `Build your Own` entry point open the consolidated build manual.
+- [x] Document that `assembly-tutorials` owns the editable BOM and module guides, avoiding duplicate sources.
+- [ ] Eric: approve the final information architecture and public video-hosting choice.
+- [ ] Damien: add the six public video URLs and thumbnails after they are delivered.
+
+### Master BOM release gate - Pierre
+
+- [ ] Complete or validate every doubtful field directly in `BOM.xlsx`.
+- [ ] Replace placeholder values such as question marks, `path to file`, unknown suppliers, and unspecified revisions.
+- [ ] Resolve duplicate IDs in the current CSV: `FST-M3X8`, `FST-M3X10`, and `PCB-PBG-002`.
+- [ ] Give the 600 mm photobeam cable its own `CBL-*` identifier instead of `PCB-PBG-002`.
+- [ ] Reconcile naming mismatches used by tutorials, including `TOL-FORC` / `TOL-FORC-`, `TBC-CBL-PBG-001`, `FST-M5X5`, `FST-M3X6-SHCS`, `FST-M3X8-SHCS`, and `TBC-M3-FASTENER`.
+- [ ] Verify every fabrication path against the actual repository, including filename case and extension.
+- [ ] Confirm quantities per complete BEATBox, especially the two screen modules.
+- [ ] Add hardware revision compatibility and a BOM version/date.
+- [ ] Regenerate `BOM.csv` from the approved XLSX and verify both formats are equivalent.
+
+### Tutorial release gate - Damien / Pierre
+
+- [ ] Correct filename typos and standardize guide names (`mod-fdr-aseembly.md`, `mod-lgt.md`).
+- [ ] Replace `0.1-draft`, blank `hardware_revision`, and `YYYY-MM-DD` in all six guides with approved release metadata.
+- [ ] Ensure every item ID in each module parts table exists exactly once in the approved BOM.
+- [ ] Resolve prose and hardware placeholders before publication (for example unspecified fasteners and instructions that only say to consult a video).
+- [ ] Add required tools, electrical checks, mechanical checkpoints, and final animal-facing safety checks to every relevant guide.
+- [ ] Perform one clean-room documentation pass using only the BOM and tutorials; record corrections as issues.
+- [ ] Tag the approved tutorial repository release as `v1.0` and link that immutable release from the website.
+
+### Video publication - Damien / Eric
+
+- [ ] Copy the six source MP4 files out of the personal OneDrive handoff into project-controlled archival storage.
+- [ ] Do not commit the approximately 1 GB video set to the website Git history.
+- [ ] Choose a public streaming host (project YouTube or PeerTube preferred) and retain downloadable originals in a versioned GitHub Release if required.
+- [ ] Rename each file using `<module-id>_<step>_<action>_<view>.mp4`.
+- [ ] Produce a thumbnail and captions or transcript for each video.
+- [ ] Confirm each video maps to one of: frame, water bottle mount, feeder, light ring, photobeam gate, or screen.
+- [ ] Add the public URL next to the relevant written steps and to `docs/source/build/video-tutorials.md`.
+- [ ] Test playback on desktop and mobile and confirm that no private OneDrive URL appears in the public site.
+
+### System validation - Zenneddine / project team
+
+- [ ] Record the ICM-built unit's hardware revision and serial/build identifier.
+- [ ] Use the ICM unit for code integration tests and log results against the matching hardware and BOM versions.
+- [ ] Verify feeder motor/rotor, both screens, IR boards, photobeam gate, light ring, cabling, and full-system communications.
+- [ ] Feed every hardware/documentation discrepancy back into the corresponding tutorial or BOM issue.
+- [ ] Publish a short validation record and define the criteria for declaring documentation `v1.0`.
+
+### Final release acceptance
+
+- [ ] BOM has no unresolved required fields or duplicate identifiers.
+- [ ] All six written guides have approved revisions and verification dates.
+- [ ] All six videos have durable public URLs, captions, and thumbnails.
+- [ ] Website, Sphinx manual, interactive SOP, tutorial repository, and BOM cross-link correctly.
+- [ ] Documentation and website builds pass; links and video playback are manually checked.
+- [ ] A versioned release and concise changelog are published.
