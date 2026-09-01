@@ -1,6 +1,6 @@
 # Build your own BEATBox
 
-This section gathers the practical build documentation for assembling a BEATBox.
+This section deliberately keeps two assembly-guide versions in parallel while the project team evaluates which experience to retain. Both describe the same device, but their structure and interaction model differ.
 
 ```{toctree}
 :maxdepth: 2
@@ -12,20 +12,34 @@ fabrication
 video-tutorials
 ```
 
-## Recommended build path
+## Compare the two versions
+
+::::{grid} 1 2 2 2
+:gutter: 3
+
+:::{grid-item-card} Version A — Interactive SOP
+Use the single-page, step-by-step checklist during a bench build. It is optimized for sequential progress and quick validation.
+
+<a href="../../beatbox-assembly-sop.html">Open the interactive Assembly SOP</a>
+:::
+
+:::{grid-item-card} Version B — Modular Sphinx guide
+Use the six rendered tutorials from `assembly-tutorials`, with the versioned BOM and the available videos embedded on their matching module pages.
+
+{doc}`Open the modular Sphinx guide <assembly-tutorials/tutorials_index>`
+:::
+
+::::
+
+Neither version is removed during this comparison period. For useful feedback, complete a build primarily with one version and record where its navigation, level of detail, or media support helps or blocks you.
+
+## Common preparation
 
 1. Review the safety notes.
 2. Download the Master BOM and confirm every unresolved field for the hardware revision being built.
 3. Prepare 3D-printed and laser-cut parts.
-4. Build each module with the corresponding modular tutorial.
-5. Install the modules in the frame and use the interactive SOP as a bench checklist.
-6. Record deviations and validation notes during the build.
-
-## Interactive SOP
-
-Use the standalone checklist during hands-on assembly:
-
-<a href="../../beatbox-assembly-sop.html">Open the interactive BEATBox Assembly SOP</a>
+4. Choose one of the two guide versions above for the evaluation build.
+5. Record deviations and validation notes, including the guide version used.
 
 ## Versioned sources
 

@@ -1,27 +1,29 @@
 # Video tutorials
 
-Six short 720p MP4 tutorials have been prepared to complement the written module guides. The written guides remain authoritative because they contain the full parts lists, cautions, checkpoints, and revision information.
+Six short 720p MP4 tutorials have been announced to complement the written module guides. Four are currently available in the temporary Google Drive handoff and are embedded directly in their matching Sphinx pages. The written guides remain essential because they contain the full parts lists, cautions, checkpoints, and revision information.
 
 ## Publication status
 
-The source videos are currently in the team's OneDrive handoff folder. Public URLs have not yet been assigned, so the private links are intentionally not embedded in this public manual.
+The current Drive links are temporary. They will be replaced by project-controlled YouTube links for playback, while released originals should be archived on Zenodo with durable identifiers. Google may request sign-in until public sharing is confirmed.
 
 | Tutorial | Written guide | Public video |
 | --- | --- | --- |
-| Frame and enclosure | {doc}`Open guide <assembly-tutorials/modules/mod-frm-assembly>` | Pending |
-| Water bottle mount | {doc}`Open guide <assembly-tutorials/modules/mod-bmt-assembly>` | Pending |
-| Feeder module | {doc}`Open guide <assembly-tutorials/modules/mod-fdr-aseembly>` | Pending |
-| Light ring | {doc}`Open guide <assembly-tutorials/modules/mod-lgt>` | Pending |
-| Photobeam gate | {doc}`Open guide <assembly-tutorials/modules/mod-pbg-assembly>` | Pending |
-| Screen module | {doc}`Open guide <assembly-tutorials/modules/mod-scr-assembly>` | Pending |
+| Frame and enclosure | {doc}`Open guide <assembly-tutorials/modules/mod-frm-assembly>` | Awaiting upload |
+| Water bottle mount | {doc}`Open guide <assembly-tutorials/modules/mod-bmt-assembly>` | Awaiting upload |
+| Feeder module | {doc}`Open guide with video <assembly-tutorials/modules/mod-fdr-aseembly>` | [Temporary Drive file](https://drive.google.com/file/d/1U7WHxCBrBH_LmIhVE-iPwYedeMLx_lZj/view?usp=drivesdk) |
+| Light ring | {doc}`Open guide with video <assembly-tutorials/modules/mod-lgt>` | [Temporary Drive file](https://drive.google.com/file/d/11ymhMf_vLa13IoAeG7u0pcYd7CdqgUvQ/view?usp=drivesdk) |
+| Photobeam gate | {doc}`Open guide with video <assembly-tutorials/modules/mod-pbg-assembly>` | [Temporary Drive file](https://drive.google.com/file/d/1YcfWktCNrZLU985ME6mK09RCsFTdyBYW/view?usp=drivesdk) |
+| Screen module | {doc}`Open guide with video <assembly-tutorials/modules/mod-scr-assembly>` | [Temporary Drive file](https://drive.google.com/file/d/1W-CbucP4mVNRbWdahoSWfjjUbpiLWMX0/view?usp=drivesdk) |
+
+[Open the temporary Google Drive folder](https://drive.google.com/drive/folders/15qdSVwi2WGLClNfwwK7sh3xtZT9da_ts).
 
 ## Publication requirements
 
 - Keep the 720p MP4 originals as archival assets outside the Git repository.
-- Publish streamable copies on the project's approved public video host.
+- Publish streamable copies on the project's YouTube channel and archive released originals on Zenodo.
 - Use the naming convention in the [assembly documentation conventions](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/conventions.md).
 - Provide one thumbnail, a descriptive title, captions or a transcript, and a public URL per video.
-- Add the corresponding URL near the relevant step in each written guide and in the table above.
+- Replace each temporary Drive `embed_url` and `watch_url` in `docs/source/_ext/assembly_videos.py` with the corresponding YouTube URLs and update the table above.
 - Verify playback on desktop and mobile before release.
 
-Large MP4 files should not be committed directly to the website repository. If a long-term downloadable archive is needed, attach the originals to a versioned GitHub Release; use a streaming host for the website experience.
+Large MP4 files should not be committed directly to the website repository. Zenodo should hold the versioned archival copy; use YouTube for the website experience.

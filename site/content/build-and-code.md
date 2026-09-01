@@ -8,11 +8,11 @@ hero:
   title: "Build BEATBox module by module."
   subtitle: "Start with the Master BOM, follow the versioned tutorials, then validate the complete system."
   primaryCta:
-    label: "Open assembly tutorials"
-    href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
+    label: "Compare assembly guides"
+    href: "/docs/manual/build/"
   secondaryCta:
-    label: "Download the Master BOM"
-    href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
+    label: "Open interactive SOP"
+    href: "/docs/beatbox-assembly-sop.html"
 sections:
   - type: "steps"
     title: "Hardware build path"
@@ -34,11 +34,14 @@ sections:
         href: "/docs/beatbox-assembly-sop.html"
         ctaLabel: "Open checklist"
   - type: "links"
-    title: "Assembly documentation"
+    title: "Two assembly-guide versions"
     links:
-      - label: "Modular tutorial index"
+      - label: "Version A — Interactive Assembly SOP"
+        href: "/docs/beatbox-assembly-sop.html"
+        note: "A single sequential checklist optimized for use at the bench"
+      - label: "Version B — Modular Sphinx guide"
         href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
-        note: "Six written guides: enclosure plus five sub-modules"
+        note: "The assembly-tutorials repository rendered as six module pages, with available videos"
       - label: "Assembly tutorial source repository"
         href: "https://github.com/Open-BeatBox/assembly-tutorials"
         note: "Canonical Markdown and BOM source"

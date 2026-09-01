@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
+
+
+sys.path.insert(0, str(Path(__file__).parent / "_ext"))
 
 project = "BEATBox Documentation"
 author = "NERB team"
@@ -8,6 +12,7 @@ copyright = "2026, NERB team"
 release = "draft"
 
 extensions = [
+    "assembly_videos",
     "myst_parser",
     "sphinx_design",
 ]
@@ -29,6 +34,7 @@ source_suffix = {
 html_theme = "furo"
 html_title = "BEATBox Documentation"
 html_static_path = ["_static"]
+html_css_files = ["custom.css"]
 html_favicon = "../../site/public/favicon.png"
 html_logo = "../../site/public/images/beatbox-logo.png"
 

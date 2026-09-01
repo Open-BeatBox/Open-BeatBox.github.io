@@ -164,7 +164,7 @@ This tracker lists completed repository/documentation cleanup work and the remai
 
 ## Phase 10 - Lizbeth assembly-documentation handoff and public release
 
-Source handoff: the `assembly-tutorials` repository contains the Master BOM in CSV/XLSX, one enclosure guide, five sub-module guides, and six 720p MP4 tutorial videos supplied separately through the team's OneDrive folder.
+Source handoff: the `assembly-tutorials` repository contains the Master BOM in CSV/XLSX, one enclosure guide, five sub-module guides, and six announced 720p MP4 tutorial videos. Four videos are currently available in a temporary Google Drive handoff; final playback and archival locations remain YouTube and Zenodo respectively.
 
 ### Website and repository integration - Damien / Eric
 
@@ -175,8 +175,10 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 - [x] Make the homepage `Build your Own` entry point open the consolidated build manual.
 - [x] Document that `assembly-tutorials` owns the editable BOM and module guides, avoiding duplicate sources.
 - [x] Pin `assembly-tutorials` as a Git submodule and render all six source guides directly inside Sphinx.
+- [x] Keep the interactive SOP and modular Sphinx rendering as two explicit alternatives for comparison.
+- [x] Embed the four delivered Drive videos on their matching Sphinx module pages without committing MP4 files.
 - [ ] Eric: approve the final information architecture and public video-hosting choice.
-- [ ] Damien: add the six public video URLs and thumbnails after they are delivered.
+- [ ] Damien: add the remaining two videos, then replace all temporary Drive IDs with YouTube URLs and add thumbnails.
 
 ### Master BOM release gate - Pierre
 
@@ -202,14 +204,15 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 
 ### Video publication - Damien / Eric
 
-- [ ] Copy the six source MP4 files out of the personal OneDrive handoff into project-controlled archival storage.
+- [ ] Collect all six source MP4 files in project-controlled staging storage; feeder, light ring, photobeam gate, and screen are currently visible in the temporary Drive folder.
 - [ ] Do not commit the approximately 1 GB video set to the website Git history.
-- [ ] Choose a public streaming host (project YouTube or PeerTube preferred) and retain downloadable originals in a versioned GitHub Release if required.
+- [x] Select project YouTube for public streaming and Zenodo for the versioned archival deposit/DOI.
+- [ ] Confirm every temporary Drive file is viewable without authentication while it is linked from the public site.
 - [ ] Rename each file using `<module-id>_<step>_<action>_<view>.mp4`.
 - [ ] Produce a thumbnail and captions or transcript for each video.
 - [ ] Confirm each video maps to one of: frame, water bottle mount, feeder, light ring, photobeam gate, or screen.
-- [ ] Add the public URL next to the relevant written steps and to `docs/source/build/video-tutorials.md`.
-- [ ] Test playback on desktop and mobile and confirm that no private OneDrive URL appears in the public site.
+- [ ] Replace the temporary Drive embeds with public YouTube URLs next to the relevant written steps and in `docs/source/build/video-tutorials.md`.
+- [ ] Test playback on desktop and mobile and confirm that no temporary or private Drive URL remains in the final public release.
 
 ### System validation - Zenneddine / project team
 
