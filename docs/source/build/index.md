@@ -17,10 +17,10 @@ video-tutorials
 ::::{grid} 1 2 2 2
 :gutter: 3
 
-:::{grid-item-card} Version A — Interactive SOP
-Use the single-page, step-by-step checklist during a bench build. It is optimized for sequential progress and quick validation.
+:::{grid-item-card} Version A — Interactive tutorial
+Use the single-page, module-by-module checklist during a bench build. It includes the current parts tables, videos, and validation checkpoints.
 
-<a href="../../beatbox-assembly-sop.html">Open the interactive Assembly SOP</a>
+<a href="../../beatbox-assembly-tutorial.html">Open the interactive assembly tutorial</a>
 :::
 
 :::{grid-item-card} Version B — Modular Sphinx guide

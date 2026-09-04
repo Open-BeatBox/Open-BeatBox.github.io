@@ -30,7 +30,7 @@ The current module documents are marked `0.1-draft` and have not yet been assign
 3. Prepare the fabricated parts described in {doc}`fabrication`.
 4. Assemble the water bottle mount, feeder, light ring, photobeam gate, and two screen modules.
 5. Assemble the frame and install the completed sub-modules.
-6. Use the <a href="../../beatbox-assembly-sop.html">interactive assembly SOP</a> as the bench checklist.
+6. Use the <a href="../../beatbox-assembly-tutorial.html">interactive assembly tutorial</a> as the bench checklist.
 7. Complete electrical, mechanical, and animal-facing safety checks before use.
 
 ## Reporting corrections

@@ -12,7 +12,7 @@ BEATBox is designed for long-duration behavioral neuroscience experiments where 
 
 ## Current status
 
-BEATBox is a working open-source platform with real builds, module-level assembly references, and an interactive SOP. Some details remain under active validation, including final cost benchmarks, optimal cable lengths, tracking wall color, long-term reliability, and complete protocol templates.
+BEATBox is a working open-source platform with real builds, module-level assembly references, and an interactive assembly tutorial. Some details remain under active validation, including final cost benchmarks, optimal cable lengths, tracking wall color, long-term reliability, and complete protocol templates.
 
 ## Documentation map
 

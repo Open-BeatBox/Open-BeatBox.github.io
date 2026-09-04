@@ -21,8 +21,8 @@ logo: "/images/beatbox-logo.png"
 brandColor: "#2563EB"
 secondaryColor: "#0F172A"
 extraNavItems:
-  - title: "Interactive SOP"
-    href: "/docs/beatbox-assembly-sop.html"
+  - title: "Assembly Tutorial"
+    href: "/docs/beatbox-assembly-tutorial.html"
     navOrder: 1
   - title: "Documentation"
     href: "/docs/manual/"

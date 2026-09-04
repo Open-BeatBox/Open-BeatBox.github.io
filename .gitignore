@@ -5,6 +5,8 @@ site/out/
 resources/docs-site/
 docs/_build/
 dist/
+__pycache__/
+*.pyc
 *.log
 .env.local
 site/.env.local

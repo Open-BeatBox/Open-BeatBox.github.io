@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Assembly guide" href="assembly.html"><link rel="prev" title="Overview" href="../overview.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Assembly tutorials" href="assembly.html"><link rel="prev" title="Overview" href="../overview.html">
         <link rel="prefetch" href="../_static/beatbox-logo.png" as="image">
 
     <link rel="shortcut icon" href="../_static/favicon.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89552e2e" />
     
     
 
@@ -205,13 +206,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Build your own BEATBox</a><input aria-label="Toggle navigation of Build your own BEATBox" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="assembly.html">Assembly guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bom.html">Bill of materials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="safety.html">Safety notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fabrication.html">Fabrication</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="assembly.html">Assembly tutorials</a><input aria-label="Toggle navigation of Assembly tutorials" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/tutorials_index.html">Beatbox Assembly Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/conventions.html">Documentation and file conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-frm-assembly.html">Assemble frame structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-frm-assembly.html#enclosure-assembly-instructions">Enclosure Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-bmt-assembly.html">Water Bottle Mount Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-fdr-aseembly.html">Feeder Module Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-lgt.html">Light Ring Module Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-pbg-assembly.html">Photobeam Gate Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="assembly-tutorials/modules/mod-scr-assembly.html">Screen Module Assembly Instructions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../hardware/index.html">Hardware</a><input aria-label="Toggle navigation of Hardware" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bom.html">Master bill of materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safety.html">Safety notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fabrication.html">Fabrication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video-tutorials.html">Video tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hardware/index.html">Hardware</a><input aria-label="Toggle navigation of Hardware" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hardware/modules.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hardware/pcbs.html">PCB identifiers</a></li>
 </ul>
@@ -263,17 +276,19 @@
         <article role="main" id="furo-main-content">
           <section id="build-your-own-beatbox">
 <h1>Build your own BEATBox<a class="headerlink" href="#build-your-own-beatbox" title="Link to this heading">¶</a></h1>
-<p>This section gathers the practical build documentation for assembling a BEATBox.</p>
+<p>This section deliberately keeps two assembly-guide versions in parallel while the project team evaluates which experience to retain. Both describe the same device, but their structure and interaction model differ.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assembly.html#assembly-stages">Assembly stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assembly.html#notes-to-migrate-here">Notes to migrate here</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#enclosure">Enclosure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#sub-modules">Sub-modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#recommended-workflow">Recommended workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#reporting-corrections">Reporting corrections</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bom.html">Bill of materials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bom.html#major-categories">Major categories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bom.html#pcb-identifiers">PCB identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bom.html">Master bill of materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bom.html#download">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bom.html#required-release-checks">Required release checks</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="safety.html">Safety notes</a><ul>
@@ -288,22 +303,60 @@
 <li class="toctree-l2"><a class="reference internal" href="fabrication.html#files">Files</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="video-tutorials.html">Video tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video-tutorials.html#publication-status">Publication status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video-tutorials.html#publication-requirements">Publication requirements</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<section id="recommended-build-path">
-<h2>Recommended build path<a class="headerlink" href="#recommended-build-path" title="Link to this heading">¶</a></h2>
+<section id="compare-the-two-versions">
+<h2>Compare the two versions<a class="headerlink" href="#compare-the-two-versions" title="Link to this heading">¶</a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Version A — Interactive tutorial</div>
+<p class="sd-card-text">Use the single-page, module-by-module checklist during a bench build. It includes the current parts tables, videos, and validation checkpoints.</p>
+<p class="sd-card-text"><a href="../../beatbox-assembly-tutorial.html">Open the interactive assembly tutorial</a></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Version B — Modular Sphinx guide</div>
+<p class="sd-card-text">Use the six rendered tutorials from <code class="docutils literal notranslate"><span class="pre">assembly-tutorials</span></code>, with the versioned BOM and the available videos embedded on their matching module pages.</p>
+<p class="sd-card-text"><a class="reference internal" href="assembly-tutorials/tutorials_index.html"><span class="doc">Open the modular Sphinx guide</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Neither version is removed during this comparison period. For useful feedback, complete a build primarily with one version and record where its navigation, level of detail, or media support helps or blocks you.</p>
+</section>
+<section id="common-preparation">
+<h2>Common preparation<a class="headerlink" href="#common-preparation" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Review the safety notes.</p></li>
-<li><p>Check the bill of materials and PCB revisions.</p></li>
+<li><p>Download the Master BOM and confirm every unresolved field for the hardware revision being built.</p></li>
 <li><p>Prepare 3D-printed and laser-cut parts.</p></li>
-<li><p>Follow the interactive assembly SOP.</p></li>
-<li><p>Record deviations and validation notes during the build.</p></li>
+<li><p>Choose one of the two guide versions above for the evaluation build.</p></li>
+<li><p>Record deviations and validation notes, including the guide version used.</p></li>
 </ol>
 </section>
-<section id="interactive-sop">
-<h2>Interactive SOP<a class="headerlink" href="#interactive-sop" title="Link to this heading">¶</a></h2>
-<p>Use the standalone checklist during hands-on assembly:</p>
-<p><a href="../../beatbox-assembly-sop.html">Open the interactive BEATBox Assembly SOP</a></p>
+<section id="versioned-sources">
+<h2>Versioned sources<a class="headerlink" href="#versioned-sources" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="assembly-tutorials/tutorials_index.html"><span class="doc">Tutorial index</span></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/4c1041c62a3871e68c1a603ed1025b2f/BOM.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Master</span> <span class="pre">BOM</span> <span class="pre">(XLSX)</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../_downloads/fe57d30f470032db4a5380b42fe7102f/BOM.csv"><code class="xref download docutils literal notranslate"><span class="pre">Master</span> <span class="pre">BOM</span> <span class="pre">(CSV)</span></code></a></p></li>
+<li><p><a class="reference internal" href="assembly-tutorials/conventions.html"><span class="doc">Part-ID and media conventions</span></a></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">assembly-tutorials</span></code> repository owns the editable module guides and BOM. It is included here as a pinned Git submodule, so the manual renders the reviewed source revision directly instead of maintaining a second editable copy.</p>
 </section>
 </section>
 
@@ -317,7 +370,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Assembly guide</div>
+                <div class="title">Assembly tutorials</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -363,8 +416,9 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Build your own BEATBox</a><ul>
-<li><a class="reference internal" href="#recommended-build-path">Recommended build path</a></li>
-<li><a class="reference internal" href="#interactive-sop">Interactive SOP</a></li>
+<li><a class="reference internal" href="#compare-the-two-versions">Compare the two versions</a></li>
+<li><a class="reference internal" href="#common-preparation">Common preparation</a></li>
+<li><a class="reference internal" href="#versioned-sources">Versioned sources</a></li>
 </ul>
 </li>
 </ul>

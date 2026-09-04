@@ -13,7 +13,7 @@ The goal of this repository is to make the project reproducible from a single en
 | Modular assembly tutorials | <https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html> |
 | Assembly tutorial sources | <https://github.com/Open-BeatBox/assembly-tutorials> |
 | Master BOM (CSV / XLSX) | <https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials> |
-| Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-sop.html> |
+| Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-tutorial.html> |
 | GitHub resources directory | [`resources/`](./resources) |
 | Website source | [`site/`](./site) |
 | Sphinx documentation source | [`docs/source/`](./docs/source) |
