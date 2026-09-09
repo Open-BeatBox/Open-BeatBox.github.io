@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="title">
+  <title id="title">Documentation book icon</title>
+  <rect width="320" height="220" rx="28" fill="#e0f2fe"/>
+  <path d="M78 52h70c16 0 28 12 28 28v96c0-16-12-28-28-28H78V52Z" fill="#ffffff" stroke="#0f172a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M176 80c0-16 12-28 28-28h38v96h-38c-16 0-28 12-28 28V80Z" fill="#bae6fd" stroke="#0f172a" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M99 84h48M99 113h48M205 84h23M205 113h23" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+</svg>

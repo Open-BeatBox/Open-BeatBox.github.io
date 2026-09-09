@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive, module-by-module BEATBox assembly tutorial with parts lists, videos, checkpoints, and persistent progress.">
+  <title>Build Your Own BEATBox | Interactive Assembly Tutorial</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef1f4;
+      --surface: #ffffff;
+      --surface-soft: #f7f8fa;
+      --ink: #17212b;
+      --muted: #5f6b76;
+      --line: #d7dde3;
+      --accent: #007c73;
+      --accent-dark: #005d57;
+      --accent-soft: #e5f4f2;
+      --navy: #172f46;
+      --warning: #8a5a00;
+      --warning-bg: #fff7df;
+      --critical: #a62b2b;
+      --critical-bg: #fff0f0;
+      --success: #247247;
+      --shadow: 0 12px 32px rgba(20, 34, 48, 0.09);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 18px; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: var(--accent-dark); }
+    :focus-visible { outline: 3px solid rgba(0, 124, 115, 0.3); outline-offset: 2px; }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -80px;
+      z-index: 100;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+    }
+    .skip-link:focus { top: 12px; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 22px;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+    aside {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    main { min-width: 0; }
+    .brand { margin-bottom: 16px; }
+    .brand strong { display: block; font-size: 1.12rem; }
+    .brand span { color: var(--muted); font-size: 0.82rem; }
+    .progress-label { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; }
+    .progress-track {
+      height: 10px;
+      margin-top: 8px;
+      overflow: hidden;
+      background: #e2e7eb;
+      border-radius: 999px;
+    }
+    .progress-fill { display: block; width: 0; height: 100%; background: var(--accent); transition: width 180ms ease; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 16px; }
+    .stat { background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 9px 10px; }
+    .stat strong { display: block; font-size: 1.08rem; }
+    .stat span { color: var(--muted); font-size: 0.76rem; }
+    .search {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 9px 11px;
+      color: var(--ink);
+      background: #fff;
+    }
+    .segment {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      margin-top: 9px;
+      padding: 3px;
+      background: #e8ecef;
+      border-radius: var(--radius);
+    }
+    .segment button { min-width: 0; padding: 7px 4px; border: 0; background: transparent; color: var(--muted); font-size: 0.78rem; }
+    .segment button[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 4px rgba(20,34,48,.12); }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    button, .file-label, .button-link {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 10px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+    button:hover, .file-label:hover, .button-link:hover { border-color: #9faab4; background: var(--surface-soft); }
+    button.primary { grid-column: 1 / -1; border-color: var(--accent); background: var(--accent); color: #fff; }
+    button.primary:hover { background: var(--accent-dark); }
+    button.danger { color: var(--critical); }
+    input[type="file"] { display: none; }
+    nav { display: grid; gap: 4px; margin-top: 16px; }
+    nav a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 9px;
+      border-radius: 6px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.87rem;
+    }
+    nav a:hover, nav a.active { background: var(--accent-soft); color: var(--accent-dark); }
+    .nav-progress { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    .hero {
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #1b2b39 url("/images/BB_Full-1.jpg") center 45% / cover no-repeat;
+      box-shadow: var(--shadow);
+      color: #fff;
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,24,34,.92) 0%, rgba(10,24,34,.73) 52%, rgba(10,24,34,.18) 100%); }
+    .hero-copy { position: relative; z-index: 1; max-width: 760px; padding: 34px; }
+    .eyebrow { margin: 0 0 9px; font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #8ee2d8; }
+    .hero h1 { margin: 0; max-width: 680px; font-size: 3.15rem; line-height: 1.02; letter-spacing: 0; }
+    .hero p { margin: 12px 0 0; max-width: 650px; color: rgba(255,255,255,.86); font-size: 1.05rem; }
+    .meta-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .pill { display: inline-flex; align-items: center; min-height: 30px; padding: 5px 9px; border: 1px solid rgba(255,255,255,.32); border-radius: 999px; background: rgba(0,0,0,.26); font-size: 0.78rem; }
+
+    .intro-panel {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .intro-panel h2, .intro-panel h3 { margin: 0 0 7px; }
+    .intro-panel p { margin: 0; color: var(--muted); }
+    .source-links { display: grid; gap: 7px; align-content: start; }
+    .source-links a { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 7px 0; text-decoration: none; font-weight: 700; }
+    .source-links a:last-child { border-bottom: 0; }
+
+    .module-card {
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .module-card.filtered-out { display: none; }
+    .module-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+    .module-title-row { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+    .module-title-row h2 { margin: 0; font-size: 1.28rem; }
+    .module-id { padding: 3px 7px; border-radius: 5px; background: var(--navy); color: #fff; font: 700 0.76rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .module-version { color: var(--muted); font-size: 0.8rem; }
+    .module-progress { display: flex; align-items: center; gap: 10px; margin-top: 7px; }
+    .module-progress .progress-track { width: min(250px, 40vw); margin: 0; }
+    .module-progress span { color: var(--muted); font-size: 0.78rem; }
+    .module-actions { display: flex; gap: 7px; }
+    .small-button { min-height: 34px; padding: 6px 9px; font-size: 0.78rem; }
+    .module-body { padding: 20px; }
+    .module-body.collapsed { display: none; }
+    .module-summary { margin: 0 0 16px; color: var(--muted); }
+    .media-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 14px; margin-bottom: 18px; }
+    .video-frame, .reference-image { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #101820; }
+    .video-shell { position: relative; aspect-ratio: 16 / 9; }
+    .video-shell iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .video-placeholder { width: 100%; height: 100%; border: 0; border-radius: 0; background: linear-gradient(135deg, #152737, #007c73); color: #fff; font-size: 1rem; }
+    .video-placeholder:hover { background: linear-gradient(135deg, #203b50, #00675f); }
+    .media-caption { display: flex; justify-content: space-between; gap: 12px; padding: 9px 11px; background: #fff; color: var(--muted); font-size: 0.78rem; }
+    .media-caption a { font-weight: 700; white-space: nowrap; }
+    .reference-image { background: #fff; }
+    .reference-image img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+    details.parts { margin-bottom: 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-soft); }
+    details.parts > summary { cursor: pointer; padding: 11px 13px; font-weight: 800; }
+    .table-scroll { overflow-x: auto; border-top: 1px solid var(--line); background: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th, td { padding: 9px 11px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f2f4f6; color: #34414d; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    th:last-child, td:last-child { width: 74px; text-align: right; }
+    code { padding: 2px 5px; border-radius: 4px; background: #eaf0f3; color: #243746; font: 0.84em ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+    .source-alert { margin: 0 0 16px; padding: 11px 13px; border-left: 4px solid var(--warning); background: var(--warning-bg); color: #593b05; }
+    .phase { margin: 12px 0 0; border: 1px solid var(--line); border-radius: var(--radius); }
+    .phase-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 11px 13px; border-bottom: 1px solid var(--line); background: var(--surface-soft); }
+    .phase h3 { margin: 0; font-size: 1rem; }
+    .step-list { list-style: none; margin: 0; padding: 0; }
+    .step-row { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; padding: 11px 13px; border-bottom: 1px solid var(--line); }
+    .step-row:last-child { border-bottom: 0; }
+    .step-row.filtered-out { display: none; }
+    .step-row input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--accent); }
+    .step-row label { cursor: pointer; }
+    .step-row.completed label { color: var(--muted); text-decoration: line-through; text-decoration-color: #aab3bb; }
+    .step-row.critical { background: var(--critical-bg); }
+    .step-row.caution { background: var(--warning-bg); }
+    .step-meta { display: inline-block; margin-left: 7px; padding: 2px 5px; border-radius: 4px; color: #fff; font-size: 0.67rem; font-weight: 800; text-transform: uppercase; vertical-align: 1px; }
+    .step-meta.critical { background: var(--critical); }
+    .step-meta.caution { background: var(--warning); }
+    .checkpoint { margin: 0; padding: 10px 13px; border-top: 1px solid #b7dfd9; background: var(--accent-soft); color: #154d48; font-weight: 700; }
+    .checkpoint::before { content: "Checkpoint: "; }
+    .empty-state { margin-top: 18px; padding: 24px; text-align: center; border: 1px dashed #9ca8b2; color: var(--muted); background: var(--surface); }
+    .hidden { display: none !important; }
+    footer { padding: 24px 4px 8px; color: var(--muted); font-size: 0.8rem; }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; padding: 14px; }
+      aside { position: static; max-height: none; }
+      nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { min-height: 330px; }
+      .hero-copy { padding: 26px; }
+      .hero h1 { font-size: 2.55rem; }
+    }
+    @media (max-width: 680px) {
+      .layout { padding: 0; gap: 0; }
+      aside, .hero, .intro-panel, .module-card { border-left: 0; border-right: 0; border-radius: 0; box-shadow: none; }
+      aside { border-top: 0; }
+      .hero { min-height: 390px; background-position: 58% center; }
+      .hero::before { background: linear-gradient(0deg, rgba(10,24,34,.96), rgba(10,24,34,.35)); }
+      .hero-copy { padding: 24px 18px; }
+      .hero h1 { font-size: 2.15rem; }
+      .intro-panel { grid-template-columns: 1fr; margin-top: 10px; }
+      nav { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; }
+      nav a { flex: 0 0 168px; background: var(--surface-soft); }
+      .module-card { margin-top: 10px; }
+      .module-header { grid-template-columns: 1fr; padding: 15px; }
+      .module-actions { justify-content: flex-start; }
+      .module-body { padding: 14px; }
+      .media-grid { grid-template-columns: 1fr; }
+      .module-progress .progress-track { width: min(230px, 65vw); }
+    }
+    @media print {
+      body { background: #fff; }
+      .layout { display: block; max-width: none; padding: 0; }
+      aside, .module-actions, .video-placeholder, .segment { display: none !important; }
+      .hero { min-height: auto; color: #000; background: #fff; border: 1px solid #aaa; box-shadow: none; }
+      .hero::before { display: none; }
+      .hero-copy { padding: 18px; }
+      .hero p, .pill { color: #222; }
+      .pill { border-color: #aaa; background: #fff; }
+      .intro-panel, .module-card { box-shadow: none; break-inside: avoid; }
+      .module-body.collapsed { display: block; }
+      .video-frame { display: none; }
+      .media-grid { grid-template-columns: 1fr; }
+      .step-row.filtered-out, .module-card.filtered-out { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#tutorial">Skip to tutorial</a>
+  <div class="layout">
+    <aside aria-label="Tutorial controls">
+      <div class="brand"><strong>BEATBox assembly</strong><span>Module tutorial · draft 0.1</span></div>
+      <div class="progress-label"><span>Overall progress</span><span id="progressText">0%</span></div>
+      <div class="progress-track" aria-hidden="true"><span class="progress-fill" id="progressBar"></span></div>
+      <div class="stats">
+        <div class="stat"><strong id="doneCount">0</strong><span>completed</span></div>
+        <div class="stat"><strong id="totalCount">0</strong><span>steps</span></div>
+        <div class="stat"><strong id="criticalLeft">0</strong><span>cautions left</span></div>
+        <div class="stat"><strong id="moduleCount">6</strong><span>modules</span></div>
+      </div>
+      <label class="hidden" for="search">Search tutorial</label>
+      <input id="search" class="search" type="search" placeholder="Search part, step, or module">
+      <div class="segment" role="group" aria-label="Step filter">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="open" aria-pressed="false">Open</button>
+        <button type="button" data-filter="critical" aria-pressed="false">Cautions</button>
+      </div>
+      <div class="controls">
+        <button class="primary" type="button" id="resume">Resume next step</button>
+        <button type="button" id="expandAll">Expand</button>
+        <button type="button" id="collapseAll">Collapse</button>
+        <button type="button" id="exportProgress">Export</button>
+        <label class="file-label" for="importFile">Import</label>
+        <input type="file" id="importFile" accept="application/json,.json">
+        <button type="button" id="printPage">Print</button>
+        <button class="danger" type="button" id="resetAll">Reset</button>
+      </div>
+      <nav id="nav" aria-label="Assembly modules"></nav>
+    </aside>
+
+    <main id="tutorial">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Open hardware · bench guide</p>
+          <h1>Build Your Own BEATBox</h1>
+          <p>Current module instructions, parts references, visual walkthroughs, and build checkpoints in one interactive tutorial.</p>
+          <div class="meta-strip">
+            <span class="pill">6 module guides</span>
+            <span class="pill">Document version 0.1-draft</span>
+            <span class="pill">Hardware revision not yet assigned</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="intro-panel" aria-labelledby="before-title">
+        <div>
+          <h2 id="before-title">Before assembly</h2>
+          <p>The upstream guides are working drafts. Confirm every source discrepancy called out below before purchasing or building, and complete the written cautions and checkpoints even when following a video.</p>
+        </div>
+        <div class="source-links">
+          <a href="https://github.com/Open-BeatBox/assembly-tutorials" target="_blank" rel="noreferrer">Canonical assembly tutorials <span aria-hidden="true">↗</span></a>
+          <a href="/docs/manual/build/assembly-tutorials/tutorials_index.html">Sphinx module guides <span aria-hidden="true">→</span></a>
+          <a href="https://drive.google.com/drive/folders/15qdSVwi2WGLClNfwwK7sh3xtZT9da_ts" target="_blank" rel="noreferrer">Assembly videos on Drive <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/Open-BeatBox/assembly-tutorials/issues" target="_blank" rel="noreferrer">Report a discrepancy <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <div id="modules"></div>
+      <div id="emptyState" class="empty-state hidden">No tutorial step matches the current search and filter.</div>
+      <footer>Source: Open-BeatBox/assembly-tutorials, current main branch. Videos are temporary Drive embeds and may require Google sign-in.</footer>
+    </main>
+  </div>
+
+  <script>
+    const TUTORIAL = {
+      version: "0.1-draft",
+      source: "https://github.com/Open-BeatBox/assembly-tutorials",
+      modules: [
+        {
+          id: "MOD-BMT",
+          slug: "bottle-mount",
+          title: "Water bottle mount",
+          summary: "Prepare the printed bracket, install its two inserts, and fasten it from inside the enclosure.",
+          sourcePath: "modules/mod-bmt-assembly.md",
+          videoId: "12cbWKacPB6CGM2SMgHU8EKzlYtNXjdLv",
+          videoTitle: "Water bottle mount assembly",
+          image: "/images/BB_water-holder.jpg",
+          imageAlt: "BEATBox water bottle holder mounted on the enclosure",
+          parts: [
+            ["PRT-BMT-001", "3D-printed part", "Water bottle mounting bracket", "1"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert for plastics", "2"],
+            ["FST-M3X6", "Fastening hardware", "M3 x 6 mm button-head socket screw", "2"]
+          ],
+          phases: [
+            { title: "1.1 Prepare the printed part", steps: [
+              ["Inspect PRT-BMT-001 for printing defects or residual material."],
+              ["Clean the two insert holes and remove debris that could prevent correct seating."],
+              ["Identify the external mounting side; the inserts belong on the side that remains outside the enclosure."]
+            ]},
+            { title: "1.2 Install the threaded inserts", steps: [
+              ["Position PRT-BMT-001 on a flat, solid surface."],
+              ["Insert two FST-INS-M3-BRASS inserts into the external mounting side."],
+              ["Press each insert fully into its seat while keeping it straight."],
+              ["Do not install the inserts from the enclosure-facing side; the screws engage them from inside the enclosure.", "critical"]
+            ]},
+            { title: "2.1 Position the bracket", steps: [
+              ["Position PRT-BMT-001 on the outside of the enclosure wall."],
+              ["Align the bracket with the two corresponding wall holes."],
+              ["Verify the bottle-holding section is correctly oriented."]
+            ], checkpoint: "The bracket sits flush outside the enclosure and both mounting holes are aligned." },
+            { title: "2.2 Secure the bracket", steps: [
+              ["From inside the enclosure, insert two FST-M3X6 screws through the wall."],
+              ["Engage each screw with its insert and start both screws by hand."],
+              ["Tighten evenly until the bracket is firmly secured."],
+              ["Do not overtighten against the enclosure wall or printed bracket.", "critical"]
+            ], checkpoint: "PRT-BMT-001 is firmly attached outside the enclosure with no visible movement." },
+            { title: "3.1 Functional check", steps: [
+              ["Insert the water bottle into PRT-BMT-001."],
+              ["Check that the bottle is held securely without excessive movement."],
+              ["Confirm that installing or removing the bottle does not shift the bracket."]
+            ], checkpoint: "The mount is secure, correctly oriented, and holds the bottle without shifting." }
+          ]
+        },
+        {
+          id: "MOD-FDR",
+          slug: "feeder",
+          title: "Feeder module",
+          summary: "Assemble the feeder housing, IR barrier, stepper motor, main PCB, rotor, and front face.",
+          sourcePath: "modules/mod-fdr-aseembly.md",
+          videoId: "1U7WHxCBrBH_LmIhVE-iPwYedeMLx_lZj",
+          videoTitle: "Feeder module assembly",
+          image: "/images/Feeder.jpg",
+          imageAlt: "Completed BEATBox feeder module",
+          sourceAlert: "Source check: the BOM lists 18 threaded inserts, while the procedure explicitly places 7 in the base and 10 in the front. Confirm the remaining insert location before assembly.",
+          parts: [
+            ["PRT-FDR-001", "3D-printed part", "Feeder main base", "1"],
+            ["PRT-FDR-002", "3D-printed part", "Feeder front part", "1"],
+            ["PRT-FDR-003", "3D-printed part", "Feeder back cover", "1"],
+            ["PRT-FDR-004", "3D-printed part", "Feeder rotor", "1"],
+            ["PCB-FDR-001", "Circuit board", "Main feeder PCB", "1"],
+            ["PCB-FDR-002", "Circuit board", "Feeder IR barrier PCB", "1"],
+            ["CMP-FDR-MOT", "Purchased component", "Stepper motor", "1"],
+            ["CBL-PICO-3P-150MM", "Cable assembly", "3-position PicoBlade cable, 150 mm", "1"],
+            ["FST-M3X6-SHCS", "Fastening hardware", "M3 x 6 mm socket-head cap screw", "11"],
+            ["FST-M3X8-SHCS", "Fastening hardware", "M3 x 8 mm socket-head cap screw", "7"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert", "18"],
+            ["FST-NUT-M3-HEX", "Fastening hardware", "M3 hex nut", "18"],
+            ["TBC-TAPE", "Adhesive / consumable", "Tape for temporary cable positioning", "As required"]
+          ],
+          phases: [
+            { title: "1.1 Prepare the printed parts", steps: [
+              ["Inspect PRT-FDR-001, PRT-FDR-002, PRT-FDR-003, and PRT-FDR-004 for defects or residual material."],
+              ["Clean all insert holes, PCB mounts, cable passages, and the rotor area."],
+              ["Verify that the cable tunnel in PRT-FDR-001 is fully open."],
+              ["Identify the correct orientation of the base, front, back cover, and rotor."]
+            ]},
+            { title: "1.2 Install the threaded inserts", steps: [
+              ["Support each printed part on a flat, solid surface."],
+              ["Install 7 threaded inserts in PRT-FDR-001 and 10 in PRT-FDR-002 at the designated locations."],
+              ["Keep each insert straight and press it fully into its seat."]
+            ]},
+            { title: "2.1 Install the IR barrier PCB", steps: [
+              ["Position PCB-FDR-002 on PRT-FDR-002 and confirm the IR components face the correct direction."],
+              ["If a locating pin prevents the PCB from sitting flat, remove it carefully."],
+              ["Secure PCB-FDR-002 with two FST-M3X6-SHCS screws."]
+            ]},
+            { title: "2.2 Route the IR barrier cable", steps: [
+              ["Route CBL-PICO-3P-150MM through the intended passage in PRT-FDR-001."],
+              ["Position the cable as shown in the video and use TBC-TAPE if needed."],
+              ["Leave both connectors accessible for later connection."],
+              ["Route and tape both ends before mounting the main PCB and motor; access becomes limited afterward.", "critical"]
+            ]},
+            { title: "2.3 Install and wire the stepper motor", steps: [
+              ["Position CMP-FDR-MOT so its cables reach PCB-FDR-001 without tension and pass through the connecting hole."],
+              ["Secure the motor with four FST-M3X8-SHCS screws."],
+              ["Match each motor-wire color to the labels on the four-terminal clamp; twist the bare ends with no stray strands."],
+              ["Open each terminal cage counterclockwise, insert the bare wire until the insulation is flush, then tighten until snug."],
+              ["Perform a light tug test on every wire and re-clamp any loose connection.", "critical"]
+            ]},
+            { title: "2.4 Install the main feeder PCB", steps: [
+              ["Connect CBL-PICO-3P-150MM to PCB-FDR-001."],
+              ["Route all cables clear of mounting points and housing edges."],
+              ["Position PCB-FDR-001 in PRT-FDR-001 and secure it with three FST-M3X6-SHCS screws."]
+            ]},
+            { title: "3. Install the back cover", steps: [
+              ["Position PRT-FDR-003 on PRT-FDR-001 and keep all cables inside their routes."],
+              ["Secure the cover with four FST-M3X6-SHCS screws."]
+            ]},
+            { title: "4. Install the rotor", steps: [
+              ["Install the required FST-NUT-M3-HEX nut in PRT-FDR-004."],
+              ["Insert one FST-M3X8-SHCS screw through the intended access point."],
+              ["Identify the flat face of the stepper-motor D-shaft."],
+              ["Place the rotor on the shaft, align its side screw over the flat face, and tighten through the base access hole to lock it mechanically."]
+            ]},
+            { title: "5. Install the feeder front", steps: [
+              ["Connect the free end of CBL-PICO-3P-150MM to PCB-FDR-002 and gently tug-test the seated connector."],
+              ["Position PRT-FDR-002 on PRT-FDR-001 without trapping its cable."],
+              ["Align the holes and secure the front with four FST-M3X6-SHCS screws."]
+            ]},
+            { title: "6. Final validation", steps: [
+              ["Confirm that the motor, rotor, both PCBs, and housing parts are secure."],
+              ["Check that every connector is fully seated."],
+              ["Verify that the rotor area is free from dust and debris."],
+              ["Inspect the animal-facing surface for gaps, sharp edges, or chew-accessible components.", "critical"],
+              ["Confirm all cables are contained inside the housing and are not pinched.", "critical"]
+            ]}
+          ]
+        },
+        {
+          id: "MOD-LGT",
+          slug: "light-ring",
+          title: "Light ring module",
+          summary: "Prepare the printed housing, mount the light PCB, fit the cap, and install the diffuser.",
+          sourcePath: "modules/mod-lgt.md",
+          videoId: "11ymhMf_vLa13IoAeG7u0pcYd7CdqgUvQ",
+          videoTitle: "Light ring module assembly",
+          image: "/images/Light_top.jpg",
+          imageAlt: "Top view of the BEATBox light ring module",
+          sourceAlert: "Source check: the BOM lists 7 threaded inserts, but the procedure requests 7 around the inner circumference plus 7 on the rectangular face. Confirm the required quantity before assembly.",
+          parts: [
+            ["PRT-LGT-001", "3D-printed part", "Light ring base", "1"],
+            ["PRT-LGT-002", "3D-printed part", "Light ring cap", "1"],
+            ["PRT-LGT-003", "Laser-cut part", "Light diffuser / cover", "1"],
+            ["PCB-LGT-001", "Circuit board", "Light ring PCB", "1"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert", "7"],
+            ["FST-M3X6", "Fastening hardware", "M3 x 6 mm screw", "4"],
+            ["FST-M3X10", "Fastening hardware", "M3 x 10 mm screw", "2"],
+            ["TOL-FORC", "Tool", "Precision tweezers", "1"],
+            ["TBC-HEXKEY-2.5MM", "Tool", "2.5 mm hex key", "1"]
+          ],
+          phases: [
+            { title: "1.1 Install the threaded inserts", steps: [
+              ["Inspect PRT-LGT-001 and clear all insert holes of printing debris."],
+              ["Place the base on a flat, solid surface."],
+              ["Install seven inserts around the inner circumference, keeping each straight."],
+              ["Install seven inserts on the rectangular face, using the video for positioning."],
+              ["Press each insert fully into its seat."]
+            ]},
+            { title: "2.1 Install the light ring PCB", steps: [
+              ["Orient PCB-LGT-001 correctly in the PRT-LGT-001 base."],
+              ["Verify that the rear connector remains accessible."],
+              ["Secure the PCB with four FST-M3X6 screws."],
+              ["Do not overtighten the PCB fasteners.", "critical"]
+            ]},
+            { title: "3.1 Install the cap", steps: [
+              ["Orient PRT-LGT-002 relative to the base and align it with the inserts and rear connector opening."],
+              ["Secure the cap with two FST-M3X10 screws."],
+              ["Tighten until fully seated without deforming the printed parts.", "critical"]
+            ]},
+            { title: "4. Install the light diffuser", steps: [
+              ["Position PRT-LGT-003 over the LED ring and align it with the housing features."],
+              ["Verify that it sits flat without contacting or stressing the LEDs."],
+              ["Secure the diffuser using the specified FST-M3X10 hardware; confirm the source fastener allocation before tightening.", "caution"]
+            ], checkpoint: "The diffuser is seated correctly and does not interfere with the PCB or LEDs." }
+          ]
+        },
+        {
+          id: "MOD-PBG",
+          slug: "photobeam-gate",
+          title: "Photobeam gate",
+          summary: "Prepare the passage, mount and align both IR arrays, route their cables, and close the back covers.",
+          sourcePath: "modules/mod-pbg-assembly.md",
+          videoId: "1YcfWktCNrZLU985ME6mK09RCsFTdyBYW",
+          videoTitle: "Photobeam gate assembly",
+          image: "/images/Tunnel.jpg",
+          imageAlt: "Assembled BEATBox photobeam passage",
+          parts: [
+            ["PRT-PBG-001", "3D-printed part", "Photobeam passage", "1"],
+            ["PRT-PBG-002", "Laser-cut part", "Passage back cover", "2"],
+            ["PCB-PBG-001", "Circuit board", "Beam gate controller PCB", "1"],
+            ["PCB-PBG-002", "Circuit board", "IR beam-break array PCB", "2"],
+            ["TBC-CBL-PBG-001", "Cable assembly", "Molex PicoBlade, 6-position, 600 mm", "4"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert", "18"],
+            ["FST-M3X6", "Fastening hardware", "M3 x 6 mm button-head socket screw", "18"]
+          ],
+          phases: [
+            { title: "1.1 Prepare the housing", steps: [
+              ["Inspect PRT-PBG-001 for printing defects or residual material."],
+              ["Clean all insert holes, PCB mounting points, and cable passages."],
+              ["Inspect both PRT-PBG-002 covers and clear every mounting hole."],
+              ["Identify the correct orientation of the passage and both covers."]
+            ]},
+            { title: "1.2 Install the threaded inserts", steps: [
+              ["Place PRT-PBG-001 on a flat, solid surface."],
+              ["Install all 18 inserts in the video-indicated locations."],
+              ["Keep each insert straight and press it fully into its seat."]
+            ], checkpoint: "All threaded inserts are straight and fully seated." },
+            { title: "2. Install the electronics", steps: [
+              ["Connect two 6-position PicoBlade cables to PCB-PBG-001 without applying excessive force to its connectors."],
+              ["Connect each free cable end to one PCB-PBG-002 IR array."],
+              ["Route the first IR array and cable through the passage and along the dedicated bottom channel."],
+              ["Orient the first array across the passage and secure it with two FST-M3X6 screws."],
+              ["Install the second array on the opposite side and secure it with two FST-M3X6 screws."],
+              ["Arrange the bottom cable in its channel and use tape if needed, following the video routing."],
+              ["Mount PCB-PBG-001 on either upper outside surface with the specified screws."],
+              ["Check for adequate slack, no sharp bends or tension, and accessible external connectors.", "critical"]
+            ], checkpoint: "Both IR arrays are secure and aligned, the controller is mounted, and cables run without tension or interference." },
+            { title: "3.1 Install the back covers", steps: [
+              ["Position both PRT-PBG-002 covers on the passage."],
+              ["Keep every cable inside its intended routing channel."],
+              ["Align the cover holes with the threaded inserts and secure both covers with FST-M3X6 screws."],
+              ["Do not use the screws to force a cover closed; correct the cable routing if it does not sit flat.", "critical"]
+            ], checkpoint: "Both covers sit flush and no cable is pinched between housing parts." }
+          ]
+        },
+        {
+          id: "MOD-SCR",
+          slug: "screen",
+          title: "Screen modules",
+          summary: "Build two touchscreen modules with lateral IR light-curtain boards and contained PicoBlade cabling.",
+          sourcePath: "modules/mod-scr-assembly.md",
+          videoId: "1W-CbucP4mVNRbWdahoSWfjjUbpiLWMX0",
+          videoTitle: "Screen module assembly",
+          image: "/images/Screens/BB_Screen-1.jpg",
+          imageAlt: "BEATBox screen module during assembly",
+          sourceAlert: "Source check: the parts table lists FST-M3X6, while the procedure uses FST-M3X8 and TBC-M3-FASTENER. Confirm all screen fastener lengths and counts before assembly.",
+          parts: [
+            ["PRT-SCR-001", "3D-printed part", "Display frame", "2"],
+            ["PRT-SCR-002", "3D-printed part", "Display back cover", "2"],
+            ["PCB-SCR-001", "Circuit board", "Main screen PCB", "2"],
+            ["PCB-SCR-002", "Circuit board", "IR circuit board", "4"],
+            ["CMP-SCR-TFT-2.8", "Purchased component", "2.8-inch TFT LCD with touchscreen breakout", "2"],
+            ["CBL-PICO-3P-50MM", "Cable assembly", "3-circuit double-ended PicoBlade cable, 50 mm", "4"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert, tapered", "19"],
+            ["FST-M3X6", "Fastening hardware", "M3 screen / PCB / closure screw; length and head to confirm", "15"],
+            ["TOL-FORC", "Tool", "Precision stainless-steel tweezers, 150 mm", "1"]
+          ],
+          phases: [
+            { title: "1.1 Prepare parts and electronics", steps: [
+              ["Inspect PRT-SCR-001 and PRT-SCR-002 for printing defects or deformation."],
+              ["Clean all holes, insert seats, cable passages, and internal openings."],
+              ["Verify no material obstructs the PCB, screen, or cable mounting areas."],
+              ["Solder the supplied header pins to each CMP-SCR-TFT-2.8 breakout before assembly if they are not already fitted.", "caution"]
+            ]},
+            { title: "1.2 Install the threaded inserts", steps: [
+              ["Install all required inserts in PRT-SCR-001 and PRT-SCR-002, including the lateral inserts."],
+              ["Start each insert straight and support the housing on a flat, solid surface."],
+              ["Seat every insert fully before continuing."],
+              ["Do not brace the housing against your hand or body while applying force.", "critical"],
+              ["Install the lateral inserts now; access becomes difficult after the electronics and touchscreen are mounted.", "critical"]
+            ]},
+            { title: "2.1 Install the IR light-curtain boards", steps: [
+              ["Position two PCB-SCR-002 boards in the lateral mounts on PRT-SCR-001."],
+              ["Secure each IR board with two FST-M3X8 screws."]
+            ], checkpoint: "Both IR boards are secure, correctly oriented, and their connectors remain accessible." },
+            { title: "2.2 Connect and install the touchscreen", steps: [
+              ["Orient CMP-SCR-TFT-2.8 in PRT-SCR-001 and secure it with four confirmed M3 fasteners."],
+              ["Orient PCB-SCR-001 with its logo facing up."],
+              ["Connect one CBL-PICO-3P-50MM cable between matching-side connectors on PCB-SCR-001 and one PCB-SCR-002."],
+              ["Repeat on the opposite side with the second cable and fully seat both connectors."],
+              ["Route both cables between the touchscreen and main PCB, clear of screw holes and closure surfaces."],
+              ["Insert PCB-SCR-001, align it with the touchscreen headers, and press it fully into place."],
+              ["Confirm both cables remain contained between the touchscreen and main PCB."],
+              ["Secure PCB-SCR-001 with three confirmed M3 fasteners."],
+              ["Do not fasten the PCB if a cable is outside the intended space or could be pinched.", "critical"]
+            ]},
+            { title: "3.1 Close the housing", steps: [
+              ["Position PRT-SCR-002 over the assembled module."],
+              ["Keep all cables inside their intended routing areas."],
+              ["Bring the housing parts together without forcing them and secure with the confirmed fasteners."],
+              ["Check the full perimeter for gaps or trapped cables."],
+              ["If the housing does not close freely, reopen it and correct the cable routing; do not pull it closed with screws.", "critical"]
+            ], checkpoint: "The housing closes fully without pinching cables or straining connectors." },
+            { title: "Repeat for the second screen", steps: [
+              ["Repeat the complete screen procedure for the second module."],
+              ["Compare both finished modules for consistent orientation, closure, and cable containment."]
+            ]}
+          ]
+        },
+        {
+          id: "MOD-FRM",
+          slug: "frame",
+          title: "Frame and enclosure integration",
+          summary: "Build the enclosure, install the door, mount the completed modules, and secure the top panel.",
+          sourcePath: "modules/mod-frm-assembly.md",
+          videoId: "13iQ4pZJJIW37ojucvI6OUpseFJEl0oHU",
+          videoTitle: "Frame and enclosure assembly",
+          image: "/images/BB_Full-2.jpg",
+          imageAlt: "Assembled BEATBox enclosure and modules",
+          sourceAlert: "Source check: Section 5 specifies four FST-M5X5 top fasteners, but FST-M5X5 is absent from the module parts table. Confirm the top-panel fastener ID and length before final integration.",
+          parts: [
+            ["TOL-HEXKEY-4MM", "Tool", "4 mm hex key", "1"],
+            ["CMP-ENC-FOOT", "Purchased component", "Adhesive rubber / polyurethane feet", "8"],
+            ["CMP-ENC-BIN", "Purchased component", "Removable plastic enclosure bin", "1"],
+            ["PRT-ENC-001", "Laser-cut part", "Enclosure base plate", "1"],
+            ["PRT-ENC-002", "3D-printed part", "Enclosure support pillar", "4"],
+            ["PRT-ENC-003", "Laser-cut part", "Feeder wall panel, first layer", "1"],
+            ["PRT-ENC-004", "Laser-cut part", "Feeder wall panel, second layer", "1"],
+            ["PRT-ENC-005", "Laser-cut part", "Screen wall panel, first layer", "1"],
+            ["PRT-ENC-006", "Laser-cut part", "Screen wall panel, second layer", "1"],
+            ["PRT-ENC-007", "Laser-cut part", "Master-module wall panel, first layer", "1"],
+            ["PRT-ENC-008", "Laser-cut part", "Master-module wall panel, second layer", "1"],
+            ["PRT-ENC-009", "Laser-cut part", "Door wall panel, first layer", "1"],
+            ["PRT-ENC-010", "Laser-cut part", "Door wall panel, second layer", "1"],
+            ["PRT-ENC-011", "Laser-cut part", "Enclosure door panel", "1"],
+            ["PRT-ENC-012", "Laser-cut part", "Door locking element", "1"],
+            ["PRT-ENC-013", "3D-printed part", "Enclosure door button", "1"],
+            ["PRT-ENC-014", "Laser-cut part", "Clear enclosure top panel", "1"],
+            ["FST-INS-M3-BRASS", "Fastening hardware", "M3 brass threaded insert", "1"],
+            ["FST-NUT-M5-HEX", "Fastening hardware", "M5 hex nut", "8"],
+            ["FST-M5X50", "Fastening hardware", "M5 x 50 mm socket-head cap screw", "12"],
+            ["FST-M3X8", "Fastening hardware", "M3 x 8 mm hex-socket button screw", "16"],
+            ["FST-M3X10", "Fastening hardware", "M3 x 10 mm fastener", "2"],
+            ["FST-NUT-M3-HEX", "Fastening hardware", "M3 hex nut", "12"],
+            ["FST-HIN", "Fastening hardware", "Door hinge", "2"]
+          ],
+          phases: [
+            { title: "1.1 Prepare the base and pillars", steps: [
+              ["Place PRT-ENC-001 on a clean, level work surface and clear all internal cutouts."],
+              ["Clear the internal holes of all four PRT-ENC-002 pillars; use a flathead screwdriver only if required."],
+              ["Attach the optional CMP-ENC-FOOT feet to the underside if they are part of the build."],
+              ["Identify the top and bottom of each pillar."],
+              ["Press the lower FST-NUT-M5-HEX nuts fully into their seats with each pillar supported on a solid surface."],
+              ["Never brace a pillar against your hand or body while pressing nuts into place.", "critical"]
+            ]},
+            { title: "1.2 Attach the pillars to the base", steps: [
+              ["Position one pillar at each base corner with its grooves facing the corresponding wall positions."],
+              ["Align the holes and insert FST-M5X50 screws through the base into the captive nuts."],
+              ["Start every screw by hand before using the 4 mm hex key."],
+              ["Tighten gradually until every pillar is seated."],
+              ["Do not force a screw that does not engage freely; correct its alignment to avoid cross-threading.", "critical"],
+              ["Do not overtighten against the PMMA base plate.", "critical"]
+            ]},
+            { title: "2.1 Prepare the wall panels", steps: [
+              ["Inspect every wall panel for cracks, scratches, debris, or blocked holes."],
+              ["Pair the two matching panels for the feeder, screen, master-module, and door walls."],
+              ["Identify the intended position and orientation of every wall and module opening."],
+              ["Install acrylic panels with the matte, non-reflective surface facing inside the behavioral enclosure.", "critical"]
+            ], checkpoint: "All panels are clean and undamaged, each pair is identified, and matte surfaces face inward." },
+            { title: "2.2 Install the fixed wall panels", steps: [
+              ["Slide PRT-ENC-003 and PRT-ENC-004 into the feeder wall position."],
+              ["Slide PRT-ENC-005 and PRT-ENC-006 into the screen wall position."],
+              ["Slide PRT-ENC-007 and PRT-ENC-008 into the master-module wall position."],
+              ["Fully seat each panel and align the paired fastening holes."],
+              ["Do not force a panel into a groove; remove it and correct alignment or clearance first.", "critical"]
+            ], checkpoint: "The feeder, screen, and master-module walls are seated, oriented correctly, and captured in the pillar grooves." },
+            { title: "2.3 Secure the fixed walls", steps: [
+              ["Insert FST-M3X8 screws through the specified paired-panel positions and fit one FST-NUT-M3-HEX to each."],
+              ["Start all fasteners by hand, tighten evenly, and keep the panels seated in their grooves."],
+              ["Do not overtighten against PMMA; excessive clamping force can crack the acrylic.", "critical"]
+            ], checkpoint: "The three fixed wall assemblies are secure with no cracking, deformation, or looseness." },
+            { title: "3.1 Install the door wall", steps: [
+              ["Pair PRT-ENC-009 and PRT-ENC-010 with matte surfaces facing inward."],
+              ["Orient the light-blocking overlap correctly and slide both panels into their grooves."],
+              ["Secure the aligned panels with the specified FST-M3X8 screws and FST-NUT-M3-HEX nuts."]
+            ], checkpoint: "The door wall is fully seated, aligned, and secure." },
+            { title: "3.2 Install the door and hinges", steps: [
+              ["Position PRT-ENC-011 in the opening and align both FST-HIN hinges."],
+              ["Use FST-M3X8 on the thinner stack and FST-M3X10 on the thicker stack, with the corresponding nuts."],
+              ["Tighten without stressing the acrylic and verify that the door moves freely.", "critical"]
+            ], checkpoint: "The door is aligned and opens and closes without binding." },
+            { title: "3.3 Install the button and lock", steps: [
+              ["Insert one FST-INS-M3-BRASS into PRT-ENC-013."],
+              ["Install the door button with the specified FST-M3X8 hardware."],
+              ["Install and align PRT-ENC-012, then close the door and verify reliable engagement."]
+            ], checkpoint: "The button is secure and the locking element holds the door closed reliably." },
+            { title: "4. Validate the door", steps: [
+              ["Confirm the door-wall panels remain fully seated and secure."],
+              ["Open and close PRT-ENC-011 several times and check for rubbing, binding, or shifting."],
+              ["Confirm PRT-ENC-012 engages and releases smoothly."],
+              ["Check that hinges, screws, nuts, and hardware create no sharp or accessible protrusions inside.", "critical"]
+            ], checkpoint: "The door is aligned, moves smoothly, and locks securely." },
+            { title: "5. Install modules and close the enclosure", steps: [
+              ["Mount the completed feeder, screen, and water-bottle modules on their wall panels."],
+              ["Confirm each module insert aligns with its wall holes and secure the modules with FST-M3X8 screws."],
+              ["Attach the light module to PRT-ENC-014 through its designated holes."],
+              ["Place CMP-ENC-BIN inside the enclosure, slide it fully into position, and confirm it lies flat."],
+              ["Place the photobeam gate on top of the bin inside the enclosure."],
+              ["Position PRT-ENC-014 so it holds the gate in its final position."],
+              ["Confirm the upper FST-NUT-M5-HEX nuts are seated in all four pillars."],
+              ["Verify the top-panel fastener ID, then align and secure the top panel with four confirmed fasteners.", "caution"],
+              ["Before tightening, confirm that the gate, cables, and modules are positioned correctly and not trapped or compressed.", "critical"]
+            ], checkpoint: "All modules are mounted, the bin and photobeam gate are positioned correctly, and the top panel is seated and secure." }
+          ]
+        }
+      ]
+    };
+
+    const STORE_KEY = "beatbox-assembly-tutorial-v01";
+    const state = loadState();
+    let activeFilter = "all";
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+      catch { return {}; }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" }[char]));
+    }
+
+    function stepId(module, phaseIndex, stepIndex) {
+      return `${module.id}:${phaseIndex + 1}:${stepIndex + 1}`;
+    }
+
+    function allSteps() {
+      return TUTORIAL.modules.flatMap(module => module.phases.flatMap((phase, phaseIndex) =>
+        phase.steps.map((step, stepIndex) => ({ module, phase, phaseIndex, stepIndex, step, id: stepId(module, phaseIndex, stepIndex) }))
+      ));
+    }
+
+    function moduleProgress(module) {
+      const ids = module.phases.flatMap((phase, phaseIndex) => phase.steps.map((_, stepIndex) => stepId(module, phaseIndex, stepIndex)));
+      const done = ids.filter(id => state[id]).length;
+      return { done, total: ids.length, percent: ids.length ? Math.round(done / ids.length * 100) : 0 };
+    }
+
+    function renderParts(parts) {
+      const rows = parts.map(part => `<tr><td><code>${escapeHTML(part[0])}</code></td><td>${escapeHTML(part[1])}</td><td>${escapeHTML(part[2])}</td><td>${escapeHTML(part[3])}</td></tr>`).join("");
+      return `<details class="parts"><summary>Parts and tools (${parts.length})</summary><div class="table-scroll"><table><thead><tr><th>Item ID</th><th>Category</th><th>Description</th><th>Qty</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+    }
+
+    function renderPhase(module, phase, phaseIndex) {
+      const rows = phase.steps.map((step, stepIndex) => {
+        const id = stepId(module, phaseIndex, stepIndex);
+        const level = step[1] || "standard";
+        const badge = level === "standard" ? "" : `<span class="step-meta ${level}">${level}</span>`;
+        return `<li class="step-row ${level}${state[id] ? " completed" : ""}" data-step-row data-id="${id}" data-level="${level}" data-search="${escapeHTML(`${module.id} ${module.title} ${phase.title} ${step[0]}`.toLowerCase())}"><input type="checkbox" id="${id}" data-step="${id}" ${state[id] ? "checked" : ""}><label for="${id}">${escapeHTML(step[0])}${badge}</label></li>`;
+      }).join("");
+      return `<section class="phase"><div class="phase-header"><h3>${escapeHTML(phase.title)}</h3><button type="button" class="small-button" data-check-phase="${module.id}:${phaseIndex}">Complete phase</button></div><ol class="step-list">${rows}</ol>${phase.checkpoint ? `<p class="checkpoint">${escapeHTML(phase.checkpoint)}</p>` : ""}</section>`;
+    }
+
+    function renderModule(module) {
+      const progress = moduleProgress(module);
+      const sourceUrl = `${TUTORIAL.source}/blob/main/${module.sourcePath}`;
+      const moduleSearch = `${module.id} ${module.title} ${module.summary} ${module.parts.flat().join(" ")}`.toLowerCase();
+      return `<article class="module-card" id="${module.slug}" data-module="${module.id}" data-module-search="${escapeHTML(moduleSearch)}">
+        <header class="module-header">
+          <div>
+            <div class="module-title-row"><h2>${escapeHTML(module.title)}</h2><span class="module-id">${module.id}</span><span class="module-version">0.1-draft</span></div>
+            <div class="module-progress"><div class="progress-track" aria-hidden="true"><span class="progress-fill" data-module-bar="${module.id}" style="width:${progress.percent}%"></span></div><span data-module-progress="${module.id}">${progress.done}/${progress.total}</span></div>
+          </div>
+          <div class="module-actions"><button type="button" class="small-button" data-check-module="${module.id}">Complete module</button><button type="button" class="small-button" data-toggle-module="${module.id}" aria-expanded="true">Collapse</button></div>
+        </header>
+        <div class="module-body" data-module-body="${module.id}">
+          <p class="module-summary">${escapeHTML(module.summary)}</p>
+          <div class="media-grid">
+            <figure class="video-frame"><div class="video-shell"><button class="video-placeholder" type="button" data-video="${module.videoId}" data-video-title="${escapeHTML(module.videoTitle)}">Load ${escapeHTML(module.videoTitle)} video</button></div><figcaption class="media-caption"><span>720p assembly walkthrough</span><a href="https://drive.google.com/file/d/${module.videoId}/view?usp=drivesdk" target="_blank" rel="noreferrer">Open in Drive</a></figcaption></figure>
+            <figure class="reference-image"><img src="${module.image}" alt="${escapeHTML(module.imageAlt)}" loading="lazy"><figcaption class="media-caption"><span>Build reference</span><a href="${sourceUrl}" target="_blank" rel="noreferrer">Written source</a></figcaption></figure>
+          </div>
+          ${module.sourceAlert ? `<p class="source-alert"><strong>${escapeHTML(module.sourceAlert)}</strong></p>` : ""}
+          ${renderParts(module.parts)}
+          ${module.phases.map((phase, phaseIndex) => renderPhase(module, phase, phaseIndex)).join("")}
+        </div>
+      </article>`;
+    }
+
+    function renderModules() {
+      document.getElementById("modules").innerHTML = TUTORIAL.modules.map(renderModule).join("");
+      renderNav();
+      applyFilters();
+      updateProgress();
+    }
+
+    function renderNav() {
+      document.getElementById("nav").innerHTML = TUTORIAL.modules.map(module => {
+        const progress = moduleProgress(module);
+        return `<a href="#${module.slug}" data-nav-module="${module.id}"><span>${escapeHTML(module.title)}</span><span class="nav-progress">${progress.done}/${progress.total}</span></a>`;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const steps = allSteps();
+      const done = steps.filter(item => state[item.id]).length;
+      const percent = steps.length ? Math.round(done / steps.length * 100) : 0;
+      document.getElementById("doneCount").textContent = done;
+      document.getElementById("totalCount").textContent = steps.length;
+      document.getElementById("criticalLeft").textContent = steps.filter(item => ["critical", "caution"].includes(item.step[1]) && !state[item.id]).length;
+      document.getElementById("progressText").textContent = `${percent}%`;
+      document.getElementById("progressBar").style.width = `${percent}%`;
+      TUTORIAL.modules.forEach(module => {
+        const progress = moduleProgress(module);
+        const bar = document.querySelector(`[data-module-bar="${module.id}"]`);
+        const label = document.querySelector(`[data-module-progress="${module.id}"]`);
+        if (bar) bar.style.width = `${progress.percent}%`;
+        if (label) label.textContent = `${progress.done}/${progress.total}`;
+      });
+      renderNav();
+    }
+
+    function applyFilters() {
+      const query = document.getElementById("search").value.trim().toLowerCase();
+      let visibleSteps = 0;
+      document.querySelectorAll("[data-step-row]").forEach(row => {
+        const matchesQuery = !query || row.dataset.search.includes(query);
+        const matchesFilter = activeFilter === "all" || (activeFilter === "open" && !state[row.dataset.id]) || (activeFilter === "critical" && ["critical", "caution"].includes(row.dataset.level));
+        const visible = matchesQuery && matchesFilter;
+        row.classList.toggle("filtered-out", !visible);
+        if (visible) visibleSteps += 1;
+      });
+      document.querySelectorAll("[data-module]").forEach(card => {
+        const moduleMatches = Boolean(query) && card.dataset.moduleSearch.includes(query);
+        if (moduleMatches) {
+          card.querySelectorAll("[data-step-row]").forEach(row => {
+            const matchesFilter = activeFilter === "all" || (activeFilter === "open" && !state[row.dataset.id]) || (activeFilter === "critical" && ["critical", "caution"].includes(row.dataset.level));
+            row.classList.toggle("filtered-out", !matchesFilter);
+          });
+        }
+        const visible = card.querySelector("[data-step-row]:not(.filtered-out)");
+        card.classList.toggle("filtered-out", !visible && !moduleMatches);
+      });
+      visibleSteps = document.querySelectorAll("[data-step-row]:not(.filtered-out)").length;
+      const visibleModules = document.querySelectorAll("[data-module]:not(.filtered-out)").length;
+      document.getElementById("emptyState").classList.toggle("hidden", visibleSteps > 0 || visibleModules > 0);
+    }
+
+    function updateStepVisual(input) {
+      input.closest("[data-step-row]").classList.toggle("completed", input.checked);
+    }
+
+    function toggleAll(collapsed) {
+      document.querySelectorAll("[data-module-body]").forEach(body => body.classList.toggle("collapsed", collapsed));
+      document.querySelectorAll("[data-toggle-module]").forEach(button => {
+        button.textContent = collapsed ? "Expand" : "Collapse";
+        button.setAttribute("aria-expanded", String(!collapsed));
+      });
+    }
+
+    function exportProgress() {
+      const payload = { page: "beatbox-assembly-tutorial", version: TUTORIAL.version, exportedAt: new Date().toISOString(), progress: state };
+      const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "beatbox-assembly-progress.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importProgress(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const payload = JSON.parse(reader.result);
+          Object.keys(state).forEach(key => delete state[key]);
+          Object.assign(state, payload.progress || {});
+          saveState();
+          renderModules();
+        } catch (error) { alert(`Could not import progress: ${error.message}`); }
+      };
+      reader.readAsText(file);
+    }
+
+    document.getElementById("modules").addEventListener("change", event => {
+      const input = event.target.closest("[data-step]");
+      if (!input) return;
+      state[input.dataset.step] = input.checked;
+      if (!input.checked) delete state[input.dataset.step];
+      updateStepVisual(input);
+      saveState();
+      updateProgress();
+      applyFilters();
+    });
+
+    document.getElementById("modules").addEventListener("click", event => {
+      const video = event.target.closest("[data-video]");
+      if (video) {
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://drive.google.com/file/d/${video.dataset.video}/preview`;
+        iframe.title = video.dataset.videoTitle;
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; fullscreen";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        video.replaceWith(iframe);
+        return;
+      }
+      const toggle = event.target.closest("[data-toggle-module]");
+      if (toggle) {
+        const body = document.querySelector(`[data-module-body="${toggle.dataset.toggleModule}"]`);
+        const collapsed = body.classList.toggle("collapsed");
+        toggle.textContent = collapsed ? "Expand" : "Collapse";
+        toggle.setAttribute("aria-expanded", String(!collapsed));
+        return;
+      }
+      const moduleButton = event.target.closest("[data-check-module]");
+      if (moduleButton) {
+        document.querySelectorAll(`[data-module="${moduleButton.dataset.checkModule}"] [data-step]`).forEach(input => {
+          input.checked = true;
+          state[input.dataset.step] = true;
+          updateStepVisual(input);
+        });
+        saveState(); updateProgress(); applyFilters(); return;
+      }
+      const phaseButton = event.target.closest("[data-check-phase]");
+      if (phaseButton) {
+        const [moduleId, phaseIndex] = phaseButton.dataset.checkPhase.split(":");
+        const phase = document.querySelector(`[data-module="${moduleId}"]`).querySelectorAll(".phase")[Number(phaseIndex)];
+        phase.querySelectorAll("[data-step]").forEach(input => {
+          input.checked = true;
+          state[input.dataset.step] = true;
+          updateStepVisual(input);
+        });
+        saveState(); updateProgress(); applyFilters();
+      }
+    });
+
+    document.getElementById("search").addEventListener("input", applyFilters);
+    document.querySelector(".segment").addEventListener("click", event => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll("[data-filter]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      applyFilters();
+    });
+    document.getElementById("resume").addEventListener("click", () => {
+      activeFilter = "all";
+      document.getElementById("search").value = "";
+      document.querySelectorAll("[data-filter]").forEach(item => item.setAttribute("aria-pressed", String(item.dataset.filter === "all")));
+      applyFilters();
+      const next = allSteps().find(item => !state[item.id]);
+      if (!next) { document.getElementById("tutorial").scrollIntoView(); return; }
+      const card = document.querySelector(`[data-module="${next.module.id}"]`);
+      card.querySelector("[data-module-body]").classList.remove("collapsed");
+      card.querySelector("[data-toggle-module]").textContent = "Collapse";
+      card.querySelector(`[data-id="${next.id}"]`).scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    document.getElementById("expandAll").addEventListener("click", () => toggleAll(false));
+    document.getElementById("collapseAll").addEventListener("click", () => toggleAll(true));
+    document.getElementById("exportProgress").addEventListener("click", exportProgress);
+    document.getElementById("importFile").addEventListener("change", event => { if (event.target.files[0]) importProgress(event.target.files[0]); event.target.value = ""; });
+    document.getElementById("printPage").addEventListener("click", () => window.print());
+    document.getElementById("resetAll").addEventListener("click", () => {
+      if (!confirm("Reset all assembly progress in this browser?")) return;
+      Object.keys(state).forEach(key => delete state[key]);
+      localStorage.removeItem(STORE_KEY);
+      renderModules();
+    });
+
+    renderModules();
+  </script>
+</body>
+</html>

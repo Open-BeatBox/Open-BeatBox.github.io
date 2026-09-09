@@ -1,0 +1,13 @@
+.assembly-video {
+  aspect-ratio: 16 / 9;
+  margin: 1rem 0;
+  max-width: 56rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.assembly-video iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
