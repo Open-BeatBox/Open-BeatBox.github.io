@@ -86,7 +86,9 @@ This output is included in the Next.js static export so that the website and the
 | [`docs/source/build/safety.md`](./docs/source/build/safety.md) | Safety notes |
 | [`docs/source/hardware/index.md`](./docs/source/hardware/index.md) | Hardware and module overview |
 | [`docs/source/hardware/pcbs.md`](./docs/source/hardware/pcbs.md) | PCB documentation |
-| [`docs/source/software/index.md`](./docs/source/software/index.md) | Software, GUI, and data workflow notes |
+| [`docs/source/software/index.md`](./docs/source/software/index.md) | Software and firmware documentation |
+| [`docs/source/software/firmware/index.md`](./docs/source/software/firmware/index.md) | Firmware documentation index |
+| [`docs/source/software/firmware/can-intermodule-protocol.md`](./docs/source/software/firmware/can-intermodule-protocol.md) | Inter-module CAN bus protocol |
 | [`docs/source/protocols/index.md`](./docs/source/protocols/index.md) | Protocol templates and validation status |
 | [`docs/source/contributing.md`](./docs/source/contributing.md) | Contribution guidelines |
 
