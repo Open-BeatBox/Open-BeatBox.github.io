@@ -520,7 +520,7 @@ class PlotCanvas(tk.Canvas):
     def draw_line_plot(self, values: list[float], threshold: float | None = None,
                        ylabel: str = "") -> None:
         self.delete("all")
-        width = max(self.winfo_width(), 380)
+        width = max(self.winfo_width(), 260)
         height = max(self.winfo_height(), 190)
         pad_l, pad_r, pad_t, pad_b = 42, 18, 16, 26
         plot_w = width - pad_l - pad_r
@@ -590,8 +590,8 @@ class MonitoringWindow(tk.Toplevel):
         super().__init__(app.root)
         self.app = app
         self.title("Monitoring window")
-        self.geometry("840x560")
-        self.minsize(720, 480)
+        self.geometry("1180x760")
+        self.minsize(900, 650)
         self.configure(bg="#edf3ea")
         self.plots: dict[tuple[int, str], PlotCanvas] = {}
         self.log_texts: dict[int, tk.Text] = {}
@@ -605,35 +605,50 @@ class MonitoringWindow(tk.Toplevel):
         style.configure("Monitor.TNotebook", background="#e7eee4")
         style.configure("Monitor.TFrame", background="#e7eee4")
         style.configure("Monitor.TLabel", background="#e7eee4", foreground="#263238")
+        style.configure("Monitor.TLabelframe", background="#e7eee4")
+        style.configure("Monitor.TLabelframe.Label", background="#e7eee4",
+                        foreground="#263238", font=("Segoe UI", 10, "bold"))
 
-        top = ttk.Frame(self, style="Monitor.TFrame")
-        top.pack(fill="x", padx=8, pady=(6, 0))
-        box_tabs = ttk.Notebook(top, style="Monitor.TNotebook")
-        box_tabs.pack(side="left", fill="x", expand=True)
-        ttk.Button(top, text="Refresh", command=self.refresh).pack(side="right", padx=(8, 0))
+        toolbar = ttk.Frame(self, style="Monitor.TFrame")
+        toolbar.pack(fill="x", padx=8, pady=(6, 0))
+        ttk.Button(toolbar, text="Refresh", command=self.refresh).pack(side="right")
+
+        box_tabs = ttk.Notebook(self, style="Monitor.TNotebook")
+        box_tabs.pack(fill="both", expand=True, padx=8, pady=(4, 8))
 
         for state in self.app.boxes:
             box_frame = ttk.Frame(box_tabs, style="Monitor.TFrame")
             box_tabs.add(box_frame, text=f"Box {state.box_id}")
-            task_tabs = ttk.Notebook(box_frame, style="Monitor.TNotebook")
-            task_tabs.pack(fill="both", expand=True, padx=6, pady=6)
+            box_frame.columnconfigure(0, weight=1)
+            box_frame.rowconfigure(0, weight=3)
+            box_frame.rowconfigure(1, weight=2)
 
-            general = ttk.Frame(task_tabs, style="Monitor.TFrame")
-            task_tabs.add(general, text="General")
+            general = ttk.LabelFrame(box_frame, text="General",
+                                     style="Monitor.TLabelframe")
+            general.grid(row=0, column=0, sticky="nsew", padx=6, pady=(6, 3))
             self._build_general(general, state)
-            for label, key, thr, ylab in [
+
+            graphs = ttk.Frame(box_frame, style="Monitor.TFrame")
+            graphs.grid(row=1, column=0, sticky="nsew", padx=6, pady=(3, 6))
+            graphs.rowconfigure(0, weight=1)
+            for column in range(3):
+                graphs.columnconfigure(column, weight=1, uniform="monitor-graphs")
+
+            for column, (label, key, thr, ylab) in enumerate([
                 ("Success rate", "success", True, "valid / (valid+incorrect)"),
                 ("Lateralization", "lateral", False, "left-right bias"),
-                ("Reversal task info.", "reversal", True, "perf after reversal"),
-            ]:
-                tab = ttk.Frame(task_tabs, style="Monitor.TFrame")
-                task_tabs.add(tab, text=label)
-                self._build_plot_tab(tab, state, key, thr, ylab)
+                ("Reversal task", "reversal", True, "perf after reversal"),
+            ]):
+                card = ttk.LabelFrame(graphs, text=label, style="Monitor.TLabelframe")
+                card.grid(row=0, column=column, sticky="nsew",
+                          padx=(0 if column == 0 else 3, 0 if column == 2 else 3))
+                self._build_plot_tab(card, state, key, thr, ylab)
 
     def _build_general(self, parent: ttk.Frame, state: BoxState) -> None:
         grid = ttk.Frame(parent, style="Monitor.TFrame")
         grid.pack(fill="both", expand=True, padx=8, pady=8)
         grid.columnconfigure(2, weight=1)
+        grid.rowconfigure(0, weight=1)
 
         metrics = ttk.Frame(grid, style="Monitor.TFrame")
         metrics.grid(row=0, column=0, sticky="nsew", padx=(0, 10))
@@ -664,7 +679,7 @@ class MonitoringWindow(tk.Toplevel):
         spin = ttk.Spinbox(controls, from_=10, to=5000, increment=10, width=9)
         spin.set(str(state.n_trials))
         spin.pack(side="left", padx=8)
-        plot = PlotCanvas(parent, height=320)
+        plot = PlotCanvas(parent, height=210, width=280)
         plot.pack(fill="both", expand=True, padx=8, pady=(0, 8))
         self.plots[(state.box_id, key)] = (plot, threshold, ylabel)
 
@@ -713,8 +728,8 @@ class BeatboxDemo:
     def __init__(self) -> None:
         self.root = tk.Tk()
         self.root.title("BEATBox GUI front-end demo")
-        self.root.geometry("600x900")
-        self.root.minsize(560, 720)
+        self.root.geometry("1120x780")
+        self.root.minsize(980, 700)
         self.root.configure(bg=BG)
 
         self.conn_state = ST_DISCONNECTED
@@ -797,40 +812,39 @@ class BeatboxDemo:
         style.configure("Dark.TCombobox", fieldbackground="#223244", background=PANEL_2, foreground=TEXT)
         style.configure("Dark.TCheckbutton", background=PANEL, foreground=TEXT)
 
-    def _panel(self, title: str) -> ttk.Frame:
-        outer = ttk.Frame(self.body, style="Panel.TFrame")
-        outer.pack(fill="x", padx=8, pady=5)
-        ttk.Label(outer, text=title, style="Header.TLabel").pack(fill="x", padx=1, pady=(1, 5))
+    def _panel(self, parent: tk.Misc, title: str, *, expand: bool = False) -> ttk.Frame:
+        outer = ttk.Frame(parent, style="Panel.TFrame")
+        outer.pack(fill="both" if expand else "x", expand=expand, pady=3)
+        ttk.Label(outer, text=title, style="Header.TLabel").pack(fill="x", padx=1, pady=(1, 3))
         return outer
 
     def _build(self) -> None:
-        # Scrollable body so the many diagnostic panels always fit.
-        container = tk.Frame(self.root, bg=BG)
-        container.pack(fill="both", expand=True)
-        canvas = tk.Canvas(container, bg=BG, highlightthickness=0)
-        vbar = ttk.Scrollbar(container, orient="vertical", command=canvas.yview)
-        self.body = tk.Frame(canvas, bg=BG)
-        self.body.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
-        win = canvas.create_window((0, 0), window=self.body, anchor="nw")
-        canvas.bind("<Configure>", lambda e: canvas.itemconfigure(win, width=e.width))
-        canvas.configure(yscrollcommand=vbar.set)
-        canvas.pack(side="left", fill="both", expand=True)
-        vbar.pack(side="right", fill="y")
-        canvas.bind_all("<MouseWheel>", lambda e: canvas.yview_scroll(int(-e.delta / 120), "units"))
+        # A two-column dashboard keeps every panel visible without scrolling.
+        body = tk.Frame(self.root, bg=BG)
+        body.pack(fill="both", expand=True, padx=8, pady=5)
+        body.columnconfigure(0, weight=1, uniform="main-columns")
+        body.columnconfigure(1, weight=1, uniform="main-columns")
+        body.rowconfigure(0, weight=1)
 
-        self._build_serial()
-        self._build_diagnostics()
-        self._build_experiment_setup()
-        self._build_recording()
-        self._build_data()
-        self._build_sensors()
-        self._build_actuators()
-        self._build_command()
-        self._build_info()
-        self._build_logs()
+        left = tk.Frame(body, bg=BG)
+        left.grid(row=0, column=0, sticky="nsew", padx=(0, 4))
+        right = tk.Frame(body, bg=BG)
+        right.grid(row=0, column=1, sticky="nsew", padx=(4, 0))
 
-    def _build_serial(self) -> None:
-        panel = self._panel("Serial connection  (USB, 115200 baud)")
+        self._build_serial(left)
+        self._build_diagnostics(left)
+        self._build_command(left)
+        self._build_experiment_setup(left)
+        self._build_recording(left)
+        self._build_data(left)
+
+        self._build_sensors(right)
+        self._build_actuators(right)
+        self._build_info(right)
+        self._build_logs(right)
+
+    def _build_serial(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Serial connection  (USB, 115200 baud)")
         row = ttk.Frame(panel, style="Panel.TFrame")
         row.pack(fill="x", padx=8, pady=(0, 6))
         ttk.Label(row, text="Port:", style="Panel.TLabel").pack(side="left")
@@ -851,8 +865,8 @@ class BeatboxDemo:
         tk.Label(state_row, textvariable=self.state_var, bg=PANEL, fg=TEXT,
                  font=("Segoe UI", 9, "bold")).pack(side="left")
 
-    def _build_diagnostics(self) -> None:
-        panel = self._panel("Diagnostics")
+    def _build_diagnostics(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Diagnostics")
         grid = ttk.Frame(panel, style="Panel.TFrame")
         grid.pack(fill="x", padx=8, pady=(0, 8))
         grid.columnconfigure(1, weight=1)
@@ -868,8 +882,8 @@ class BeatboxDemo:
             tk.Label(grid, textvariable=var, bg="#0b141d", fg="#d7e5ee", anchor="w",
                      font=("Consolas", 8)).grid(row=i, column=1, sticky="ew", padx=(8, 0), pady=1)
 
-    def _build_experiment_setup(self) -> None:
-        panel = self._panel("Experiment setup")
+    def _build_experiment_setup(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Experiment setup")
         row1 = ttk.Frame(panel, style="Panel.TFrame")
         row1.pack(fill="x", padx=8, pady=(0, 4))
         ttk.Button(row1, text="Select folder", command=self._select_folder, style="Dark.TButton").pack(side="left")
@@ -891,8 +905,8 @@ class BeatboxDemo:
         self.start_btn.pack(side="left", padx=(12, 3))
         ttk.Button(row2, text="Stop", command=self._stop_experiment, style="Red.TButton").pack(side="left")
 
-    def _build_recording(self) -> None:
-        panel = self._panel("Recording  (CSV artifacts)")
+    def _build_recording(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Recording  (CSV artifacts)")
         grid = ttk.Frame(panel, style="Panel.TFrame")
         grid.pack(fill="x", padx=8, pady=(0, 8))
         grid.columnconfigure(1, weight=1)
@@ -906,8 +920,8 @@ class BeatboxDemo:
             tk.Label(grid, textvariable=var, bg=PANEL, fg=TEXT, anchor="w",
                      font=("Consolas", 8)).grid(row=i, column=1, sticky="ew", padx=(8, 0), pady=1)
 
-    def _build_data(self) -> None:
-        panel = self._panel("Experiment data")
+    def _build_data(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Experiment data")
         row = ttk.Frame(panel, style="Panel.TFrame")
         row.pack(fill="x", padx=8, pady=(0, 4))
         ttk.Label(row, text="Box:", style="Panel.TLabel").pack(side="left")
@@ -922,18 +936,22 @@ class BeatboxDemo:
         self.perf_var = tk.StringVar()
         ttk.Label(perf_row, textvariable=self.perf_var, style="Muted.TLabel").pack(side="left")
 
-    def _build_sensors(self) -> None:
-        panel = self._panel("Sensors  (device 'state' inputs)")
-        for name in SENSOR_ORDER:
-            row = ttk.Frame(panel, style="Panel.TFrame")
-            row.pack(fill="x", padx=8, pady=2)
-            ttk.Label(row, text=SENSOR_LABELS[name], style="Panel.TLabel").pack(side="left")
-            led = tk.Label(row, text="●", bg=PANEL, fg=RED, font=("Segoe UI", 16, "bold"))
+    def _build_sensors(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Sensors  (device 'state' inputs)")
+        grid = ttk.Frame(panel, style="Panel.TFrame")
+        grid.pack(fill="x", padx=8, pady=(0, 5))
+        for column in range(3):
+            grid.columnconfigure(column, weight=1, uniform="sensors")
+        for index, name in enumerate(SENSOR_ORDER):
+            cell = ttk.Frame(grid, style="Panel.TFrame")
+            cell.grid(row=index // 3, column=index % 3, sticky="ew", padx=4, pady=1)
+            ttk.Label(cell, text=SENSOR_LABELS[name], style="Panel.TLabel").pack(side="left")
+            led = tk.Label(cell, text="●", bg=PANEL, fg=RED, font=("Segoe UI", 13, "bold"))
             led.pack(side="right")
             self.sensor_labels[name] = led
 
-    def _build_actuators(self) -> None:
-        panel = self._panel("Actuators  ('set' output mask, bits 0-10)")
+    def _build_actuators(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Actuators  ('set' output mask, bits 0-10)")
         top = ttk.Frame(panel, style="Panel.TFrame")
         top.pack(fill="x", padx=8, pady=3)
         reward_btn = ttk.Button(top, text="Reward (manual)",
@@ -970,8 +988,8 @@ class BeatboxDemo:
                 led.pack(side="right")
                 self.actuator_labels[name] = led
 
-    def _build_command(self) -> None:
-        panel = self._panel("Serial send command")
+    def _build_command(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Serial send command")
         row = ttk.Frame(panel, style="Panel.TFrame")
         row.pack(fill="x", padx=8, pady=(0, 8))
         ttk.Label(row, text="cmd:", style="Panel.TLabel").pack(side="left")
@@ -982,20 +1000,20 @@ class BeatboxDemo:
         self.send_btn = ttk.Button(row, text="Send frame", command=self._send_command, style="Dark.TButton")
         self.send_btn.pack(side="left", padx=(5, 0))
 
-    def _build_info(self) -> None:
-        panel = self._panel("Animal information")
+    def _build_info(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Animal information")
         wrap = ttk.Frame(panel, style="Panel.TFrame")
         wrap.pack(fill="both", expand=True, padx=8, pady=(0, 8))
         wrap.columnconfigure(0, weight=1)
         wrap.columnconfigure(1, weight=1)
-        self.animal_text = tk.Text(wrap, height=6, bg=PANEL, fg=TEXT, relief="flat", font=("Consolas", 9))
+        self.animal_text = tk.Text(wrap, height=4, bg=PANEL, fg=TEXT, relief="flat", font=("Consolas", 9))
         self.animal_text.grid(row=0, column=0, sticky="nsew", padx=(0, 6))
-        self.stage_text = tk.Text(wrap, height=6, bg=PANEL, fg=TEXT, relief="flat", font=("Consolas", 9))
+        self.stage_text = tk.Text(wrap, height=4, bg=PANEL, fg=TEXT, relief="flat", font=("Consolas", 9))
         self.stage_text.grid(row=0, column=1, sticky="nsew", padx=(6, 0))
 
-    def _build_logs(self) -> None:
-        panel = self._panel("Logs  (GUI panel: asctime - level - message)")
-        self.log_box = tk.Text(panel, height=8, bg="#0b141d", fg="#d7e5ee",
+    def _build_logs(self, parent: tk.Misc) -> None:
+        panel = self._panel(parent, "Logs  (GUI panel: asctime - level - message)", expand=True)
+        self.log_box = tk.Text(panel, height=6, bg="#0b141d", fg="#d7e5ee",
                                insertbackground=TEXT, font=("Consolas", 8))
         self.log_box.pack(fill="both", expand=True, padx=8, pady=(0, 8))
 
