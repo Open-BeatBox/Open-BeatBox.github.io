@@ -6,6 +6,7 @@ Before you begin, read the safety notes and check that the bill of materials mat
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 
 assembly
 bom
