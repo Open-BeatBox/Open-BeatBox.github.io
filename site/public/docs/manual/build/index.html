@@ -306,15 +306,41 @@ Module-by-module assembly</div>
 </section>
 <section id="recommended-build-order">
 <h2>Recommended build order<a class="headerlink" href="#recommended-build-order" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Review the safety notes.</p></li>
-<li><p>Download the Master BOM and confirm every unresolved field for the hardware revision being built.</p></li>
-<li><p>Prepare 3D-printed and laser-cut parts.</p></li>
-<li><p>Flash all required cards before installing them in their modules.</p></li>
-<li><p>Follow the module-by-module Sphinx tutorials.</p></li>
-<li><p>Complete the electrical, mechanical, and animal-facing safety checks.</p></li>
-<li><p>Record any deviations and validation notes with the relevant module and item identifiers.</p></li>
-</ol>
+<p>Complete every item in this preparation checklist before starting Step 1:</p>
+<ul class="simple">
+<li><p>Read the <a class="reference internal" href="safety.html"><span class="doc">safety notes</span></a> before handling tools, inserts, soldering equipment, or plexiglass.</p></li>
+<li><p>Download the Master BOM in <a class="reference download internal" download="" href="../_downloads/4c1041c62a3871e68c1a603ed1025b2f/BOM.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">XLSX</span></code></a> or <a class="reference download internal" download="" href="../_downloads/fe57d30f470032db4a5380b42fe7102f/BOM.csv"><code class="xref download docutils literal notranslate"><span class="pre">CSV</span></code></a> format. Use the <a class="reference internal" href="bom.html"><span class="doc">BOM validation checklist</span></a> and <a class="reference internal" href="assembly-tutorials/conventions.html"><span class="doc">revision and identifier conventions</span></a> to resolve every incomplete field for the hardware revision being built.</p></li>
+<li><p>Prepare the 3D-printed and laser-cut parts using the <a class="reference internal" href="fabrication.html"><span class="doc">fabrication guide</span></a> and the <a class="reference external" href="https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware">BEATBox CAD and hardware files</a>.</p></li>
+<li><p><a class="reference internal" href="../hardware/flashing-cards.html"><span class="doc">Flash all required cards</span></a> before installing them in their modules.</p></li>
+</ul>
+<section id="step-1-build-the-frame-and-enclosure">
+<h3>Step 1 — Build the frame and enclosure<a class="headerlink" href="#step-1-build-the-frame-and-enclosure" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-frm-assembly.html"><span class="std std-doc">frame and enclosure tutorial</span></a> to build the base, pillars, walls, and door. Stop before installing the additional modules or securing the top panel; return to that section in Step 7.</p>
+</section>
+<section id="step-2-build-the-water-bottle-mount">
+<h3>Step 2 — Build the water bottle mount<a class="headerlink" href="#step-2-build-the-water-bottle-mount" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-bmt-assembly.html"><span class="std std-doc">water bottle mount tutorial</span></a> to build and prepare the mount for installation.</p>
+</section>
+<section id="step-3-build-the-feeder-module">
+<h3>Step 3 — Build the feeder module<a class="headerlink" href="#step-3-build-the-feeder-module" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-fdr-aseembly.html"><span class="std std-doc">feeder module tutorial</span></a> to assemble the housing, electronics, motor, and rotor.</p>
+</section>
+<section id="step-4-build-the-light-ring-module">
+<h3>Step 4 — Build the light ring module<a class="headerlink" href="#step-4-build-the-light-ring-module" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-lgt.html"><span class="std std-doc">light ring tutorial</span></a> to assemble the housing, PCB, cap, and diffuser.</p>
+</section>
+<section id="step-5-build-the-photobeam-gate">
+<h3>Step 5 — Build the photobeam gate<a class="headerlink" href="#step-5-build-the-photobeam-gate" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-pbg-assembly.html"><span class="std std-doc">photobeam gate tutorial</span></a> to install the IR boards, controller, cables, and covers.</p>
+</section>
+<section id="step-6-build-the-screen-modules">
+<h3>Step 6 — Build the screen modules<a class="headerlink" href="#step-6-build-the-screen-modules" title="Link to this heading">¶</a></h3>
+<p>Follow the <a class="reference internal" href="assembly-tutorials/modules/mod-scr-assembly.html"><span class="std std-doc">screen module tutorial</span></a> to build both touchscreen modules and install their controller PCBs, IR boards, and cabling.</p>
+</section>
+<section id="step-7-integrate-and-validate-the-system">
+<h3>Step 7 — Integrate and validate the system<a class="headerlink" href="#step-7-integrate-and-validate-the-system" title="Link to this heading">¶</a></h3>
+<p>Return to the <a href="assembly-tutorials/modules/mod-frm-assembly.html#install-the-additional-modules">final section of the enclosure tutorial</a> to install the completed modules, position the photobeam gate, and secure the top panel. Complete the <a class="reference internal" href="safety.html"><span class="doc">safety notes</span></a> and every module checkpoint before use. Record deviations using the <a class="reference internal" href="assembly-tutorials/conventions.html"><span class="doc">module and item identifier conventions</span></a>, then report corrections through the <a class="reference external" href="https://github.com/Open-BeatBox/assembly-tutorials/issues">assembly-tutorials issue tracker</a>.</p>
+</section>
 </section>
 <section id="versioned-sources">
 <h2>Versioned sources<a class="headerlink" href="#versioned-sources" title="Link to this heading">¶</a></h2>
@@ -385,7 +411,16 @@ Module-by-module assembly</div>
             <ul>
 <li><a class="reference internal" href="#">Build your own BEATBox</a><ul>
 <li><a class="reference internal" href="#start-the-step-by-step-guide">Start the step-by-step guide</a></li>
-<li><a class="reference internal" href="#recommended-build-order">Recommended build order</a></li>
+<li><a class="reference internal" href="#recommended-build-order">Recommended build order</a><ul>
+<li><a class="reference internal" href="#step-1-build-the-frame-and-enclosure">Step 1 — Build the frame and enclosure</a></li>
+<li><a class="reference internal" href="#step-2-build-the-water-bottle-mount">Step 2 — Build the water bottle mount</a></li>
+<li><a class="reference internal" href="#step-3-build-the-feeder-module">Step 3 — Build the feeder module</a></li>
+<li><a class="reference internal" href="#step-4-build-the-light-ring-module">Step 4 — Build the light ring module</a></li>
+<li><a class="reference internal" href="#step-5-build-the-photobeam-gate">Step 5 — Build the photobeam gate</a></li>
+<li><a class="reference internal" href="#step-6-build-the-screen-modules">Step 6 — Build the screen modules</a></li>
+<li><a class="reference internal" href="#step-7-integrate-and-validate-the-system">Step 7 — Integrate and validate the system</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#versioned-sources">Versioned sources</a></li>
 </ul>
 </li>
