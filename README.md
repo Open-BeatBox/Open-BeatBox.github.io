@@ -85,6 +85,7 @@ This output is included in the Next.js static export so that the website and the
 | [`docs/source/build/bom.md`](./docs/source/build/bom.md) | Bill of materials source |
 | [`docs/source/build/safety.md`](./docs/source/build/safety.md) | Safety notes |
 | [`docs/source/hardware/index.md`](./docs/source/hardware/index.md) | Hardware and module overview |
+| [`docs/source/hardware/flashing-cards.md`](./docs/source/hardware/flashing-cards.md) | Card-flashing placeholder and required build order |
 | [`docs/source/hardware/pcbs.md`](./docs/source/hardware/pcbs.md) | PCB documentation |
 | [`docs/source/software/index.md`](./docs/source/software/index.md) | Software and firmware documentation |
 | [`docs/source/software/firmware/index.md`](./docs/source/software/firmware/index.md) | Firmware documentation index |

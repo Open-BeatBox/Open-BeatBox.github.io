@@ -7,7 +7,12 @@ This section documents BEATBox modules, electronics, and mechanical interfaces.
 
 modules
 pcbs
+flashing-cards
 ```
+
+## Before module assembly
+
+Cards must be flashed before they are installed in a module. Start with {doc}`Flashing the cards <flashing-cards>`; detailed flashing instructions are being prepared.
 
 ## Core modules
 

@@ -28,9 +28,9 @@ The current module documents are marked `0.1-draft` and have not yet been assign
 1. Review the {doc}`safety` notes.
 2. Download and check the {doc}`bom`.
 3. Prepare the fabricated parts described in {doc}`fabrication`.
-4. Assemble the water bottle mount, feeder, light ring, photobeam gate, and two screen modules.
-5. Assemble the frame and install the completed sub-modules.
-6. Use the <a href="../../beatbox-assembly-tutorial.html">interactive assembly tutorial</a> as the bench checklist.
+4. {doc}`Flash the required cards <../hardware/flashing-cards>` before installing them in any module.
+5. Assemble the water bottle mount, feeder, light ring, photobeam gate, and two screen modules.
+6. Assemble the frame and install the completed sub-modules.
 7. Complete electrical, mechanical, and animal-facing safety checks before use.
 
 ## Reporting corrections

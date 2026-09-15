@@ -41,7 +41,7 @@ sections:
       - label: "Software"
         href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software"
       - label: "Documentation"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/docs"
+        href: "/docs/manual/"
       - label: "Build guides"
         href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
       - label: "Assembly tutorial source"

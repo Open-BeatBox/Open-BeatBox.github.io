@@ -1,16 +1,18 @@
-# BEATBox Documentation
+# BEATBox User Manual
 
 BEATBox is an open-source, modular platform for 24/7 home-cage behavioral testing, autonomous operant conditioning, and longitudinal monitoring.
 
-This documentation is the technical home for builders, scientists, and developers. It complements the interactive assembly SOP and the project website.
+This manual is the main technical reference for building, understanding, and operating a BEATBox. It brings the step-by-step assembly tutorials together with hardware, software, firmware, and experimental guidance in one place.
+
+If you are assembling your first system, begin with **Build your own BEATBox**. The build section takes you from preparation and the bill of materials through fabrication, module assembly, and final checks. Hardware and software reference pages are available when you need more detail about a component.
 
 ## Start here
 
 ::::{grid} 1 1 3 3
 :gutter: 3
 
-:::{grid-item-card} Build the box
-Assembly workflow, bill of materials, safety notes, and fabrication guidance.
+:::{grid-item-card} Build your own BEATBox
+Follow the step-by-step workflow, from preparation and the bill of materials to module assembly and validation.
 
 {doc}`build/index`
 :::
@@ -41,10 +43,10 @@ protocols/index
 contributing
 ```
 
-## Quick links
+## Frequently used pages
 
 - {doc}`Modular assembly tutorials <build/assembly-tutorials/tutorials_index>`
 - [Master BOM (CSV and XLSX)](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
-- <a href="../beatbox-assembly-tutorial.html">Interactive assembly tutorial</a>
+- {doc}`Flashing the cards <hardware/flashing-cards>`
 - [Open-source resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources)
 - <a href="../../">Project website</a>

@@ -21,13 +21,10 @@ logo: "/images/beatbox-logo.png"
 brandColor: "#2563EB"
 secondaryColor: "#0F172A"
 extraNavItems:
-  - title: "Assembly Tutorial"
-    href: "/docs/beatbox-assembly-tutorial.html"
-    navOrder: 1
   - title: "Documentation"
     href: "/docs/manual/"
-    navOrder: 2
+    navOrder: 1
   - title: "Gallery"
     href: "/gallery"
-    navOrder: 3
+    navOrder: 2
 ---

@@ -227,9 +227,16 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../hardware/index.html">Hardware</a><input aria-label="Toggle navigation of Hardware" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hardware/modules.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hardware/pcbs.html">PCB identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/flashing-cards.html">Flashing the cards</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../software/index.html">Software</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../software/index.html">Software</a><input aria-label="Toggle navigation of Software" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../software/firmware/index.html">Firmware</a><input aria-label="Toggle navigation of Firmware" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software/firmware/can-intermodule-protocol.html">BEATBox inter-module CAN protocol</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../protocols/index.html">Protocols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 </ul>
@@ -276,7 +283,8 @@
         <article role="main" id="furo-main-content">
           <section id="build-your-own-beatbox">
 <h1>Build your own BEATBox<a class="headerlink" href="#build-your-own-beatbox" title="Link to this heading">¶</a></h1>
-<p>This section deliberately keeps two assembly-guide versions in parallel while the project team evaluates which experience to retain. Both describe the same device, but their structure and interaction model differ.</p>
+<p>This is the starting point for building a BEATBox. The guide brings the preparation notes, bill of materials, fabrication guidance, and step-by-step module tutorials into a single workflow.</p>
+<p>Before you begin, read the safety notes and check that the bill of materials matches the hardware revision you intend to build. Prepare and inspect the fabricated parts before assembling the modules. Cards must be flashed <strong>before they are installed in a module</strong>; see <a class="reference internal" href="../hardware/flashing-cards.html"><span class="doc">Flashing the cards</span></a> for the current status of those instructions.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Assembly tutorials</a><ul>
@@ -310,48 +318,39 @@
 </li>
 </ul>
 </div>
-<section id="compare-the-two-versions">
-<h2>Compare the two versions<a class="headerlink" href="#compare-the-two-versions" title="Link to this heading">¶</a></h2>
+<section id="start-the-step-by-step-guide">
+<h2>Start the step-by-step guide<a class="headerlink" href="#start-the-step-by-step-guide" title="Link to this heading">¶</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-Version A — Interactive tutorial</div>
-<p class="sd-card-text">Use the single-page, module-by-module checklist during a bench build. It includes the current parts tables, videos, and validation checkpoints.</p>
-<p class="sd-card-text"><a href="../../beatbox-assembly-tutorial.html">Open the interactive assembly tutorial</a></p>
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Version B — Modular Sphinx guide</div>
-<p class="sd-card-text">Use the six rendered tutorials from <code class="docutils literal notranslate"><span class="pre">assembly-tutorials</span></code>, with the versioned BOM and the available videos embedded on their matching module pages.</p>
+Module-by-module assembly</div>
+<p class="sd-card-text">Follow the six Sphinx tutorials for the frame, bottle mount, feeder, light ring, photobeam gate, and screen. Each tutorial uses identifiers from the Master BOM and includes the available supporting media.</p>
 <p class="sd-card-text"><a class="reference internal" href="assembly-tutorials/tutorials_index.html"><span class="doc">Open the modular Sphinx guide</span></a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Neither version is removed during this comparison period. For useful feedback, complete a build primarily with one version and record where its navigation, level of detail, or media support helps or blocks you.</p>
 </section>
-<section id="common-preparation">
-<h2>Common preparation<a class="headerlink" href="#common-preparation" title="Link to this heading">¶</a></h2>
+<section id="recommended-build-order">
+<h2>Recommended build order<a class="headerlink" href="#recommended-build-order" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Review the safety notes.</p></li>
 <li><p>Download the Master BOM and confirm every unresolved field for the hardware revision being built.</p></li>
 <li><p>Prepare 3D-printed and laser-cut parts.</p></li>
-<li><p>Choose one of the two guide versions above for the evaluation build.</p></li>
-<li><p>Record deviations and validation notes, including the guide version used.</p></li>
+<li><p>Flash all required cards before installing them in their modules.</p></li>
+<li><p>Follow the module-by-module Sphinx tutorials.</p></li>
+<li><p>Complete the electrical, mechanical, and animal-facing safety checks.</p></li>
+<li><p>Record any deviations and validation notes with the relevant module and item identifiers.</p></li>
 </ol>
 </section>
 <section id="versioned-sources">
 <h2>Versioned sources<a class="headerlink" href="#versioned-sources" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="assembly-tutorials/tutorials_index.html"><span class="doc">Tutorial index</span></a></p></li>
+<li><p><a class="reference internal" href="assembly-tutorials/tutorials_index.html"><span class="doc">Step-by-step tutorial index</span></a></p></li>
 <li><p><a class="reference download internal" download="" href="../_downloads/4c1041c62a3871e68c1a603ed1025b2f/BOM.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">Master</span> <span class="pre">BOM</span> <span class="pre">(XLSX)</span></code></a></p></li>
 <li><p><a class="reference download internal" download="" href="../_downloads/fe57d30f470032db4a5380b42fe7102f/BOM.csv"><code class="xref download docutils literal notranslate"><span class="pre">Master</span> <span class="pre">BOM</span> <span class="pre">(CSV)</span></code></a></p></li>
 <li><p><a class="reference internal" href="assembly-tutorials/conventions.html"><span class="doc">Part-ID and media conventions</span></a></p></li>
@@ -416,8 +415,8 @@ Version B — Modular Sphinx guide</div>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Build your own BEATBox</a><ul>
-<li><a class="reference internal" href="#compare-the-two-versions">Compare the two versions</a></li>
-<li><a class="reference internal" href="#common-preparation">Common preparation</a></li>
+<li><a class="reference internal" href="#start-the-step-by-step-guide">Start the step-by-step guide</a></li>
+<li><a class="reference internal" href="#recommended-build-order">Recommended build order</a></li>
 <li><a class="reference internal" href="#versioned-sources">Versioned sources</a></li>
 </ul>
 </li>
