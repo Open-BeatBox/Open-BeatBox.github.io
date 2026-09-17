@@ -207,7 +207,7 @@ sections:
   - type: "text"
     title: "How to cite"
     body: |
-      Citation instructions will be added when a preprint, paper, or DOI is available.
+      A BioRxiv preprint is in preparation. Citation instructions will be added once it is online. A Zenodo DOI is planned for the journal submission rather than the preprint, so no DOI is available yet.
 
       Until publication metadata is finalized, please reference the BEATBox open-source repository and contact the team before public reuse in manuscripts, talks, or derivative documentation.
   - type: "faq"

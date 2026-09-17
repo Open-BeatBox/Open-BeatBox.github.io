@@ -141,9 +141,9 @@ def _append_video(app: Sphinx, doctree: nodes.document, docname: str) -> None:
     note = nodes.note()
     note += nodes.paragraph(
         text=(
-            "Temporary hosting: this Drive player will be replaced by the project's "
-            "YouTube stream after publication; the released original will be archived "
-            "on Zenodo. Google may request sign-in until public sharing is confirmed."
+            "Temporary hosting: this Drive player will be replaced by a stream from "
+            "the project's YouTube channel once the tutorials playlist is made public. "
+            "Google may request sign-in until public sharing is confirmed."
         )
     )
     section += note

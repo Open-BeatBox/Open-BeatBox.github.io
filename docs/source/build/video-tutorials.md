@@ -4,7 +4,9 @@ Six short 720p MP4 tutorials complement the written module guides. All six are a
 
 ## Publication status
 
-The current Drive links are temporary. They will be replaced by project-controlled YouTube links for playback, while released originals should be archived on Zenodo with durable identifiers. Google may request sign-in until public sharing is confirmed.
+The project's YouTube channel is live at <https://www.youtube.com/@open-beatbox/>, and a tutorials playlist with thumbnails and descriptions has been prepared. The playlist is still private while the remaining channel settings are decided (licence terms, whether comments are enabled), so no public watch URLs exist yet.
+
+Until those URLs are available, the table below keeps the temporary Google Drive links. Google may request sign-in until public sharing is confirmed.
 
 | Tutorial | Written guide | Public video |
 | --- | --- | --- |
@@ -20,10 +22,10 @@ The current Drive links are temporary. They will be replaced by project-controll
 ## Publication requirements
 
 - Keep the 720p MP4 originals as archival assets outside the Git repository.
-- Publish streamable copies on the project's YouTube channel and archive released originals on Zenodo.
+- Settle the remaining channel settings (licence terms, comments enabled or not) and make the tutorials playlist public.
 - Use the naming convention in the [assembly documentation conventions](https://github.com/Open-BeatBox/assembly-tutorials/blob/main/conventions.md).
-- Provide one thumbnail, a descriptive title, captions or a transcript, and a public URL per video.
+- Provide one thumbnail, a descriptive title, captions or a transcript, and a public URL per video. Thumbnails and descriptions are already prepared for the playlist.
 - Replace each temporary Drive `embed_url` and `watch_url` in `docs/source/_ext/assembly_videos.py` with the corresponding YouTube URLs and update the table above.
 - Verify playback on desktop and mobile before release.
 
-Large MP4 files should not be committed directly to the website repository. Zenodo should hold the versioned archival copy; use YouTube for the website experience.
+Large MP4 files should not be committed directly to the website repository; use YouTube for the website experience. A Zenodo deposit for the archival copies is planned but deferred: it waits on the outstanding hardware and software elements, and the DOI is currently targeted at the journal submission rather than the BioRxiv preprint.
