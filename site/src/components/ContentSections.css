@@ -514,6 +514,10 @@ a.impact-card:hover {
   @apply object-contain;
 }
 
+.media-video {
+  @apply absolute inset-0 h-full w-full object-contain;
+}
+
 .media-zoom {
   @apply absolute inset-0 cursor-zoom-in;
   background: transparent;
@@ -561,6 +565,10 @@ a.impact-card:hover {
 
 .lightbox-image {
   @apply object-contain;
+}
+
+.lightbox-video {
+  @apply absolute inset-0 h-full w-full object-contain;
 }
 
 .lightbox-close {

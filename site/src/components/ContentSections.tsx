@@ -14,6 +14,35 @@ type Props = {
   sections?: Section[];
 };
 
+const isVideoSrc = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+
+// Media that used to be animated GIFs are now MP4. Both render into the same
+// fixed-size .media-image box, so callers do not care which one a src is.
+const MediaFill = ({
+  src,
+  alt,
+  sizes,
+}: {
+  src: string;
+  alt: string;
+  sizes: string;
+}) =>
+  isVideoSrc(src) ? (
+    <video
+      src={src}
+      poster={src.replace(/\.(mp4|webm|mov)$/i, ".jpg")}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      aria-label={alt}
+      className="media-video"
+    />
+  ) : (
+    <Image src={src} alt={alt} fill sizes={sizes} className="media-img" />
+  );
+
 const markdownPlugins = [remarkGfm];
 const rehypePlugins = [rehypeRaw, rehypeSanitize];
 
@@ -128,14 +157,28 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
           </button>
           <div className="lightbox-backdrop" onClick={closeLightbox} />
           <div className="lightbox-content">
-            <Image
-              src={lightbox.src}
-              alt={lightbox.alt}
-              fill
-              sizes="100vw"
-              className="lightbox-image"
-              priority
-            />
+            {isVideoSrc(lightbox.src) ? (
+              <video
+                src={lightbox.src}
+                poster={lightbox.src.replace(/\.(mp4|webm|mov)$/i, ".jpg")}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                aria-label={lightbox.alt}
+                className="lightbox-video"
+              />
+            ) : (
+              <Image
+                src={lightbox.src}
+                alt={lightbox.alt}
+                fill
+                sizes="100vw"
+                className="lightbox-image"
+                priority
+              />
+            )}
           </div>
         </div>
       )}
@@ -270,12 +313,10 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     {section.media.map((item) => (
                       <figure key={item.src} className="media-card group">
                         <div className="media-image">
-                          <Image
+                          <MediaFill
                             src={item.src}
                             alt={item.alt}
-                            fill
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            className="media-img"
                           />
                           <button
                             className="media-zoom"
@@ -589,12 +630,10 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                     {section.items.map((item) => (
                       <figure key={item.src} className="gallery-card group">
                         <div className="media-image">
-                          <Image
+                          <MediaFill
                             src={item.src}
                             alt={item.alt}
-                            fill
                             sizes="(max-width: 768px) 80vw, 320px"
-                            className="media-img"
                           />
                           <button
                             className="media-zoom"

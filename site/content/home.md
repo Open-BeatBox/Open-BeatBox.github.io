@@ -10,7 +10,7 @@ sections:
     subtitle: "Open — BEhavioural and AuTonomous operant Box"
     kicker: "Open-source 24/7 home-cage operant conditioning that preserves natural rhythms while improving reproducibility."
     logo: "/images/beatbox-logo.png"
-    video: "/assets/gifs/BEATBOX.5.compressed.gif"
+    video: "/assets/gifs/BEATBOX.5.compressed.mp4"
     poster: "/images/beatbox_V3.png"
   - type: "quickLinks"
     variant: "emoji"
@@ -137,7 +137,7 @@ sections:
     eyebrow: "In-lab recording"
     body: "Short real-life demo clip showing Open-BEATBox in use."
     media:
-      - src: "/images/beatbox-modules-demo.gif"
+      - src: "/images/beatbox-modules-demo.mp4"
         alt: "Live demo GIF of Open-BEATBox"
         caption: "Live Open-BEATBox module demo."
   - type: "viewer"

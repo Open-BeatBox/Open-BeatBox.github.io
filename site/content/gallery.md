@@ -11,10 +11,10 @@ sections:
     title: "System Overview"
     subtitle: "Full system views and animations"
     items:
-      - src: "/images/beatbox-modules-demo.gif"
+      - src: "/images/beatbox-modules-demo.mp4"
         alt: "Open-BEATBox module demo animation"
         caption: "Module demo"
-      - src: "/images/D_View_Promotional_Video_Generated-ezgif.com-crop.gif"
+      - src: "/images/D_View_Promotional_Video_Generated-ezgif.com-crop.mp4"
         alt: "Open-BEATBox promotional view animation"
         caption: "Promotional view"
       - src: "/images/BB_Full-1.jpg"

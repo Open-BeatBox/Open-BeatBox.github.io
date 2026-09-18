@@ -556,6 +556,7 @@
 <div class="sop-lightbox" id="sopLightbox">
   <button class="sop-lightbox-close" id="sopLightboxClose" title="Close (Esc)">✕</button>
   <img class="sop-lightbox-img" id="sopLightboxImg" src="" alt="" />
+  <video class="sop-lightbox-img" id="sopLightboxVid" src="" autoplay loop muted playsinline controls style="display:none"></video>
   <div class="sop-lightbox-caption" id="sopLightboxCaption"></div>
   <div class="sop-lightbox-nav">
     <button id="sopLightboxPrev">← Prev</button>
@@ -1104,12 +1105,12 @@ function applySopEnhancements() {
   const attachPillars = stageA?.subsections?.find(subsection => subsection.title === '5. Attach the 4 pillars to the base');
   if (attachPillars) {
     attachPillars.media = {
-      src: '/videos/buidling_gifs/BEATBox_foot1.gif',
+      src: '/videos/building_gifs/BEATBox_foot1.mp4',
       alt: 'Attaching the first pillar to the Open-BEATBox base',
       caption: 'First pillar-to-base attachment reference.'
     };
     attachPillars.afterMedia = {
-      src: '/videos/buidling_gifs/BEATBox_foot1-2-3.gif',
+      src: '/videos/building_gifs/BEATBox_foot1-2-3.mp4',
       alt: 'Attaching the remaining pillars to the Open-BEATBox base',
       caption: 'Remaining pillar-to-base attachment reference.',
       linkLabel: 'Open full GIF'
@@ -1131,7 +1132,7 @@ function applySopEnhancements() {
   if (wallBuild) {
     wallBuild.title = '6. Build and install the first wall panel';
     wallBuild.media = {
-      src: '/videos/buidling_gifs/BEATBox_wall1.gif',
+      src: '/videos/building_gifs/BEATBox_wall1.mp4',
       alt: 'Building the first Open-BEATBox wall panel',
       caption: 'First wall assembly reference.'
     };
@@ -1152,7 +1153,7 @@ function applySopEnhancements() {
   if (repeatWalls) {
     repeatWalls.title = '7. Repeat for all required fixed wall panels';
     repeatWalls.afterMedia = {
-      src: '/videos/buidling_gifs/BEATBox_walls1-2-3.gif',
+      src: '/videos/building_gifs/BEATBox_walls1-2-3.mp4',
       alt: 'Secondary Open-BEATBox wall assembly reference',
       caption: 'Secondary wall assembly reference for the remaining walls.',
       linkLabel: 'Open full GIF'
@@ -1211,7 +1212,7 @@ function applySopEnhancements() {
   const screenAssembly = findSubsection('screen_module', 'Assembly');
   if (screenAssembly?.items) {
     screenAssembly.media = {
-      src: '/videos/buidling_gifs/BEATBox_Screen.gif',
+      src: '/videos/building_gifs/BEATBox_Screen.mp4',
       alt: 'Building the Open-BEATBox screen module',
       caption: 'Screen module assembly reference.'
     };
@@ -1235,7 +1236,7 @@ function applySopEnhancements() {
   const ceilingAssembly = findSubsection('ceiling_module', 'Assembly');
   if (ceilingAssembly) {
     ceilingAssembly.media = {
-      src: '/videos/buidling_gifs/BEATBox_Light%20.gif',
+      src: '/videos/building_gifs/BEATBox_Light.mp4',
       alt: 'Building the Open-BEATBox ceiling light module',
       caption: 'Ceiling / light module assembly reference.'
     };
@@ -1245,7 +1246,7 @@ function applySopEnhancements() {
   const tunnelModule = findSection('tunnel_module');
   if (tunnelModule) {
     tunnelModule.media = {
-      src: '/videos/buidling_gifs/BEATBox_Tunnel.gif',
+      src: '/videos/building_gifs/BEATBox_Tunnel.mp4',
       alt: 'Building the Open-BEATBox tunnel module',
       caption: 'Tunnel module assembly reference.'
     };
@@ -1266,7 +1267,7 @@ function applySopEnhancements() {
   const feederMechanical = findSubsection('feeder_module', 'Mechanical assembly');
   if (feederMechanical) {
     feederMechanical.media = {
-      src: '/videos/buidling_gifs/BEATBox_feeder.gif',
+      src: '/videos/building_gifs/BEATBox_feeder.mp4',
       alt: 'Building the Open-BEATBox feeder module',
       caption: 'Feeder module assembly reference.'
     };
@@ -1353,17 +1354,25 @@ function applySopEnhancements() {
     { src: '/images/electronics/20260202_103204_1.jpg', alt: 'Electronics assembly — 8', caption: 'Assembly (8)' },
   ]);
 }
+function mediaTag(src, alt, cls) {
+  const s = escapeHTML(src), a = escapeHTML(alt || '');
+  if (/\.(mp4|webm|mov)$/i.test(src)) {
+    const poster = escapeHTML(src.replace(/\.(mp4|webm|mov)$/i, '.jpg'));
+    return `<video src="${s}" poster="${poster}" autoplay loop muted playsinline preload="metadata" aria-label="${a}"${cls ? ` class="${cls}"` : ''}></video>`;
+  }
+  return `<img src="${s}" alt="${a}" loading="lazy"${cls ? ` class="${cls}"` : ''} />`;
+}
 function renderMedia(media, variant = '') {
   if (!media?.src) return '';
   const link = media.linkLabel ? ` <a href="${escapeHTML(media.src)}" target="_blank" rel="noopener">${escapeHTML(media.linkLabel)}</a>` : '';
   const caption = media.caption || media.linkLabel ? `<figcaption>${escapeHTML(media.caption || '')}${link}</figcaption>` : '';
-  return `<figure class="instruction-media ${escapeHTML(variant)}"><img src="${escapeHTML(media.src)}" alt="${escapeHTML(media.alt || '')}" loading="lazy" />${caption}</figure>`;
+  return `<figure class="instruction-media ${escapeHTML(variant)}">${mediaTag(media.src, media.alt)}${caption}</figure>`;
 }
 function renderGallery(items) {
   if (!items || !items.length) return '';
   const thumbs = items.map(item =>
     `<div class="sop-gallery-thumb" data-src="${escapeHTML(item.src)}" data-alt="${escapeHTML(item.alt || '')}" data-caption="${escapeHTML(item.caption || '')}">` +
-    `<img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.alt || '')}" loading="lazy" /></div>`
+    `${mediaTag(item.src, item.alt)}</div>`
   ).join('');
   return `<div class="sop-gallery"><div class="sop-gallery-label">📷 Build reference photos — click to zoom</div><div class="sop-gallery-strip">${thumbs}</div></div>`;
 }
@@ -1843,6 +1852,7 @@ init();
   let lbItems = [], lbIdx = 0;
   const lb = document.getElementById('sopLightbox');
   const lbImg = document.getElementById('sopLightboxImg');
+  const lbVid = document.getElementById('sopLightboxVid');
   const lbCap = document.getElementById('sopLightboxCaption');
   const lbCtr = document.getElementById('sopLightboxCounter');
   const lbPrev = document.getElementById('sopLightboxPrev');
@@ -1850,8 +1860,19 @@ init();
 
   function lbShow() {
     const item = lbItems[lbIdx];
-    lbImg.src = item.src;
-    lbImg.alt = item.alt || '';
+    const isVid = /\.(mp4|webm|mov)$/i.test(item.src || '');
+    lbImg.style.display = isVid ? 'none' : '';
+    lbVid.style.display = isVid ? '' : 'none';
+    if (isVid) {
+      lbVid.src = item.src;
+      lbVid.setAttribute('aria-label', item.alt || '');
+      lbImg.removeAttribute('src');
+    } else {
+      lbVid.pause();
+      lbVid.removeAttribute('src');
+      lbImg.src = item.src;
+      lbImg.alt = item.alt || '';
+    }
     lbCap.textContent = item.caption || '';
     lbCtr.textContent = (lbIdx + 1) + ' / ' + lbItems.length;
     lbPrev.disabled = lbIdx === 0;
