@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="title">
+  <title id="title">SOP checklist icon</title>
+  <rect width="320" height="220" rx="28" fill="#dcfce7"/>
+  <rect x="82" y="38" width="156" height="152" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="10"/>
+  <path d="M118 82l15 15 31-34M118 135l15 15 31-34" fill="none" stroke="#16a34a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M185 87h27M185 140h27" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M128 38h64l-8 24h-48l-8-24Z" fill="#bfdbfe" stroke="#0f172a" stroke-width="8" stroke-linejoin="round"/>
+</svg>
