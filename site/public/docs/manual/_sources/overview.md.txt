@@ -1,6 +1,6 @@
 # Overview
 
-BEATBox is designed for long-duration behavioral neuroscience experiments where short, experimenter-driven sessions are a limitation.
+Open-BEATBox is designed for long-duration behavioral neuroscience experiments where short, experimenter-driven sessions are a limitation.
 
 ## Goals
 
@@ -12,11 +12,11 @@ BEATBox is designed for long-duration behavioral neuroscience experiments where 
 
 ## Current status
 
-BEATBox is a working open-source platform with real builds and module-level assembly tutorials in this Sphinx manual. Some details remain under active validation, including final cost benchmarks, optimal cable lengths, tracking wall color, long-term reliability, and complete protocol templates.
+Open-BEATBox is a working open-source platform with real builds and module-level assembly tutorials in this Sphinx manual. Some details remain under active validation, including final cost benchmarks, optimal cable lengths, tracking wall color, long-term reliability, and complete protocol templates.
 
 ## Documentation map
 
-- {doc}`build/index`: start here if you want to build a BEATBox.
+- {doc}`build/index`: start here if you want to build an Open-BEATBox.
 - {doc}`hardware/index`: part, module, and PCB details.
 - {doc}`software/index`: GUI, firmware, and data workflow notes.
 - {doc}`protocols/index`: experimental use cases and validation status.

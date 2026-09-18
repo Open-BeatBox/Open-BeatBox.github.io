@@ -1,6 +1,6 @@
 # Getting Started (Dev)
 
-For contributors working on the Beatbox website and documentation.
+For contributors working on the Open-BEATBox website and documentation.
 
 ## Prerequisites
 - Node.js 18+ and npm.

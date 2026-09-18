@@ -1,6 +1,6 @@
 # Software
 
-This section will document the BEATBox software and firmware stack.
+This section will document the Open-BEATBox software and firmware stack.
 
 ```{toctree}
 :maxdepth: 2

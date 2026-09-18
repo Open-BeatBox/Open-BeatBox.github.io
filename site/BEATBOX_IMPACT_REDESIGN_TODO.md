@@ -1,4 +1,4 @@
-# BEATBox Documentation and Repository TODO
+# Open-BEATBox Documentation and Repository TODO
 
 This tracker lists completed repository/documentation cleanup work and the remaining placeholders or unfinished text that must be resolved before the documentation can be considered stable.
 
@@ -9,7 +9,7 @@ This tracker lists completed repository/documentation cleanup work and the remai
   - [x] Keep `View Open-Source Resources` as a secondary hero button.
   - [x] Reduce hero CTA ambiguity by using action-oriented labels.
 - [x] Make the Assembly SOP CTA highly visible.
-  - [x] Move `Open the interactive BEATBox Assembly SOP` directly below the `Assembly Walkthrough` section title.
+  - [x] Move `Open the interactive Open-BEATBox Assembly SOP` directly below the `Assembly Walkthrough` section title.
   - [x] Render it as a button, not a plain text link.
   - [x] Keep the assembly video and SOP visually connected.
 - [x] Replace the root README with a comprehensive repository entry point.
@@ -39,7 +39,7 @@ This tracker lists completed repository/documentation cleanup work and the remai
   - [x] Shorten the hero headline into a direct promise.
   - [x] Add a compact evidence/value strip for `24/7`, `open-source`, `home-cage`, `low-cost`, and `modular`.
   - [x] Move the most important real system visuals earlier.
-- [x] Add a `How BEATBox works` section.
+- [x] Add a `How Open-BEATBox works` section.
   - [x] Step 1: Home-cage access.
   - [x] Step 2: Autonomous task engagement.
   - [x] Step 3: Reward, sensors, screens, lighting, and tunnel modules.
@@ -188,7 +188,7 @@ Source handoff: the `assembly-tutorials` repository contains the Master BOM in C
 - [ ] Give the 600 mm photobeam cable its own `CBL-*` identifier instead of `PCB-PBG-002`.
 - [ ] Reconcile naming mismatches used by tutorials, including `TOL-FORC` / `TOL-FORC-`, `TBC-CBL-PBG-001`, `FST-M5X5`, `FST-M3X6-SHCS`, `FST-M3X8-SHCS`, and `TBC-M3-FASTENER`.
 - [ ] Verify every fabrication path against the actual repository, including filename case and extension.
-- [ ] Confirm quantities per complete BEATBox, especially the two screen modules.
+- [ ] Confirm quantities per complete Open-BEATBox, especially the two screen modules.
 - [ ] Add hardware revision compatibility and a BOM version/date.
 - [ ] Regenerate `BOM.csv` from the approved XLSX and verify both formats are equivalent.
 

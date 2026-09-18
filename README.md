@@ -1,6 +1,6 @@
-# BEATBox
+# Open-BEATBox
 
-**BEATBox** — **BE**havioural and **A**u**T**onomous operant Box — is an open-source, modular, low-cost platform for autonomous home-cage operant conditioning and long-duration behavioral data acquisition in rodents.
+**Open-BEATBox** — **Open** — **BE**havioural and **A**u**T**onomous operant Box — is an open-source, modular, low-cost platform for autonomous home-cage operant conditioning and long-duration behavioral data acquisition in rodents.
 
 The goal of this repository is to make the project reproducible from a single entry point: website, one-pager, technical manual, assembly SOP, hardware resources, firmware, software, and public communication assets.
 
@@ -18,9 +18,9 @@ The goal of this repository is to make the project reproducible from a single en
 | Website source | [`site/`](./site) |
 | Sphinx documentation source | [`docs/source/`](./docs/source) |
 
-## What BEATBox is for
+## What Open-BEATBox is for
 
-BEATBox is designed for behavioral neuroscience experiments where short, experimenter-driven testing sessions are a limitation. It enables mice to interact with behavioral tasks inside the home-cage context over long periods, reducing repeated handling while increasing within-subject data density.
+Open-BEATBox is designed for behavioral neuroscience experiments where short, experimenter-driven testing sessions are a limitation. It enables mice to interact with behavioral tasks inside the home-cage context over long periods, reducing repeated handling while increasing within-subject data density.
 
 Main intended uses:
 
@@ -181,7 +181,7 @@ The workflow should run when website files, Sphinx documentation files, document
 
 ## Licensing
 
-BEATBox uses layer-specific open licenses:
+Open-BEATBox uses layer-specific open licenses:
 
 - Software: GNU AGPLv3 — see [`LICENSE`](./LICENSE) and [`resources/software/LICENSE`](./resources/software/LICENSE).
 - Firmware: GNU GPLv3 — see [`resources/firmware/LICENSE`](./resources/firmware/LICENSE).

@@ -5,7 +5,7 @@ showInNav: false
 navOrder: 4
 slug: "/build-and-code"
 hero:
-  title: "Build BEATBox module by module."
+  title: "Build Open-BEATBox module by module."
   subtitle: "Start with the Master BOM, follow the versioned tutorials, then validate the complete system."
   primaryCta:
     label: "Open the step-by-step guide"
@@ -35,7 +35,7 @@ sections:
     links:
       - label: "Step-by-step Sphinx guide"
         href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
-        note: "Six module-level assembly tutorials with the available videos"
+        note: "Six module-level assembly tutorials, each with its video walkthrough"
       - label: "Assembly tutorial source repository"
         href: "https://github.com/Open-BeatBox/assembly-tutorials"
         note: "Canonical Markdown and BOM source"
@@ -47,20 +47,20 @@ sections:
         note: "Portable export"
       - label: "Technical build manual"
         href: "/docs/manual/build/"
-        note: "Build order, safety, fabrication, BOM and video status"
+        note: "Build order, safety, fabrication, BOM and video tutorials"
   - type: "steps"
     title: "Firmware"
     steps:
       - "Install the toolchain for the chosen microcontroller."
       - "Clone the firmware repository."
       - "Configure the build for your hardware variant."
-      - "Flash the firmware onto the Beatbox controller."
+      - "Flash the firmware onto the Open-BEATBox controller."
       - "<!-- TODO: add exact commands and microcontroller type. -->"
   - type: "steps"
     title: "Software & API"
     steps:
       - "Install the Python client package and/or Docker stack."
-      - "Start the Beatbox server and confirm streaming from the device."
+      - "Start the Open-BEATBox server and confirm streaming from the device."
       - "Use the REST or WebSocket API to subscribe to events and time-series."
       - "Explore the example Jupyter notebooks for analysis workflows."
   - type: "text"

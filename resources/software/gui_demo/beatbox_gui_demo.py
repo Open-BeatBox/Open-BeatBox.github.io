@@ -1,4 +1,4 @@
-"""Interactive BEATBox GUI front-end demo with realistic mock data.
+"""Interactive Open-BEATBox GUI front-end demo with realistic mock data.
 
 This prototype is intentionally hardware-free. It models the software surfaces
 of the real desktop controller as documented in:
@@ -727,7 +727,7 @@ class MonitoringWindow(tk.Toplevel):
 class BeatboxDemo:
     def __init__(self) -> None:
         self.root = tk.Tk()
-        self.root.title("BEATBox GUI front-end demo")
+        self.root.title("Open-BEATBox GUI front-end demo")
         self.root.geometry("1120x780")
         self.root.minsize(980, 700)
         self.root.configure(bg=BG)
@@ -1240,7 +1240,7 @@ class BeatboxDemo:
         self.root.after(1200, self._tick)
 
     def run(self) -> None:
-        self._add_log("INFO", "BEATBox GUI demo loaded with mock data")
+        self._add_log("INFO", "Open-BEATBox GUI demo loaded with mock data")
         self._add_log("INFO", "Connect the (mock) device to enable experiment + actuator controls")
         self.root.mainloop()
 

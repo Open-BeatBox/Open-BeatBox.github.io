@@ -1,8 +1,8 @@
 # User Guide
 
-Practical steps to deploy, operate, and maintain a Beatbox home-cage behavioral system.
+Practical steps to deploy, operate, and maintain an Open-BEATBox home-cage behavioral system.
 
-## Beatbox at a glance
+## Open-BEATBox at a glance
 - Ecological, automated operant-conditioning and home-cage monitoring for mice with continuous (24/7) access to tasks.
 - Typical stack: microcontroller or SBC, environmental/behavioral sensors (IR beam breaks, nosepoke, levers, capacitive touch), actuators (pellet or liquid dispenser, lights), audio I/O, network connectivity, and a data pipeline for experiment logs.
 - Streams to a local PC or server via USB or Wi‑Fi; APIs exposed through Python clients and REST/WebSocket interfaces.

@@ -1,6 +1,6 @@
-# BEATBox Website (Next.js)
+# Open-BEATBox Website (Next.js)
 
-A Next.js 15 App Router site for **Beatbox**, an open, modular home-cage cognitive monitoring system. All copy and structure come from Markdown in `content/` and render through reusable React components.
+A Next.js 15 App Router site for **Open-BEATBox**, an open, modular home-cage cognitive monitoring system. All copy and structure come from Markdown in `content/` and render through reusable React components.
 
 ## Content model
 - Site metadata: `content/_site.md` (title, description, keywords, authors, Open Graph/Twitter defaults, logo paths).

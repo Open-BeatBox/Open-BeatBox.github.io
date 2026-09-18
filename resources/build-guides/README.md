@@ -1,4 +1,4 @@
-# BEATBox build guides
+# Open-BEATBox build guides
 
 The editable assembly guides and Master BOM are maintained in the dedicated [Open-BeatBox assembly-tutorials repository](https://github.com/Open-BeatBox/assembly-tutorials).
 

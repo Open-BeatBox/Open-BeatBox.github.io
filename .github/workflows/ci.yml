@@ -65,5 +65,5 @@ jobs:
           test -f site/out/index.html
           test -f site/out/docs/manual/index.html
           test -f site/out/docs/beatbox-assembly-sop.html
-          grep -q "BEATBox" site/out/index.html
-          grep -q "BEATBox" site/out/docs/manual/index.html
+          grep -q "Open-BEATBox" site/out/index.html
+          grep -q "Open-BEATBox" site/out/docs/manual/index.html

@@ -1,6 +1,6 @@
-# Build your own BEATBox
+# Build your own Open-BEATBox
 
-This is the starting point for building a BEATBox. The guide brings the preparation notes, bill of materials, fabrication guidance, and step-by-step module tutorials into a single workflow.
+This is the starting point for building an Open-BEATBox. The guide brings the preparation notes, bill of materials, fabrication guidance, and step-by-step module tutorials into a single workflow.
 
 Before you begin, read the safety notes and check that the bill of materials matches the hardware revision you intend to build. Prepare and inspect the fabricated parts before assembling the modules. Cards must be flashed **before they are installed in a module**; see {doc}`Flashing the cards <../hardware/flashing-cards>` for the current status of those instructions.
 
@@ -34,7 +34,7 @@ Complete every item in this preparation checklist before starting Step 1:
 
 - Read the {doc}`safety notes <safety>` before handling tools, inserts, soldering equipment, or plexiglass.
 - Download the Master BOM in {download}`XLSX <assembly-tutorials/BOM.xlsx>` or {download}`CSV <assembly-tutorials/BOM.csv>` format. Use the {doc}`BOM validation checklist <bom>` and {doc}`revision and identifier conventions <assembly-tutorials/conventions>` to resolve every incomplete field for the hardware revision being built.
-- Prepare the 3D-printed and laser-cut parts using the {doc}`fabrication guide <fabrication>` and the [BEATBox CAD and hardware files](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware).
+- Prepare the 3D-printed and laser-cut parts using the {doc}`fabrication guide <fabrication>` and the [Open-BEATBox CAD and hardware files](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware).
 - {doc}`Flash all required cards <../hardware/flashing-cards>` before installing them in their modules.
 
 ### Step 1 — Build the frame and enclosure

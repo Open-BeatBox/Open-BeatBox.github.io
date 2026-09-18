@@ -1,6 +1,6 @@
 # Recording outputs, logs, and metrics
 
-This document describes what the desktop BeatBox application currently records
+This document describes what the desktop Open-BEATBox application currently records
 during an experiment session. It is based on the implementation in
 `pc_app/beatbox/experiment_managers.py` and the S1-S4 stage managers.
 

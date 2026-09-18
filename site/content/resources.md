@@ -6,14 +6,14 @@ navOrder: 3
 slug: "/resources"
 hero:
   title: "Open-Source Resources"
-  subtitle: "Everything you need to build, customize, and extend BEATBox."
+  subtitle: "Everything you need to build, customize, and extend Open-BEATBox."
   primaryCta:
     label: "View on GitHub"
     href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources"
 sections:
   - type: "text"
     title: "What's included"
-    body: "The resources collection contains hardware designs, firmware, software, documentation, and build guides maintained by the BEATBox community."
+    body: "The resources collection contains hardware designs, firmware, software, documentation, and build guides maintained by the Open-BEATBox community."
   - type: "cards"
     title: "Resource categories"
     cards:
@@ -22,7 +22,7 @@ sections:
       - title: "Firmware"
         body: "Embedded firmware for modules, device control, and telemetry."
       - title: "Software"
-        body: "Acquisition, control, and analysis tools for BEATBox experiments."
+        body: "Acquisition, control, and analysis tools for Open-BEATBox experiments."
       - title: "Documentation"
         body: "Technical notes, protocols, and community standards."
       - title: "Build guides"

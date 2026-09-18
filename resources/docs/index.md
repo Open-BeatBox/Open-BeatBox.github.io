@@ -1,6 +1,6 @@
-# Beatbox Behavioral Cage System
+# Open-BEATBox Behavioral Cage System
 
-Professional guide to operate, build, and contribute to the open-source Beatbox home-cage behavioral platform and its documentation site.
+Professional guide to operate, build, and contribute to the open-source Open-BEATBox home-cage behavioral platform and its documentation site.
 
 ## Quick links
 - Operate a cage: [User Guide](user-guide.md)
@@ -12,11 +12,11 @@ Professional guide to operate, build, and contribute to the open-source Beatbox 
 - Runbooks and deployments: [Operations](operations.md)
 
 ## What this repo is
-- The public site and documentation source for Beatbox, built with Next.js and Markdown content.
+- The public site and documentation source for Open-BEATBox, built with Next.js and Markdown content.
 - Community and contributor docs (this MkDocs site) for operations, hardware guidance, and development workflow.
 - Integration points for future firmware/runtime and data tooling references; add links as those repos are published.
 
-## Beatbox at a glance
+## Open-BEATBox at a glance
 - Ecological, automated operant-conditioning and home-cage monitoring for mice with 24/7 task access.
 - Addresses short, stressful, experimenter-dependent sessions and poor standardization across labs.
 - Modular hardware: environmental sensors (temperature, humidity, light), behavioral sensors (IR beam breaks, nosepoke, levers, capacitive touch), audio I/O, and a microcontroller with real-time firmware.

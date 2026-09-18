@@ -1,6 +1,6 @@
-# BEATBox inter-module CAN protocol
+# Open-BEATBox inter-module CAN protocol
 
-This document is the firmware reference for the BEATBox CAN protocol exchanged between the main controller and peripheral modules.
+This document is the firmware reference for the Open-BEATBox CAN protocol exchanged between the main controller and peripheral modules.
 
 ```{warning}
 This protocol is under active development and may change as the firmware evolves. Check the revision history before updating or integrating firmware.
@@ -8,7 +8,7 @@ This protocol is under active development and may change as the firmware evolves
 
 ## 1) Identifier layout (11-bit standard CAN)
 
-BEATBox uses standard 11-bit CAN IDs.
+Open-BEATBox uses standard 11-bit CAN IDs.
 
 ### 1.1 Field ordering (MSB -> LSB)
 

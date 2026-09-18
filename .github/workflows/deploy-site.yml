@@ -1,4 +1,4 @@
-name: Deploy BEATBox website and documentation
+name: Deploy Open-BEATBox website and documentation
 
 on:
   push:

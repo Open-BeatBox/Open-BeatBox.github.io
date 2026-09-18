@@ -1,6 +1,6 @@
 # Firmware
 
-This section documents the embedded firmware interfaces used by BEATBox controllers and peripheral modules.
+This section documents the embedded firmware interfaces used by Open-BEATBox controllers and peripheral modules.
 
 ```{toctree}
 :maxdepth: 2

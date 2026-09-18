@@ -22,6 +22,6 @@
 
 ## Writing for the site content
 - Keep hero titles punchy; subtitles should clarify value.
-- Section titles should summarize the takeaway (“Why Beatbox for home-cage tasks?”).
+- Section titles should summarize the takeaway (“Why Open-BEATBox for home-cage tasks?”).
 - For FAQs, answer directly in the first sentence, then add detail if needed.
 - When describing hardware, call out safety and calibration steps explicitly.

@@ -1,7 +1,7 @@
 # Architecture
 
 ## System overview
-- Beatbox is a modular home-cage behavioral platform combining hardware (sensors/actuators), firmware/runtime for task control, and data pipelines for acquisition and analysis.
+- Open-BEATBox is a modular home-cage behavioral platform combining hardware (sensors/actuators), firmware/runtime for task control, and data pipelines for acquisition and analysis.
 - This repository hosts the public website and documentation; reference external firmware/runtime repos and hardware BOMs where applicable.
 - Typical deployment: one controller per cage, networked to a collector or local storage, with a web presence for docs and community.
 

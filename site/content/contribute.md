@@ -5,7 +5,7 @@ showInNav: false
 navOrder: 7
 slug: "/contribute"
 hero:
-  title: "Contribute to the BEATBox website"
+  title: "Contribute to the Open-BEATBox website"
   subtitle: "Edit content safely, preview changes locally, and ship updates confidently."
   primaryCta:
     label: "View the repo"

@@ -1,5 +1,5 @@
 ---
-title: "What is Beatbox?"
+title: "What is Open-BEATBox?"
 layout: "page"
 showInNav: false
 navOrder: 2
@@ -9,13 +9,13 @@ hero:
   subtitle: "Continuous behavioral experiments with reduced handling, improved welfare, and richer data."
 sections:
   - type: "text"
-    title: "Beatbox in a nutshell"
+    title: "Open-BEATBox in a nutshell"
     body: |
-      Beatbox is an ecological, automated operant-conditioning and home-cage monitoring device for mice. It enables continuous (24/7) behavioral experiments directly in the animal’s living environment.
+      Open-BEATBox is an ecological, automated operant-conditioning and home-cage monitoring device for mice. It enables continuous (24/7) behavioral experiments directly in the animal’s living environment.
 
-      By allowing mice to self-engage in tasks at any time over weeks, Beatbox both refines welfare conditions and improves the statistical power of experiments.
+      By allowing mice to self-engage in tasks at any time over weeks, Open-BEATBox both refines welfare conditions and improves the statistical power of experiments.
   - type: "list"
-    title: "Core problems Beatbox addresses"
+    title: "Core problems Open-BEATBox addresses"
     items:
       - "Short, stressful, experimenter-dependent sessions"
       - "Limited task flexibility in classical operant chambers"
@@ -34,14 +34,14 @@ sections:
     columns:
       - heading: "Hardware design"
         body: |
-          Beatbox uses a modular enclosure with removable panels so labs can adapt the chamber to their task.
+          Open-BEATBox uses a modular enclosure with removable panels so labs can adapt the chamber to their task.
 
           Core components include the main chamber, interchangeable operant modules (nosepoke, rewards, sensors), a PCB with multiple sensor interfaces, and a central microcontroller.
 
           <!-- TODO: Insert exact microcontroller model, chamber dimensions, reward system details, and power supply specs. -->
       - heading: "Software stack TEST"
         body: |
-          The Beatbox software stack includes real-time acquisition firmware, a Python middleware layer for streaming and buffering, Dockerized services for visualization and storage, and open APIs in JSON and WebSocket formats.
+          The Open-BEATBox software stack includes real-time acquisition firmware, a Python middleware layer for streaming and buffering, Dockerized services for visualization and storage, and open APIs in JSON and WebSocket formats.
 
           Optional JSON-LD metadata export supports integration with FAIR data workflows.
   - type: "roadmap"

@@ -79,7 +79,7 @@ export const getSiteConfig = async (): Promise<SiteMetadata> => {
   const sitePath = path.join(contentDir, "_site.md");
   const file = await readFileSafe(sitePath);
   if (!file) {
-    return { title: "Beatbox" };
+    return { title: "Open-BEATBox" };
   }
   const { data } = matter(file);
   return data as SiteMetadata;

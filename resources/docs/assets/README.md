@@ -1,3 +1,3 @@
 # Placeholder
 
-Add BEATBox materials for this category here.
+Add Open-BEATBox materials for this category here.

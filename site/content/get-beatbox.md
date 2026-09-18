@@ -1,20 +1,20 @@
 ---
-title: "Get Beatbox"
+title: "Get Open-BEATBox"
 layout: "page"
 showInNav: false
 navOrder: 5
 slug: "/get-beatbox"
 hero:
   title: "From open plans to turnkey systems."
-  subtitle: "Decide how you want to bring Beatbox into your lab."
+  subtitle: "Decide how you want to bring Open-BEATBox into your lab."
 sections:
   - type: "columns"
     title: "Options"
     columns:
       - heading: "Build it yourself"
         body: |
-          All hardware and software files for Beatbox are open. Labs can build the system in-house using the provided CAD, PCB, firmware, and software documentation.
-      - heading: "Buy a pre-assembled Beatbox"
+          All hardware and software files for Open-BEATBox are open. Labs can build the system in-house using the provided CAD, PCB, firmware, and software documentation.
+      - heading: "Buy a pre-assembled Open-BEATBox"
         body: |
           Pre-assembled units may be available through selected partners.
 
@@ -28,7 +28,7 @@ sections:
   - type: "text"
     title: "Licensing"
     body: |
-      Beatbox follows an open model, with open hardware designs and open-source firmware/software.
+      Open-BEATBox follows an open model, with open hardware designs and open-source firmware/software.
 
       Licensing by layer:
       - Software: GNU AGPLv3

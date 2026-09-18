@@ -1,6 +1,6 @@
-# BEATBox Open-Source Resources
+# Open-BEATBox Open-Source Resources
 
-This folder hosts the open-source materials needed to build, customize, and extend BEATBox.
+This folder hosts the open-source materials needed to build, customize, and extend Open-BEATBox.
 
 ## Structure
 

@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../../_static/beatbox-logo.png" as="image">
 
     <link rel="shortcut icon" href="../../_static/favicon.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>BEATBox inter-module CAN protocol - BEATBox Documentation</title>
+        <title>Open-BEATBox inter-module CAN protocol - Open-BEATBox Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -170,7 +170,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../index.html"><div class="brand">BEATBox Documentation</div></a>
+      <a href="../../index.html"><div class="brand">Open-BEATBox Documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -194,7 +194,7 @@
     <img class="sidebar-logo" src="../../_static/beatbox-logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">BEATBox Documentation</span>
+  <span class="sidebar-brand-text">Open-BEATBox Documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -205,7 +205,7 @@
   <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../build/index.html">Build your own BEATBox</a><input aria-label="Toggle navigation of Build your own BEATBox" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../build/index.html">Build your own Open-BEATBox</a><input aria-label="Toggle navigation of Build your own Open-BEATBox" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../build/assembly.html">Assembly tutorials</a><input aria-label="Toggle navigation of Assembly tutorials" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/tutorials_index.html">Beatbox Assembly Tutorials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/conventions.html">Documentation and file conventions</a></li>
@@ -232,7 +232,7 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Software</a><input aria-label="Toggle navigation of Software" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Firmware</a><input aria-label="Toggle navigation of Firmware" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
-<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">BEATBox inter-module CAN protocol</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Open-BEATBox inter-module CAN protocol</a></li>
 </ul>
 </li>
 </ul>
@@ -281,16 +281,16 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="beatbox-inter-module-can-protocol">
-<h1>BEATBox inter-module CAN protocol<a class="headerlink" href="#beatbox-inter-module-can-protocol" title="Link to this heading">¶</a></h1>
-<p>This document is the firmware reference for the BEATBox CAN protocol exchanged between the main controller and peripheral modules.</p>
+          <section id="open-beatbox-inter-module-can-protocol">
+<h1>Open-BEATBox inter-module CAN protocol<a class="headerlink" href="#open-beatbox-inter-module-can-protocol" title="Link to this heading">¶</a></h1>
+<p>This document is the firmware reference for the Open-BEATBox CAN protocol exchanged between the main controller and peripheral modules.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This protocol is under active development and may change as the firmware evolves. Check the revision history before updating or integrating firmware.</p>
 </div>
 <section id="identifier-layout-11-bit-standard-can">
 <h2>1) Identifier layout (11-bit standard CAN)<a class="headerlink" href="#identifier-layout-11-bit-standard-can" title="Link to this heading">¶</a></h2>
-<p>BEATBox uses standard 11-bit CAN IDs.</p>
+<p>Open-BEATBox uses standard 11-bit CAN IDs.</p>
 <section id="field-ordering-msb-lsb">
 <h3>1.1 Field ordering (MSB -&gt; LSB)<a class="headerlink" href="#field-ordering-msb-lsb" title="Link to this heading">¶</a></h3>
 <div class="table-wrapper colwidths-auto docutils container">
@@ -820,7 +820,7 @@ If a module later needs more than 4 module-specific operations, use either:</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">BEATBox inter-module CAN protocol</a><ul>
+<li><a class="reference internal" href="#">Open-BEATBox inter-module CAN protocol</a><ul>
 <li><a class="reference internal" href="#identifier-layout-11-bit-standard-can">1) Identifier layout (11-bit standard CAN)</a><ul>
 <li><a class="reference internal" href="#field-ordering-msb-lsb">1.1 Field ordering (MSB -&gt; LSB)</a></li>
 <li><a class="reference internal" href="#encoding-formula">1.2 Encoding formula</a></li>

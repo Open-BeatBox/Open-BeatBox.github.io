@@ -1,6 +1,6 @@
-# BEATBox Software
+# Open-BEATBox Software
 
-BEATBox code and software documentation will be uploaded here as the software stack is finalized.
+Open-BEATBox code and software documentation will be uploaded here as the software stack is finalized.
 
 ## Front-end GUI demo
 

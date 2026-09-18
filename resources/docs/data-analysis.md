@@ -1,6 +1,6 @@
 # Data & Analysis
 
-How to capture, store, and analyze data from Beatbox cages while keeping sessions reproducible and auditable.
+How to capture, store, and analyze data from Open-BEATBox cages while keeping sessions reproducible and auditable.
 
 ## Data pipeline (conceptual)
 1. **Acquisition**: firmware/runtime emits structured events (sensor triggers, actuator states, timestamps, task variables).

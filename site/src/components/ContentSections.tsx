@@ -152,7 +152,7 @@ const ContentSections: React.FC<Props> = ({ sections }) => {
                   {section.logo && (
                     <Image
                       src={section.logo}
-                      alt="BEATBox logo"
+                      alt="Open-BEATBox logo"
                       width={128}
                       height={128}
                       className="brand-showcase-logo"

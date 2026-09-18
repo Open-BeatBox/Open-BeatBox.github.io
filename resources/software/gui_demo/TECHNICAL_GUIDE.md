@@ -1,4 +1,4 @@
-# BeatBox technical guide and maintenance plan
+# Open-BEATBox technical guide and maintenance plan
 
 This document describes the code currently on the `dev` branch.  It separates
 what is implemented for the desktop controller from the CircuitPython CAN
@@ -6,7 +6,7 @@ prototype.  These are **not currently one end-to-end protocol stack**.
 
 ## 1. System scope
 
-BeatBox is a behavioural-experiment controller.  The desktop application
+Open-BEATBox is a behavioural-experiment controller.  The desktop application
 provides a PyQt GUI, runs stage-specific experiment state machines, sends
 actuator masks to a device, receives input-state changes, and writes CSV
 experiment logs.

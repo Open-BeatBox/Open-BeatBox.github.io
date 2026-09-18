@@ -11,47 +11,47 @@ from sphinx.application import Sphinx
 VIDEOS = {
     "build/assembly-tutorials/modules/mod-frm-assembly": {
         "title": "Frame and enclosure assembly",
-        "embed_url": "https://drive.google.com/file/d/13iQ4pZJJIW37ojucvI6OUpseFJEl0oHU/preview",
-        "watch_url": "https://drive.google.com/file/d/13iQ4pZJJIW37ojucvI6OUpseFJEl0oHU/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/HBbVKG4gRxM",
+        "watch_url": "https://youtu.be/HBbVKG4gRxM",
     },
     "build/assembly-tutorials/modules/mod-bmt-assembly": {
         "title": "Water bottle mount assembly",
-        "embed_url": "https://drive.google.com/file/d/12cbWKacPB6CGM2SMgHU8EKzlYtNXjdLv/preview",
-        "watch_url": "https://drive.google.com/file/d/12cbWKacPB6CGM2SMgHU8EKzlYtNXjdLv/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/RXxm7rT6lU0",
+        "watch_url": "https://youtu.be/RXxm7rT6lU0",
     },
     "build/assembly-tutorials/modules/mod-fdr-aseembly": {
         "title": "Feeder module assembly",
-        "embed_url": "https://drive.google.com/file/d/1U7WHxCBrBH_LmIhVE-iPwYedeMLx_lZj/preview",
-        "watch_url": "https://drive.google.com/file/d/1U7WHxCBrBH_LmIhVE-iPwYedeMLx_lZj/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/1d9mzp3T70M",
+        "watch_url": "https://youtu.be/1d9mzp3T70M",
     },
     "build/assembly-tutorials/modules/mod-lgt": {
         "title": "Light ring module assembly",
-        "embed_url": "https://drive.google.com/file/d/11ymhMf_vLa13IoAeG7u0pcYd7CdqgUvQ/preview",
-        "watch_url": "https://drive.google.com/file/d/11ymhMf_vLa13IoAeG7u0pcYd7CdqgUvQ/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/wTm9mv17IuQ",
+        "watch_url": "https://youtu.be/wTm9mv17IuQ",
     },
     "build/assembly-tutorials/modules/mod-pbg-assembly": {
         "title": "Photobeam gate assembly",
-        "embed_url": "https://drive.google.com/file/d/1YcfWktCNrZLU985ME6mK09RCsFTdyBYW/preview",
-        "watch_url": "https://drive.google.com/file/d/1YcfWktCNrZLU985ME6mK09RCsFTdyBYW/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/AdGC6oDXmxQ",
+        "watch_url": "https://youtu.be/AdGC6oDXmxQ",
     },
     "build/assembly-tutorials/modules/mod-scr-assembly": {
         "title": "Screen module assembly",
-        "embed_url": "https://drive.google.com/file/d/1W-CbucP4mVNRbWdahoSWfjjUbpiLWMX0/preview",
-        "watch_url": "https://drive.google.com/file/d/1W-CbucP4mVNRbWdahoSWfjjUbpiLWMX0/view?usp=drivesdk",
+        "embed_url": "https://www.youtube-nocookie.com/embed/XW58EGUCWNA",
+        "watch_url": "https://youtu.be/XW58EGUCWNA",
     },
 }
 
 
 GALLERIES = {
     "build/assembly-tutorials/modules/mod-frm-assembly": [
-        ("/images/BB_V3_Material.jpg", "BEATBox V3 parts prepared for assembly", "V3 parts and materials"),
-        ("/images/real-build-setup.jpg", "BEATBox enclosure during assembly", "Enclosure assembly"),
-        ("/images/BB_Full-1.jpg", "Completed BEATBox viewed from the front", "Completed enclosure — front"),
-        ("/images/BB_Full-2.jpg", "Completed BEATBox viewed from the side", "Completed enclosure — side"),
+        ("/images/BB_V3_Material.jpg", "Open-BEATBox V3 parts prepared for assembly", "V3 parts and materials"),
+        ("/images/real-build-setup.jpg", "Open-BEATBox enclosure during assembly", "Enclosure assembly"),
+        ("/images/BB_Full-1.jpg", "Completed Open-BEATBox viewed from the front", "Completed enclosure — front"),
+        ("/images/BB_Full-2.jpg", "Completed Open-BEATBox viewed from the side", "Completed enclosure — side"),
     ],
     "build/assembly-tutorials/modules/mod-bmt-assembly": [
         ("/images/BB-TIPS_Using-forceps-to-help-inserts.jpg", "Using forceps to position a threaded insert", "Positioning threaded inserts"),
-        ("/images/BB_water-holder.jpg", "Completed BEATBox water bottle holder", "Completed water bottle mount"),
+        ("/images/BB_water-holder.jpg", "Completed Open-BEATBox water bottle holder", "Completed water bottle mount"),
     ],
     "build/assembly-tutorials/modules/mod-fdr-aseembly": [
         ("/videos/buidling_gifs/BB_Feeder_material.tiny.gif", "Feeder parts laid out before assembly", "Prepare the feeder parts"),
@@ -66,29 +66,29 @@ GALLERIES = {
         ("/videos/buidling_gifs/BB_Feeder-motor.tiny.gif", "Feeder stepper motor installation", "Install the stepper motor"),
         ("/images/Feeder/BB_Feeder_PCB_color-code.jpg", "Feeder PCB terminal wire color reference", "Connect the motor wires"),
         ("/videos/buidling_gifs/BB_Feeder-Assembly-motor-cables-to-PCB.tiny.gif", "Connecting the feeder motor cables to the PCB", "Wire the motor to the PCB"),
-        ("/images/Feeder.jpg", "Completed BEATBox feeder viewed from the front", "Completed feeder — front"),
-        ("/images/Feeder_side.jpg", "Completed BEATBox feeder viewed from the side", "Completed feeder — side"),
+        ("/images/Feeder.jpg", "Completed Open-BEATBox feeder viewed from the front", "Completed feeder — front"),
+        ("/images/Feeder_side.jpg", "Completed Open-BEATBox feeder viewed from the side", "Completed feeder — side"),
     ],
     "build/assembly-tutorials/modules/mod-lgt": [
-        ("/images/Light_bottom.jpg", "Bottom face of the assembled BEATBox light ring", "PCB, housing, and connector"),
-        ("/images/Light_top.jpg", "Top face of the assembled BEATBox light ring", "Completed light ring and diffuser"),
+        ("/images/Light_bottom.jpg", "Bottom face of the assembled Open-BEATBox light ring", "PCB, housing, and connector"),
+        ("/images/Light_top.jpg", "Top face of the assembled Open-BEATBox light ring", "Completed light ring and diffuser"),
     ],
     "build/assembly-tutorials/modules/mod-pbg-assembly": [
         ("/images/Tunnel-Passage-Corridor/BB_Tunnel_PCB.jpg", "Photobeam gate controller and IR circuit boards", "Prepare the electronics"),
         ("/images/Tunnel-Passage-Corridor/BB_Tunnel_IR-PCG-with-cables.jpg", "Photobeam gate IR boards connected with cables", "Connect the IR boards"),
         ("/images/Tunnel-Passage-Corridor/BB_Tunnel_PCG-assembly.jpg", "Circuit boards being installed in the photobeam passage", "Install and route the electronics"),
         ("/images/Tunnel-Passage-Corridor/BB_Tunnel_PCG-assembled.jpg", "Assembled photobeam gate electronics", "Check the assembled electronics"),
-        ("/images/Tunnel.jpg", "Completed BEATBox photobeam gate", "Completed photobeam gate"),
+        ("/images/Tunnel.jpg", "Completed Open-BEATBox photobeam gate", "Completed photobeam gate"),
     ],
     "build/assembly-tutorials/modules/mod-scr-assembly": [
-        ("/images/Screens/BB_Screen-1.jpg", "First stage of BEATBox screen module assembly", "Screen assembly — 1"),
-        ("/images/Screens/BB_Screen-2.jpg", "Second stage of BEATBox screen module assembly", "Screen assembly — 2"),
-        ("/images/Screens/BB_Screen-3.jpg", "Third stage of BEATBox screen module assembly", "Screen assembly — 3"),
-        ("/images/Screens/BB_Screen-4.jpg", "Fourth stage of BEATBox screen module assembly", "Screen assembly — 4"),
-        ("/images/Screens/BB_Screen-5.jpg", "Fifth stage of BEATBox screen module assembly", "Screen assembly — 5"),
-        ("/images/Screens/BB_Screen-6.jpg", "Sixth stage of BEATBox screen module assembly", "Screen assembly — 6"),
-        ("/images/Screens/BB_Screen_inside.jpg", "Interior of the BEATBox screen module", "Interior layout"),
-        ("/images/Screens/BB_Screen_long-cables.jpg", "Long cables routed inside the BEATBox screen module", "Cable routing"),
+        ("/images/Screens/BB_Screen-1.jpg", "First stage of Open-BEATBox screen module assembly", "Screen assembly — 1"),
+        ("/images/Screens/BB_Screen-2.jpg", "Second stage of Open-BEATBox screen module assembly", "Screen assembly — 2"),
+        ("/images/Screens/BB_Screen-3.jpg", "Third stage of Open-BEATBox screen module assembly", "Screen assembly — 3"),
+        ("/images/Screens/BB_Screen-4.jpg", "Fourth stage of Open-BEATBox screen module assembly", "Screen assembly — 4"),
+        ("/images/Screens/BB_Screen-5.jpg", "Fifth stage of Open-BEATBox screen module assembly", "Screen assembly — 5"),
+        ("/images/Screens/BB_Screen-6.jpg", "Sixth stage of Open-BEATBox screen module assembly", "Screen assembly — 6"),
+        ("/images/Screens/BB_Screen_inside.jpg", "Interior of the Open-BEATBox screen module", "Interior layout"),
+        ("/images/Screens/BB_Screen_long-cables.jpg", "Long cables routed inside the Open-BEATBox screen module", "Cable routing"),
         ("/images/Screens/BB_Screens-inside-view.jpg", "First inside view of the assembled screen module", "Inside view — 1"),
         ("/images/Screens/BB_Screens_Inside-view-2.jpg", "Second inside view of the assembled screen module", "Inside view — 2"),
         ("/images/electronics/photo-circuit-ecrans1.jpg", "First screen electronics connection reference", "Screen electronics — 1"),
@@ -120,7 +120,9 @@ def _append_video(app: Sphinx, doctree: nodes.document, docname: str) -> None:
             '<div class="assembly-video">'
             f'<iframe src="{escape(embed_url, quote=True)}" '
             f'title="{escape(title, quote=True)}" '
-            'loading="lazy" allow="autoplay; fullscreen" allowfullscreen '
+            'loading="lazy" '
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
+            'gyroscope; picture-in-picture; web-share" allowfullscreen '
             'referrerpolicy="strict-origin-when-cross-origin"></iframe>'
             "</div>"
         ),
@@ -131,22 +133,13 @@ def _append_video(app: Sphinx, doctree: nodes.document, docname: str) -> None:
     fallback += nodes.Text("Player unavailable? ")
     fallback += nodes.reference(
         "",
-        "Open the temporary video in Google Drive",
+        "Watch this tutorial on YouTube",
         refuri=watch_url,
         internal=False,
     )
     fallback += nodes.Text(".")
     section += fallback
 
-    note = nodes.note()
-    note += nodes.paragraph(
-        text=(
-            "Temporary hosting: this Drive player will be replaced by a stream from "
-            "the project's YouTube channel once the tutorials playlist is made public. "
-            "Google may request sign-in until public sharing is confirmed."
-        )
-    )
-    section += note
     doctree += section
 
 

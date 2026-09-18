@@ -6,7 +6,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).parent / "_ext"))
 
-project = "BEATBox Documentation"
+project = "Open-BEATBox Documentation"
 author = "NERB team"
 copyright = "2026, NERB team"
 release = "draft"
@@ -32,7 +32,7 @@ source_suffix = {
 }
 
 html_theme = "furo"
-html_title = "BEATBox Documentation"
+html_title = "Open-BEATBox Documentation"
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_favicon = "../../site/public/favicon.png"

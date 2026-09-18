@@ -1,6 +1,6 @@
 # Hardware
 
-This section documents BEATBox modules, electronics, and mechanical interfaces.
+This section documents Open-BEATBox modules, electronics, and mechanical interfaces.
 
 ```{toctree}
 :maxdepth: 2

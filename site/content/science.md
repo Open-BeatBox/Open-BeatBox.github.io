@@ -1,17 +1,17 @@
 ---
-title: "The Science Behind Beatbox"
+title: "The Science Behind Open-BEATBox"
 layout: "page"
 showInNav: false
 navOrder: 3
 slug: "/science"
 hero:
   title: "From spontaneous behavior to cognitive tasks, in the home cage."
-  subtitle: "Beatbox enables continuous, ecological measurement of mouse behavior."
+  subtitle: "Open-BEATBox enables continuous, ecological measurement of mouse behavior."
 sections:
   - type: "text"
     title: "Scientific rationale"
     body: |
-      Beatbox enables measurement of both spontaneous and task-driven behaviors in an ecological context. Continuous monitoring reduces stress, increases voluntary engagement, and provides richer data per animal.
+      Open-BEATBox enables measurement of both spontaneous and task-driven behaviors in an ecological context. Continuous monitoring reduces stress, increases voluntary engagement, and provides richer data per animal.
 
       Scientific motivations include:
       - Studying complex learning sequences
@@ -37,7 +37,7 @@ sections:
   - type: "warning"
     title: "Limitations & responsible use"
     body: |
-      Beatbox is not a full camera-based home-cage monitoring system and does not replace detailed video ethograms. It is also not a turnkey solution for all possible cognitive paradigms.
+      Open-BEATBox is not a full camera-based home-cage monitoring system and does not replace detailed video ethograms. It is also not a turnkey solution for all possible cognitive paradigms.
 
       Users must validate their specific tasks and ensure compliance with local ethical and regulatory requirements.
 ---

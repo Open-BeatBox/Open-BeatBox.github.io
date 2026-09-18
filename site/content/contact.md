@@ -4,7 +4,7 @@ layout: "page"
 showInNav: false
 slug: "/contact"
 hero:
-  title: "Get in touch about Beatbox."
+  title: "Get in touch about Open-BEATBox."
   subtitle: "Questions, collaborations, feedback, and contributions are welcome."
 sections:
   - type: "text"

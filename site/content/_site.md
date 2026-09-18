@@ -1,14 +1,14 @@
 ---
-title: "BEATBox - Behavioural and Autonomous operant Box"
-description: "BEATBox is an open-source, autonomous, customizable, and low-cost system for ecological behavioral data acquisition in home-cage environments."
+title: "Open-BEATBox - Open — Behavioural and Autonomous operant Box"
+description: "Open-BEATBox is an open-source, autonomous, customizable, and low-cost system for ecological behavioral data acquisition in home-cage environments."
 keywords:
-  - Beatbox
+  - Open-BEATBox
   - home-cage monitoring
   - operant conditioning
   - behavioral neuroscience
   - open hardware
 authors:
-  - name: "Beatbox Contributors"
+  - name: "Open-BEATBox Contributors"
     url: "https://github.com/beatbox-hcm"
 openGraph:
   defaultImage: "/images/beatbox-og-default.png"

@@ -1,6 +1,6 @@
 # Hardware Build
 
-Guidance to assemble, wire, and validate a Beatbox cage. Adapt details to your bill of materials (BOM) and enclosure design.
+Guidance to assemble, wire, and validate an Open-BEATBox cage. Adapt details to your bill of materials (BOM) and enclosure design.
 
 ## Bill of materials (BOM)
 - Cage and enclosure: printed or machined parts, fasteners, cable glands, mounting hardware, and removable panels for modularity.
@@ -14,7 +14,7 @@ Guidance to assemble, wire, and validate a Beatbox cage. Adapt details to your b
 > Keep the authoritative BOM in version control; include part numbers, vendors, and acceptable substitutes.
 
 ## Assembly steps (high-level)
-1. Download CAD, STL, PCB, and wiring diagrams from the Beatbox repository (see Build & Code page).
+1. Download CAD, STL, PCB, and wiring diagrams from the Open-BEATBox repository (see Build & Code page).
 2. Prepare enclosure panels and mounts; remove burrs/sharp edges.
 3. Install controller and breakouts on standoffs; route power separately from signal lines where possible.
 4. Mount sensors and actuators; label each connector to match pin assignments.

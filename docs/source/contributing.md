@@ -1,6 +1,6 @@
 # Contributing
 
-BEATBox is open-source by design.
+Open-BEATBox is open-source by design.
 
 ## Contribution areas
 

@@ -46,7 +46,7 @@ const HeroSection: React.FC<Props> = ({ hero }) => {
       )}
       <div className="hero-overlay" aria-hidden />
       <div className="hero-content relative z-10">
-        <p className="hero-eyebrow">{hero.eyebrow || "BEATBox"}</p>
+        <p className="hero-eyebrow">{hero.eyebrow || "Open-BEATBox"}</p>
         <h1 className="hero-title">
           {hero.title}
         </h1>

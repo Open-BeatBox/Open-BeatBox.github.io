@@ -1,17 +1,17 @@
-# BEATBox User Manual
+# Open-BEATBox User Manual
 
-BEATBox is an open-source, modular platform for 24/7 home-cage behavioral testing, autonomous operant conditioning, and longitudinal monitoring.
+Open-BEATBox is an open-source, modular platform for 24/7 home-cage behavioral testing, autonomous operant conditioning, and longitudinal monitoring.
 
-This manual is the main technical reference for building, understanding, and operating a BEATBox. It brings the step-by-step assembly tutorials together with hardware, software, firmware, and experimental guidance in one place.
+This manual is the main technical reference for building, understanding, and operating an Open-BEATBox. It brings the step-by-step assembly tutorials together with hardware, software, firmware, and experimental guidance in one place.
 
-If you are assembling your first system, begin with **Build your own BEATBox**. The build section takes you from preparation and the bill of materials through fabrication, module assembly, and final checks. Hardware and software reference pages are available when you need more detail about a component.
+If you are assembling your first system, begin with **Build your own Open-BEATBox**. The build section takes you from preparation and the bill of materials through fabrication, module assembly, and final checks. Hardware and software reference pages are available when you need more detail about a component.
 
 ## Start here
 
 ::::{grid} 1 1 3 3
 :gutter: 3
 
-:::{grid-item-card} Build your own BEATBox
+:::{grid-item-card} Build your own Open-BEATBox
 Follow the step-by-step workflow, from preparation and the bill of materials to module assembly and validation.
 
 {doc}`build/index`

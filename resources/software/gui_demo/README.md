@@ -1,6 +1,6 @@
-# BEATBox GUI Front-End Demo
+# Open-BEATBox GUI Front-End Demo
 
-This is a hardware-free Python mock-up of the BEATBox graphical interface. It is
+This is a hardware-free Python mock-up of the Open-BEATBox graphical interface. It is
 intended for design review and software planning before the real hardware/API
 integration is finalized.
 
