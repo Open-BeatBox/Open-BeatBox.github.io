@@ -17,7 +17,7 @@ const Footer: React.FC<Props> = ({ title, description }) => {
         <div className="footer-links flex gap-4 text-sm">
           <a href="https://open-beatbox.github.io/docs/manual/">Documentation</a>
           <a href="https://open-beatbox.github.io/docs/manual/build/">Build your own</a>
-          <a href="https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software">GUI</a>
+          <a href="https://github.com/Open-BeatBox/Open-BeatBox_Software">GUI</a>
           <a href="https://github.com/Open-BeatBox/Open-BeatBox.github.io">Github</a>
         </div>
       </div>

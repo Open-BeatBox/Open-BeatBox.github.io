@@ -1,4 +1,4 @@
-[submodule "docs/source/build/assembly-tutorials"]
-	path = docs/source/build/assembly-tutorials
-	url = https://github.com/Open-BeatBox/assembly-tutorials.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/Open-BeatBox/Open-BeatBox_Documentation.git
 	branch = main

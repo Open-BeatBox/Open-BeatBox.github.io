@@ -1,11 +1,5 @@
-# Open-BEATBox build guides
+# Build guides have moved
 
-The editable assembly guides and Master BOM are maintained in the dedicated [Open-BeatBox assembly-tutorials repository](https://github.com/Open-BeatBox/assembly-tutorials).
+Assembly, calibration and validation material is now in **[Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation)**, licensed CC-BY-4.0.
 
-- [Rendered tutorial index](https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html)
-- [Tutorial source repository](https://github.com/Open-BeatBox/assembly-tutorials)
-- [Master BOM](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
-- [Public build manual](https://open-beatbox.github.io/docs/manual/build/)
-- [Interactive assembly checklist](https://open-beatbox.github.io/docs/beatbox-assembly-sop.html)
-
-Do not duplicate the module guides or BOM in this folder. Submit corrections to `assembly-tutorials` so item IDs and revision information stay synchronized.
+The rendered manual is at <https://open-beatbox.github.io/docs/manual/>.

@@ -1,3 +1,3 @@
-# Placeholder
+# Firmware has moved
 
-Open-BEATBox firmware materials will be updoaded soon. Thanks for your patience!
+Firmware and embedded control resources are now in **[Open-BeatBox_firmware](https://github.com/Open-BeatBox/Open-BeatBox_firmware)**, licensed GPL-3.0.

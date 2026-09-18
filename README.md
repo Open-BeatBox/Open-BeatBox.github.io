@@ -14,9 +14,11 @@ The goal of this repository is to make the project reproducible from a single en
 | Assembly tutorial sources | <https://github.com/Open-BeatBox/assembly-tutorials> |
 | Master BOM (CSV / XLSX) | <https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials> |
 | Interactive assembly guide | <https://open-beatbox.github.io/docs/beatbox-assembly-tutorial.html> |
-| GitHub resources directory | [`resources/`](./resources) |
+| Hardware — CAD, PCB, mechanical | <https://github.com/Open-BeatBox/Open-BeatBox_Hardware> |
+| Firmware | <https://github.com/Open-BeatBox/Open-BeatBox_firmware> |
+| Software — GUI, acquisition, analysis | <https://github.com/Open-BeatBox/Open-BeatBox_Software> |
+| Documentation — manual source | <https://github.com/Open-BeatBox/Open-BeatBox_Documentation> |
 | Website source | [`site/`](./site) |
-| Sphinx documentation source | [`docs/source/`](./docs/source) |
 
 ## What Open-BEATBox is for
 
@@ -37,9 +39,10 @@ Open-BeatBox.github.io/
 ├── README.md                         # Main repository entry point
 ├── LICENSE                           # Repository-level software license
 ├── package.json                      # Root helper scripts
-├── docs/                             # Canonical Sphinx documentation source
+├── docs/                             # Submodule -> Open-BeatBox_Documentation
 │   ├── requirements.txt              # Python dependencies for Sphinx builds
 │   └── source/                       # Manual source files
+│       └── build/assembly-tutorials/ # Nested submodule -> assembly-tutorials
 ├── scripts/
 │   └── build-docs.ps1                # Local Sphinx build helper
 ├── site/                             # Next.js public website
@@ -48,19 +51,14 @@ Open-BeatBox.github.io/
 │   ├── public/                       # Static assets served by the website
 │   │   └── docs/manual/              # Generated Sphinx manual output
 │   └── src/                          # Website application code
-├── resources/                        # Open-source project resources
-│   ├── hardware/                     # CAD, PCB, mechanical, and electronics files
-│   ├── firmware/                     # Firmware and embedded tooling
-│   ├── software/                     # GUI, acquisition, control, and analysis tools
-│   ├── build-guides/                 # Assembly, calibration, and validation material
-│   └── assets/                       # Renders, diagrams, pictures, GIFs, and media
+├── resources/                        # Forwarding stubs only - content moved out
 └── .github/workflows/
     └── deploy-site.yml               # GitHub Pages deployment for website + Sphinx manual
 ```
 
 ## Documentation policy
 
-The **Sphinx manual** in [`docs/source/`](./docs/source) is the public technical entry point. Module-level assembly instructions and the Master BOM are maintained in the separate [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) repository, pinned as a Git submodule, and rendered directly inside the manual. Keeping one editable upstream copy avoids the website and tutorial sources drifting apart.
+The **Sphinx manual** in [`docs/source/`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) (submodule) is the public technical entry point. Module-level assembly instructions and the Master BOM are maintained in the separate [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) repository, pinned as a Git submodule, and rendered directly inside the manual. The manual source itself lives in `Open-BeatBox_Documentation`, mounted here as a submodule at `docs/`, so this repository nests two levels of submodule. Keeping one editable upstream copy of each avoids the website, manual and tutorial sources drifting apart.
 
 Public manual URL:
 
@@ -78,30 +76,35 @@ This output is included in the Next.js static export so that the website and the
 
 | Page | Purpose |
 | --- | --- |
-| [`docs/source/index.md`](./docs/source/index.md) | Manual landing page |
-| [`docs/source/overview.md`](./docs/source/overview.md) | System overview and current status |
-| [`docs/source/build/index.md`](./docs/source/build/index.md) | Build path and assembly entry point |
-| [`docs/source/build/assembly.md`](./docs/source/build/assembly.md) | Assembly guide source |
-| [`docs/source/build/bom.md`](./docs/source/build/bom.md) | Bill of materials source |
-| [`docs/source/build/safety.md`](./docs/source/build/safety.md) | Safety notes |
-| [`docs/source/hardware/index.md`](./docs/source/hardware/index.md) | Hardware and module overview |
-| [`docs/source/hardware/flashing-cards.md`](./docs/source/hardware/flashing-cards.md) | Card-flashing placeholder and required build order |
-| [`docs/source/hardware/pcbs.md`](./docs/source/hardware/pcbs.md) | PCB documentation |
-| [`docs/source/software/index.md`](./docs/source/software/index.md) | Software and firmware documentation |
-| [`docs/source/software/firmware/index.md`](./docs/source/software/firmware/index.md) | Firmware documentation index |
-| [`docs/source/software/firmware/can-intermodule-protocol.md`](./docs/source/software/firmware/can-intermodule-protocol.md) | Inter-module CAN bus protocol |
-| [`docs/source/protocols/index.md`](./docs/source/protocols/index.md) | Protocol templates and validation status |
-| [`docs/source/contributing.md`](./docs/source/contributing.md) | Contribution guidelines |
+| [`docs/source/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/index.md) | Manual landing page |
+| [`docs/source/overview.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/overview.md) | System overview and current status |
+| [`docs/source/build/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/build/index.md) | Build path and assembly entry point |
+| [`docs/source/build/assembly.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/build/assembly.md) | Assembly guide source |
+| [`docs/source/build/bom.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/build/bom.md) | Bill of materials source |
+| [`docs/source/build/safety.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/build/safety.md) | Safety notes |
+| [`docs/source/hardware/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/hardware/index.md) | Hardware and module overview |
+| [`docs/source/hardware/flashing-cards.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/hardware/flashing-cards.md) | Card-flashing placeholder and required build order |
+| [`docs/source/hardware/pcbs.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/hardware/pcbs.md) | PCB documentation |
+| [`docs/source/software/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/software/index.md) | Software and firmware documentation |
+| [`docs/source/software/firmware/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/software/firmware/index.md) | Firmware documentation index |
+| [`docs/source/software/firmware/can-intermodule-protocol.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/software/firmware/can-intermodule-protocol.md) | Inter-module CAN bus protocol |
+| [`docs/source/protocols/index.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/protocols/index.md) | Protocol templates and validation status |
+| [`docs/source/contributing.md`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/contributing.md) | Contribution guidelines |
 
-## Resource folders
+## Project repositories
 
-| Folder | Contents |
-| --- | --- |
-| [`resources/hardware/`](./resources/hardware) | CAD, PCB, enclosure, module, and mechanical design files |
-| [`resources/firmware/`](./resources/firmware) | Firmware and embedded control resources |
-| [`resources/software/`](./resources/software) | GUI, data acquisition, control, and analysis software |
-| [`resources/build-guides/`](./resources/build-guides) | Assembly, calibration, validation, and bench-use material |
-| [`resources/assets/`](./resources/assets) | Figures, renders, diagrams, videos, GIFs, and dissemination assets |
+Open-BEATBox is maintained as five repositories. This one holds the website and the build pipeline; the engineering layers live separately, each under the licence that suits it.
+
+| Repository | Contents | Licence |
+| --- | --- | --- |
+| [`Open-BeatBox.github.io`](https://github.com/Open-BeatBox/Open-BeatBox.github.io) | Website, build and deployment pipeline | AGPL-3.0 |
+| [`Open-BeatBox_Documentation`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) | Sphinx manual source, technical notes, media | CC-BY-4.0 |
+| [`Open-BeatBox_Hardware`](https://github.com/Open-BeatBox/Open-BeatBox_Hardware) | CAD, PCB, enclosure and mechanical design files | CERN-OHL-S-2.0 |
+| [`Open-BeatBox_firmware`](https://github.com/Open-BeatBox/Open-BeatBox_firmware) | Firmware and embedded control | GPL-3.0 |
+| [`Open-BeatBox_Software`](https://github.com/Open-BeatBox/Open-BeatBox_Software) | GUI, acquisition, control and analysis tools | AGPL-3.0 |
+| [`assembly-tutorials`](https://github.com/Open-BeatBox/assembly-tutorials) | Module assembly guides and the Master BOM | see repository |
+
+`Open-BeatBox_Documentation` is consumed by this repository as a submodule mounted at `docs/`, and it in turn consumes `assembly-tutorials`. Clone with `--recurse-submodules`.
 
 ## Local development
 
@@ -121,7 +124,7 @@ git submodule update --init --recursive
 To review a newer tutorial revision before publishing it in the manual:
 
 ```bash
-git submodule update --remote docs/source/build/assembly-tutorials
+git submodule update --remote --recursive docs
 git diff --submodule
 ```
 
@@ -183,9 +186,12 @@ The workflow should run when website files, Sphinx documentation files, document
 
 Open-BEATBox uses layer-specific open licenses:
 
-- Software: GNU AGPLv3 — see [`LICENSE`](./LICENSE) and [`resources/software/LICENSE`](./resources/software/LICENSE).
-- Firmware: GNU GPLv3 — see [`resources/firmware/LICENSE`](./resources/firmware/LICENSE).
-- Hardware: CERN OHL-S v2 — see [`resources/hardware/LICENSE`](./resources/hardware/LICENSE).
+- Website and software: GNU AGPLv3 — see [`LICENSE`](./LICENSE) in this repository and in [`Open-BeatBox_Software`](https://github.com/Open-BeatBox/Open-BeatBox_Software).
+- Firmware: GNU GPLv3 — see [`Open-BeatBox_firmware`](https://github.com/Open-BeatBox/Open-BeatBox_firmware).
+- Hardware: CERN OHL-S v2 — see [`Open-BeatBox_Hardware`](https://github.com/Open-BeatBox/Open-BeatBox_Hardware).
+- Documentation: CC-BY-4.0 — see [`Open-BeatBox_Documentation`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation).
+
+Each repository carries its own `LICENSE` file, which is authoritative for that layer.
 
 ## Contributing
 
@@ -199,4 +205,4 @@ Contributions are welcome in the following areas:
 - validation reports and troubleshooting notes;
 - reproducible data-output examples.
 
-For website-specific development, see [`site/README.md`](./site/README.md). For documentation updates, edit files in [`docs/source/`](./docs/source/) and check the TODO tracker in [`site/BEATBOX_IMPACT_REDESIGN_TODO.md`](./site/BEATBOX_IMPACT_REDESIGN_TODO.md).
+For website-specific development, see [`site/README.md`](./site/README.md). For documentation updates, commit to [`Open-BeatBox_Documentation`](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) and bump the submodule pointer here. Hardware, firmware and software contributions go to their own repositories. Check the TODO tracker in [`site/BEATBOX_IMPACT_REDESIGN_TODO.md`](./site/BEATBOX_IMPACT_REDESIGN_TODO.md).

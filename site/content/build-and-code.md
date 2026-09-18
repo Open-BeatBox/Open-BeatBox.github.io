@@ -20,7 +20,7 @@ sections:
         ctaLabel: "Open BOM"
       - title: "Prepare fabricated parts"
         body: "Download the available CAD and production files, then inspect every printed and laser-cut part before assembly."
-        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Hardware"
         ctaLabel: "Open hardware files"
       - title: "Assemble each module"
         body: "Follow the frame, bottle mount, feeder, light ring, photobeam gate, and screen tutorials. Each guide uses the item IDs from the Master BOM."

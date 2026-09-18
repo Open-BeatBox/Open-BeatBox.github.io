@@ -1,22 +1,12 @@
-# Open-BEATBox Open-Source Resources
+# Open-BEATBox resources have moved
 
-This folder hosts the open-source materials needed to build, customize, and extend Open-BEATBox.
+The contents of this folder now live in dedicated repositories:
 
-## Structure
+| Layer | Repository | Licence |
+| --- | --- | --- |
+| Hardware — CAD, PCB, mechanical | [Open-BeatBox_Hardware](https://github.com/Open-BeatBox/Open-BeatBox_Hardware) | CERN-OHL-S-2.0 |
+| Firmware | [Open-BeatBox_firmware](https://github.com/Open-BeatBox/Open-BeatBox_firmware) | GPL-3.0 |
+| Software — GUI, acquisition, analysis | [Open-BeatBox_Software](https://github.com/Open-BeatBox/Open-BeatBox_Software) | AGPL-3.0 |
+| Documentation, build guides, media | [Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) | CC-BY-4.0 |
 
-- `hardware/` - CAD, + (soon PCB, enclosure, and mechanical design files)
-- `firmware/` - (coming soon) embedded firmware for modules
-- `software/` - (coming soon) control, logging, and analysis software
-- `docs/` - documentation and technical notes
-  - `assets/` - figures, renders, and media
-- `build-guides/` - (coming soon) assembly, calibration, and validation guides
-
-## How to contribute
-
-Add files to the appropriate folder and update documentation in `docs/`. For large design files, prefer GitHub Releases and link them from `docs/`.
-
-## Licensing
-
-- `software/`: GNU AGPLv3 (see `resources/software/LICENSE`)
-- `firmware/`: GNU GPLv3 (see `resources/firmware/LICENSE`)
-- `hardware/`: CERN OHL-S v2 (see `resources/hardware/LICENSE`)
+This repository keeps the website and the build pipeline. See the [project README](../README.md).

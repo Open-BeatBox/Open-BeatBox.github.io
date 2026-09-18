@@ -34,7 +34,7 @@ Complete every item in this preparation checklist before starting Step 1:
 
 - Read the {doc}`safety notes <safety>` before handling tools, inserts, soldering equipment, or plexiglass.
 - Download the Master BOM in {download}`XLSX <assembly-tutorials/BOM.xlsx>` or {download}`CSV <assembly-tutorials/BOM.csv>` format. Use the {doc}`BOM validation checklist <bom>` and {doc}`revision and identifier conventions <assembly-tutorials/conventions>` to resolve every incomplete field for the hardware revision being built.
-- Prepare the 3D-printed and laser-cut parts using the {doc}`fabrication guide <fabrication>` and the [Open-BEATBox CAD and hardware files](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware).
+- Prepare the 3D-printed and laser-cut parts using the {doc}`fabrication guide <fabrication>` and the [Open-BEATBox CAD and hardware files](https://github.com/Open-BeatBox/Open-BeatBox_Hardware).
 - {doc}`Flash all required cards <../hardware/flashing-cards>` before installing them in their modules.
 
 ### Step 1 — Build the frame and enclosure

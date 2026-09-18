@@ -48,5 +48,5 @@ contributing
 - {doc}`Modular assembly tutorials <build/assembly-tutorials/tutorials_index>`
 - [Master BOM (CSV and XLSX)](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials)
 - {doc}`Flashing the cards <hardware/flashing-cards>`
-- [Open-source resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources)
+- [Open-source resources](https://github.com/Open-BeatBox)
 - <a href="../../">Project website</a>

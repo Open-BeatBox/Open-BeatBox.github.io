@@ -25,5 +25,5 @@ firmware/index
 
 ## Current resources
 
-- [Firmware resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/firmware)
-- [Software resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/software)
+- [Firmware resources](https://github.com/Open-BeatBox/Open-BeatBox_firmware)
+- [Software resources](https://github.com/Open-BeatBox/Open-BeatBox_Software)

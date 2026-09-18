@@ -6,6 +6,8 @@ on:
     paths:
       - "site/**"
       - "docs/**"
+      - "docs"
+      - ".gitmodules"
       - "scripts/build-docs.ps1"
       - "package.json"
       - ".github/workflows/deploy-site.yml"
@@ -29,6 +31,9 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+          # DOCS_TOKEN is only needed while Open-BeatBox_Documentation is private;
+          # it falls back to the job token once that repo is public.
+          token: ${{ secrets.DOCS_TOKEN || github.token }}
 
       - name: Set up Node
         uses: actions/setup-node@v4

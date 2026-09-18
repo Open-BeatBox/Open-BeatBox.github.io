@@ -19,4 +19,4 @@ This page will collect fabrication details for laser-cut and 3D-printed parts.
 
 CAD and fabrication files are currently stored in the open-source resources area:
 
-[CAD and hardware resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/hardware)
+[CAD and hardware resources](https://github.com/Open-BeatBox/Open-BeatBox_Hardware)

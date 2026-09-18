@@ -14,4 +14,4 @@ can-intermodule-protocol
 
 ## Firmware resources
 
-[Browse firmware and embedded-control resources](https://github.com/Open-BeatBox/Open-BeatBox.github.io/tree/main/resources/firmware)
+[Browse firmware and embedded-control resources](https://github.com/Open-BeatBox/Open-BeatBox_firmware)
