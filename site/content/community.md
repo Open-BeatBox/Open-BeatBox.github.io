@@ -17,11 +17,17 @@ sections:
   - type: "links"
     title: "Join the community"
     links:
-      - label: "GitHub repository and Discussions"
-        href: "#"
-      - label: "Chat server (Discord/Slack/Zulip)"
-        href: "#"
-        note: "<!-- TODO: insert actual invite link and chosen platform. -->"
+      - label: "Discussions — ask questions and share builds"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions"
+        note: "Build help, parts sourcing and task design. Answers stay searchable for the next lab."
+      - label: "Contributing guide"
+        href: "https://github.com/Open-BeatBox/.github/blob/main/CONTRIBUTING.md"
+        note: "Which repository takes what, and how contributions are licensed."
+      - label: "Code of Conduct"
+        href: "https://github.com/Open-BeatBox/.github/blob/main/CODE_OF_CONDUCT.md"
+      - label: "Report a build problem"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox.github.io/issues/new/choose"
+        note: "Build reports and part substitutions that worked are especially useful."
   - type: "faq"
     title: "FAQ"
     items:
@@ -34,9 +40,9 @@ sections:
   - type: "text"
     title: "How to cite Open-BEATBox"
     body: |
-      If you use Open-BEATBox in a scientific publication, please cite the Open-BEATBox project and its main reference paper once available.
+      If you use Open-BEATBox in a scientific publication, please cite the project. Each repository carries a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX directly.
 
-      <!-- TODO: add canonical citation (plain text + BibTeX) once a preprint or paper exists. -->
+      A reference paper is in preparation. Once it is published it becomes the preferred citation, and the citation files will be updated to point at it.
   - type: "list"
     title: "Tutorials"
     items:

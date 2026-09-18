@@ -27,4 +27,7 @@ extraNavItems:
   - title: "Gallery"
     href: "/gallery"
     navOrder: 2
+  - title: "Community"
+    href: "/community"
+    navOrder: 3
 ---
