@@ -9,14 +9,11 @@ keywords:
   - open hardware
 authors:
   - name: "Open-BEATBox Contributors"
-    url: "https://github.com/beatbox-hcm"
+    url: "https://github.com/Open-BeatBox"
 openGraph:
   defaultImage: "/images/beatbox-og-default.png"
   type: "website"
   locale: "en_US"
-twitter:
-  handle: "@beatbox_hcm"
-  cardType: "summary_large_image"
 logo: "/images/beatbox-logo.png"
 brandColor: "#2563EB"
 secondaryColor: "#0F172A"

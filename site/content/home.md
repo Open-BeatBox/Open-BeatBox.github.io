@@ -76,11 +76,11 @@ sections:
         title: "High-throughput longitudinal cohort studies"
         body: "A modular system built for repeated, long-duration behavioral acquisition."
       - image: "/images/beatbox_V3_clear.png"
-        title: "Optimized communication protocol"
-        body: "Add the visual of the communication protocol"
+        title: "Robust module-to-module communication"
+        body: "Every module has its own small computer, and they talk over a shared CAN bus — the same kind of robust network used in cars. See [how it works](/docs/manual/how-it-works.html)."
       - image: "/images/BB_V3_Material.jpg"
         title: "Modularity and adaptability"
-        body: "Easy to build, adapt, and replicat."
+        body: "Easy to build, adapt, and replicate."
   - type: "gallery"
     title: "Gallery"
     subtitle: "Selected Open-BEATBox renders, build photos, modules, electronics, and GUI screens."
@@ -207,9 +207,9 @@ sections:
   - type: "text"
     title: "How to cite"
     body: |
-      A BioRxiv preprint is in preparation. Citation instructions will be added once it is online. A Zenodo DOI is planned for the journal submission rather than the preprint, so no DOI is available yet.
+      Each repository carries a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX directly.
 
-      Until publication metadata is finalized, please reference the Open-BEATBox open-source repository and contact the team before public reuse in manuscripts, talks, or derivative documentation.
+      A BioRxiv preprint is in preparation, and a Zenodo DOI is planned for the journal submission rather than the preprint, so no DOI is available yet. Once the reference paper is published it will become the preferred citation.
   - type: "faq"
     title: "Q&A"
     items:
@@ -224,7 +224,7 @@ sections:
       - question: "What can be customized?"
         answer: "The system is modular: feeders, screens, nosepokes, IR barriers, lighting, tunnels, and sensor workflows can be adapted to different behavioral protocols. All new customizations and protocols are invited to be shared with the Open-BEATBox community here: [https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions](https://github.com/Open-BeatBox/Open-BeatBox.github.io/discussions)."
       - question: "Where can I find the GUI and software resources?"
-        answer: "The software resources, including the GUI demo and future control code, are available from the Open-BEATBox software repository here: [https://github.com/Open-BeatBox](https://github.com/Open-BeatBox)."
+        answer: "The PC control application, the module firmware and a command-line test tool are in the [Open-BeatBox_Software repository](https://github.com/Open-BeatBox/Open-BeatBox_Software). The manual explains how to [install](/docs/manual/software/install.html) and [use](/docs/manual/software/pc-app.html) the application; it is still a development version."
       - question: "Why is a longitudinal approach more respectful of naturalistic behaviors?"
         answer: "Longitudinal home-cage testing lets animals engage with tasks voluntarily across their own day-night rhythms, instead of being repeatedly handled and moved into short experimenter-controlled sessions. This preserves more natural motivation, activity timing, and adaptation while reducing avoidable disturbance."
       - question: "Which other open-source systems can be incorporated into the Open-BEATBox environment?"

@@ -142,7 +142,7 @@ By removing repeated handling, artificial session boundaries, and experimenter-d
       - label: "Hardware"
         href: "https://github.com/Open-BeatBox/Open-BeatBox_Hardware"
       - label: "Firmware"
-        href: "https://github.com/Open-BeatBox/Open-BeatBox_firmware"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Firmware"
       - label: "Software"
         href: "https://github.com/Open-BeatBox/Open-BeatBox_Software"
       - label: "Build guides"

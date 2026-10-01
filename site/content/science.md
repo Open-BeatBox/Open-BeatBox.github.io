@@ -16,24 +16,24 @@ sections:
       Scientific motivations include:
       - Studying complex learning sequences
       - Measuring long-term dynamics of motivation and cognition
-      - Improving reproducibility through standardized environmental capture
+      - Improving reproducibility through standardized hardware, task timing and logging
       - Reducing the number of animals by improving within-animal resolution
   - type: "list"
     title: "Data and validation"
     items:
-      - "Continuous behavioral readouts (IR breaks, audio, sensor signals)"
-      - "Event-based logs"
-      - "Environmental time-series"
+      - "A trial log: one line per trial, with the correct side, the animal's response, whether it was valid, reaction and collection times, and success rates"
+      - "An event log: every sensor change and every protocol event, with timestamps"
+      - "Everything is saved as plain CSV files, ready for Excel, R or Python"
   - type: "cards"
-    title: "Example validation datasets"
+    title: "Validation datasets (in preparation)"
     cards:
-      - title: "Sensor stability"
-        body: "Multi-week recordings demonstrating stability of IR and environmental sensors."
+      - title: "Sensor and module reliability"
+        body: "Long recordings to document the stability of the infrared sensors, the feeder and the communication between modules."
       - title: "Task acquisition"
-        body: "Operant task learning curves illustrating acquisition and performance metrics."
-      - title: "Environmental dynamics"
-        body: "Time-series of temperature, humidity, and light, synchronized with behavioral events."
-    note: "<!-- TODO: Link real validation datasets and figures when available. -->"
+        body: "Learning curves across the training stages, showing acquisition and performance."
+      - title: "Circadian activity"
+        body: "Distribution of tunnel crossings and responses across the day–night cycle."
+    note: "Validation datasets and figures will be linked here when they are published."
   - type: "warning"
     title: "Limitations & responsible use"
     body: |

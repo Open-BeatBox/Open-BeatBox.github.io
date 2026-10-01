@@ -21,29 +21,29 @@ sections:
       - "Limited task flexibility in classical operant chambers"
       - "Poor standardization across labs and platforms"
   - type: "pipeline"
-    title: "Design overview"
+    title: "How it works"
     steps:
-      - "Environmental sensors (temperature, humidity, light)"
-      - "Behavioral sensors (IR beam breaks, nosepoke sensors, levers, capacitive touch)"
-      - "Audio input/output modules"
-      - "Microcontroller with real-time firmware"
-      - "Streaming to local PC or server via USB or Wi-Fi"
-      - "Python client and REST/WebSocket APIs for data access"
+      - "The mouse walks through a tunnel, looks at two screens, touches one, and collects a food pellet."
+      - "Each module (feeder, screens, tunnel, lighting, nosepoke) has its own small computer that reads its sensors and drives its motor, screen or LEDs."
+      - "The modules talk to each other over a shared cable, the CAN bus, and announce events by themselves."
+      - "One main module connects the box to your computer and forwards messages."
+      - "The control application on the computer runs the training protocol and shows the animal's progress."
+      - "Every event and every trial is saved to CSV files, ready for Excel, R or Python."
   - type: "columns"
     title: "Hardware and Software"
     columns:
       - heading: "Hardware design"
         body: |
-          Open-BEATBox uses a modular enclosure with removable panels so labs can adapt the chamber to their task.
+          Open-BEATBox is built from independent modules in a laser-cut plexiglass enclosure with 3D-printed parts: a **feeder**, two **touch/response screens**, a **photobeam gate (tunnel)**, a **lighting** module with white, red and infrared LEDs, and a **main module** that links the box to your PC. An optional **nosepoke** module is also available.
 
-          Core components include the main chamber, interchangeable operant modules (nosepoke, rewards, sensors), a PCB with multiple sensor interfaces, and a central microcontroller.
+          Every module has a custom circuit board built around an **RP2040** microcontroller and a **CAN bus** controller. Eight board designs (KiCad) and the full mechanical design (CAD, V3) are published. The box runs from a single 12 V supply.
 
-          <!-- TODO: Insert exact microcontroller model, chamber dimensions, reward system details, and power supply specs. -->
-      - heading: "Software stack TEST"
+          See the [hardware chapter of the manual](/docs/manual/hardware/index.html).
+      - heading: "Software stack"
         body: |
-          The Open-BEATBox software stack includes real-time acquisition firmware, a Python middleware layer for streaming and buffering, Dockerized services for visualization and storage, and open APIs in JSON and WebSocket formats.
+          The firmware of each module is written in **MicroPython**. A **PC application** (Python, with a graphical interface) runs the training protocol — five stages from "collect a pellet" to "choose the correct screen" — and writes the results to **CSV files**. A small **command-line tool** lets you test every module without the application.
 
-          Optional JSON-LD metadata export supports integration with FAIR data workflows.
+          The software is a development version. See the [software chapter of the manual](/docs/manual/software/index.html) and the [open points](/docs/manual/project/status.html).
   - type: "roadmap"
     title: "Versions & roadmap"
     items:
