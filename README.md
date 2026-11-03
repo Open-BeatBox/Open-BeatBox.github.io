@@ -17,7 +17,7 @@
 | I am… | I want to… | Go to |
 | --- | --- | --- |
 | **Curious** | Understand what this is and how it works | [Overview](https://open-beatbox.github.io/docs/manual/overview.html) · [How it works](https://open-beatbox.github.io/docs/manual/how-it-works.html) |
-| **A lab / technician** | **Build** a box | [Build guide](https://open-beatbox.github.io/docs/manual/build/index.html) · [Master BOM](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials) · [Assembly tutorials](https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html) |
+| **A lab / technician** | **Build** a box | [Build guide](https://open-beatbox.github.io/docs/manual/build/index.html) · [Master BOM](https://open-beatbox.github.io/docs/manual/build/bom.html) · [Assembly tutorials](https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html) |
 | **A neuroscientist** | **Run experiments** with a box | [Getting started](https://open-beatbox.github.io/docs/manual/getting-started.html) · [Training stages](https://open-beatbox.github.io/docs/manual/software/stages.html) · [Your data](https://open-beatbox.github.io/docs/manual/software/data-output.html) |
 | **An engineer** | Read the hardware, firmware and protocol | [Hardware](https://open-beatbox.github.io/docs/manual/hardware/index.html) · [Firmware](https://open-beatbox.github.io/docs/manual/software/firmware/index.html) · [CAN protocol](https://open-beatbox.github.io/docs/manual/software/firmware/can-intermodule-protocol.html) |
 | **A contributor** | Fix or improve something | [Contributing](https://open-beatbox.github.io/docs/manual/contributing.html) · [Open points](https://open-beatbox.github.io/docs/manual/project/status.html) |
@@ -57,7 +57,7 @@ The full explanation, one trial step by step, is in [How it works](https://open-
 
 ## From nothing to a first experiment
 
-1. **Plan** — read the [safety notes](https://open-beatbox.github.io/docs/manual/build/safety.html) and download the [Master BOM](https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials).
+1. **Plan** — read the [safety notes](https://open-beatbox.github.io/docs/manual/build/safety.html) and download the [Master BOM](https://open-beatbox.github.io/docs/manual/build/bom.html).
 2. **Order and make the parts** — circuit boards from a PCB service, 3D-printed and laser-cut parts ([fabrication](https://open-beatbox.github.io/docs/manual/build/fabrication.html)).
 3. **Flash the boards** — [put the firmware on each module board](https://open-beatbox.github.io/docs/manual/hardware/flashing-cards.html) before closing it into its housing.
 4. **Assemble the modules** — six [tutorials](https://open-beatbox.github.io/docs/manual/build/assembly-tutorials/tutorials_index.html), one video each.
@@ -76,17 +76,16 @@ Open-BEATBox is published as several repositories, one per layer, each under the
 | Layer | Repository | What you will find | Licence |
 | --- | --- | --- | --- |
 | **Website** *(this repository)* | [Open-BeatBox.github.io](https://github.com/Open-BeatBox/Open-BeatBox.github.io) | The public website; the pipeline that builds and publishes the manual | AGPL-3.0 |
-| **Documentation** | [Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) | The manual (Sphinx source), notes, media | CC-BY-4.0 |
-| **Build guides** | [assembly-tutorials](https://github.com/Open-BeatBox/assembly-tutorials) | Per-module assembly tutorials and the Master BOM | see repository |
+| **Documentation** | [Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation) | The manual (Sphinx source), assembly tutorials, Master BOM, notes, media | CC-BY-4.0 |
 | **Hardware** | [Open-BeatBox_Hardware](https://github.com/Open-BeatBox/Open-BeatBox_Hardware) | CAD, enclosure, KiCad circuit boards, manufacturing files | CERN-OHL-S-2.0 |
-| **Software** | [Open-BeatBox_Software](https://github.com/Open-BeatBox/Open-BeatBox_Software) | PC application, module firmware (MicroPython), test command-line tool | AGPL-3.0 |
-| **Firmware** | [Open-BeatBox_Firmware](https://github.com/Open-BeatBox/Open-BeatBox_Firmware) | Reserved for stand-alone firmware releases — *no source published there yet; the firmware is in the Software repository* | GPL-3.0 |
+| **Software** | [Open-BeatBox_Software](https://github.com/Open-BeatBox/Open-BeatBox_Software) | PC application, module firmware (MicroPython), test command-line tool | AGPL-3.0-or-later |
+| **Firmware** | [Open-BeatBox_Firmware](https://github.com/Open-BeatBox/Open-BeatBox_Firmware) | Placeholder pointing to the Software repository, where the firmware is; no release of its own | GPL-3.0 |
 
 ```text
 Open-BeatBox.github.io  (this repository)
   ├── site/                  the website (Next.js)
   └── docs/  ─────────────►  Open-BeatBox_Documentation   (Git submodule)
-                                └── source/build/assembly-tutorials/ ─► assembly-tutorials  (nested submodule)
+                                └── source/build/assembly-tutorials/   assembly tutorials and Master BOM
 
 Open-BeatBox_Hardware · Open-BeatBox_Software · Open-BeatBox_Firmware
         └── independent repositories, linked from the manual and the website

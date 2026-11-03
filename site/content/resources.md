@@ -49,9 +49,9 @@ sections:
       - label: "Build guides"
         href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
       - label: "Assembly tutorial source"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Documentation/tree/main/source/build/assembly-tutorials"
       - label: "Master BOM"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
+        href: "https://open-beatbox.github.io/docs/manual/build/bom.html"
       - label: "Figures and renders"
         href: "https://github.com/Open-BeatBox/Open-BeatBox_Documentation"
 ---

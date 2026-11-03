@@ -16,7 +16,7 @@ sections:
     steps:
       - title: "Check the Master BOM"
         body: "Download the CSV or XLSX, confirm the hardware revision, and resolve every row still marked for validation before ordering."
-        href: "https://github.com/Open-BeatBox/assembly-tutorials#bill-of-materials"
+        href: "https://open-beatbox.github.io/docs/manual/build/bom.html"
         ctaLabel: "Open BOM"
       - title: "Prepare fabricated parts"
         body: "Download the available CAD and production files, then inspect every printed and laser-cut part before assembly."
@@ -37,13 +37,13 @@ sections:
         href: "/docs/manual/build/assembly-tutorials/tutorials_index.html"
         note: "Six module-level assembly tutorials, each with its video walkthrough"
       - label: "Assembly tutorial source repository"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Documentation/tree/main/source/build/assembly-tutorials"
         note: "Canonical Markdown and BOM source"
       - label: "Master BOM — XLSX"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.xlsx"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Documentation/raw/main/source/build/assembly-tutorials/BOM.xlsx"
         note: "Editable working file"
       - label: "Master BOM — CSV"
-        href: "https://github.com/Open-BeatBox/assembly-tutorials/raw/main/BOM.csv"
+        href: "https://github.com/Open-BeatBox/Open-BeatBox_Documentation/raw/main/source/build/assembly-tutorials/BOM.csv"
         note: "Portable export"
       - label: "Technical build manual"
         href: "/docs/manual/build/"
@@ -97,10 +97,10 @@ sections:
         note: "CERN-OHL-S-2.0"
       - label: "Firmware repository"
         href: "https://github.com/Open-BeatBox/Open-BeatBox_Firmware"
-        note: "Reserved for stand-alone firmware releases. The firmware source is currently in the Software repository."
+        note: "Placeholder. The firmware source is in the Software repository, under micropython/."
   - type: "text"
     title: "Contributing"
     body: |
-      Report assembly or BOM corrections in the [assembly-tutorials issue tracker](https://github.com/Open-BeatBox/assembly-tutorials/issues). For website, software, or general project work, use the [main issue tracker](https://github.com/Open-BeatBox/Open-BeatBox.github.io/issues) and read the [contribution guide](https://open-beatbox.github.io/docs/manual/contributing.html).
+      Report assembly or BOM corrections in the [Documentation issue tracker](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/issues). For website, software, or general project work, use the [main issue tracker](https://github.com/Open-BeatBox/Open-BeatBox.github.io/issues) and read the [contribution guide](https://open-beatbox.github.io/docs/manual/contributing.html).
 ---
 

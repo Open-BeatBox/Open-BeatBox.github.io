@@ -201,7 +201,7 @@ sections:
           - Oriana Lavielle
           - Anne Lorenz
           - Youenn Travert
-          - Christianne Schreiweiss
+          - Christiane Schreiweis
 
           \*All versions included
   - type: "text"
