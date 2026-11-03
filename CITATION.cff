@@ -6,6 +6,7 @@ abstract: "Open-BEATBox (Open - BEhavioural and AuTonomous operant Box) is an op
 authors:
   - family-names: "Euvrard"
     given-names: "Marine"
+    affiliation: "Sorbonne Université, Institut du Cerveau - Paris Brain Institute - ICM, Inserm U1127, CNRS UMR 7225, AP-HP, Paris, France"
   - family-names: "Benzina"
     given-names: "Nabil"
     affiliation: "Sorbonne Université, Institut du Cerveau - Paris Brain Institute - ICM, Inserm U1127, CNRS UMR 7225, AP-HP, Paris, France"
