@@ -73,6 +73,8 @@ You do **not** need to be a programmer. You do need basic hand tools, and **some
 
 Open-BEATBox is published as several repositories, one per layer, each under the licence that fits it.
 
+The MATLAB/Arduino implementation and the analysis code used for the behavioural data in the preprint are being prepared for publication and are not yet public.
+
 | Layer | Repository | What you will find | Licence |
 | --- | --- | --- | --- |
 | **Website** *(this repository)* | [Open-BeatBox.github.io](https://github.com/Open-BeatBox/Open-BeatBox.github.io) | The public website; the pipeline that builds and publishes the manual | AGPL-3.0 |
@@ -192,7 +194,22 @@ Each repository carries its own `LICENSE` file, which is authoritative for that 
 
 ## Citing Open-BEATBox
 
-Each repository has a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX. A reference paper is in preparation; once it is published it will become the preferred citation.
+If you use Open-BEATBox in published work, please cite **both** the reference preprint and the archived release of the layer you used.
+
+**The platform (preprint):**
+
+> Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026 (DOI to be added when the preprint is posted).
+
+**The release you used (Zenodo record):**
+
+| Layer | Repository | Release | Zenodo DOI |
+| --- | --- | --- | --- |
+| Hardware | [Open-BeatBox_Hardware](https://github.com/Open-BeatBox/Open-BeatBox_Hardware/releases) | `biorxiv-v1` | DOI: to be added once release `biorxiv-v1` is published on Zenodo |
+| Software (PC application and firmware) | [Open-BeatBox_Software](https://github.com/Open-BeatBox/Open-BeatBox_Software/releases) | `biorxiv-v1` | DOI: to be added once release `biorxiv-v1` is published on Zenodo |
+| Documentation (manual, tutorials, BOM) | [Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/releases) | `biorxiv-v1` | DOI: to be added once release `biorxiv-v1` is published on Zenodo |
+| Firmware | [Open-BeatBox_Firmware](https://github.com/Open-BeatBox/Open-BeatBox_Firmware) | — | No record of its own: the firmware is in the Software repository, cite that record |
+
+Each repository also has a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX. Once the preprint is posted, it becomes the preferred citation in every citation file.
 
 ## Contributing
 

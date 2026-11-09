@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import "./Footer.css";
 
 type Props = {
@@ -17,8 +18,9 @@ const Footer: React.FC<Props> = ({ title, description }) => {
         <div className="footer-links flex gap-4 text-sm">
           <a href="https://open-beatbox.github.io/docs/manual/">Documentation</a>
           <a href="https://open-beatbox.github.io/docs/manual/build/">Build your own</a>
-          <a href="https://github.com/Open-BeatBox/Open-BeatBox_Software">GUI</a>
-          <a href="https://github.com/Open-BeatBox/Open-BeatBox.github.io">Github</a>
+          <a href="https://github.com/Open-BeatBox/Open-BeatBox_Software">Software</a>
+          <a href="https://github.com/Open-BeatBox">GitHub</a>
+          <Link href="/community">How to cite</Link>
         </div>
       </div>
       <p className="footer-credits">
