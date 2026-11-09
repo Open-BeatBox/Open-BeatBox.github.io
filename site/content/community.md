@@ -40,9 +40,13 @@ sections:
   - type: "text"
     title: "How to cite Open-BEATBox"
     body: |
-      If you use Open-BEATBox in a scientific publication, please cite the project. Each repository carries a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX directly.
+      If you use Open-BEATBox in a scientific publication, please cite **both** the reference preprint and the archived release of the layer you used.
 
-      A reference paper is in preparation. Once it is published it becomes the preferred citation, and the citation files will be updated to point at it.
+      **The platform (preprint):** Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026 (DOI to be added when the preprint is posted).
+
+      **The release you used:** each release of the [Hardware](https://github.com/Open-BeatBox/Open-BeatBox_Hardware/releases), [Software](https://github.com/Open-BeatBox/Open-BeatBox_Software/releases) and [Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/releases) repositories is archived on Zenodo with its own DOI (release `biorxiv-v1` for the preprint; DOI: to be added once release `biorxiv-v1` is published on Zenodo). The firmware has no record of its own: it is part of the Software repository, so cite that record.
+
+      Each repository carries a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX directly.
   - type: "list"
     title: "Tutorials"
     items:
