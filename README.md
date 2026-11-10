@@ -198,7 +198,7 @@ If you use Open-BEATBox in published work, please cite **both** the reference pr
 
 **The platform (preprint):**
 
-> Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026 (DOI to be added when the preprint is posted).
+> Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026. doi: [10.64898/2026.11.07.765109](https://doi.org/10.64898/2026.11.07.765109)
 
 **The release you used (Zenodo record):**
 
@@ -209,7 +209,7 @@ If you use Open-BEATBox in published work, please cite **both** the reference pr
 | Documentation (manual, tutorials, BOM) | [Open-BeatBox_Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/releases) | `biorxiv-v1` | [10.5281/zenodo.24080481](https://doi.org/10.5281/zenodo.24080481) (all versions: [10.5281/zenodo.24080480](https://doi.org/10.5281/zenodo.24080480)) |
 | Firmware | [Open-BeatBox_Firmware](https://github.com/Open-BeatBox/Open-BeatBox_Firmware) | — | No record of its own: the firmware is in the Software repository, cite that record |
 
-Each repository also has a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX. Once the preprint is posted, it becomes the preferred citation in every citation file.
+Each repository also has a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX. The preprint is the preferred citation in the citation files of the website, Hardware and Software repositories.
 
 ## Contributing
 

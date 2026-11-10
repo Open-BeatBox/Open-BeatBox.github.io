@@ -209,7 +209,7 @@ sections:
     body: |
       Each repository carries a `CITATION.cff` file, so GitHub's **Cite this repository** button gives you APA and BibTeX directly.
 
-      A BioRxiv preprint is in preparation, and a Zenodo DOI is planned for the journal submission rather than the preprint, so no DOI is available yet. Once the reference paper is published it will become the preferred citation.
+      The reference preprint is on bioRxiv: [doi.org/10.64898/2026.11.07.765109](https://doi.org/10.64898/2026.11.07.765109). Please cite it together with the Zenodo record of the release you used; the full citation and the DOIs are on the [community page](/community).
   - type: "faq"
     title: "Q&A"
     items:
