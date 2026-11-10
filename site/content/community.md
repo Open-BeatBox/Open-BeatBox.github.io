@@ -42,7 +42,7 @@ sections:
     body: |
       If you use Open-BEATBox in a scientific publication, please cite **both** the reference preprint and the archived release of the layer you used.
 
-      **The platform (preprint):** Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026 (DOI to be added when the preprint is posted).
+      **The platform (preprint):** Euvrard M, Benzina N, Domingues D, Mondragón-González SL, Huzard D, Penderia G, Travert-Jouanneau Y, Lavielle O, Lousada E, Schreiweis C, Lorenz A, Pavlov P, Ajili Z, Lebegue L, Tissier P, Burguière E. "Open-BEATBox: an open-source autonomous operant chamber for high-throughput data acquisition of complex behaviour." bioRxiv, 2026. doi: [10.64898/2026.11.07.765109](https://doi.org/10.64898/2026.11.07.765109)
 
       **The release you used:** each release of the [Hardware](https://github.com/Open-BeatBox/Open-BeatBox_Hardware/releases), [Software](https://github.com/Open-BeatBox/Open-BeatBox_Software/releases) and [Documentation](https://github.com/Open-BeatBox/Open-BeatBox_Documentation/releases) repositories is archived on Zenodo with its own DOI (release `biorxiv-v1` for the preprint: Hardware [10.5281/zenodo.24080048](https://doi.org/10.5281/zenodo.24080048), Software [10.5281/zenodo.24080479](https://doi.org/10.5281/zenodo.24080479), Documentation [10.5281/zenodo.24080481](https://doi.org/10.5281/zenodo.24080481)). The firmware has no record of its own: it is part of the Software repository, so cite that record.
 
