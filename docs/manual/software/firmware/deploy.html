@@ -1,0 +1,591 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Validation command-line tool" href="cli.html"><link rel="prev" title="Architecture" href="architecture.html">
+        <link rel="prefetch" href="../../_static/beatbox-logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"><!-- Generated with Sphinx 9.1.1 and Furo 2025.12.19 -->
+        <title>Deploying the firmware - Open-BEATBox Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e14ed22e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #0891b2;
+  --color-brand-content: #0e7490;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #67e8f9;
+  --color-brand-content: #67e8f9;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #67e8f9;
+  --color-brand-content: #67e8f9;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Open-BEATBox Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/beatbox-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Open-BEATBox Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Understand</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">What is Open-BEATBox?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-it-works.html">How it works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Build</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../build/index.html">Build your own Open-BEATBox</a><input aria-label="Toggle navigation of Build your own Open-BEATBox" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../build/assembly.html">Assembly tutorials</a><input aria-label="Toggle navigation of Assembly tutorials" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/tutorials_index.html">Beatbox Assembly Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/conventions.html">Documentation and file conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-frm-assembly.html">Assemble frame structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-frm-assembly.html#enclosure-assembly-instructions">Enclosure Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-bmt-assembly.html">Water Bottle Mount Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-fdr-aseembly.html">Feeder Module Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-lgt.html">Light Ring Module Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-pbg-assembly.html">Photobeam Gate Assembly Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../build/assembly-tutorials/modules/mod-scr-assembly.html">Screen Module Assembly Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/bom.html">Master bill of materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/safety.html">Safety notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/fabrication.html">Fabrication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/video-tutorials.html">Video tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build/first-power-up.html">First power-up and test</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../hardware/index.html">Hardware</a><input aria-label="Toggle navigation of Hardware" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/pcbs.html">Circuit boards (PCBs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/mechanical.html">Mechanical files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/ordering-pcbs.html">Ordering the circuit boards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/flashing-cards.html">Flashing the module boards</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Run and develop</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Software</a><input aria-label="Toggle navigation of Software" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install.html">Installing the PC application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pc-app.html">Using the PC application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stages.html">Training stages S1–S4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Configuring experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data-output.html">Data output</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Firmware</a><input aria-label="Toggle navigation of Firmware" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Deploying the firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">Validation command-line tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="can-intermodule-protocol.html">Inter-module CAN protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development.html">Developing the software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../protocols/index.html">Protocols</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../project/index.html">Project</a><input aria-label="Toggle navigation of Project" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../project/repositories.html">Repositories and licences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/status.html">Status and open points</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/Open-BeatBox/Open-BeatBox_Documentation/blob/main/source/software/firmware/deploy.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/Open-BeatBox/Open-BeatBox_Documentation/edit/main/source/software/firmware/deploy.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="deploying-the-firmware">
+<h1>Deploying the firmware<a class="headerlink" href="#deploying-the-firmware" title="Link to this heading">¶</a></h1>
+<p>This is the reference for installing and updating firmware on the modules. For a step-by-step guide aimed at builders, see <a class="reference internal" href="../../hardware/flashing-cards.html"><span class="doc">Flashing the module boards</span></a>.</p>
+<section id="two-steps">
+<h2>Two steps<a class="headerlink" href="#two-steps" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Install MicroPython</strong> on the RP2040 (once per board).</p></li>
+<li><p><strong>Deploy the Open-BEATBox program</strong> (each time you update it).</p></li>
+</ol>
+<section id="install-micropython">
+<h3>1. Install MicroPython<a class="headerlink" href="#install-micropython" title="Link to this heading">¶</a></h3>
+<p>A new board appears as a USB drive named <strong>RPI-RP2</strong> when it is in bootloader mode. Drag the MicroPython <code class="docutils literal notranslate"><span class="pre">.uf2</span></code> file onto it; the board reboots as a USB serial device.</p>
+<ul class="simple">
+<li><p>Build in use: <code class="docutils literal notranslate"><span class="pre">ADAFRUIT_FEATHER_RP2040-20260406-v1.28.0.uf2</span></code>. The custom modules use the Adafruit Feather RP2040 as their base, so that build is compatible. A different base board or pinout needs a custom build or a new entry in <code class="docutils literal notranslate"><span class="pre">libs/bb_pin_map.py</span></code>.</p></li>
+<li><p>If the board does not enter bootloader mode: press reset twice quickly while holding BOOT; or from the REPL run <code class="docutils literal notranslate"><span class="pre">machine.bootloader()</span></code>; or from the PC run <code class="docutils literal notranslate"><span class="pre">mpremote</span> <span class="pre">bootloader</span></code>.</p></li>
+</ul>
+</section>
+<section id="deploy-the-program">
+<h3>2. Deploy the program<a class="headerlink" href="#deploy-the-program" title="Link to this heading">¶</a></h3>
+<p>Work in <code class="docutils literal notranslate"><span class="pre">micropython/</span></code> with the conda environment active (<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>: Python ≥ 3.11, <code class="docutils literal notranslate"><span class="pre">pyserial</span></code>, <code class="docutils literal notranslate"><span class="pre">pytest</span></code>; install <code class="docutils literal notranslate"><span class="pre">mpremote</span></code> with pip).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>deploy_module.py<span class="w"> </span>&lt;module&gt;<span class="w"> </span>--dry-run<span class="w">         </span><span class="c1"># show what would be copied</span>
+python<span class="w"> </span>deploy_module.py<span class="w"> </span>&lt;module&gt;<span class="w"> </span>--as-main<span class="w"> </span>--port<span class="w"> </span>auto
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">&lt;module&gt;</span></code></p></th>
+<th class="head"><p>Board</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">main_module</span></code></p></td>
+<td><p>Main module</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">feeder</span></code></p></td>
+<td><p>Feeder</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nosepoke</span></code></p></td>
+<td><p>Nosepoke</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">screenmodule</span></code></p></td>
+<td><p>Screen (left or right: see below)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lighting</span></code></p></td>
+<td><p>Lighting</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ir_barrier</span></code></p></td>
+<td><p>Tunnel / photobeam gate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">blinky</span></code></p></td>
+<td><p>Development and bring-up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--as-main</span></code> installs the module as <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, which MicroPython runs automatically after <code class="docutils literal notranslate"><span class="pre">boot.py</span></code> (<a class="reference external" href="https://docs.micropython.org/en/latest/reference/reset_boot.html#boot-sequence">boot sequence</a>). Use it for every module you intend to leave running.</p>
+<p>The script copies, in order: the host-protocol package, the CAN driver (MCP2515), the shared libraries, the module’s extra dependencies, and the module program. The extra dependencies are:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Extra files</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">main_module</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">serial_manager</span></code>, <code class="docutils literal notranslate"><span class="pre">cli_protocol</span></code> (from <code class="docutils literal notranslate"><span class="pre">libs/</span></code>), and <code class="docutils literal notranslate"><span class="pre">bb_frontends</span></code>, <code class="docutils literal notranslate"><span class="pre">bb_events</span></code>, <code class="docutils literal notranslate"><span class="pre">bb_intents</span></code>, <code class="docutils literal notranslate"><span class="pre">bb_v2_map</span></code>, <code class="docutils literal notranslate"><span class="pre">bb_v2_comm</span></code>, <code class="docutils literal notranslate"><span class="pre">bb_v2_emulator</span></code> (from <code class="docutils literal notranslate"><span class="pre">modules/main_module/</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">screenmodule</span></code></p></td>
+<td><p>ILI9341 parallel TFT driver (<code class="docutils literal notranslate"><span class="pre">ILI9341</span></code>, <code class="docutils literal notranslate"><span class="pre">ILI9341_char</span></code>, <code class="docutils literal notranslate"><span class="pre">ILI9341_touch</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lighting</span></code></p></td>
+<td><p>PCA9955B LED driver package</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">deploy_module.py</span></code> occasionally fails part-way and leaves the board unable to enter raw REPL. Reset it with the button or a power cycle and retry.</p>
+</section>
+<section id="manual-file-operations">
+<h3>Manual file operations<a class="headerlink" href="#manual-file-operations" title="Link to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpremote<span class="w">                      </span><span class="c1"># REPL (Ctrl+X to leave)</span>
+mpremote<span class="w"> </span>ls
+mpremote<span class="w"> </span>cp<span class="w"> </span>path/on/host<span class="w"> </span>:path/on/device
+mpremote<span class="w"> </span>rm<span class="w"> </span>:path/on/device
+</pre></div>
+</div>
+</section>
+</section>
+<section id="third-party-libraries-read-this">
+<h2>Third-party libraries (read this)<a class="headerlink" href="#third-party-libraries-read-this" title="Link to this heading">¶</a></h2>
+<p>The deployment script copies files from these libraries, expected under <code class="docutils literal notranslate"><span class="pre">micropython/libs/</span></code>:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Folder expected</p></th>
+<th class="head"><p>Library</p></th>
+<th class="head"><p>Used by</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">beatbox-protocol/</span></code></p></td>
+<td><p>Host frame format (<code class="docutils literal notranslate"><span class="pre">BeatBoxMessage</span></code>, CRC) — a Git submodule</p></td>
+<td><p>All modules (and the PC application)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">microPython_MCP2515/</span></code></p></td>
+<td><p>MCP2515/25625 CAN driver</p></td>
+<td><p>All modules</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CircuitPython_PCA9955B/</span></code></p></td>
+<td><p>PCA9955B LED driver</p></td>
+<td><p>Lighting</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ILI9341-parallel-TFT-driver-for-micropython/</span></code></p></td>
+<td><p>8-bit parallel ILI9341 TFT driver</p></td>
+<td><p>Screens</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Current state of the repository</p>
+<p>In the public Software repository, <code class="docutils literal notranslate"><span class="pre">beatbox-protocol</span></code> and <code class="docutils literal notranslate"><span class="pre">ILI9341-parallel-TFT-driver-for-micropython</span></code> are Git submodules: clone with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--recurse-submodules</span></code> (or run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span></code>) to fetch them. The project uses locally modified versions of the other two libraries, so their upstream projects alone are not enough. <code class="docutils literal notranslate"><span class="pre">microPython_MCP2515</span></code> is included as a plain folder (a copy of the upstream driver with the project’s changes; MIT licence). <code class="docutils literal notranslate"><span class="pre">CircuitPython_PCA9955B</span></code> is included the same way (a copy of the MicroPython port of the upstream driver, MIT licence), so every module deploys on a fresh clone. The maintainers plan to publish forks of both libraries and turn them back into submodules. The host-protocol package is public at <code class="docutils literal notranslate"><span class="pre">gitlab.com/icm-institute/rnd-unit-public/rnd_unit_libs/beatbox-protocol</span></code>.</p>
+</div>
+</section>
+<section id="operating-modes-of-the-main-module">
+<h2>Operating modes of the main module<a class="headerlink" href="#operating-modes-of-the-main-module" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">modules/main_module/main_module.py</span></code> has one deploy-time switch:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CLI_MODE</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># default: legacy V2 emulation</span>
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">CLI_MODE</span> <span class="pre">=</span> <span class="pre">False</span></code> (default)</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">CLI_MODE</span> <span class="pre">=</span> <span class="pre">True</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Use</p></td>
+<td><p>Real experiments</p></td>
+<td><p>Bring-up and validation</p></td>
+</tr>
+<tr class="row-odd"><td><p>UART0 carries</p></td>
+<td><p>The V2 wire protocol: startup and handshake frames, sequence numbers, CRC, pin words in and pin states out</p></td>
+<td><p>Plain text commands (<a class="reference internal" href="cli.html"><span class="doc">Validation command-line tool</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>PC program</p></td>
+<td><p>The application (<code class="docutils literal notranslate"><span class="pre">beatbox</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tools/bb_cli.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>USB REPL</p></td>
+<td><p>A human-readable mirror of all CAN traffic</p></td>
+<td><p>The same</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Wiring in both modes: main-module <code class="docutils literal notranslate"><span class="pre">UART0</span></code> (<code class="docutils literal notranslate"><span class="pre">tx</span> <span class="pre">=</span> <span class="pre">GP0</span></code>, <code class="docutils literal notranslate"><span class="pre">rx</span> <span class="pre">=</span> <span class="pre">GP1</span></code>, <strong>921600 baud</strong>) to a USB-serial adapter, typically <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code> (or <code class="docutils literal notranslate"><span class="pre">COMx</span></code> on Windows). Debug logging always stays on the USB REPL, never on the UART.</p>
+<p><strong>Switching mode means editing the line and deploying again.</strong> After testing with the CLI, set <code class="docutils literal notranslate"><span class="pre">CLI_MODE</span> <span class="pre">=</span> <span class="pre">False</span></code> and redeploy before running experiments.</p>
+</section>
+<section id="the-two-screens">
+<h2>The two screens<a class="headerlink" href="#the-two-screens" title="Link to this heading">¶</a></h2>
+<p>The same program serves both screens, but its last lines choose the identity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">tft</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+    <span class="n">screen</span> <span class="o">=</span> <span class="n">ScreenModule</span><span class="p">(</span><span class="n">module_name</span><span class="o">=</span><span class="s2">"SCREEN_RIGHT"</span><span class="p">)</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">screen</span><span class="o">.</span><span class="n">start_managers</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>As shipped, this is <code class="docutils literal notranslate"><span class="pre">SCREEN_RIGHT</span></code>. For the left screen, change it to <code class="docutils literal notranslate"><span class="pre">SCREEN_LEFT</span></code> before deploying to that board. Two boards with the same name answer to the same CAN address and will conflict.</p>
+</section>
+<section id="host-side-tests">
+<h2>Host-side tests<a class="headerlink" href="#host-side-tests" title="Link to this heading">¶</a></h2>
+<p>The protocol layers import no hardware modules, so they run on an ordinary computer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-q
+</pre></div>
+</div>
+<p>This covers identifier packing, the CAN decoder, the command grammar and the V2 mapping. Prefer adding a test here over testing on a board.</p>
+</section>
+<section id="micropython-constraints-worth-knowing">
+<h2>MicroPython constraints worth knowing<a class="headerlink" href="#micropython-constraints-worth-knowing" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>No 3.10+ typing syntax</strong> in shared code (<code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">list[int]</span></code>) and no <code class="docutils literal notranslate"><span class="pre">typing</span></code> import: anything the host tests import must load on both runtimes.</p></li>
+<li><p><strong>Ticks wrap.</strong> <code class="docutils literal notranslate"><span class="pre">time.ticks_ms/us</span></code> roll over (about 17.9 min for µs on the RP2040). Always compare with <code class="docutils literal notranslate"><span class="pre">bb_ticks.ticks_diff</span></code>, never with <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
+<li><p><strong>Interrupt handlers must be minimal</strong>: set a flag, allocate nothing, never touch the bus. The owning task consumes the flag (<a class="reference external" href="https://docs.micropython.org/en/latest/reference/isr_rules.html#isr-rules">ISR rules</a>).</p></li>
+<li><p><strong>Cooperative scheduling.</strong> Every task shares one loop: a blocking sleep in a callback stalls CAN reception and the serial handler too. Defer instead of blocking.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="cli.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Validation command-line tool</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="architecture.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Architecture</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, NERB team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Deploying the firmware</a><ul>
+<li><a class="reference internal" href="#two-steps">Two steps</a><ul>
+<li><a class="reference internal" href="#install-micropython">1. Install MicroPython</a></li>
+<li><a class="reference internal" href="#deploy-the-program">2. Deploy the program</a></li>
+<li><a class="reference internal" href="#manual-file-operations">Manual file operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#third-party-libraries-read-this">Third-party libraries (read this)</a></li>
+<li><a class="reference internal" href="#operating-modes-of-the-main-module">Operating modes of the main module</a></li>
+<li><a class="reference internal" href="#the-two-screens">The two screens</a></li>
+<li><a class="reference internal" href="#host-side-tests">Host-side tests</a></li>
+<li><a class="reference internal" href="#micropython-constraints-worth-knowing">MicroPython constraints worth knowing</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=a1d499c2"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
